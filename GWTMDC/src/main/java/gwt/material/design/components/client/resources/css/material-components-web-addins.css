@@ -1,0 +1,1200 @@
+/* ==========================================================================
+   Extra to use Roboto Mono
+   ========================================================================== */
+.catalog-title {
+	font-family: "Roboto Mono", monospace;}
+.google-sans {
+	font-family: "Google Sans", monospace;}
+	
+/* ==========================================================================
+   Extra align
+   ========================================================================== */
+.left-align {
+	margin-left: 0;
+	margin-right: auto;}
+.center-align {
+	margin-left: auto;
+	margin-right: auto;}
+.right-align {
+	margin-left: auto;
+	margin-right: 0;}
+
+/* ==========================================================================
+   Aspect Ratio
+   ========================================================================== */
+.mdc-aspect-1x1 {
+	padding-bottom: calc(100%/ 1);}
+.mdc-aspect-16x9 {
+	padding-bottom: calc(100%/ 1.77778);}
+.mdc-aspect-3x2 {
+	padding-bottom: calc(100%/ 1.5);}
+.mdc-aspect-2x3 {
+	padding-bottom: calc(100%/ 0.66667);}
+.mdc-aspect-4x3 {
+	padding-bottom: calc(100%/ 1.33333);}
+.mdc-aspect-3x4 {
+	padding-bottom: calc(100%/ 0.75);}
+	
+/* ==========================================================================
+   Extra hide on classes
+   ========================================================================== */
+@media (max-width: 479px) {
+	.mdc-hide-on-phone {
+		display: none;}}
+
+@media (min-width: 480px) and (max-width: 839px) {
+	.mdc-hide-on-tablet {
+		display: none;}}
+
+@media (min-width: 840px) {
+	.mdc-hide-on-desktop {
+		display: none;}}
+
+/* ==========================================================================
+   Adjust code
+   ========================================================================== */
+.mdc-code-example {
+	display: flex;
+	flex-direction: column;	
+	justify-content: center;
+	align-items: center;
+	padding: 24px;}
+
+.mdc-code {
+	flex: one;
+	width: 100%;
+	text-align: left;}
+
+/* ==========================================================================
+   Animation to change icon
+   ========================================================================== */
+.material-icons__change_animation {
+	animation: var(--mdc-animation--alternate);}	         
+
+/* ==========================================================================
+   File Upload
+   ========================================================================== */	
+.mdc-file-upload {
+	display: none !important;}
+
+/* ==========================================================================
+   Side Sheet
+   ========================================================================== */	
+.mdc-side-sheet {
+	position: relative;
+	width: var(--mdc-side-sheet--content-width);
+	max-width: 0;
+	height: 100%;
+	display: flex;
+	overflow: hidden;		
+	-webkit-transition-duration: 250ms, 250ms;
+	   -moz-transition-duration: 250ms, 250ms;
+		 -o-transition-duration: 250ms, 250ms;
+			transition-duration: 250ms, 250ms;	
+	-webkit-transition-property: max-width, transform;
+	   -moz-transition-property: max-width, transform;
+		 -o-transition-property: max-width, transform;
+			transition-property: max-width, transform;	
+	-webkit-transition-timing-function: ease-in-out, cubic-bezier(0.4, 0, 0.2, 1);
+	   -moz-transition-timing-function: ease-in-out, cubic-bezier(0.4, 0, 0.2, 1);
+		 -o-transition-timing-function: ease-in-out, cubic-bezier(0.4, 0, 0.2, 1);
+	        transition-timing-function: ease-in-out, cubic-bezier(0.4, 0, 0.2, 1);		
+	-webkit-transform: translateX(100%);
+	   -moz-transform: translateX(100%);
+	     -o-transform: translateX(100%);
+	        transform: translateX(100%);}
+	        	        
+.mdc-side-sheet-opened {
+	max-width: var(--mdc-side-sheet--content-width);
+	-webkit-transform: translateX(0);
+	   -moz-transform: translateX(0);
+	     -o-transform: translateX(0);
+	        transform: translateX(0);}
+
+.mdc-side-sheet--content {
+	color: var(--mdc-side-sheet--ink-color);	
+	background-color: var(--mdc-side-sheet--fill-color);
+	display: flex;
+	width: var(--mdc-side-sheet--content-width);
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	flex-direction: column;	
+	flex-shrink: 0;
+  	box-sizing: border-box;
+	border-left: 1px solid rgba(0, 0, 0, 0.12);}
+	.mdc-side-sheet--content {
+	color: var(--mdc-side-sheet--ink-color);	
+	/* Radio button */
+	--mdc-radio-unchecked-color: var(--mdc-side-sheet--ink-color);
+	--mdc-radio-label-color: var(--mdc-side-sheet--ink-color);	
+	/* Checkbox */
+	--mdc-checkbox-unchecked-color: var(--mdc-side-sheet--ink-color);
+	--mdc-checkbox-label-color: var(--mdc-side-sheet--ink-color);		
+	/* Chip */
+	--mdc-chip-container-fill-color: var(--mdc-side-sheet--ink-color);
+	--mdc-chip-text-color: var(--mdc-side-sheet--ink-color);
+	--mdc-chip-icon_leading-color: var(--mdc-side-sheet--ink-color);
+	--mdc-chip-icon_trailing-color: var(--mdc-side-sheet--ink-color);
+	--mdc-chip-icon_selected-color: var(--mdc-side-sheet--ink-color);	
+	/* List */
+	--mdc-list-item-graphic-ink-color: var(--mdc-side-sheet--ink-color);
+	--mdc-list-item-primary-text-ink-color: var(--mdc-side-sheet--ink-color);
+	--mdc-list-item-secondary-text-ink-color: var(--mdc-side-sheet--ink-color);
+	--mdc-list-item-meta-ink-color: var(--mdc-side-sheet--ink-color);}
+	.mdc-side-sheet--content label {
+	color: var(--mdc-side-sheet--ink-color);}
+	
+.mdc-side-sheet--scrim{
+	flex: 1;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.32);}
+
+@media (max-width: 479px) {
+	.mdc-side-sheet-opened {
+	position: fixed;
+	z-index: 7;
+	top: 0;
+	right: 0;
+	height: 100vh;	
+	width: 100vw;
+	max-width: 100vw;}
+	.mdc-side-sheet-opened .mdc-side-sheet--scrim {
+	display: flex;}
+	.mdc-side-sheet-opened .mdc-side-sheet--content{
+	box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2), 0px 16px 24px 2px rgba(0, 0, 0, 0.14), 0px 6px 30px 5px rgba(0, 0, 0, 0.12);}
+}
+
+/* Padding adjust when is preceded by a mdc-top-app-bar element */
+.mdc-top-app-bar:not(.mdc-top-app-bar--prominent):not(.mdc-top-app-bar--dense):not(.mdc-top-app-bar--short-collapsed) ~ .mdc-side-sheet .mdc-side-sheet--content {
+	padding-top: 64px;}
+	.mdc-top-app-bar.mdc-top-app-bar--dense:not(.mdc-top-app-bar--prominent) ~ .mdc-side-sheet .mdc-side-sheet--content {
+	padding-top: 48px;}
+	.mdc-top-app-bar.mdc-top-app-bar--prominent:not(.mdc-top-app-bar--dense) ~ .mdc-side-sheet .mdc-side-sheet--content {
+	padding-top: 128px;}
+	.mdc-top-app-bar.mdc-top-app-bar--dense.mdc-top-app-bar--prominent ~ .mdc-side-sheet .mdc-side-sheet--content {
+	padding-top: 96px;}
+	@media (max-width: 959px) and (orientation: landscape) {
+      .mdc-top-app-bar:not(.mdc-top-app-bar--prominent):not(.mdc-top-app-bar--dense):not(.mdc-top-app-bar--short-collapsed) ~ .mdc-side-sheet .mdc-side-sheet--content{
+	padding-top: 48px;}}
+    @media (max-width: 599px) {
+      .mdc-top-app-bar:not(.mdc-top-app-bar--prominent):not(.mdc-top-app-bar--dense):not(.mdc-top-app-bar--short-collapsed) ~ .mdc-side-sheet .mdc-side-sheet--content {
+	padding-top: 56px;}}
+	@media (max-width: 479px) {
+	.mdc-top-app-bar:not(.mdc-top-app-bar--prominent):not(.mdc-top-app-bar--dense):not(.mdc-top-app-bar--short-collapsed) ~ .mdc-side-sheet .mdc-side-sheet--content {
+	padding-top: 0;}}
+
+/* ==========================================================================
+   Tooltip
+   ========================================================================== */
+.mdc-tooltip {
+	font-size: 0.60rem;
+	line-height: 0.70rem;
+	z-index: 8;
+	position: fixed;
+	min-width: 5em;
+	margin: 8px 16px 8px 16px;
+	padding: 8px;
+	background: var(--mdc-tooltip--fill-color);
+	color: var(--mdc-tooltip--ink-color);
+	border-radius: var(--mdc-rounded-border-radius);
+	text-align: center;
+	pointer-events: none;	
+	-webkit-animation: var(--mdc-animation--expand);
+	   -moz-animation: var(--mdc-animation--expand);
+	     -o-animation: var(--mdc-animation--expand);
+	        animation: var(--mdc-animation--expand);}
+	.mdc-tooltip:empty {
+	display: none; }
+
+/* ==========================================================================
+   Banner
+   ========================================================================== */
+.mdc-banner {
+	overflow: hidden;
+	width: 100%;}
+.mdc-banner-navigation {
+	position: relative;
+	width: 100%;
+	margin-top: -148px;	
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: center;
+	flex-wrap: wrap-reverse;
+	overflow: hidden;
+	background-color: var(--mdc-banner--fill-color);
+	-webkit-transition-duration: var(--mdc-banner--animation-duration);
+	   -moz-transition-duration: var(--mdc-banner--animation-duration);
+		 -o-transition-duration: var(--mdc-banner--animation-duration);
+			transition-duration: var(--mdc-banner--animation-duration);
+	-webkit-transition-property: margin-top;
+	   -moz-transition-property: margin-top;
+		 -o-transition-property: margin-top;
+			transition-property: margin-top;	
+	-webkit-transition-timing-function: ease-out;
+	   -moz-transition-timing-function: ease-out;
+		 -o-transition-timing-function: ease-out;
+	        transition-timing-function: ease-out;}
+	.mdc-banner-vertical{
+	flex-direction: column-reverse;}
+	.mdc-banner-opened{
+	margin-top: 0;}
+	.mdc-banner-navigation:not(.mdc-banner-vertical) .mdc-list-divider:first-child {
+	display: none;}
+	.mdc-banner-vertical .mdc-list-divider:last-child {
+	display: none;}		
+.mdc-banner--content {
+	flex: 1;
+	flex-shrink: 0;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 16px;
+	padding-right: 90px;}
+	.mdc-banner-navigation:not(.mdc-banner-vertical) .mdc-banner--actions:empty + .mdc-banner--content {
+	padding-right: 16px;}	
+	.mdc-banner-vertical .mdc-banner--content {
+	flex: none;
+	width: calc(100% - 32px);
+	padding-right: 16px;}
+	.mdc-banner-vertical .mdc-banner--actions {
+	width: calc(100% - 8px);}
+.mdc-banner--avatar {
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	min-width: 40px;
+	max-width: 40px;
+	height: 40px;
+	min-height: 40px;
+	max-height: 40px;
+	overflow: hidden;
+	border-radius: 50%;
+	margin-right: 16px;
+	margin-top: 8px;
+	margin-bottom: 8px;}
+	.mdc-banner--avatar:empty{
+	display: none;}
+	.mdc-banner--avatar > .material-icons,
+	.mdc-banner--avatar > * {
+	width: 100%;
+	height: 100%;
+	font-size: 28px;
+	color: var(--mdc-banner--avatar-ink-color);
+	background-color: var(--mdc-banner--avatar-fill-color);}	
+.mdc-banner--label {
+	flex: 1;
+	flex-shrink: 0;
+	color: var(--mdc-banner--ink-color);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: var(--mdc-banner--label_lines_number);
+	max-height: calc(1.25rem * var(--mdc-banner--label_lines_number));}			
+.mdc-banner--actions {
+	display: flex;
+	flex-shrink: 0;
+	flex-direction: row-reverse;
+	align-content: center;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 4px;}
+	.mdc-banner--actions:empty{
+	display: none;}
+	.mdc-banner-vertical .mdc-banner--actions {
+	width: calc(100% - 8px);}
+	.mdc-banner--actions > * {
+	margin: 4px;}   
+
+/* ==========================================================================
+   Config default component content
+   ========================================================================== */
+.mdc-content {
+	flex: one;
+	align-self: auto;
+	flex-grow: 1;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-start;
+	align-content: flex-start;
+	flex-direction: row;
+	flex-wrap: wrap;	
+	overflow: visible;
+	overflow-x: hidden;
+	position: relative;}
+	
+/* ==========================================================================
+   Circular Progress
+   ========================================================================== */
+.mdc-circular-progress[disabled] {
+	opacity: var(--mdc-disabled-opacity);}
+.mdc-circular-progress {
+	width: var(--mdc-circular-progress-width);
+ 	height: var(--mdc-circular-progress-width);
+ 	position: relative;
+ 	margin: 0;
+ 	padding: 0;
+ 	border-radius: 50%;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;}
+.mdc-circular-progress__loader {
+	width: 100%;
+	height: 100%;
+	transform-origin: center center;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	border-radius: 50%;}
+.mdc-circular-progress:not(.mdc-circular-progress--indeterminate) .mdc-circular-progress__loader {	
+	-webkit-transform: rotate(var(--mdc-circular-progress-start-angle));
+	   -moz-transform: rotate(var(--mdc-circular-progress-start-angle));
+	     -o-transform: rotate(var(--mdc-circular-progress-start-angle));
+	        transform: rotate(var(--mdc-circular-progress-start-angle));}
+.mdc-circular-progress__track {
+	stroke-width: var(--mdc-circular-progress-stroke-width);
+	stroke: var(--mdc-circular-progress-track-color);
+	opacity: var(--mdc-track-opacity);}
+.mdc-circular-progress__path {
+	stroke-width: var(--mdc-circular-progress-stroke-width);
+	stroke-dashoffset: 0;
+	stroke-linecap: square;
+	stroke: var(--mdc-circular-progress-indicator-color);}
+.mdc-circular-progress:not(.mdc-circular-progress--indeterminate) .mdc-circular-progress__path[animate] {
+	-webkit-transition: stroke-dashoffset 400ms linear;
+	   -moz-transition: stroke-dashoffset 400ms linear;
+	     -o-transition: stroke-dashoffset 400ms linear;
+	        transition: stroke-dashoffset 400ms linear;}
+.mdc-circular-progress--indeterminate .mdc-circular-progress__loader {
+	-webkit-animation: rotate 2s linear infinite;
+	   -moz-animation: rotate 2s linear infinite;
+	     -o-animation: rotate 2s linear infinite;
+	        animation: rotate 2s linear infinite;}
+.mdc-circular-progress--indeterminate .mdc-circular-progress__path {
+	stroke-dasharray: 1, 200;	
+	stroke-linecap: round;
+	-webkit-animation: dash 1.5s ease-in-out infinite;
+	   -moz-animation: dash 1.5s ease-in-out infinite;
+	     -o-animation: dash 1.5s ease-in-out infinite;
+	        animation: dash 1.5s ease-in-out infinite;}
+.mdc-circular-progress--indeterminate .mdc-circular-progress__loader,	 
+.mdc-circular-progress--indeterminate .mdc-circular-progress__path {
+	-webkit-animation-direction: normal;
+	   -moz-animation-direction: normal;
+	     -o-animation-direction: normal;
+	        animation-direction: normal;}	               
+.mdc-circular-progress--reversed:not(.mdc-circular-progress--indeterminate) .mdc-circular-progress__loader,
+.mdc-circular-progress--reversed:not(.mdc-circular-progress--indeterminate) .mdc-circular-progress__path, 
+.mdc-circular-progress--reversed.mdc-circular-progress--indeterminate .mdc-circular-progress__loader,
+.mdc-circular-progress--reversed.mdc-circular-progress--indeterminate .mdc-circular-progress__path {	
+	-webkit-animation-direction: reverse;
+	   -moz-animation-direction: reverse;
+	     -o-animation-direction: reverse;
+	        animation-direction: reverse;}
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+       -moz-transform: rotate(360deg);
+         -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;}
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;}
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124px;}}
+
+/* ==========================================================================
+   Fab Progress
+   ========================================================================== */	
+.mdc-fab-progess {
+	padding: 4px;
+	--mdc-circular-progress-stroke-width: 8;
+	--mdc-circular-progress-width: auto;
+	-webkit-transition: box-shadow 400ms;
+	   -moz-transition: box-shadow 400ms;
+		 -o-transition: box-shadow 400ms;
+			transition: box-shadow 400ms;}
+	.mdc-fab-progess.mdc-fab--mini {
+	padding: 3px;}	
+.mdc-fab-progess .mdc-circular-progress__loader {
+	z-index: 1;	
+	-webkit-transition: opacity 400ms, box-shadow 400ms;
+	   -moz-transition: opacity 400ms, box-shadow 400ms;
+		 -o-transition: opacity 400ms, box-shadow 400ms;
+			transition: opacity 400ms, box-shadow 400ms;}	
+	.mdc-fab-progess[progress='0']:not(.mdc-circular-progress--indeterminate) .mdc-circular-progress__loader {
+	opacity: 0;}	
+.mdc-fab-progess .mdc-fab {
+	z-index: 2;
+	box-shadow: none;
+	margin: 0;
+	-webkit-transition: all 400ms;
+	   -moz-transition: all 400ms;
+		 -o-transition: all 400ms;
+			transition: all 400ms;}			
+.mdc-fab-progess.mdc-circular-progress--indeterminate,			
+.mdc-fab-progess[progress='0']:not(.mdc-circular-progress--indeterminate) .mdc-fab,
+.mdc-fab-progess:not([progress='0']):not(.mdc-circular-progress--indeterminate) {
+	box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);}
+.mdc-list-item__meta.mdc-circular-progress,
+.mdc-list-item__meta.mdc-fab-progess,
+.mdc-list-item__meta.mdc-fab-progess .mdc-fab {
+	--mdc-circular-progress-indicator-color: var(--mdc-list-item-selected-meta-ink-color);
+	--mdc-circular-progress-track-color: var(--mdc-list-item-meta-ink-color);
+	--mdc-fab-fill-color: transparent;
+	--mdc-fab-ink-color: var(--mdc-list-item-meta-ink-color);
+	box-shadow: 0;
+	box-shadow: none !important;}
+.mdc-list-item__meta.mdc-fab-progess .mdc-fab {
+	width: 40px;
+	height: 40px;}
+
+/* ==========================================================================
+   Color palette
+   ========================================================================== */
+.mdc-color-palette {
+	border-radius: var(--mdc-rounded-border-radius);
+	display: flex;
+	flex-direction: column;}
+.mdc-color-palette__title:first-child {
+	flex: one;}
+.mdc-color-palette__button_group {
+	display: flex;}
+.mdc-color-palette__label {
+	background-color: var(--mdc-theme-surface);
+	color: var(--mdc-theme-on-surface);
+	font-size: .6rem;
+	line-height: .6rem;
+	text-align: center;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;}
+.mdc-color-palette__label,
+.mdc-color-palette__button {
+	width: 28px;
+	min-width: 28px;
+	max-width: 28px;
+	height: 28px;
+	min-height: 28px;
+	max-height: 28px;
+	margin: 1px;
+	cursor: pointer;
+	transition: border-radius 0.3s;}
+.mdc-color-palette__button[color='white']:not(.mdc-color-palette__button_selected),
+.mdc-color-palette__button[color='transparent']:not(.mdc-color-palette__button_selected) {
+	border: 1px solid rgba(127,127,127,0.5);}	
+.mdc-color-palette__button:hover:not(.mdc-color-palette__button_selected) {
+	border-radius: 8px;}
+.mdc-color-palette__button_selected {
+	transition: border-radius 0.3s;
+	border-radius: 50%;
+	border: 2px solid rgba(127,127,127,0.5);}
+	
+/* ==========================================================================
+   DatePicker
+   ========================================================================== */
+.mdc-datepicker {
+	width: calc(var(--mdc-datepicker-width) + 16px);
+	min-width: calc(var(--mdc-datepicker-width) + 16px);
+	max-width: calc(var(--mdc-datepicker-width) + 16px);
+	border: 1px solid var(--mdc-filled-color);
+	border-radius: var(--mdc-rounded-border-radius);
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+	justify-content: center;}  
+.mdc-datepicker .mdc-datepicker__body {
+	width:var(--mdc-datepicker-width);
+	height: 254px;
+	min-height: 254px;
+	max-height: 254px;
+	margin-top: 4px; 
+	margin-bottom: 8px; 
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	overflow: hidden;}	 
+.mdc-datepicker .mdc-datepicker__content {
+	width: var(--mdc-datepicker-width);
+	min-width: var(--mdc-datepicker-width);
+	max-width: var(--mdc-datepicker-width);
+	grid-column-gap: var(--mdc-datepicker--item-horizontal-margin);
+	grid-row-gap: var(--mdc-datepicker--item-vertical-margin);}
+
+.mdc-datepicker__content > .mdc-datepicker__item {
+		position: relative;	
+		display: flex;
+		align-content: center;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		border-radius: 50%;
+		text-align: center;
+		color: var(--mdc-datepicker-ink);
+		background-color: var(--mdc-datepicker-fill);	
+		font-size: var(--mdc-datepicker--items-font_size);
+		line-height: 100%;
+		padding: 2px;
+  		animation: var(--mdc-animation--expand);}
+		.mdc-datepicker__content > .mdc-datepicker__item > label {
+		color: var(--mdc-datepicker-ink);
+		cursor: pointer;
+		text-align: center;
+		vertical-align: middle;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-content: center;
+		align-items: center;
+		justify-content: center;
+		padding: 2px 0 0 0;}
+		.mdc-datepicker__content > .mdc-datepicker__item.mdc-ripple-surface--color::before, 
+		.mdc-datepicker__content > .mdc-datepicker__item.mdc-ripple-surface--color::after {
+		background-color: var(--mdc-datepicker-ink);}	
+
+.mdc-datepicker__content > .mdc-datepicker__today > label {
+	/* border: 1px solid var(--mdc-datepicker-ink); */
+	color: var(--mdc-datepicker-today-ink);}
+.mdc-datepicker > .mdc-datepicker__custom_elements_content {	
+	width:var(--mdc-datepicker-width);
+	display: flex;
+	flex-wrap: wrap;
+	border-top: 1px solid var(--mdc-filled-color);
+	padding-top: 4px;
+	padding-bottom: 4px;}
+	.mdc-datepicker__custom_elements_content:empty {
+	display: none;}	
+	.mdc-datepicker > .mdc-datepicker__custom_elements_content > * {
+	margin: 4px;}
+
+/* Days */   
+.mdc-datepicker__days {	
+	width: 100%;
+	flex: 1;
+	-webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
+	display: grid;
+	grid-template-columns: 
+		var(--mdc-datepicker--item-width) 
+		var(--mdc-datepicker--item-width) 
+		var(--mdc-datepicker--item-width) 
+		var(--mdc-datepicker--item-width) 
+		var(--mdc-datepicker--item-width) 
+		var(--mdc-datepicker--item-width) 
+		var(--mdc-datepicker--item-width);
+	grid-template-rows: 
+		var(--mdc-datepicker--item-height) 
+		var(--mdc-datepicker--item-height) 
+		var(--mdc-datepicker--item-height) 
+		var(--mdc-datepicker--item-height) 
+		var(--mdc-datepicker--item-height) 
+		var(--mdc-datepicker--item-height) 
+		var(--mdc-datepicker--item-height);}
+	.mdc-datepicker__days > .mdc-datepicker__days--header > label {
+	opacity: .5;}
+	.mdc-datepicker__days > .mdc-datepicker__days--out_of_month > label  {
+	opacity: .5;}
+			
+/* Months */		
+.mdc-datepicker__months {
+	width: 100%;
+	flex: 1;
+	-webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
+	display: grid;
+	padding-top: calc(var(--mdc-datepicker--month-item-width) / 2);
+	padding-bottom: calc(var(--mdc-datepicker--month-item-width) / 2); 
+	grid-template-columns: 
+		var(--mdc-datepicker--month-item-width) 
+		var(--mdc-datepicker--month-item-width) 
+		var(--mdc-datepicker--month-item-width) 
+		var(--mdc-datepicker--month-item-width);
+	grid-template-rows: 		 
+		var(--mdc-datepicker--month-item-height) 
+		var(--mdc-datepicker--month-item-height) 
+		var(--mdc-datepicker--month-item-height);}
+		
+/* Years */		
+.mdc-datepicker__years {
+	width: 100%;
+	flex: 1;
+	-webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
+	display: grid;
+	grid-template-columns: 
+		var(--mdc-datepicker--year-item-width) 
+		var(--mdc-datepicker--year-item-width) 
+		var(--mdc-datepicker--year-item-width) 
+		var(--mdc-datepicker--year-item-width) 
+		var(--mdc-datepicker--year-item-width);
+	grid-template-rows: 
+		var(--mdc-datepicker--year-item-height) 
+		var(--mdc-datepicker--year-item-height) 
+		var(--mdc-datepicker--year-item-height) 
+		var(--mdc-datepicker--year-item-height) 
+		var(--mdc-datepicker--year-item-height);}
+
+/* In Line Selector */
+.mdc-datepicker__inline_selector {
+	width: 100%;
+	overflow: hidden;
+	flex: 1;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	--mdc-icon-button-ink-color: var(--mdc-datepicker-ink);}
+	.mdc-datepicker__inline_selector > .mdc-datepicker__inline_selector--label {
+	flex: 1;
+	color: var(--mdc-datepicker-ink);
+	text-align: center;
+	margin-left: 8px;
+	margin-right: 8px;
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+  	font-size: }
+	.mdc-datepicker__inline_selector > i {
+	width: var(--mdc-datepicker--item-width);
+	height: var(--mdc-datepicker--item-width);
+	font-size: calc(var(--mdc-datepicker--items-font_size) * 1.75);
+	line-height: 100%;}
+	
+/* Active */
+.mdc-datepicker__content > .mdc-datepicker__item.mdc-datepicker__active {
+	border-radius: 0;
+	color: var(--mdc-datepicker-active-ink);
+	background-color: var(--mdc-datepicker-active-fill);}
+	.mdc-datepicker__content > .mdc-datepicker__item.mdc-datepicker__active:not(.mdc-datepicker__today) > label {
+	color: var(--mdc-datepicker-active-ink);}			
+	.mdc-datepicker__content > .mdc-datepicker__item.mdc-datepicker__active_first {
+	border-top-left-radius: 50%;
+	border-bottom-left-radius: 50%;}	
+	.mdc-datepicker__content > .mdc-datepicker__item.mdc-datepicker__active_last {			
+	border-top-right-radius: 50%;
+	border-bottom-right-radius: 50%;}
+
+.mdc-datepicker__content > .mdc-datepicker__days--item.mdc-datepicker__active:nth-child(1),
+.mdc-datepicker__content > .mdc-datepicker__days--item.mdc-datepicker__active:nth-child(8),
+.mdc-datepicker__content > .mdc-datepicker__days--item.mdc-datepicker__active:nth-child(15),
+.mdc-datepicker__content > .mdc-datepicker__days--item.mdc-datepicker__active:nth-child(22),
+.mdc-datepicker__content > .mdc-datepicker__days--item.mdc-datepicker__active:nth-child(29),
+.mdc-datepicker__content > .mdc-datepicker__days--item.mdc-datepicker__active:nth-child(36),
+.mdc-datepicker__content > .mdc-datepicker__days--item.mdc-datepicker__active:nth-child(43),
+.mdc-datepicker__content > .mdc-datepicker__months--item.mdc-datepicker__active:nth-child(1),
+.mdc-datepicker__content > .mdc-datepicker__months--item.mdc-datepicker__active:nth-child(5),
+.mdc-datepicker__content > .mdc-datepicker__months--item.mdc-datepicker__active:nth-child(9),
+.mdc-datepicker__content > .mdc-datepicker__years--item.mdc-datepicker__active:nth-child(1),
+.mdc-datepicker__content > .mdc-datepicker__years--item.mdc-datepicker__active:nth-child(6),
+.mdc-datepicker__content > .mdc-datepicker__years--item.mdc-datepicker__active:nth-child(11),
+.mdc-datepicker__content > .mdc-datepicker__years--item.mdc-datepicker__active:nth-child(16),
+.mdc-datepicker__content > .mdc-datepicker__years--item.mdc-datepicker__active:nth-child(21) {
+	border-top-left-radius: 50%;
+	border-bottom-left-radius: 50%;}
+
+.mdc-datepicker__content > .mdc-datepicker__days--item.mdc-datepicker__active:nth-child(7),
+.mdc-datepicker__content > .mdc-datepicker__days--item.mdc-datepicker__active:nth-child(14),
+.mdc-datepicker__content > .mdc-datepicker__days--item.mdc-datepicker__active:nth-child(21),
+.mdc-datepicker__content > .mdc-datepicker__days--item.mdc-datepicker__active:nth-child(28),
+.mdc-datepicker__content > .mdc-datepicker__days--item.mdc-datepicker__active:nth-child(35),
+.mdc-datepicker__content > .mdc-datepicker__days--item.mdc-datepicker__active:nth-child(42),
+.mdc-datepicker__content > .mdc-datepicker__days--item.mdc-datepicker__active:nth-child(49),
+.mdc-datepicker__content > .mdc-datepicker__months--item.mdc-datepicker__active:nth-child(4),
+.mdc-datepicker__content > .mdc-datepicker__months--item.mdc-datepicker__active:nth-child(8),
+.mdc-datepicker__content > .mdc-datepicker__months--item.mdc-datepicker__active:nth-child(12),
+.mdc-datepicker__content > .mdc-datepicker__years--item.mdc-datepicker__active:nth-child(5),
+.mdc-datepicker__content > .mdc-datepicker__years--item.mdc-datepicker__active:nth-child(10),
+.mdc-datepicker__content > .mdc-datepicker__years--item.mdc-datepicker__active:nth-child(15),
+.mdc-datepicker__content > .mdc-datepicker__years--item.mdc-datepicker__active:nth-child(20),
+.mdc-datepicker__content > .mdc-datepicker__years--item.mdc-datepicker__active:nth-child(25) {
+	border-top-right-radius: 50%;
+	border-bottom-right-radius: 50%;}
+
+/* Disabled */
+.mdc-datepicker__content > .mdc-datepicker__item[disabled] {
+	background-color: rgba(0,0,0, var(--mdc-disabled-opacity));}
+	
+/* Tooltip */	
+.mdc-datepicker__content > .mdc-datepicker__item > .mdc-datepicker__tooltip_indicator {
+	position: absolute;
+	border-radius: 50%;
+	padding: 0;
+	width:  4px;
+	height: 4px;
+	bottom: 6px;
+	right: 6px;
+	background-color: var(--mdc-datepicker-tooltip-indicator);}
+	.mdc-datepicker__content > .mdc-datepicker__item[count_tooltips="0"] > .mdc-datepicker__tooltip_indicator {
+	display: none;}			
+
+/* -------- */
+/* Headers */
+/* -------- */
+/* Single Header */
+.mdc-datepicker__header--single_date {
+	width: 100%;
+	flex: 1;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background-color: var(--mdc-datepicker--header-fill);
+	color: var(--mdc-datepicker--header-ink);
+	overflow: hidden;}
+	.mdc-datepicker__header--single_date > label {
+	text-align: center;
+  	font-weight: lighter;
+  	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;}
+  	.mdc-datepicker__header--single_date > .mdc-datepicker__header--single_date--week {	
+	width: 100%;
+	background-color: var(--mdc-filled-color);}
+	.mdc-datepicker__header--single_date > .mdc-datepicker__header--single_date--month {
+	opacity: .8;}
+	.mdc-datepicker__header--single_date > .mdc-datepicker__header--single_date--month:not(:empty) {
+	cursor: pointer;}
+	.mdc-datepicker__header--single_date > .mdc-datepicker__header--single_date--day:not(:empty) {
+	cursor: pointer;}
+	.mdc-datepicker__header--single_date > .mdc-datepicker__header--single_date--year {
+	opacity: .7;}
+	.mdc-datepicker__header--single_date > .mdc-datepicker__header--single_date--year:not(:empty) {
+	cursor: pointer;}
+	.mdc-datepicker__header--single_date:not(.mdc-datepicker__header--single_date_compact) > .mdc-datepicker__header--single_date--week {	
+	font-size: 0.875rem;
+	line-height: 0.875rem;
+	height: 0.875rem;
+	padding: 4px;}
+	.mdc-datepicker__header--single_date:not(.mdc-datepicker__header--single_date_compact) > .mdc-datepicker__header--single_date--day {
+	font-size: 4.5rem;
+	line-height: 4.5rem;	
+	height: 4.5rem;}
+	.mdc-datepicker__header--single_date:not(.mdc-datepicker__header--single_date_compact) > .mdc-datepicker__header--single_date--month {
+	text-transform: uppercase;
+	font-size: 1.5rem;
+	line-height: 1.5rem;
+	height: 1.5rem;
+	margin-top: 12px;}
+	.mdc-datepicker__header--single_date:not(.mdc-datepicker__header--single_date_compact) > .mdc-datepicker__header--single_date--year {	
+	font-size: 1.25rem;
+	line-height: 1.25rem;
+	height: 1.25rem;
+	margin-bottom: 12px;}
+	
+	.mdc-datepicker__header--single_date_compact {
+	width: 64px;
+	min-width: 64px;
+	max-width: 64px;}
+	.mdc-datepicker__header--single_date_compact > .mdc-datepicker__header--single_date--week {
+	font-size: 0.675rem;
+	line-height: 0.675rem;
+	height: 0.675rem;
+	padding: 4px;}
+	.mdc-datepicker__header--single_date_compact > .mdc-datepicker__header--single_date--day {
+	font-size: 2.5rem;
+	line-height: 2.5rem;	
+	height: 2.5rem;}
+	.mdc-datepicker__header--single_date_compact > .mdc-datepicker__header--single_date--month {
+	font-size: .85rem;
+	line-height: .85rem;
+	height: .85rem;
+	margin-top: 8px;}
+	.mdc-datepicker__header--single_date_compact > .mdc-datepicker__header--single_date--year {	
+	font-size: .825rem;
+	line-height: .825rem;
+	height: .825rem;
+	margin-bottom: 8px;}
+	
+
+/* Range Header */
+.mdc-datepicker__header--range_date {
+	width: 100%;
+	flex: 1;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--mdc-datepicker--header-fill);
+	color: var(--mdc-datepicker--header-ink);
+	padding-top: 8px;
+	padding-bottom: 8px;}			
+
+.mdc-datepicker__header--range_date > .mdc-datepicker__header--range_date--labels {
+	flex: 1;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding-right: 16px;}
+	.mdc-datepicker__header--range_date > .mdc-datepicker__header--range_date--labels > * {
+	width: 100%;}
+	.mdc-datepicker__header--range_date > .mdc-datepicker__header--range_date--labels > .mdc-datepicker__header--range_date--start,
+	.mdc-datepicker__header--range_date > .mdc-datepicker__header--range_date--labels > .mdc-datepicker__header--range_date--end  {
+	font-size: 0.75rem;
+	line-height: 0.75rem;
+	height: 0.75rem;
+	margin-top: 16px;
+	margin-bottom: 16px;}
+	.mdc-datepicker__header--range_date > .mdc-datepicker__header--range_date--labels > .mdc-datepicker__header--range_date--start:not(:empty),
+	.mdc-datepicker__header--range_date > .mdc-datepicker__header--range_date--labels > .mdc-datepicker__header--range_date--end:not(:empty)  {
+	cursor: pointer;}
+	.mdc-datepicker__header--range_date > .mdc-datepicker__header--range_date--labels > .mdc-datepicker__header--range_date--divider {	
+	height: 1px;
+	background-color: var(--mdc-datepicker--header-ink);
+	opacity: var(--mdc-track-opacity);}
+
+.mdc-datepicker__header--range_date--graphics {
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100%;
+	padding: 16px;}
+	.mdc-datepicker__header--range_date--circle {
+	width: 6px;
+	height: 6px;
+	border: 2px solid var(--mdc-datepicker--header-ink);
+	border-radius: 50%;}
+	.mdc-datepicker__header--range_date--line {
+	width: 0;
+	height: calc(1.5rem + 2px);
+	border-right: 4px dotted var(--mdc-datepicker--header-ink);
+	margin-top: 4px;
+	margin-bottom: 4px;
+	opacity: var(--mdc-track-opacity);}
+	
+/* Multi Header */	
+.mdc-datepicker__header--multi_date {
+	width: 100%;
+	height: 104px;
+	min-height: 104px;
+	max-height: 104px;
+	flex: 1;
+	display: flex;
+	align-content: flex-start;
+	align-items: flex-start;
+	justify-content: flex-start;
+	background-color: var(--mdc-datepicker--header-fill);
+	color: var(--mdc-datepicker--header-ink);
+	overflow-y: hidden;
+	overflow-x: auto;}
+	.mdc-datepicker__header--multi_date:empty {
+	display: none;}
+			
+/* ==========================================================================
+   Tree
+   ========================================================================== */
+.mdc-tree {
+	color: var(--mdc-tree--ink-color);
+	background-color: var(--mdc-tree--fill-color);
+	font-size: .75rem;
+	border-radius: var(--mdc-rounded-border-radius);
+	/* Checkbox settings */
+	--mdc-checkbox-checked-color: var(--mdc-tree--hover-color);
+	--mdc-checkbox-on-checked-color: var(--mdc-tree--hover-ink-color);
+	--mdc-checkbox-unchecked-color: var(--mdc-tree--ink-color);
+	--mdc-checkbox-label-color: var(--mdc-tree--ink-color);
+	/* Radio button settings */
+	--mdc-radio-checked-color: var(--mdc-tree--hover-color);
+	--mdc-radio-unchecked-color: var(--mdc-tree--ink-color);
+	--mdc-radio-label-color: var(--mdc-tree--ink-color);}
+
+.mdc-tree--filtered-text   {
+	color: var(--mdc-tree--hover-ink-color);
+	background-color: var(--mdc-tree--hover-color);}
+
+.mdc-tree:not([dir=rtl]) {
+  	padding-right: 16px;}
+.mdc-tree[dir=rtl] {
+	padding-left: 16px;}
+
+.mdc-tree:not([dir=rtl]) ul {
+  	list-style: none;
+  	padding-left: 16px;}
+.mdc-tree[dir=rtl] ul {
+  	list-style: none;
+  	padding-right: 16px;}  	
+  	
+.mdc-tree ul li {
+	border-radius: var(--mdc-rounded-border-radius);
+    position:relative;}
+.mdc-tree ul li > div {       
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    padding: 2px;}	  
+.mdc-tree ul li.mdc-tree--collapse {
+	vertical-align: middle;
+	font-size: 1rem;}
+.mdc-tree ul li.mdc-tree--collapse:hover{
+	color: var(--mdc-tree--hover-color);}
+.mdc-tree ul li.mdc-tree--expand {
+	vertical-align: middle;
+	font-size: 1rem;}
+.mdc-tree ul li.mdc-tree--expand:hover{
+	color: var(--mdc-tree--hover-color);}
+.mdc-tree ul li.active {}
+.mdc-tree ul li .mdc-tree--name {
+	vertical-align: middle;
+	cursor: pointer;
+	border-radius: var(--mdc-rounded-border-radius);
+	padding-left: 2px;
+	padding-right: 2px;}
+	
+.mdc-tree ul li .mdc-tree--avatar {
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;}
+	.mdc-tree ul li img.mdc-tree--avatar{
+		border: 2px solid rbga(127,127,127,.5);}
+				
+.mdc-tree:not([dir=rtl]) ul li .mdc-tree--collapse,
+.mdc-tree:not([dir=rtl]) ul li .mdc-tree--expand,
+.mdc-tree:not([dir=rtl]) ul li .mdc-tree--avatar {
+	margin-right: 4px;}
+.mdc-tree[dir=rtl] ul li .mdc-tree--collapse,
+.mdc-tree[dir=rtl] ul li .mdc-tree--expand,	
+.mdc-tree[dir=rtl] ul li .mdc-tree--avatar {
+	margin-left: 4px;}	
+
+ .mdc-tree--selector {
+ 	margin: 0; }
+
+.mdc-tree:not([dir=rtl]) ul li  .mdc-tree--selector:first-child,
+.mdc-tree:not([dir=rtl]) ul li  .mdc-tree--avatar:first-child,
+.mdc-tree:not([dir=rtl]) ul li  .mdc-tree--name:first-child {
+	margin-left: 16px;}
+.mdc-tree[dir=rtl] ul li  .mdc-tree--selector:first-child,
+.mdc-tree[dir=rtl] ul li  .mdc-tree--avatar:first-child,
+.mdc-tree[dir=rtl] ul li  .mdc-tree--name:first-child {
+	margin-right: 16px;} 		
+.mdc-tree:not([dir=rtl]) ul li  .mdc-tree--expand +  .mdc-tree--selector,
+.mdc-tree:not([dir=rtl]) ul li  .mdc-tree--expand +  .mdc-tree--avatar,
+.mdc-tree:not([dir=rtl]) ul li  .mdc-tree--expand +  .mdc-tree--name,
+.mdc-tree:not([dir=rtl]) ul li  .mdc-tree--collapse +  .mdc-tree--selector,
+.mdc-tree:not([dir=rtl]) ul li  .mdc-tree--collapse +  .mdc-tree--avatar,
+.mdc-tree:not([dir=rtl]) ul li  .mdc-tree--collapse +  .mdc-tree--name {
+	margin-left: 0px;}
+.mdc-tree[dir=rtl] ul li  .mdc-tree--expand +  .mdc-tree--selector,
+.mdc-tree[dir=rtl] ul li  .mdc-tree--expand +  .mdc-tree--avatar,
+.mdc-tree[dir=rtl] ul li  .mdc-tree--expand +  .mdc-tree--name,
+.mdc-tree[dir=rtl] ul li  .mdc-tree--collapse +  .mdc-tree--selector,
+.mdc-tree[dir=rtl] ul li  .mdc-tree--collapse +  .mdc-tree--avatar,
+.mdc-tree[dir=rtl] ul li  .mdc-tree--collapse +  .mdc-tree--name {
+	margin-right: 0px;}	
+
+/* ==========================================================================
+   JExcel
+   ========================================================================== */
+   
+.mdc-spreadsheet {
+	width: 100%;
+	overflow: auto;
+	position: relative;}
+	
+.jexcel td {
+	font-size: 0.75rem;
+  	line-height: 1.25rem;
+  	font-weight: 400;
+  	letter-spacing: 0.0333333333em;
+  	text-decoration: inherit;
+  	text-transform: inherit;
+}
+	
+/* Header */
+.jexcel > thead > tr > td {
+	font-weight: normal;
+    border-left: var(--mdc-spreadsheet--border-width) solid var(--mdc-spreadsheet--border-color);
+    border-bottom: var(--mdc-spreadsheet--border-width) solid var(--mdc-spreadsheet--border-color);
+    border-right: var(--mdc-spreadsheet--border-width) solid var(--mdc-spreadsheet--border-color);
+    border-top: var(--mdc-spreadsheet--border-width) solid var(--mdc-spreadsheet--border-color);    
+    background-color: var(--mdc-spreadsheet--fixed-fill-color);
+    color: var(--mdc-spreadsheet--fixed-ink-color);
+    padding: var(--mdc-spreadsheet--cell-padding);} 
+    
+.jexcel > thead > tr > td:first-child {  
+    border-left: var(--mdc-spreadsheet--border-width) solid var(--mdc-spreadsheet--border-color);}
+
+/* Selection and Highlight Header */
+.jexcel > thead > tr > td.selected {
+    background-color: var(--mdc-spreadsheet--selected-color) !important;
+    color: var(--mdc-spreadsheet--selected-ink-color) !important;} 
+    
+/* First column */    
+.jexcel > tbody > tr > td:first-child {
+    background-color: var(--mdc-spreadsheet--fixed-fill-color);
+    color: var(--mdc-spreadsheet--fixed-ink-color);    
+    border-left: var(--mdc-spreadsheet--border-width) solid var(--mdc-spreadsheet--border-color);}       
+
+/* Selection and Highlight First Column */
+.jexcel > tbody > tr.selected > td:first-child {
+    background-color: var(--mdc-spreadsheet--selected-color) !important;
+    color: var(--mdc-spreadsheet--selected-ink-color) !important;} 
+
+/* Cells */
+.jexcel > tbody > tr > td {
+    border-left: var(--mdc-spreadsheet--border-width) solid var(--mdc-spreadsheet--border-color);
+    border-top: var(--mdc-spreadsheet--border-width) solid var(--mdc-spreadsheet--border-color);
+    border-right: var(--mdc-spreadsheet--border-width) solid var(--mdc-spreadsheet--border-color);
+    border-bottom: var(--mdc-spreadsheet--border-width) solid var(--mdc-spreadsheet--border-color);    
+    background-color: var(--mdc-spreadsheet--fill-color);
+    color: var(--mdc-spreadsheet--ink-color);
+    padding: var(--mdc-spreadsheet--cell-padding);}
+
+.jexcel > tbody > tr:first-child > td {
+    border-top: var(--mdc-spreadsheet--border-width) solid var(--mdc-spreadsheet--border-color);}
+
+/* Selection and Highlight Cells */
+
+.jexcel_corner {
+	background-color: var(--mdc-spreadsheet--corner--fill-color) !important;
+	border: 1px solid var(--mdc-spreadsheet--corner--border-color) !important;}
+	
+.jexcel .highlight:not([state]) {
+    color: var(--mdc-spreadsheet--selected-ink-color) !important;    
+    background-color: transparent !important;
+	background: 
+        var(--mdc-container-background-opacity),
+		linear-gradient(var(--mdc-spreadsheet--selected-color), var(--mdc-spreadsheet--selected-color)) no-repeat !important;}	
+.jexcel .highlight-top{
+	padding-top: calc(var(--mdc-spreadsheet--cell-padding) - 1px);
+    border-top: calc(var(--mdc-spreadsheet--border-width) + 1px) solid var(--mdc-spreadsheet--selected-color) !important;}
+.jexcel .highlight-left{
+	padding-left: calc(var(--mdc-spreadsheet--cell-padding) - 1px);
+    border-left: calc(var(--mdc-spreadsheet--border-width) + 1px) solid var(--mdc-spreadsheet--selected-color) !important;}
+.jexcel .highlight-right{
+	padding-right: calc(var(--mdc-spreadsheet--cell-padding) - 1px);
+    border-right: calc(var(--mdc-spreadsheet--border-width) + 1px) solid var(--mdc-spreadsheet--selected-color) !important;}
+.jexcel .highlight-bottom{
+	padding-bottom: calc(var(--mdc-spreadsheet--cell-padding) - 1px);
+    border-bottom:calc(var(--mdc-spreadsheet--border-width) + 1px) solid var(--mdc-spreadsheet--selected-color) !important;}
+.jexcel .highlight-bottom.highlight-right {
+	padding-right: calc(var(--mdc-spreadsheet--cell-padding) - 1px);
+    padding-bottom: calc(var(--mdc-spreadsheet--cell-padding) - 1px);
+    border-bottom: calc(var(--mdc-spreadsheet--border-width) + 1px) solid var(--mdc-spreadsheet--selected-color) !important;}
+
+.jexcel .highlight-top,
+.jexcel .highlight-left,
+.jexcel .highlight-right,
+.jexcel .highlight-bottom,    
+.jexcel .highlight-bottom.highlight-right {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important; }
+    
+.jexcel .selection:not([state]) {
+    color: var(--mdc-spreadsheet--selected-ink-color) !important;    
+    background-color: transparent !important;
+	background: 
+        var(--mdc-container-background-opacity),
+		linear-gradient(var(--mdc-spreadsheet--selected-color), var(--mdc-spreadsheet--selected-color)) no-repeat !important; }
+.jexcel .selection-left {
+	padding-left: calc(var(--mdc-spreadsheet--cell-padding) - 1px);
+    border-left: calc(var(--mdc-spreadsheet--border-width) + 1px) dotted var(--mdc-spreadsheet--selected-color) !important;}
+.jexcel .selection-right {
+	padding-right: calc(var(--mdc-spreadsheet--cell-padding) - 1px);
+    border-right: calc(var(--mdc-spreadsheet--border-width) + 1px) dotted var(--mdc-spreadsheet--selected-color) !important;}
+.jexcel .selection-top {
+	padding-top: calc(var(--mdc-spreadsheet--cell-padding) - 1px);
+    border-top: calc(var(--mdc-spreadsheet--border-width) + 1px) dotted var(--mdc-spreadsheet--selected-color) !important;}
+.jexcel .selection-bottom {
+	padding-bottom: calc(var(--mdc-spreadsheet--cell-padding) - 1px);
+    border-bottom: calc(var(--mdc-spreadsheet--border-width) + 1px) dotted var(--mdc-spreadsheet--selected-color) !important;}	
+ 
+ 
+/* Border radius adjust */
+.jexcel {
+	border-radius: var(--mdc-rounded-border-radius);
+	border: var(--mdc-spreadsheet--border-width) solid var(--mdc-spreadsheet--border-color);
+}
+
+.jexcel > thead,
+.jexcel > thead > tr {	
+	background-color: transparent !important;
+	border: none !important;}	    
+.jexcel > thead > tr > td:first-child{
+	border-top-left-radius: var(--mdc-rounded-border-radius);} 
+.jexcel > thead > tr > td:last-child{
+	border-top-right-radius: var(--mdc-rounded-border-radius);}   
+.jexcel > tbody > tr:last-child > td:first-child {
+	border-bottom-left-radius: var(--mdc-rounded-border-radius);} 
+.jexcel > tbody > tr:last-child > td:last-child{
+	border-bottom-right-radius: var(--mdc-rounded-border-radius);}  
+	
+/* Cell inputs */
+.jexcel > tbody > tr > td > select, 
+.jexcel > tbody > tr > td > input, 
+.jexcel > tbody > tr > td > textarea {
+	font-family: var(--mdc-font-family);
+  	-moz-osx-font-smoothing: grayscale;
+  	-webkit-font-smoothing: antialiased;
+  	font-size: 0.75rem;
+  	line-height: 1.25rem;
+	font-weight: normal;
+  	letter-spacing: 0.0178571429em;
+  	text-decoration: inherit;
+  	text-transform: inherit;
+  	text-overflow: ellipsis;
+  	white-space: nowrap;
+    color: var(--mdc-spreadsheet--selected-ink-color) !important;	
+}	 	
+
+/* Context menu */
+.jexcel_contextmenu.mdc-menu-surface  {
+	opacity: 1;}
+
+.jexcel_contextmenu a:hover {
+    background-color: var(--mdc-filled-color);}
+
+/* Order arrows */
+.jexcel .arrow-up {
+    border-bottom: 4px solid var(--mdc-spreadsheet--selected-ink-color);}
+.jexcel .arrow-down {
+    border-top: 4px solid var(--mdc-spreadsheet--selected-ink-color); }    
+ /* State */   
+.jexcel > tbody > tr > td[state="success"] {
+	color: var(--mdc-state--on-success);
+	background-color: var(--mdc-state--success);}
+.jexcel > tbody > tr > td[state="warning"] {
+	color: var(--mdc-state--on-warning);
+	background-color: var(--mdc-state--warning);}
+.jexcel > tbody > tr > td[state="error"] {
+	color: var(--mdc-state--on-error);
+	background-color: var(--mdc-state--error);}
+
