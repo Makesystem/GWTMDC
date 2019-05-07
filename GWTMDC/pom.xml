@@ -28,7 +28,8 @@
                     <include>**/*.java</include>
                     <include>**/*.xml</include>
                     <include>**/*.css</include>                    
-                    <include>**/*.js</include>
+                    <include>**/*.js</include>                 
+                    <include>**/*.svg</include>
                 </includes>
             </resource>
             
@@ -38,7 +39,8 @@
                     <include>**/*.java</include>
                     <include>**/*.xml</include>
                     <include>**/*.css</include>                    
-                    <include>**/*.js</include>
+                    <include>**/*.js</include>              
+                    <include>**/*.svg</include>
                 </includes>
             </resource>
             
