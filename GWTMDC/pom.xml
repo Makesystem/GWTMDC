@@ -29,7 +29,8 @@
                     <include>**/*.xml</include>
                     <include>**/*.css</include>                    
                     <include>**/*.js</include>                 
-                    <include>**/*.svg</include>
+                    <include>**/*.svg</include>          
+                    <include>**/*.properties</include>
                 </includes>
             </resource>
             
@@ -41,6 +42,7 @@
                     <include>**/*.css</include>                    
                     <include>**/*.js</include>              
                     <include>**/*.svg</include>
+                    <include>**/*.properties</include>
                 </includes>
             </resource>
             
