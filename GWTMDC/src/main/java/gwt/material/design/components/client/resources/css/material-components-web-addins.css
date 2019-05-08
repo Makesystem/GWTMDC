@@ -76,6 +76,46 @@
    ========================================================================== */	
 .mdc-file-upload {
 	display: none !important;}
+	
+/* ==========================================================================
+   Link
+   ========================================================================== */	
+.mdc-link {
+	color: var(--mdc-link-ink-color);
+	display: flex;
+	flex-direction: row;}
+[dir=rtl] .mdc-link,
+.mdc-link[dir=rtl] {
+	flex-direction: row-reverse;}			
+
+.mdc-link .mdc-link__icon {
+  margin-left: 0;
+  margin-right: 8px;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  vertical-align: top;}
+  
+[dir=rtl] .mdc-link .mdc-link__icon, 
+.mdc-link .mdc-link__icon[dir=rtl] {
+  margin-left: 8px;
+  margin-right: 0;}
+  
+.mdc-link:not(:disabled) {
+  color: var(--mdc-theme-primary);}
+
+.mdc-link__label + .mdc-link__icon {
+  margin-left: 8px;
+  margin-right: 0;}
+  
+[dir=rtl] .mdc-link__label + .mdc-link__icon,
+ .mdc-link__label + .mdc-link__icon[dir=rtl] {
+  margin-left: 0;
+  margin-right: 8px;}
+
+svg.mdc-link__icon {
+  fill: currentColor;}
 
 /* ==========================================================================
    Side Sheet

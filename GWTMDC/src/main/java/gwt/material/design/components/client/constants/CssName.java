@@ -81,20 +81,20 @@ public interface CssName {
 	// //////////////////////////////////////////////////////
 	// TYPOGRAPHY
 	// //////////////////////////////////////////////////////
-	String MDC_TYPOGRAPHY 				= "mdc-typography";
-	String MDC_TYPOGRAPHY__HEADLINE_1 	= "mdc-typography--headline1";
-	String MDC_TYPOGRAPHY__HEADLINE_2 	= "mdc-typography--headline2";
-	String MDC_TYPOGRAPHY__HEADLINE_3 	= "mdc-typography--headline3";
-	String MDC_TYPOGRAPHY__HEADLINE_4 	= "mdc-typography--headline4";
-	String MDC_TYPOGRAPHY__HEADLINE_5 	= "mdc-typography--headline5";
-	String MDC_TYPOGRAPHY__HEADLINE_6	= "mdc-typography--headline6";
-	String MDC_TYPOGRAPHY__SUBTITLE_1 	= "mdc-typography--subtitle1";
-	String MDC_TYPOGRAPHY__SUBTITLE_2 	= "mdc-typography--subtitle2";
-	String MDC_TYPOGRAPHY__BODY_1 		= "mdc-typography--body1";
-	String MDC_TYPOGRAPHY__BODY_2 		= "mdc-typography--body2";
-	String MDC_TYPOGRAPHY__CAPTION 		= "mdc-typography--caption";
-	String MDC_TYPOGRAPHY__BUTTON 		= "mdc-typography--button";
-	String MDC_TYPOGRAPHY__OVERLINE 	= "mdc-typography--overline";
+	String MDC_TYPOGRAPHY = "mdc-typography";
+	String MDC_TYPOGRAPHY__HEADLINE_1 = "mdc-typography--headline1";
+	String MDC_TYPOGRAPHY__HEADLINE_2 = "mdc-typography--headline2";
+	String MDC_TYPOGRAPHY__HEADLINE_3 = "mdc-typography--headline3";
+	String MDC_TYPOGRAPHY__HEADLINE_4 = "mdc-typography--headline4";
+	String MDC_TYPOGRAPHY__HEADLINE_5 = "mdc-typography--headline5";
+	String MDC_TYPOGRAPHY__HEADLINE_6 = "mdc-typography--headline6";
+	String MDC_TYPOGRAPHY__SUBTITLE_1 = "mdc-typography--subtitle1";
+	String MDC_TYPOGRAPHY__SUBTITLE_2 = "mdc-typography--subtitle2";
+	String MDC_TYPOGRAPHY__BODY_1 = "mdc-typography--body1";
+	String MDC_TYPOGRAPHY__BODY_2 = "mdc-typography--body2";
+	String MDC_TYPOGRAPHY__CAPTION = "mdc-typography--caption";
+	String MDC_TYPOGRAPHY__BUTTON = "mdc-typography--button";
+	String MDC_TYPOGRAPHY__OVERLINE = "mdc-typography--overline";
 
 	// //////////////////////////////////////////////////////
 	// TOOLBAR
@@ -260,6 +260,12 @@ public interface CssName {
 	// //////////////////////////////////////////////////////
 	String MATERIAL_ICONS = "material-icons";
 	String MATERIAL_ICONS__CHANGE_ANIMATION = "material-icons__change_animation";
+	// //////////////////////////////////////////////////////
+	// BUTTONS
+	// //////////////////////////////////////////////////////
+	String MDC_LINK = "mdc-link";
+	String MDC_LINK__LABEL = "mdc-link__label";
+	String MDC_LINK__ICON = "mdc-link__icon";
 	// //////////////////////////////////////////////////////
 	// BUTTONS
 	// //////////////////////////////////////////////////////
@@ -530,53 +536,53 @@ public interface CssName {
 	// //////////////////////////////////////////////////////
 	// DATE PICKER
 	// //////////////////////////////////////////////////////
-	String MDC_DATEPICKER 									= "mdc-datepicker";
-	String MDC_DATEPICKER__ACTIVE 							= "mdc-datepicker__active";
-	String MDC_DATEPICKER__ACTIVE_FIRST 					= "mdc-datepicker__active_first";
-	String MDC_DATEPICKER__ACTIVE_LAST 						= "mdc-datepicker__active_last";
-	
-	String MDC_DATEPICKER__HEADER			 				= "mdc-datepicker__header";
-	String MDC_DATEPICKER__BODY	 							= "mdc-datepicker__body";
-	String MDC_DATEPICKER__CONTENT	 						= "mdc-datepicker__content";
-	String MDC_DATEPICKER__ITEM 							= "mdc-datepicker__item";
-	String MDC_DATEPICKER__TODAY 							= "mdc-datepicker__today";
-	String MDC_DATEPICKER__TOOLTIP_INDICATOR 				= "mdc-datepicker__tooltip_indicator";
-	String MDC_DATEPICKER__CUSTOM_ELEMENTS_CONTENT			= "mdc-datepicker__custom_elements_content";
-	
-	String MDC_DATEPICKER__DAYS 							= "mdc-datepicker__days";
-	String MDC_DATEPICKER__DAYS__HEADER 					= "mdc-datepicker__days--header";
-	String MDC_DATEPICKER__DAYS__ITEM 						= "mdc-datepicker__days--item";
-	String MDC_DATEPICKER__DAYS__OUT_OF_MONTH				= "mdc-datepicker__days--out_of_month";	
-	
-	String MDC_DATEPICKER__MONTHS 							= "mdc-datepicker__months";
-	String MDC_DATEPICKER__MONTHS__ITEM						= "mdc-datepicker__months--item";
-	
-	String MDC_DATEPICKER__YEARS 							= "mdc-datepicker__years";
-	String MDC_DATEPICKER__YEARS__ITEM						= "mdc-datepicker__years--item";
-	
-	String MDC_DATEPICKER__INLINE_SELECTOR					= "mdc-datepicker__inline_selector";
-	String MDC_DATEPICKER__INLINE_SELECTOR__LABEL			= "mdc-datepicker__inline_selector--label";
+	String MDC_DATEPICKER = "mdc-datepicker";
+	String MDC_DATEPICKER__ACTIVE = "mdc-datepicker__active";
+	String MDC_DATEPICKER__ACTIVE_FIRST = "mdc-datepicker__active_first";
+	String MDC_DATEPICKER__ACTIVE_LAST = "mdc-datepicker__active_last";
 
-	String MDC_DATEPICKER__HEADER__SINGLE_DATE 				= "mdc-datepicker__header--single_date";
-	String MDC_DATEPICKER__HEADER__SINGLE_DATE_COMPACT		= "mdc-datepicker__header--single_date_compact";
-	String MDC_DATEPICKER__HEADER__SINGLE_DATE__WEEK		= "mdc-datepicker__header--single_date--week";
-	String MDC_DATEPICKER__HEADER__SINGLE_DATE__DAY			= "mdc-datepicker__header--single_date--day";
-	String MDC_DATEPICKER__HEADER__SINGLE_DATE__MONTH		= "mdc-datepicker__header--single_date--month";
-	String MDC_DATEPICKER__HEADER__SINGLE_DATE__YEAR		= "mdc-datepicker__header--single_date--year";
-	
-	String MDC_DATEPICKER__HEADER__RANGE_DATE 				= "mdc-datepicker__header--range_date";
-	String MDC_DATEPICKER__HEADER__RANGE_DATE__START 		= "mdc-datepicker__header--range_date--start";
-	String MDC_DATEPICKER__HEADER__RANGE_DATE__END 			= "mdc-datepicker__header--range_date--end";
-	String MDC_DATEPICKER__HEADER__RANGE_DATE__DIVIDER 		= "mdc-datepicker__header--range_date--divider";
-	String MDC_DATEPICKER__HEADER__RANGE_DATE__LABELS	 	= "mdc-datepicker__header--range_date--labels";
-	String MDC_DATEPICKER__HEADER__RANGE_DATE__GRAPHICS		= "mdc-datepicker__header--range_date--graphics";
-	String MDC_DATEPICKER__HEADER__RANGE_DATE__CIRCLE 		= "mdc-datepicker__header--range_date--circle";
-	String MDC_DATEPICKER__HEADER__RANGE_DATE__LINE 		= "mdc-datepicker__header--range_date--line";
-	
-	String MDC_DATEPICKER__HEADER__MULTI_DATE 				= "mdc-datepicker__header--multi_date";
-	
+	String MDC_DATEPICKER__HEADER = "mdc-datepicker__header";
+	String MDC_DATEPICKER__BODY = "mdc-datepicker__body";
+	String MDC_DATEPICKER__CONTENT = "mdc-datepicker__content";
+	String MDC_DATEPICKER__ITEM = "mdc-datepicker__item";
+	String MDC_DATEPICKER__TODAY = "mdc-datepicker__today";
+	String MDC_DATEPICKER__TOOLTIP_INDICATOR = "mdc-datepicker__tooltip_indicator";
+	String MDC_DATEPICKER__CUSTOM_ELEMENTS_CONTENT = "mdc-datepicker__custom_elements_content";
+
+	String MDC_DATEPICKER__DAYS = "mdc-datepicker__days";
+	String MDC_DATEPICKER__DAYS__HEADER = "mdc-datepicker__days--header";
+	String MDC_DATEPICKER__DAYS__ITEM = "mdc-datepicker__days--item";
+	String MDC_DATEPICKER__DAYS__OUT_OF_MONTH = "mdc-datepicker__days--out_of_month";
+
+	String MDC_DATEPICKER__MONTHS = "mdc-datepicker__months";
+	String MDC_DATEPICKER__MONTHS__ITEM = "mdc-datepicker__months--item";
+
+	String MDC_DATEPICKER__YEARS = "mdc-datepicker__years";
+	String MDC_DATEPICKER__YEARS__ITEM = "mdc-datepicker__years--item";
+
+	String MDC_DATEPICKER__INLINE_SELECTOR = "mdc-datepicker__inline_selector";
+	String MDC_DATEPICKER__INLINE_SELECTOR__LABEL = "mdc-datepicker__inline_selector--label";
+
+	String MDC_DATEPICKER__HEADER__SINGLE_DATE = "mdc-datepicker__header--single_date";
+	String MDC_DATEPICKER__HEADER__SINGLE_DATE_COMPACT = "mdc-datepicker__header--single_date_compact";
+	String MDC_DATEPICKER__HEADER__SINGLE_DATE__WEEK = "mdc-datepicker__header--single_date--week";
+	String MDC_DATEPICKER__HEADER__SINGLE_DATE__DAY = "mdc-datepicker__header--single_date--day";
+	String MDC_DATEPICKER__HEADER__SINGLE_DATE__MONTH = "mdc-datepicker__header--single_date--month";
+	String MDC_DATEPICKER__HEADER__SINGLE_DATE__YEAR = "mdc-datepicker__header--single_date--year";
+
+	String MDC_DATEPICKER__HEADER__RANGE_DATE = "mdc-datepicker__header--range_date";
+	String MDC_DATEPICKER__HEADER__RANGE_DATE__START = "mdc-datepicker__header--range_date--start";
+	String MDC_DATEPICKER__HEADER__RANGE_DATE__END = "mdc-datepicker__header--range_date--end";
+	String MDC_DATEPICKER__HEADER__RANGE_DATE__DIVIDER = "mdc-datepicker__header--range_date--divider";
+	String MDC_DATEPICKER__HEADER__RANGE_DATE__LABELS = "mdc-datepicker__header--range_date--labels";
+	String MDC_DATEPICKER__HEADER__RANGE_DATE__GRAPHICS = "mdc-datepicker__header--range_date--graphics";
+	String MDC_DATEPICKER__HEADER__RANGE_DATE__CIRCLE = "mdc-datepicker__header--range_date--circle";
+	String MDC_DATEPICKER__HEADER__RANGE_DATE__LINE = "mdc-datepicker__header--range_date--line";
+
+	String MDC_DATEPICKER__HEADER__MULTI_DATE = "mdc-datepicker__header--multi_date";
+
 	// OLD
-	
+
 	String MDC_DATEPICKER__ITEM_TODAY = "mdc-datepicker__item_today";
 	String MDC_DATEPICKER__ITEM__TOOLTIP_INDICATOR = "mdc-datepicker__item--tooltip-indicator";
 	String MDC_DATEPICKER__ACTIONS = "mdc-datepicker__actions";

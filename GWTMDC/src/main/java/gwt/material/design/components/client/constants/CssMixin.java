@@ -54,6 +54,11 @@ public interface CssMixin {
 	String MDC_SNACKBAR__POSITION_ADJUST = "--mdc-snackbar-position-adjust";
 
 	// ////////////////////////////////////////////////////////////////////////////
+	// Link
+	// ////////////////////////////////////////////////////////////////////////////
+	String MDC_LINK__INK_COLOR = "--mdc-link-ink-color";
+
+	// ////////////////////////////////////////////////////////////////////////////
 	// FAB
 	// ////////////////////////////////////////////////////////////////////////////
 	String MDC_FAB__FILL_COLOR = "--mdc-fab-fill-color";
@@ -234,7 +239,7 @@ public interface CssMixin {
 	String MDC_TREE__FILL_COLOR = "--mdc-tree--fill-color";
 	String MDC_TREE__HOVER_INK_COLOR = "--mdc-tree--hover-ink-color";
 	String MDC_TREE__HOVER_COLOR = "--mdc-tree--hover-color";
-	
+
 	// ////////////////////////////////////////////////////////////////////////////
 	// Spreadsheet
 	// ////////////////////////////////////////////////////////////////////////////
@@ -249,5 +254,5 @@ public interface CssMixin {
 	String MDC_SPREADSHEET__SELECTED_INK_COLOR = "--mdc-spreadsheet--selected-ink-color";
 	String MDC_SPREADSHEET__CORNER__FILL_COLOR = "--mdc-spreadsheet--corner--fill-color";
 	String MDC_SPREADSHEET__CORNER__BORDER_COLOR = "--mdc-spreadsheet--corner--border-color";
-	
+
 }

@@ -124,6 +124,11 @@
 	--mdc-button-outline-color: var(--mdc-theme-primary);
 	--mdc-button-raised-fill-color: var(--mdc-theme-primary);
 	--mdc-button-raised-ink-color: var(--mdc-theme-on-primary);	
+
+  	/* ================================	*/
+  	/* Link attributes																*/
+  	/* ================================ 	*/
+  	--mdc-link-ink-color:  var(--mdc-theme-primary);
   	
   	/* ================================	*/
   	/* Fab attributes																*/
