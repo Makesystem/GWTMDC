@@ -276,6 +276,18 @@ public final class StyleHelper {
 	public final static native String getCssProperty(final String property)/*-{
 		return $wnd.jQuery('html').css(property);
 	}-*/;
+	
+	public final static native String getCssProperty(final String tag, final String property)/*-{
+		return $wnd.jQuery(tag).css(property);
+	}-*/;
+	
+	public final static String getCssProperty(final UIObject uiObject, final String tag, final String property) {
+		return getCssProperty(uiObject.getElement(), tag, property);
+	}
+	
+	public final static native String getCssProperty(final Element element, final String tag, final String property)/*-{
+		return $wnd.jQuery(element).find(tag).css(property);
+	}-*/;
 
 	// ////////////////////////////////////////////////////////////////////////////////////////////////
 	// Set property
