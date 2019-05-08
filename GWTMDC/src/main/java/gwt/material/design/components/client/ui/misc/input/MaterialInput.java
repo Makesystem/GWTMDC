@@ -131,10 +131,11 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 
 		label.setFor(input.getId());
 
-		icon.addClickHandler(event -> {
+		icon.addClickHandler(event -> {			
 			event.preventDefault();
 			event.stopPropagation();
 			IconClickEvent.fire(this);
+			input.getElement().focus();
 		});
 
 		if (getLabel() != null && !getLabel().isEmpty())
