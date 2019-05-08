@@ -63,6 +63,6 @@ public enum InputType implements CssType {
     }
 
     public static InputType fromStyleName(final String styleName) {
-        return EnumHelper.fromStyleName(styleName, InputType.class, TEXT);
+        return EnumHelper.fromStyleName(styleName, InputType.class, TEXT, true);
     }
 }

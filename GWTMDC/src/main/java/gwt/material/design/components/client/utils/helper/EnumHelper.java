@@ -53,13 +53,15 @@ public final class EnumHelper {
 	 * @return First enum constant found or default value
 	 */
 	@SuppressWarnings("unchecked")
-	public static <E extends Enum<? extends Style.HasCssName>> E fromStyleName(final String styleName, final Class<E> enumClass, final E defaultValue, final boolean ignoreSpaces) {
-		if (styleName == null || enumClass == null)
+	public static <E extends Enum<? extends Style.HasCssName>> E fromStyleName(final String style, final Class<E> enumClass, final E defaultValue, final boolean ignoreSpaces) {
+		if (style == null || enumClass == null)
 			return defaultValue;
 
+		final String styleName = style.toString().trim();
+		
 		for (final Enum<? extends Style.HasCssName> constant : enumClass.getEnumConstants()) {
 			final Style.HasCssName anEnum = (Style.HasCssName) constant;
-			final String cssClass = anEnum.getCssName();
+			final String cssClass = anEnum.getCssName().toString().trim();
 
 			if (cssClass != null) {
 				boolean contains;
@@ -67,7 +69,7 @@ public final class EnumHelper {
 					contains = styleName.equals(cssClass);
 				else
 					contains = StyleHelper.containsStyle(styleName, cssClass);
-
+				
 				if (contains)
 					return (E) anEnum;
 
