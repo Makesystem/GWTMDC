@@ -29,7 +29,7 @@ import gwt.material.design.components.client.constants.Color;
 import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.IconType;
-import gwt.material.design.components.client.ui.html.Button;
+import gwt.material.design.components.client.ui.html.Anchor;
 import gwt.material.design.components.client.ui.html.Span;
 import gwt.material.design.components.client.utils.helper.DOMHelper;
 
@@ -38,7 +38,7 @@ import gwt.material.design.components.client.utils.helper.DOMHelper;
  * @author Richeli Vargas
  *
  */
-public class MaterialLink extends Button implements HasHref, HasText, HasIcon {
+public class MaterialLink extends Anchor implements HasHref, HasText, HasIcon {
 
 	protected final Span label = new Span();
 
