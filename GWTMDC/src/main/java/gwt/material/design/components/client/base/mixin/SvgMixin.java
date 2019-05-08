@@ -26,7 +26,6 @@ import gwt.material.design.components.client.base.mixin.base.AbstractMixin;
 import gwt.material.design.components.client.base.widget.MaterialUIObject;
 import gwt.material.design.components.client.constants.Color;
 import gwt.material.design.components.client.constants.HtmlElements;
-import gwt.material.design.components.client.utils.debug.Console;
 import gwt.material.design.components.client.utils.helper.StyleHelper;
 
 /**
@@ -61,14 +60,8 @@ public class SvgMixin<UIO extends MaterialUIObject & HasSvg> extends AbstractMix
 	@Override
 	public void setFillColor(Color fillColor) {
 		this.fillColor = fillColor;
-		if (this.fillColor != null) {
-			
-			Console.log("svg fIll" + StyleHelper.getCssProperty(uiObject, "svg", "fill"));
-			Console.log("g fill" + StyleHelper.getCssProperty(uiObject, "g", "fill"));
-			
+		if (this.fillColor != null)
 			StyleHelper.setCssProperty(uiObject, HtmlElements.SVG.getTag(), "fill", fillColor.getCssName());
-			StyleHelper.setCssProperty(uiObject, HtmlElements.G.getTag(), "fill", fillColor.getCssName());
-		}
 
 	}
 
