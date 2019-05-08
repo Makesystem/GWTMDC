@@ -144,7 +144,9 @@
 	background: 
         var(--mdc-track-background-opacity),
 		linear-gradient(var(--mdc-linear-progress-track-color), var(--mdc-linear-progress-track-color)) no-repeat;}
-
+.mdc-linear-progress * {
+	visibility: inherit;}
+	
 /* Disabled settings */
 
 /* ==========================================================================
