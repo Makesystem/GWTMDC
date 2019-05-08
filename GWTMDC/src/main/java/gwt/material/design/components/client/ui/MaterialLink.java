@@ -31,7 +31,6 @@ import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.IconType;
 import gwt.material.design.components.client.ui.html.Anchor;
 import gwt.material.design.components.client.ui.html.Span;
-import gwt.material.design.components.client.utils.helper.DOMHelper;
 
 /**
  * 
@@ -40,7 +39,7 @@ import gwt.material.design.components.client.utils.helper.DOMHelper;
  */
 public class MaterialLink extends Anchor implements HasHref, HasText, HasIcon {
 
-	protected final Span label = new Span();
+	protected final Span label = new Span(CssName.MDC_LINK__LABEL);
 
 	protected final TextMixin<Span> textMixin = new TextMixin<>(label);
 	protected final HrefMixin<MaterialLink> hrefMixin = new HrefMixin<>(this);
@@ -55,7 +54,6 @@ public class MaterialLink extends Anchor implements HasHref, HasText, HasIcon {
 	protected void onInitialize() {
 		ripleMixin.initialize();
 		add(label);
-		addClickHandler(event -> DOMHelper.clearFocus());
 		super.onInitialize();
 	}
 

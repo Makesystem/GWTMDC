@@ -83,10 +83,20 @@
 .mdc-link {
 	color: var(--mdc-link-ink-color);
 	display: flex;
-	flex-direction: row;}
+	flex-direction: row;
+	border-radius: var(--mdc-rounded-border-radius);
+	padding: 8px;}
+.mdc-link.mdc-ripple-surface--color::before, 
+.mdc-link.mdc-ripple-surface--color::after {
+	background-color: var(--mdc-link-ink-color);}	
+		
 [dir=rtl] .mdc-link,
 .mdc-link[dir=rtl] {
 	flex-direction: row-reverse;}			
+
+.mdc-link .mdc-link__label,
+.mdc-link .mdc-link__icon {
+	color: inherit;}
 
 .mdc-link .mdc-link__icon {
   margin-left: 0;
