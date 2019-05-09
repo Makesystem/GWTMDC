@@ -43,8 +43,7 @@ public class MaterialLink extends Anchor implements HasHref, HasText, HasIcon {
 
 	protected final TextMixin<Span> textMixin = new TextMixin<>(label);
 	protected final HrefMixin<MaterialLink> hrefMixin = new HrefMixin<>(this);
-
-	protected MaterialIcon icon;
+	protected final MaterialIcon icon = new MaterialIcon(CssName.MDC_LINK__ICON);
 
 	public MaterialLink() {
 		super(CssName.MDC_LINK);
@@ -55,12 +54,6 @@ public class MaterialLink extends Anchor implements HasHref, HasText, HasIcon {
 		ripleMixin.initialize();
 		add(label);
 		super.onInitialize();
-	}
-
-	protected MaterialIcon getIconElement() {
-		if (icon == null)
-			icon = new MaterialIcon(CssName.MDC_LINK__ICON);
-		return icon;
 	}
 
 	@Override
@@ -105,9 +98,6 @@ public class MaterialLink extends Anchor implements HasHref, HasText, HasIcon {
 
 	@Override
 	public void setIcon(final IconType iconType, final boolean animate) {
-
-		final MaterialIcon icon = getIconElement();
-
 		if (iconType == null) {
 			if (icon.getParent() != null)
 				icon.removeFromParent();

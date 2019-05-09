@@ -51,8 +51,7 @@ public class MaterialButton extends Button implements HasType<ButtonType>, HasHr
 	protected final HrefMixin<MaterialButton> hrefMixin = new HrefMixin<>(this);
 	protected final TypeMixin<MaterialButton, ButtonType> typeMixin = new TypeMixin<>(this);
 	protected final ToggleStyleMixin<MaterialButton> denseMixin = new ToggleStyleMixin<>(this, CssName.MDC_BUTTON__DENSE);
-
-	protected MaterialIcon icon;
+	protected final MaterialIcon icon = new MaterialIcon(CssName.MDC_BUTTON__ICON);
 
 	public MaterialButton() {
 		super(CssName.MDC_BUTTON);
@@ -117,18 +116,16 @@ public class MaterialButton extends Button implements HasType<ButtonType>, HasHr
 	}
 
 	@Override
-	public void setIcon(IconType iconType, boolean animate) {
+	public void setIcon(final IconType iconType, final boolean animate) {
 		if (iconType == null) {
-			if (icon != null)
+			if (icon.getParent() != null)
 				icon.removeFromParent();
-			icon = null;
 			return;
 		}
 
-		if (icon == null) {
-			icon = new MaterialIcon(CssName.MDC_BUTTON__ICON);
+		if (icon.getParent() == null)
 			insert(icon, 0);
-		}
+
 		icon.setType(iconType, animate);
 	}
 
