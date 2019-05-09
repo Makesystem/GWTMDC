@@ -96,7 +96,7 @@
 
 .mdc-link .mdc-link__label,
 .mdc-link .mdc-link__icon {
-	color: inherit;}
+	color: var(--mdc-link-ink-color);}
 
 .mdc-link .mdc-link__icon {
   margin-left: 0;

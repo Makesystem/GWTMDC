@@ -40,7 +40,6 @@ import gwt.material.design.components.client.ui.html.Span;
 public class MaterialLink extends Anchor implements HasHref, HasText, HasIcon {
 
 	protected final Span label = new Span(CssName.MDC_LINK__LABEL);
-
 	protected final TextMixin<Span> textMixin = new TextMixin<>(label);
 	protected final HrefMixin<MaterialLink> hrefMixin = new HrefMixin<>(this);
 	protected final MaterialIcon icon = new MaterialIcon(CssName.MDC_LINK__ICON);
