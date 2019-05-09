@@ -57,6 +57,12 @@ public class MaterialLink extends Anchor implements HasHref, HasText, HasIcon {
 		super.onInitialize();
 	}
 
+	protected MaterialIcon getIconElement() {
+		if (icon == null)
+			icon = new MaterialIcon(CssName.MDC_LINK__ICON);
+		return icon;
+	}
+
 	@Override
 	public String getText() {
 		return textMixin.getText();
@@ -99,17 +105,18 @@ public class MaterialLink extends Anchor implements HasHref, HasText, HasIcon {
 
 	@Override
 	public void setIcon(final IconType iconType, final boolean animate) {
+
+		final MaterialIcon icon = getIconElement();
+
 		if (iconType == null) {
-			if (icon != null)
+			if (icon.getParent() != null)
 				icon.removeFromParent();
-			icon = null;
 			return;
 		}
 
-		if (icon == null) {
-			icon = new MaterialIcon(CssName.MDC_LINK__ICON);
+		if (icon.getParent() == null)
 			insert(icon, 0);
-		}
+
 		icon.setType(iconType, animate);
 	}
 
