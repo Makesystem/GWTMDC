@@ -123,4 +123,14 @@ public class MaterialSwitch extends MaterialSelectedField implements HasText {
 		super.setEnabled(enabled);
 		disabledMixin.toggle(!enabled);
 	}
+	
+	@Override
+	public void focus() {
+		input.getElement().focus();
+	}
+	
+	@Override
+	public void blur() {
+		input.getElement().blur();
+	}	
 }

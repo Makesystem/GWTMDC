@@ -291,4 +291,14 @@ public class MaterialSlider extends MaterialValuedField<Double>
 	public void setValuePinColor(final Color color) {
 		setCssProperty(CssMixin.MDC_SLIDER__VALUE_PIN_COLOR, color.getCssName());
 	}
+	
+	@Override
+	public void focus() {
+		thumbContainer.getElement().focus();
+	}
+	
+	@Override
+	public void blur() {
+		thumbContainer.getElement().blur();
+	}
 }

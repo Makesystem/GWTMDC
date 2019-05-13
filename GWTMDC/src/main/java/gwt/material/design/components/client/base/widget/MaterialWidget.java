@@ -807,4 +807,13 @@ public class MaterialWidget extends MaterialUIObject
 	public <O> O getDataObject() {
 		return object == null ? null : (O) object;
 	}
+	
+	public void focus() {
+		getElement().focus();
+	}
+	
+	
+	public void blur() {
+		getElement().blur();
+	}
 }

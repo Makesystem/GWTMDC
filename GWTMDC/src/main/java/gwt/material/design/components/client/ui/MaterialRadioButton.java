@@ -169,4 +169,14 @@ public class MaterialRadioButton extends MaterialSelectedField implements HasNam
 	public void setUnselectedColor(final Color color) {
 		setCssProperty(CssMixin.MDC_RADIO_BUTTON__UNCHECKED_COLOR, color.getCssName());
 	}
+	
+	@Override
+	public void focus() {
+		input.getElement().focus();
+	}
+	
+	@Override
+	public void blur() {
+		input.getElement().blur();
+	}
 }

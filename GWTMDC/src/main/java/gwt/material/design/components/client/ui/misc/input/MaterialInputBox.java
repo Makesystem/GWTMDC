@@ -306,4 +306,14 @@ public class MaterialInputBox extends Div implements HasHelperText, HasText, Has
 	public void setTypeingDelay(int typingDelay) {
 		input.setTypeingDelay(typingDelay);
 	}
+	
+	@Override
+	public void focus() {
+		input.getElement().focus();
+	}
+	
+	@Override
+	public void blur() {
+		input.getElement().blur();
+	}	
 }
