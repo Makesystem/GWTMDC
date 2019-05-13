@@ -84,34 +84,42 @@ import gwt.material.design.components.client.validation.ValidationRegistration;
  *
  */
 public class MaterialInput extends MaterialValuedField<String> implements HasText, HasLabel, HasDense, HasUnbordered,
-		HasRequired, HasPlaceholder, HasType<TextFieldType>, HasInputMask, HasState, HasIcon, HasIconClickHandlers,
-		HasValidationHandlers<Result>, HasReadOnly, HasIconPosition, HasValidation<MaterialInput, Validation<MaterialInput>>, HasTypingHandlers {
+		HasRequired, HasPlaceholder, HasType<TextFieldType>, HasInputMask, HasState, HasIcon,
+		HasIconClickHandlers, HasValidationHandlers<Result>, HasReadOnly, HasIconPosition,
+		HasValidation<MaterialInput, Validation<MaterialInput>>, HasTypingHandlers {
 
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Elements
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	protected final MaterialWidget				input 			= constructInput();
-	protected final MaterialLineRipple 			lineRipple 		= new MaterialLineRipple();
-	protected final MaterialNotchedOutline 	notchedOutline 	= new MaterialNotchedOutline();
-	protected final MaterialIcon			 	icon 			= new MaterialIcon(CssName.MDC_TEXT_FIELD__ICON);
-	protected final MaterialFloatLabel		 	label 			= new MaterialFloatLabel();
+	protected final MaterialWidget input = constructInput();
+	protected final MaterialLineRipple lineRipple = new MaterialLineRipple();
+	protected final MaterialNotchedOutline notchedOutline = new MaterialNotchedOutline();
+	protected final MaterialIcon icon = new MaterialIcon(CssName.MDC_TEXT_FIELD__ICON);
+	protected final MaterialFloatLabel label = new MaterialFloatLabel();
 
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Style mixin TextFieldIconPosition
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	protected final PlaceholderMixin<MaterialWidget> 						placeholderMixin		= new PlaceholderMixin<>(input);
-	protected final InputMaskMixin<MaterialWidget> 						inputMaskMixin 		= new InputMaskMixin<>(input);
-	protected final AttributeMixin<MaterialWidget, Boolean> 					requeridMixin 		= new AttributeMixin<>(input, CssAttribute.REQUIRED, FromString.TO_BOOLEAN);
-	protected final PropertyMixin<MaterialWidget, Integer> 					minLengthMixin 		= new PropertyMixin<>(input, CssAttribute.MIN_LENGTH, 0, FromString.TO_INTEGER);
-	protected final PropertyMixin<MaterialWidget, Integer>					maxLengthMixin 		= new PropertyMixin<>(input, CssAttribute.MAX_LENGTH, Integer.MAX_VALUE, FromString.TO_INTEGER);
-	protected final AttributeMixin<MaterialWidget, Boolean> 					readOnlyMixin 		= new AttributeMixin<>(input, CssAttribute.READONLY, false, FromString.TO_BOOLEAN);
-	protected final ToggleStyleMixin<MaterialInput> 						denseMixin 			= new ToggleStyleMixin<>(this, CssName.MDC_TEXT_FIELD__DENSE);
-	protected final ToggleStyleMixin<MaterialInput> 						unborderedMixin 		= new ToggleStyleMixin<>(this, CssName.MDC_TEXT_FIELD__UNBORDERED);
-	protected final StateMixin<MaterialInput> 								stateMixin 			= new StateMixin<>(this);
-	protected final InputIconMixin<MaterialInput, TextFieldType> 				inputIconMixin 		= new InputIconMixin<>(this, icon, input, TextFieldType.FILLED);	
-	protected final TypingMixin<MaterialInput> 							typingMixin 			= new TypingMixin<>(this);
-	protected final ValidationMixin<MaterialInput, Validation<MaterialInput>> 	validationMixin 		= new ValidationMixin<>(this);
-	
+	protected final PlaceholderMixin<MaterialWidget> placeholderMixin = new PlaceholderMixin<>(input);
+	protected final InputMaskMixin<MaterialWidget> inputMaskMixin = new InputMaskMixin<>(input);
+	protected final AttributeMixin<MaterialWidget, Boolean> requeridMixin = new AttributeMixin<>(input,
+			CssAttribute.REQUIRED, FromString.TO_BOOLEAN);
+	protected final PropertyMixin<MaterialWidget, Integer> minLengthMixin = new PropertyMixin<>(input,
+			CssAttribute.MIN_LENGTH, 0, FromString.TO_INTEGER);
+	protected final PropertyMixin<MaterialWidget, Integer> maxLengthMixin = new PropertyMixin<>(input,
+			CssAttribute.MAX_LENGTH, Integer.MAX_VALUE, FromString.TO_INTEGER);
+	protected final AttributeMixin<MaterialWidget, Boolean> readOnlyMixin = new AttributeMixin<>(input,
+			CssAttribute.READONLY, false, FromString.TO_BOOLEAN);
+	protected final ToggleStyleMixin<MaterialInput> denseMixin = new ToggleStyleMixin<>(this,
+			CssName.MDC_TEXT_FIELD__DENSE);
+	protected final ToggleStyleMixin<MaterialInput> unborderedMixin = new ToggleStyleMixin<>(this,
+			CssName.MDC_TEXT_FIELD__UNBORDERED);
+	protected final StateMixin<MaterialInput> stateMixin = new StateMixin<>(this);
+	protected final InputIconMixin<MaterialInput, TextFieldType> inputIconMixin = new InputIconMixin<>(this, icon,
+			input, TextFieldType.FILLED);
+	protected final TypingMixin<MaterialInput> typingMixin = new TypingMixin<>(this);
+	protected final ValidationMixin<MaterialInput, Validation<MaterialInput>> validationMixin = new ValidationMixin<>(
+			this);
 
 	public MaterialInput() {
 		super(CssName.MDC_TEXT_FIELD);
@@ -119,8 +127,8 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 
 	@Override
 	protected native JavaScriptObject jsInit(final Element element)/*-{
-		return new $wnd.mdc.textField.MDCTextField(element);
-	}-*/;
+								       return new $wnd.mdc.textField.MDCTextField(element);
+								       }-*/;
 
 	protected MaterialWidget constructInput() {
 		return new Input(InputType.TEXT, CssName.MDC_TEXT_FIELD__INPUT);
@@ -131,7 +139,7 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 
 		label.setFor(input.getId());
 
-		icon.addClickHandler(event -> {			
+		icon.addClickHandler(event -> {
 			event.preventDefault();
 			event.stopPropagation();
 			IconClickEvent.fire(this);
@@ -146,7 +154,7 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 		add(lineRipple);
 		add(notchedOutline);
 
-		// Add event to fire validation	
+		// Add event to fire validation
 		UiHelper.bindNativeEvent(input, BrowserEvents.KEYUP, () -> fireValidation());
 		super.onInitialize();
 
@@ -158,10 +166,10 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 	}
 
 	protected native void layout()/*-{
-		var jsElement = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
-		if (jsElement)
-			jsElement.layout();
-	}-*/;
+				      var jsElement = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+				      if (jsElement)
+				      jsElement.layout();
+				      }-*/;
 
 	private void fireValidation() {
 		final Collection<Result> results = validate();
@@ -227,13 +235,13 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 
 	@Override
 	public native void setValue(String value, boolean fireEvents)/*-{
-		var textfield = this.@gwt.material.design.components.client.ui.misc.input.MaterialInput::input;
-		var element = textfield.@gwt.material.design.components.client.ui.html.Div::getElement()();
-		element.value = value;
-
-		if (fireEvents)
-			this.@gwt.material.design.components.client.ui.misc.input.MaterialInput::fireChangeEvent()();
-	}-*/;
+								     var textfield = this.@gwt.material.design.components.client.ui.misc.input.MaterialInput::input;
+								     var element = textfield.@gwt.material.design.components.client.ui.html.Div::getElement()();
+								     element.value = value;
+								     
+								     if (fireEvents)
+								     this.@gwt.material.design.components.client.ui.misc.input.MaterialInput::fireChangeEvent()();
+								     }-*/;
 
 	@Override
 	public String getText() {
@@ -453,4 +461,15 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 	public boolean isUnbordered() {
 		return unborderedMixin.isApplied();
 	}
+
+	@Override
+	public void focus() {
+		input.getElement().focus();
+	}
+
+	@Override
+	public void blur() {
+		input.getElement().blur();
+	}
+
 }

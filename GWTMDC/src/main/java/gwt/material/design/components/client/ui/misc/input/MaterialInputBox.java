@@ -309,11 +309,11 @@ public class MaterialInputBox extends Div implements HasHelperText, HasText, Has
 	
 	@Override
 	public void focus() {
-		input.getElement().focus();
+		input.focus();
 	}
 	
 	@Override
 	public void blur() {
-		input.getElement().blur();
+		input.blur();
 	}	
 }

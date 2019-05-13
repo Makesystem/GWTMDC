@@ -192,6 +192,7 @@ public class MaterialWidget extends MaterialUIObject
 
 	public MaterialWidget(Element element) {
 		super(element);
+		setAttribute("autofocus", Boolean.TRUE);
 	}
 
 	public MaterialWidget(Element element, String... initialClass) {
