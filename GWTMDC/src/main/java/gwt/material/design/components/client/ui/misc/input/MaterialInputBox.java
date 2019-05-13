@@ -21,6 +21,8 @@ package gwt.material.design.components.client.ui.misc.input;
 
 import java.util.Collection;
 
+import com.google.gwt.event.dom.client.BlurHandler;
+import com.google.gwt.event.dom.client.FocusHandler;
 import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.KeyUpHandler;
@@ -257,6 +259,21 @@ public class MaterialInputBox extends Div implements HasHelperText, HasText, Has
 	public HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
 		return input.addKeyPressHandler(handler);
 	}
+
+	@Override
+	public HandlerRegistration addTypingHandler(TypingHandler handler) {
+		return input.addTypingHandler(handler);
+	}
+
+	@Override
+	public HandlerRegistration addBlurHandler(BlurHandler handler) {
+		return input.addBlurHandler(handler);
+	}
+
+	@Override
+	public HandlerRegistration addFocusHandler(FocusHandler handler) {
+		return input.addFocusHandler(handler);
+	}
 	
 	@Override
 	public String getValue() {
@@ -295,11 +312,6 @@ public class MaterialInputBox extends Div implements HasHelperText, HasText, Has
 	@Override
 	public boolean isUnbordered() {
 		return input.isUnbordered();
-	}
-
-	@Override
-	public HandlerRegistration addTypingHandler(TypingHandler handler) {
-		return input.addTypingHandler(handler);
 	}
 
 	@Override

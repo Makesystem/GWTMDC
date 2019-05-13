@@ -24,6 +24,8 @@ import java.util.Collection;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.BrowserEvents;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.dom.client.BlurHandler;
+import com.google.gwt.event.dom.client.FocusHandler;
 import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.KeyUpHandler;
@@ -224,6 +226,24 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 	}
 
 	@Override
+	public HandlerRegistration addBlurHandler(BlurHandler handler) {
+		return input.addBlurHandler(handler);
+	}
+
+	@Override
+	public HandlerRegistration addFocusHandler(FocusHandler handler) {
+		return input.addFocusHandler(handler);
+	}
+
+	public HandlerRegistration addIconClickHandler(IconClickHandler handler) {
+		icon.setTabindex(0);
+		return addHandler(event -> {
+			if (isEnabled())
+				handler.onClick(event);
+		}, IconClickEvent.getType());
+	}
+
+	@Override
 	public void setTypeingDelay(int typingDelay) {
 		typingMixin.setTypeingDelay(typingDelay);
 	}
@@ -404,14 +424,6 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 	@Override
 	public void setIconColor(Color color) {
 		inputIconMixin.setIconColor(color);
-	}
-
-	public HandlerRegistration addIconClickHandler(IconClickHandler handler) {
-		icon.setTabindex(0);
-		return addHandler(event -> {
-			if (isEnabled())
-				handler.onClick(event);
-		}, IconClickEvent.getType());
 	}
 
 	@Override
