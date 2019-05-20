@@ -6,7 +6,7 @@
   	--mdc-root-font-size: 1rem;
 	--mdc-font-family: "Google Sans", monospace;	
 	--mdc-disabled-opacity: .42;
-	--mdc-rounded-border-radius: 4px;
+	--mdc-rounded-border-radius: 6px;
 	--mdc-select-text-ink-color: var(--mdc-theme-on-secondary);
 	--mdc-select-text-fill-color: var(--mdc-theme-secondary);
 	--mdc-scrollbar-width: 6px;
