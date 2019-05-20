@@ -266,7 +266,7 @@ public class MaterialChip extends MaterialSelectedField implements HasType<ChipT
 	}
 
 	@Override
-	public void setTextColor(Color color) {
+	public void setColor(Color color) {
 		setCssProperty(CssMixin.MDC_CHIP__TEXT_COLOR, color.getCssName());
 	}
 

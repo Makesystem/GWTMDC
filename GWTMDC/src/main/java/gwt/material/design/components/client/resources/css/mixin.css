@@ -392,10 +392,10 @@ i.mdc-list-item__graphic {
 	border: 1px solid var(--mdc-chip-text-color);
 	background-color: transparent;
 	background: none;}			
-.mdc-chip.mdc-ripple-surface--color::before,
-.mdc-chip.mdc-ripple-surface--color::after,
-.mdc-chip.mdc-chip--selected.mdc-ripple-surface--color::before,
-.mdc-chip.mdc-chip--selected.mdc-ripple-surface--color::after {
+.mdc-chip.mdc-ripple-surface--color:not(.mdc-chip--selected)::before,
+.mdc-chip.mdc-ripple-surface--color:not(.mdc-chip--selected)::after,
+.mdc-chip.mdc-chip--selected.mdc-ripple-surface--color:not(.mdc-chip--selected)::before,
+.mdc-chip.mdc-chip--selected.mdc-ripple-surface--color:not(.mdc-chip--selected)::after {
     background-color: var(--mdc-chip-text-color); }
 .mdc-chip .mdc-chip__icon.mdc-chip__icon--leading{
 	color: var(--mdc-chip-icon_leading-color);}
@@ -414,23 +414,28 @@ i.mdc-list-item__graphic {
 	display: none;}	
 	
 /* Selected settings */	
-.mdc-chip-set .mdc-chip.mdc-chip--selected,
-.mdc-chip-set .mdc-chip.mdc-chip--selected *,
-.mdc-chip-set .mdc-chip.mdc-chip--selected .mdc-chip__text,
-.mdc-chip-set .mdc-chip.mdc-chip--selected:hover,
-.mdc-chip-set .mdc-chip .mdc-chip__checkmark-path,	
-.mdc-chip-set .mdc-chip.mdc-chip--selected .mdc-chip__icon.mdc-chip__icon--leading {
+.mdc-chip.mdc-chip--selected,
+.mdc-chip.mdc-chip--selected *,
+.mdc-chip.mdc-chip--selected .mdc-chip__text,
+.mdc-chip.mdc-chip--selected:hover,
+.mdc-chip .mdc-chip__checkmark-path,	
+.mdc-chip.mdc-chip--selected .mdc-chip__icon.mdc-chip__icon--leading {
 	color: var(--mdc-chip-icon_selected-color);}
-.mdc-chip-set .mdc-chip.mdc-chip--selected:not(.mdc-chip--outlined) {	
+.mdc-chip.mdc-chip--selected:not(.mdc-chip--outlined) {	
 	background-color: transparent;
 	background: 
         var(--mdc-container-background-opacity),
 		linear-gradient(var(--mdc-chip-icon_selected-color), var(--mdc-chip-icon_selected-color)) no-repeat;}
-.mdc-chip-set .mdc-chip--selected.mdc-chip--outlined,
-.mdc-chip-set .mdc-chip--selected.mdc-chip--outlined::before,
-.mdc-chip-set .mdc-chip--selected.mdc-chip--outlined::after {
+.mdc-chip--selected.mdc-chip--outlined,
+.mdc-chip--selected.mdc-chip--outlined::before,
+.mdc-chip--selected.mdc-chip--outlined::after {
 	background-color: none;
 	background: none;}
+.mdc-chip.mdc-chip--selected.mdc-ripple-surface--color::before,
+.mdc-chip.mdc-chip--selected.mdc-ripple-surface--color::after,
+.mdc-chip.mdc-chip--selected.mdc-chip--selected.mdc-ripple-surface--color::before,
+.mdc-chip.mdc-chip--selected.mdc-chip--selected.mdc-ripple-surface--color::after {
+    background-color: var(--mdc-chip-icon_selected-color); }
 
 /* Disabled settings */ 
 
