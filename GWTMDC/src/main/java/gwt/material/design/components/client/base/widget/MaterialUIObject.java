@@ -102,11 +102,11 @@ public class MaterialUIObject extends ComplexPanel implements HasId, HasFlexbox 
 		return StyleHelper.getProperty(getElement(), property);
 	}
 	
-	protected void setCssProperty(final String property, final String value) {
+	public void setCssProperty(final String property, final String value) {
 		StyleHelper.setCssProperty(getElement(), property, value);
 	}
 	
-	protected void setCssProperty(final String property, final Style.HasCssName value) {
+	public void setCssProperty(final String property, final Style.HasCssName value) {
 		StyleHelper.setCssProperty(getElement(), property, value);
 	}
 
