@@ -125,6 +125,15 @@ textarea,
 /* ==========================================================================
    Configure the text selection
    ========================================================================== */
+.mdc-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   Configure the text selection
+   ========================================================================== */
 ::-moz-selection { 
 	color: var(--mdc-select-text-ink-color);
 	background: var(--mdc-select-text-fill-color); }

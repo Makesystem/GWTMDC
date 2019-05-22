@@ -19,6 +19,9 @@
  */
 package gwt.material.design.components.client.ui.html;
 
+import gwt.material.design.components.client.base.interfaces.HasTruncate;
+import gwt.material.design.components.client.base.mixin.ToggleStyleMixin;
+import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.HtmlElements;
 
 /**
@@ -26,7 +29,9 @@ import gwt.material.design.components.client.constants.HtmlElements;
  * @author Richeli Vargas
  *
  */
-public class Label extends Text {
+public class Label extends Text implements HasTruncate {
+	
+	protected final ToggleStyleMixin<Label> truncateMixin = new ToggleStyleMixin<>(this, CssName.MDC_TRUNCATE);
 
 	public Label() {
 		super(HtmlElements.LABEL.createElement());
@@ -34,5 +39,15 @@ public class Label extends Text {
 
 	public Label(final String... initialClasses) {
 		super(HtmlElements.LABEL.createElement(), initialClasses);
+	}
+	
+	@Override
+	public boolean isTruncate() {
+		return truncateMixin.isApplied();
+	}
+	
+	@Override
+	public void setTruncate(final boolean truncate) {
+		truncateMixin.toggle(truncate);
 	}
 }
