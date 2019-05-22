@@ -23,6 +23,8 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.Style.BorderStyle;
 import com.google.gwt.dom.client.Style.Cursor;
+import com.google.gwt.dom.client.Style.FontStyle;
+import com.google.gwt.dom.client.Style.FontWeight;
 import com.google.gwt.dom.client.Style.OutlineStyle;
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.TextAlign;
@@ -60,7 +62,8 @@ import gwt.material.design.components.client.utils.helper.StyleHelper;
 public class MaterialUIObject extends ComplexPanel implements HasId, HasFlexbox {
 
 	protected final FlexboxMixin<MaterialUIObject> flexboxMixin = new FlexboxMixin<>(this);
-	protected final AttributeMixin<MaterialUIObject, String> idMixin = new AttributeMixin<>(this, CssAttribute.ID, FromString.TO_STRING);
+	protected final AttributeMixin<MaterialUIObject, String> idMixin = new AttributeMixin<>(this, CssAttribute.ID,
+			FromString.TO_STRING);
 
 	public MaterialUIObject(Element element) {
 		super();
@@ -77,35 +80,35 @@ public class MaterialUIObject extends ComplexPanel implements HasId, HasFlexbox 
 	public String getId() {
 		return idMixin.getValue();
 	}
-	
+
 	public <V> void setAttribute(final String attribute, final V value) {
 		StyleHelper.setAttribute(getElement(), attribute, value);
 	}
-	
+
 	public void removeAttribute(final String attribute) {
 		StyleHelper.removeAttribute(getElement(), attribute);
 	}
-	
+
 	public String getAttribute(final String attribute) {
 		return StyleHelper.getAttribute(getElement(), attribute);
 	}
-	
+
 	public void setProperty(final String property, final String value) {
 		StyleHelper.setProperty(getElement(), property, value);
 	}
-	
+
 	public void removeProperty(final String property) {
 		StyleHelper.removeProperty(getElement(), property);
 	}
-	
+
 	public String getProperty(final String property) {
 		return StyleHelper.getProperty(getElement(), property);
 	}
-	
+
 	public void setCssProperty(final String property, final String value) {
 		StyleHelper.setCssProperty(getElement(), property, value);
 	}
-	
+
 	public void setCssProperty(final String property, final Style.HasCssName value) {
 		StyleHelper.setCssProperty(getElement(), property, value);
 	}
@@ -113,7 +116,7 @@ public class MaterialUIObject extends ComplexPanel implements HasId, HasFlexbox 
 	public boolean hasStyleName(String style) {
 		return StyleHelper.hasStyle(this, style);
 	}
-	
+
 	@Override
 	public void addStyleName(String style) {
 		StyleHelper.addStyle(this, style);
@@ -123,7 +126,7 @@ public class MaterialUIObject extends ComplexPanel implements HasId, HasFlexbox 
 	public void removeStyleName(String style) {
 		StyleHelper.removeStyle(this, style);
 	}
-	
+
 	public void toggleStyleName(final boolean toggleStyle, final String styleName) {
 		StyleHelper.toggleStyle(this, toggleStyle, styleName);
 	}
@@ -131,7 +134,7 @@ public class MaterialUIObject extends ComplexPanel implements HasId, HasFlexbox 
 	public void toggleStyleName(final String styleName) {
 		StyleHelper.toggleStyle(this, styleName);
 	}
-	
+
 	public void setInnerHTML(final String html) {
 		getElement().setInnerHTML(html);
 	}
@@ -180,6 +183,20 @@ public class MaterialUIObject extends ComplexPanel implements HasId, HasFlexbox 
 
 	public void setFontFamily(final String fontFamily) {
 		setCssProperty("font-family", fontFamily);
+	}
+
+	/**
+	 * Sets the font-style CSS property.
+	 */
+	public final void setFontStyle(final FontStyle value) {
+		setCssProperty("font-style", value.getCssName());
+	}
+
+	/**
+	 * Sets the font-weight CSS property.
+	 */
+	public final void setFontWeight(final FontWeight value) {
+		setCssProperty("font-weight", value.getCssName());
 	}
 
 	public void setTextAlign(final TextAlign textAlign) {
@@ -330,7 +347,7 @@ public class MaterialUIObject extends ComplexPanel implements HasId, HasFlexbox 
 	public void setBorderRadius(final String borderRadius) {
 		setCssProperty("border-radius", BorderRadius.fromName(borderRadius));
 	}
-	
+
 	public void setBorderRadius(final BorderRadius borderRadius) {
 		setCssProperty("border-radius", borderRadius);
 	}
@@ -344,9 +361,10 @@ public class MaterialUIObject extends ComplexPanel implements HasId, HasFlexbox 
 	}
 
 	/*
-	 * -------------------------------------------------------------------------------
-	 * Transform and animations
-	 * -------------------------------------------------------------------------------
+	 * -----------------------------------------------------------------------------
+	 * -- Transform and animations
+	 * -----------------------------------------------------------------------------
+	 * --
 	 */
 	public final void setTransform(final String transform) {
 		setCssProperty("-webkit-transform", transform);
@@ -354,53 +372,54 @@ public class MaterialUIObject extends ComplexPanel implements HasId, HasFlexbox 
 		setCssProperty("-o-transform", transform);
 		setCssProperty("transform", transform);
 	}
-	
+
 	public final void setTransformOrigin(final String transformOrigin) {
 		setCssProperty("-webkit-transform-origin", transformOrigin);
 		setCssProperty("-moz-transform-origin", transformOrigin);
 		setCssProperty("-o-transform-origin", transformOrigin);
 		setCssProperty("transform-origin", transformOrigin);
 	}
-	
+
 	public final void setTransition(final String trasition) {
 		setCssProperty("-webkit-transition", trasition);
 		setCssProperty("-moz-transition", trasition);
 		setCssProperty("-o-transition", trasition);
 		setCssProperty("transition", trasition);
 	}
-	
+
 	public final void setTransitionDelay(final String trasitionDelay) {
 		setCssProperty("-webkit-transition-delay", trasitionDelay);
 		setCssProperty("-moz-transition-delay", trasitionDelay);
 		setCssProperty("-o-transition-delay", trasitionDelay);
 		setCssProperty("transition-delay", trasitionDelay);
-	}	
-	
+	}
+
 	public final void setTransitionDuration(final String trasitionDuration) {
 		setCssProperty("-webkit-transition-duration", trasitionDuration);
 		setCssProperty("-moz-transition-duration", trasitionDuration);
 		setCssProperty("-o-transition-duration", trasitionDuration);
 		setCssProperty("transition-duration", trasitionDuration);
 	}
-	
+
 	public final void setTransitionProperty(final String trasitionProperty) {
 		setCssProperty("-webkit-transition-property", trasitionProperty);
 		setCssProperty("-moz-transition-property", trasitionProperty);
 		setCssProperty("-o-transition-property", trasitionProperty);
 		setCssProperty("transition-property", trasitionProperty);
 	}
-	
+
 	public final void setTransitionTimingFunction(final String trasitionTimingFunction) {
 		setCssProperty("-webkit-transition-timing-function", trasitionTimingFunction);
 		setCssProperty("-moz-transition-timing-function", trasitionTimingFunction);
 		setCssProperty("-o-transition-timing-function", trasitionTimingFunction);
 		setCssProperty("transition-timing-function", trasitionTimingFunction);
-	}	
-	
+	}
+
 	/*
-	 * -------------------------------------------------------------------------------
-	 * FLEX BOX SETTER'S 
-	 * -------------------------------------------------------------------------------
+	 * -----------------------------------------------------------------------------
+	 * -- FLEX BOX SETTER'S
+	 * -----------------------------------------------------------------------------
+	 * --
 	 */
 
 	@Override
