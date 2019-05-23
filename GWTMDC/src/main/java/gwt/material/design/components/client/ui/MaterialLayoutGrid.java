@@ -59,8 +59,6 @@ public class MaterialLayoutGrid extends Div implements HasAlign<LayoutGridAlign>
 
 	public MaterialLayoutGrid() {
 		super(CssName.MDC_LAYOUT_GRID);
-		setGap(0);
-		setCellGutter(16);
 	}
 
 	public void setCellMargin(int margin) {

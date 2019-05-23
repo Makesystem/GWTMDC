@@ -265,6 +265,19 @@
   	--mdc-spreadsheet--selected-ink-color: var(--mdc-theme-on-primary);
   	--mdc-spreadsheet--corner--fill-color: var(--mdc-spreadsheet--selected-color);
   	--mdc-spreadsheet--corner--border-color: var(--mdc-spreadsheet--selected-ink-color);
+  	
+  	/* ================================	*/
+  	/* Layout Grid																	*/
+  	/* ================================	*/
+  --mdc-layout-grid-margin-desktop: 24px;
+  --mdc-layout-grid-gutter-desktop: 24px;
+  --mdc-layout-grid-column-width-desktop: 72px;
+  --mdc-layout-grid-margin-tablet: 16px;
+  --mdc-layout-grid-gutter-tablet: 16px;
+  --mdc-layout-grid-column-width-tablet: 72px;
+  --mdc-layout-grid-margin-phone: 16px;
+  --mdc-layout-grid-gutter-phone: 16px;
+  --mdc-layout-grid-column-width-phone: 72px;
 }
 
 /* ==========================================================================
