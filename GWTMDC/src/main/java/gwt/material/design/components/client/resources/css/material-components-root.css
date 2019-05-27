@@ -3,6 +3,7 @@ html, body {
 	padding: 0px;
 	height: 100%;
 	background-color: var(--mdc-theme-background);
+	color: var(--mdc-theme-text-primary-on-background);	
 	zoom: var(--mdc-zoom);}
 html {	
 	font-size: var(--mdc-root-font-size);}
@@ -48,7 +49,7 @@ i {
    Default colors
    ========================================================================== */
 label {
-	color: var(--mdc-theme-text-primary-on-background);}
+	color: inherit;}
 
 a:link,
 a:visited,
