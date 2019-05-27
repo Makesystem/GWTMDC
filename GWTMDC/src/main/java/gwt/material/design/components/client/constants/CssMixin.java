@@ -35,6 +35,7 @@ public interface CssMixin {
 	String MDC_SCROLLBAR_TRACK_FILL = "--mdc-scrollbar-track-fill";
 	String MDC_SCROLLBAR_THUMB_CORNER = "--mdc-scrollbar-thumb-corner";
 	String MDC_SCROLLBAR_THUMB_FILL = "--mdc-scrollbar-thumb-fill";
+	String MDC_CLAMP = "--mdc-clamp";
 
 	// ////////////////////////////////////////////////////////////////////////////
 	// Top app bar

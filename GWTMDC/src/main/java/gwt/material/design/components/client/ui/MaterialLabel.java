@@ -19,6 +19,8 @@
  */
 package gwt.material.design.components.client.ui;
 
+import gwt.material.design.components.client.base.interfaces.HasClamp;
+import gwt.material.design.components.client.base.mixin.ClampMixin;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.HtmlElements;
 import gwt.material.design.components.client.constants.Typography;
@@ -29,7 +31,9 @@ import gwt.material.design.components.client.ui.html.Label;
  * @author Richeli Vargas
  *
  */
-public class MaterialLabel extends Label {
+public class MaterialLabel extends Label implements HasClamp {
+
+	protected final ClampMixin<MaterialLabel> clampMixin = new ClampMixin<MaterialLabel>(this);
 
 	public MaterialLabel() {
 		super(CssName.MDC_TYPOGRAPHY);
@@ -48,5 +52,15 @@ public class MaterialLabel extends Label {
 			setTypography(Typography.BODY_2);
 
 		getElement().appendChild(HtmlElements.BR.createElement());
+	}
+
+	@Override
+	public void setClamp(final int clamp) {
+		clampMixin.setClamp(clamp);
+	}
+
+	@Override
+	public int getClamp() {
+		return clampMixin.getClamp();
 	}
 }

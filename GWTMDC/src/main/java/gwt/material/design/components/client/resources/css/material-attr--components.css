@@ -26,7 +26,8 @@
 	/* Animations */
 	--mdc-animation--expand: mdc-expand .3s ease-in-out;
 	--mdc-animation--alternate: mdc-alternate .4s alternate ease-in;
-	
+	/* Clamp */
+	--mdc-clamp: 1;
 	/* ================================	*/
   	/* Divider																		 	*/
   	/* ================================	*/  	

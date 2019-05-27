@@ -127,11 +127,18 @@ textarea,
    Configure the text selection
    ========================================================================== */
 .mdc-truncate {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;}
 
+.mdc-clamp {
+	overflow: hidden;
+	word-break: break-all;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: var(--mdc-clamp);
+ 	-webkit-box-orient: vertical;}
+	
 /* ==========================================================================
    Configure the text selection
    ========================================================================== */
