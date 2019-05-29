@@ -30,7 +30,7 @@ import gwt.material.design.components.client.base.mixin.AspectRatioMixin;
 import gwt.material.design.components.client.base.mixin.ImageMixin;
 import gwt.material.design.components.client.base.mixin.ToggleStyleMixin;
 import gwt.material.design.components.client.constants.AspectRatio;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.ui.html.Div;
 
@@ -146,7 +146,7 @@ public class MaterialCard extends Div implements HasImage, HasAspectRatio {
 			@Override
 			public void setUrl(String url) {
 				super.setUrl(url);				
-				CardMedia.this.removeAttribute(CssAttribute.SRC);
+				CardMedia.this.removeAttribute(HTMLAttributes.SRC);
 				CardMedia.this.setCssProperty("backgroundImage", "url(" + url + ")");
 			}
 		};

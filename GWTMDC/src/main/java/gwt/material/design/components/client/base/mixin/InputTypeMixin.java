@@ -22,7 +22,7 @@ package gwt.material.design.components.client.base.mixin;
 import gwt.material.design.components.client.base.interfaces.HasType;
 import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
 import gwt.material.design.components.client.base.widget.MaterialUIObject;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.InputType;
 
 /**
@@ -32,7 +32,7 @@ public class InputTypeMixin<UIO extends MaterialUIObject & HasType<InputType>> e
 		implements HasType<InputType> {
 
 	public InputTypeMixin(final UIO uiObject) {
-		super(uiObject, CssAttribute.TYPE, (value) -> InputType.fromStyleName(value));
+		super(uiObject, HTMLAttributes.TYPE, (value) -> InputType.fromStyleName(value));
 	}
 
 	@Override

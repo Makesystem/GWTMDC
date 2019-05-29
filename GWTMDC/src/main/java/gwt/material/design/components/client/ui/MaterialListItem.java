@@ -34,7 +34,7 @@ import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
 import gwt.material.design.components.client.base.widget.MaterialSelectedField;
 import gwt.material.design.components.client.constants.BorderRadius;
 import gwt.material.design.components.client.constants.Color;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.HtmlElements;
@@ -61,7 +61,7 @@ public class MaterialListItem extends MaterialSelectedField implements HasHref, 
 	// /////////////////////////////////////////////////////////////
 	private final HrefMixin<MaterialListItem> hrefMixin = new HrefMixin<>(this);
 	private final AttributeMixin<MaterialIcon, Boolean> ariaHiddenMixin = new AttributeMixin<>(icon,
-			CssAttribute.ARIA_HIDDEN, true, FromString.TO_BOOLEAN);
+			HTMLAttributes.ARIA_HIDDEN, true, FromString.TO_BOOLEAN);
 
 	private boolean initialized = false;
 
@@ -115,7 +115,7 @@ public class MaterialListItem extends MaterialSelectedField implements HasHref, 
 	public void addStartDetail(final Widget widget, final boolean prevent) {
 		insertDetail(widget, CssName.MDC_LIST_ITEM__GRAPHIC, Appender.START);
 		if (prevent) {
-			StyleHelper.setAttribute(widget, CssAttribute.PREVENT, true);
+			StyleHelper.setAttribute(widget, HTMLAttributes.PREVENT, true);
 			prevent(widget.getElement());
 		}
 
@@ -142,7 +142,7 @@ public class MaterialListItem extends MaterialSelectedField implements HasHref, 
 	public void addEndDetail(final Widget widget, final boolean prevent) {
 		insertDetail(widget, CssName.MDC_LIST_ITEM__META, Appender.END);
 		if (prevent) {
-			StyleHelper.setAttribute(widget, CssAttribute.PREVENT, Boolean.TRUE.toString().toLowerCase());
+			StyleHelper.setAttribute(widget, HTMLAttributes.PREVENT, Boolean.TRUE.toString().toLowerCase());
 			prevent(widget.getElement());
 		}
 	}

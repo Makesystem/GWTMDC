@@ -22,7 +22,7 @@ package gwt.material.design.components.client.base.mixin;
 import gwt.material.design.components.client.base.interfaces.HasHref;
 import gwt.material.design.components.client.base.mixin.base.AbstractMixin;
 import gwt.material.design.components.client.base.widget.MaterialUIObject;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.utils.helper.StyleHelper;
 
 /**
@@ -38,22 +38,22 @@ public class HrefMixin<UIO extends MaterialUIObject & HasHref> extends AbstractM
 
 	@Override
 	public void setHref(String href) {
-		StyleHelper.setAttribute(uiObject, CssAttribute.HREF, href);
+		StyleHelper.setAttribute(uiObject, HTMLAttributes.HREF, href);
 	}
 
 	@Override
 	public String getHref() {
-		return StyleHelper.getAttribute(uiObject, CssAttribute.HREF);
+		return StyleHelper.getAttribute(uiObject, HTMLAttributes.HREF);
 	}
 
 	@Override
 	public void setTarget(String target) {
-		StyleHelper.setAttribute(uiObject, CssAttribute.TARGET, target);
+		StyleHelper.setAttribute(uiObject, HTMLAttributes.TARGET, target);
 	}
 
 	@Override
 	public String getTarget() {
-		return StyleHelper.getAttribute(uiObject, CssAttribute.TARGET);
+		return StyleHelper.getAttribute(uiObject, HTMLAttributes.TARGET);
 	}
 
 }

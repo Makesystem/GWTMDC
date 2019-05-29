@@ -28,7 +28,7 @@ import gwt.material.design.components.client.base.mixin.base.AbstractMixin;
 import gwt.material.design.components.client.base.widget.MaterialUIObject;
 import gwt.material.design.components.client.constants.AutoInitData;
 import gwt.material.design.components.client.constants.Color;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.utils.helper.StyleHelper;
 
@@ -75,7 +75,7 @@ public class RippleMixin<UIO extends MaterialUIObject & HasRipple> extends Abstr
 
 	public void initialize() {
 		uiObject.addStyleName(rippleClass);
-		StyleHelper.setAttribute(uiObject, CssAttribute.DATA_MDC_AUTO_INIT, AutoInitData.MDC_RIPPLE);
+		StyleHelper.setAttribute(uiObject, HTMLAttributes.DATA_MDC_AUTO_INIT, AutoInitData.MDC_RIPPLE);
 		jsInit();
 	}
 

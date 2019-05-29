@@ -26,7 +26,7 @@ import gwt.material.design.components.client.base.interfaces.FromString;
 import gwt.material.design.components.client.base.interfaces.HasInputMask;
 import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
 import gwt.material.design.components.client.base.widget.MaterialUIObject;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.masker.Masker;
 import gwt.material.design.components.client.utils.helper.DOMHelper;
 import gwt.material.design.components.client.utils.helper.ObjectHelper;
@@ -42,7 +42,7 @@ public class InputMaskMixin<UIO extends MaterialUIObject & HasKeyUpHandlers> ext
 	private HandlerRegistration handler;
 
 	public InputMaskMixin(UIO uiObject) {
-		super(uiObject, CssAttribute.INPUT_MASK, FromString.TO_STRING);
+		super(uiObject, HTMLAttributes.INPUT_MASK, FromString.TO_STRING);
 	}
 
 	/**

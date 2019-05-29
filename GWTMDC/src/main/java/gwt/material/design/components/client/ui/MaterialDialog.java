@@ -30,7 +30,7 @@ import gwt.material.design.components.client.base.interfaces.HasToggler;
 import gwt.material.design.components.client.base.mixin.TogglerMixin;
 import gwt.material.design.components.client.constants.CloseAction;
 import gwt.material.design.components.client.constants.Color;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.Role;
@@ -97,14 +97,14 @@ public class MaterialDialog extends Div implements  HasAcceptHandlers, HasCancel
 	@Override
 	protected void onInitialize() {	
 		
-		scrim.setAttribute(CssAttribute.DATA_MDC_DIALOG_ACTION, NATIVE_ACTION_CANCEL);	
+		scrim.setAttribute(HTMLAttributes.DATA_MDC_DIALOG_ACTION, NATIVE_ACTION_CANCEL);	
 
 		cancel.addStyleName(CssName.MDC_DIALOG__BUTTON);
-		cancel.setAttribute(CssAttribute.DATA_MDC_DIALOG_ACTION, NATIVE_ACTION_CANCEL);
+		cancel.setAttribute(HTMLAttributes.DATA_MDC_DIALOG_ACTION, NATIVE_ACTION_CANCEL);
 		footer.add(cancel);
 		
 		accept.addStyleName(CssName.MDC_DIALOG__BUTTON);
-		accept.setAttribute(CssAttribute.DATA_MDC_DIALOG_ACTION, NATIVE_ACTION_ACCEPT);
+		accept.setAttribute(HTMLAttributes.DATA_MDC_DIALOG_ACTION, NATIVE_ACTION_ACCEPT);
 		footer.add(accept);
 		
 		surface.add(title);
@@ -124,9 +124,9 @@ public class MaterialDialog extends Div implements  HasAcceptHandlers, HasCancel
 	}
 	
 	protected final void preventFooter() {
-		UiHelper.setAttrIfIsEmpty(accept, CssAttribute.EMPTY);
-		UiHelper.setAttrIfIsEmpty(cancel, CssAttribute.EMPTY);
-		UiHelper.setAttrIfIsEmpty(footer, CssAttribute.EMPTY);
+		UiHelper.setAttrIfIsEmpty(accept, HTMLAttributes.EMPTY);
+		UiHelper.setAttrIfIsEmpty(cancel, HTMLAttributes.EMPTY);
+		UiHelper.setAttrIfIsEmpty(footer, HTMLAttributes.EMPTY);
 	}
 
 	protected native void initEvents()/*-{

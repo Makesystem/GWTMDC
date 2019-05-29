@@ -19,22 +19,40 @@
  */
 package gwt.material.design.components.client.constants;
 
+import com.google.gwt.dom.client.Style.HasCssName;
+
 /**
  * @author Richeli Vargas
  */
-public enum WordBreak {
-    NORMAL("normal"),
-    BREAK_ALL("break-all"),
-    KEEP_ALL("keep-all"),
-    BREAK_WORD("break-word");
+public enum WordBreak implements HasCssName {
+	NORMAL("normal"), BREAK_ALL("break-all"), KEEP_ALL("keep-all"), BREAK_WORD("break-word");
 
-    private final String value;
+	private final String cssName;
 
-    WordBreak(final String value) {
-        this.value = value;
-    }
+	WordBreak(HasCssName gwtDisplay) {
+		this.cssName = gwtDisplay.getCssName();
+	}
 
-    public String getValue() {
-        return value;
-    }
+	WordBreak(final String cssName) {
+		this.cssName = cssName;
+	}
+
+	public static WordBreak parse(String cssName) {
+		for (WordBreak css : WordBreak.values()) {
+			if (css.getCssName().equals(cssName)) {
+				return css;
+			}
+		}
+		return null;
+	}
+
+	public static WordBreak parse(HasCssName css) {
+		return parse(css.getCssName());
+	}
+
+	@Override
+	public String getCssName() {
+		return cssName;
+	}
+
 }

@@ -1,6 +1,6 @@
 package gwt.material.design.components.client.constants;
 
-public class CssAttribute {
+public class HTMLAttributes {
 
 	public static final String ALT = "alt";
 	public static final String ARIA_ATOMIC = "aria-atomic";

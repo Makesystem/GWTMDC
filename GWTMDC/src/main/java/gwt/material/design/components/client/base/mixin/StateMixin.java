@@ -22,7 +22,7 @@ package gwt.material.design.components.client.base.mixin;
 import gwt.material.design.components.client.base.interfaces.HasState;
 import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
 import gwt.material.design.components.client.base.widget.MaterialUIObject;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.State;
 
 /**
@@ -32,7 +32,7 @@ public class StateMixin<UIO extends MaterialUIObject & HasState> extends Attribu
 		implements HasState {
 
 	public StateMixin(final UIO uiObject) {
-		super(uiObject, CssAttribute.STATE, (value) -> State.fromStyleName(value));
+		super(uiObject, HTMLAttributes.STATE, (value) -> State.fromStyleName(value));
 	}
 
 	@Override

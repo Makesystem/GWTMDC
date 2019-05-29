@@ -31,7 +31,7 @@ import gwt.material.design.components.client.constants.ChartAspectRatio;
 import gwt.material.design.components.client.constants.ChartLabelDirection;
 import gwt.material.design.components.client.constants.ChartLabelPosition;
 import gwt.material.design.components.client.constants.Color;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.PieChartType;
@@ -53,7 +53,7 @@ public class MaterialPieChart extends MaterialChartBase<Double, String, JsPieCha
 	private PieChartType type = PieChartType.PIE;
 
 	protected final AttributeMixin<MaterialPieChart, String> labelPositionMixin = new AttributeMixin<>(this,
-			CssAttribute.LABEL_POSITION, "inside", FromString.TO_STRING);
+			HTMLAttributes.LABEL_POSITION, "inside", FromString.TO_STRING);
 
 	public MaterialPieChart() {
 		super(new JsPieChartOptions(), ChartAspectRatio.ASPECT_1x1);

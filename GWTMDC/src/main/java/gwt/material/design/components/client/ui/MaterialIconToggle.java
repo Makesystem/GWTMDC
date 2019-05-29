@@ -27,7 +27,7 @@ import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
 import gwt.material.design.components.client.base.widget.MaterialSelectedField;
 import gwt.material.design.components.client.constants.BorderRadius;
 import gwt.material.design.components.client.constants.Color;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.HtmlElements;
@@ -46,11 +46,11 @@ public class MaterialIconToggle extends MaterialSelectedField {
 	protected final MaterialIcon offIcon = new MaterialIcon(CssName.MDC_ICON_BUTTON__ICON);
 
 	protected final AttributeMixin<MaterialIconToggle, Boolean> ariaPressedMixin = new AttributeMixin<>(this,
-			CssAttribute.ARIA_PRESSED, FromString.TO_BOOLEAN);
+			HTMLAttributes.ARIA_PRESSED, FromString.TO_BOOLEAN);
 
 	public MaterialIconToggle() {
 		super(HtmlElements.BUTTON.createElement(), CssName.MDC_ICON_BUTTON);
-		setAttribute(CssAttribute.ARIA_HIDDEN, true);
+		setAttribute(HTMLAttributes.ARIA_HIDDEN, true);
 		setBorderRadius(BorderRadius.CIRCLE);
 	}
 

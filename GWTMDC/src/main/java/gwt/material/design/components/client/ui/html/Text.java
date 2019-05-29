@@ -28,7 +28,7 @@ import gwt.material.design.components.client.base.mixin.TextMixin;
 import gwt.material.design.components.client.base.mixin.TypeMixin;
 import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
 import gwt.material.design.components.client.base.widget.MaterialWidget;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.HasFor;
 import gwt.material.design.components.client.constants.Typography;
 
@@ -41,7 +41,7 @@ public class Text extends MaterialWidget implements HasText, HasTypography, HasF
 
 	protected final TextMixin<Text> textMixin = new TextMixin<>(this);
 	protected final TypeMixin<Text, Typography> typographiMixin = new TypeMixin<>(this);
-	protected final AttributeMixin<Text, String> forMixin = new AttributeMixin<>(this, CssAttribute.FOR, FromString.TO_STRING);
+	protected final AttributeMixin<Text, String> forMixin = new AttributeMixin<>(this, HTMLAttributes.FOR, FromString.TO_STRING);
 
 	protected Text(Element element) {
 		super(element);

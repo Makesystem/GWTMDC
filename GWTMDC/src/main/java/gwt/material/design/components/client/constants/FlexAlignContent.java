@@ -19,32 +19,35 @@
  */
 package gwt.material.design.components.client.constants;
 
+import com.google.gwt.dom.client.Style.HasCssName;
+
 /**
  * @author Richeli Vargas
  */
-public enum FlexAlignContent implements BrowserPrefixCssType {
-    STRETCH("stretch", "stretch"),
-    START("start", "flex-start"),
-    CENTER("center", "center"),
-    END("end", "flex-end"),
-    SPACE_AROUND("distribute", "space-around"),
-    SPACE_BETWEEN("justify", "space-between");
+public enum FlexAlignContent implements BrowserPrefixCssType, HasCssName {
+	STRETCH("stretch", "stretch"), START("start", "flex-start"), CENTER("center", "center"), END("end", "flex-end"),
+	SPACE_AROUND("distribute", "space-around"), SPACE_BETWEEN("justify", "space-between");
 
-    private final String ieValue;
-    private final String value;
+	private final String ieValue;
+	private final String value;
 
-    FlexAlignContent(final String ieValue, final String value) {
-        this.ieValue = ieValue;
-        this.value = value;
-    }
+	FlexAlignContent(final String ieValue, final String value) {
+		this.ieValue = ieValue;
+		this.value = value;
+	}
 
-    @Override
-    public String getValue() {
-        return value;
-    }
+	@Override
+	public String getValue() {
+		return value;
+	}
 
-    @Override
-    public String getIeValue() {
-        return ieValue;
-    }
+	@Override
+	public String getIeValue() {
+		return ieValue;
+	}
+
+	@Override
+	public String getCssName() {
+		return value;
+	}
 }

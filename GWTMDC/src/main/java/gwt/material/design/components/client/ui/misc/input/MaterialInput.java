@@ -57,7 +57,7 @@ import gwt.material.design.components.client.base.mixin.base.PropertyMixin;
 import gwt.material.design.components.client.base.widget.MaterialValuedField;
 import gwt.material.design.components.client.base.widget.MaterialWidget;
 import gwt.material.design.components.client.constants.Color;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.IconPosition;
@@ -105,13 +105,13 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 	protected final PlaceholderMixin<MaterialWidget> placeholderMixin = new PlaceholderMixin<>(input);
 	protected final InputMaskMixin<MaterialWidget> inputMaskMixin = new InputMaskMixin<>(input);
 	protected final AttributeMixin<MaterialWidget, Boolean> requeridMixin = new AttributeMixin<>(input,
-			CssAttribute.REQUIRED, FromString.TO_BOOLEAN);
+			HTMLAttributes.REQUIRED, FromString.TO_BOOLEAN);
 	protected final PropertyMixin<MaterialWidget, Integer> minLengthMixin = new PropertyMixin<>(input,
-			CssAttribute.MIN_LENGTH, 0, FromString.TO_INTEGER);
+			HTMLAttributes.MIN_LENGTH, 0, FromString.TO_INTEGER);
 	protected final PropertyMixin<MaterialWidget, Integer> maxLengthMixin = new PropertyMixin<>(input,
-			CssAttribute.MAX_LENGTH, Integer.MAX_VALUE, FromString.TO_INTEGER);
+			HTMLAttributes.MAX_LENGTH, Integer.MAX_VALUE, FromString.TO_INTEGER);
 	protected final AttributeMixin<MaterialWidget, Boolean> readOnlyMixin = new AttributeMixin<>(input,
-			CssAttribute.READONLY, false, FromString.TO_BOOLEAN);
+			HTMLAttributes.READONLY, false, FromString.TO_BOOLEAN);
 	protected final ToggleStyleMixin<MaterialInput> denseMixin = new ToggleStyleMixin<>(this,
 			CssName.MDC_TEXT_FIELD__DENSE);
 	protected final ToggleStyleMixin<MaterialInput> unborderedMixin = new ToggleStyleMixin<>(this,

@@ -31,7 +31,7 @@ import gwt.material.design.components.client.base.interfaces.FromString;
 import gwt.material.design.components.client.base.mixin.TextMixin;
 import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
 import gwt.material.design.components.client.base.widget.MaterialSelectedField;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.HtmlElements;
 
@@ -72,7 +72,7 @@ public class MaterialDatePickerItem extends MaterialSelectedField implements Has
 
 	protected final TextMixin<MaterialDatePickerItem> textMixin = new TextMixin<>(this);
 	protected final AttributeMixin<MaterialDatePickerItem, String> nameMixin = new AttributeMixin<>(this,
-			CssAttribute.NAME, FromString.TO_STRING);
+			HTMLAttributes.NAME, FromString.TO_STRING);
 
 	public MaterialDatePickerItem() {
 		super(HtmlElements.LABEL.createElement(), CssName.MDC_DATEPICKER__DAYS__ITEM,

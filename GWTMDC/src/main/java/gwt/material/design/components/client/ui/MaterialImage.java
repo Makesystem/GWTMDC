@@ -34,7 +34,7 @@ import gwt.material.design.components.client.base.interfaces.FromString;
 import gwt.material.design.components.client.base.interfaces.HasImage;
 import gwt.material.design.components.client.base.mixin.ImageMixin;
 import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.ui.html.Img;
 
 /**
@@ -45,7 +45,7 @@ import gwt.material.design.components.client.ui.html.Img;
 public class MaterialImage extends Img implements HasCaption, HasImage, HasLoadHandlers, HasErrorHandlers {
 
 	protected final ImageMixin<MaterialImage> imageMixin = new ImageMixin<>(this);
-	protected final AttributeMixin<MaterialImage, String> captionMixin = new AttributeMixin<MaterialImage, String>(this, CssAttribute.DATA_CAPTION, FromString.TO_STRING);
+	protected final AttributeMixin<MaterialImage, String> captionMixin = new AttributeMixin<MaterialImage, String>(this, HTMLAttributes.DATA_CAPTION, FromString.TO_STRING);
 
 	/**
 	 * Creates an empty image.

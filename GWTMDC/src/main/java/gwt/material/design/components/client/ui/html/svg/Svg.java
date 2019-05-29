@@ -22,7 +22,7 @@ package gwt.material.design.components.client.ui.html.svg;
 import gwt.material.design.components.client.base.interfaces.FromString;
 import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
 import gwt.material.design.components.client.base.widget.MaterialWidget;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.HtmlElements;
 
 /**
@@ -32,8 +32,8 @@ import gwt.material.design.components.client.constants.HtmlElements;
  */
 public class Svg extends MaterialWidget {
 
-	protected final AttributeMixin<Svg, String> widthMixin = new AttributeMixin<>(this, CssAttribute.WIDTH, FromString.TO_STRING);
-	protected final AttributeMixin<Svg, String> heightMixin = new AttributeMixin<>(this, CssAttribute.HEIGHT, FromString.TO_STRING);
+	protected final AttributeMixin<Svg, String> widthMixin = new AttributeMixin<>(this, HTMLAttributes.WIDTH, FromString.TO_STRING);
+	protected final AttributeMixin<Svg, String> heightMixin = new AttributeMixin<>(this, HTMLAttributes.HEIGHT, FromString.TO_STRING);
 
 	public Svg() {
 		super(HtmlElements.SVG.createElement());

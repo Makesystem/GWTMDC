@@ -31,7 +31,7 @@ import gwt.material.design.components.client.base.interfaces.HasSelected;
 import gwt.material.design.components.client.base.mixin.ToggleStyleMixin;
 import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
 import gwt.material.design.components.client.base.mixin.base.PropertyMixin;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.HtmlElements;
 import gwt.material.design.components.client.events.SelectionEvent;
 import gwt.material.design.components.client.events.SelectionEvent.HasSelectionHandlers;
@@ -48,7 +48,7 @@ import gwt.material.design.components.client.utils.helper.TimerHelper;
 public class MaterialSelectedField extends MaterialWidget implements HasSelected, HasSelectionHandlers<Boolean> {
 
 	private static final String DEFAULT_CSS_CLASS = "selected";
-	protected final AttributeMixin<MaterialWidget, Boolean> selectMixin = new AttributeMixin<>(this, CssAttribute.SELECTED, false, FromString.TO_BOOLEAN);
+	protected final AttributeMixin<MaterialWidget, Boolean> selectMixin = new AttributeMixin<>(this, HTMLAttributes.SELECTED, false, FromString.TO_BOOLEAN);
 	protected PropertyMixin<Input, Boolean> checkedMixin;
 	protected ToggleStyleMixin<MaterialWidget> selectedMixin;
 	protected boolean fireChangeOnClick = false;
@@ -56,7 +56,7 @@ public class MaterialSelectedField extends MaterialWidget implements HasSelected
 
 	public MaterialSelectedField(final Element element, final String... initialClasses) {
 		super(element, initialClasses);
-		setAttribute(CssAttribute.DATA_MDC_DIALOG_ACTION, getId());
+		setAttribute(HTMLAttributes.DATA_MDC_DIALOG_ACTION, getId());
 		initializeSelectedMixin();
 	}
 
@@ -70,7 +70,7 @@ public class MaterialSelectedField extends MaterialWidget implements HasSelected
 		if (checkedInput == null)
 			checkedMixin = null;
 		else
-			checkedMixin = new PropertyMixin<>(checkedInput, CssAttribute.CHECKED, false, FromString.TO_BOOLEAN);
+			checkedMixin = new PropertyMixin<>(checkedInput, HTMLAttributes.CHECKED, false, FromString.TO_BOOLEAN);
 	}
 
 	protected final void initializeSelectedMixin(MaterialWidget widget, String cssClass) {

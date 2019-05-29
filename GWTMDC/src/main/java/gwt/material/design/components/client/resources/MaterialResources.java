@@ -206,10 +206,4 @@ public interface MaterialResources extends ClientBundle {
 	@Source("image/mdc-circular-progress__path.svg")
 	@MimeType("image/svg+xml")
 	TextResource mdcCircularProgressPath();
-	
-	// ////////////////////////////////////////
-	// Text Clamp
-	// ////////////////////////////////////////
-	@Source("js/clamp.min.js")
-	TextResource clampJs();
 }

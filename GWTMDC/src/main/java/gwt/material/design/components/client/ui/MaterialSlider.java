@@ -31,7 +31,7 @@ import gwt.material.design.components.client.base.mixin.TypeMixin;
 import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
 import gwt.material.design.components.client.base.widget.MaterialValuedField;
 import gwt.material.design.components.client.constants.Color;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.Role;
@@ -69,15 +69,15 @@ public class MaterialSlider extends MaterialValuedField<Double>
 	// Mixins
 	// /////////////////////////////////////////////////////////////
 	protected final AttributeMixin<MaterialSlider, Double> valueminMixin = new AttributeMixin<>(this,
-			CssAttribute.ARIA_VALUEMIN, 0.0, FromString.TO_DOUBLE);
+			HTMLAttributes.ARIA_VALUEMIN, 0.0, FromString.TO_DOUBLE);
 	protected final AttributeMixin<MaterialSlider, Double> valuenowMixin = new AttributeMixin<>(this,
-			CssAttribute.ARIA_VALUENOW, 5.0, FromString.TO_DOUBLE);
+			HTMLAttributes.ARIA_VALUENOW, 5.0, FromString.TO_DOUBLE);
 	protected final AttributeMixin<MaterialSlider, Double> valuemaxMixin = new AttributeMixin<>(this,
-			CssAttribute.ARIA_VALUEMAX, 10.0, FromString.TO_DOUBLE);
+			HTMLAttributes.ARIA_VALUEMAX, 10.0, FromString.TO_DOUBLE);
 	protected final AttributeMixin<MaterialSlider, Double> dataStepMixin = new AttributeMixin<>(this,
-			CssAttribute.DATA_STEP, 1.0, FromString.TO_DOUBLE);
+			HTMLAttributes.DATA_STEP, 1.0, FromString.TO_DOUBLE);
 	protected final AttributeMixin<MaterialSlider, Boolean> enabledMixin = new AttributeMixin<>(this,
-			CssAttribute.ARIA_DISABLED, FromString.TO_BOOLEAN);
+			HTMLAttributes.ARIA_DISABLED, FromString.TO_BOOLEAN);
 	protected final TypeMixin<MaterialSlider, SliderType> typeMixin = new TypeMixin<>(this);
 
 	private Converter<MaterialSlider, Double, String> converter;

@@ -35,7 +35,7 @@ import gwt.material.design.components.client.base.mixin.TextMixin;
 import gwt.material.design.components.client.base.mixin.ToggleStyleMixin;
 import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
 import gwt.material.design.components.client.constants.Color;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.CssStyle;
@@ -64,11 +64,11 @@ public class MaterialSnackbar extends Div implements HasText {
 	protected final ToggleStyleMixin<MaterialSnackbar> actionOnButtonMixin = new ToggleStyleMixin<>(this,
 			CssName.MDC_SNACKBAR__ACTION_ON_BUTTON);
 	protected final AttributeMixin<MaterialSnackbar, String> ariaLiveMixin = new AttributeMixin<>(this,
-			CssAttribute.ARIA_LIVE, "assertive", FromString.TO_STRING);
+			HTMLAttributes.ARIA_LIVE, "assertive", FromString.TO_STRING);
 	protected final AttributeMixin<MaterialSnackbar, Boolean> ariaAtomicMixin = new AttributeMixin<>(this,
-			CssAttribute.ARIA_ATOMIC, true, FromString.TO_BOOLEAN);
+			HTMLAttributes.ARIA_ATOMIC, true, FromString.TO_BOOLEAN);
 	protected final AttributeMixin<MaterialSnackbar, Boolean> ariaHiddenMixin = new AttributeMixin<>(this,
-			CssAttribute.ARIA_HIDDEN, true, FromString.TO_BOOLEAN);
+			HTMLAttributes.ARIA_HIDDEN, true, FromString.TO_BOOLEAN);
 
 	protected String actionText;
 	protected int timeout = 2750;

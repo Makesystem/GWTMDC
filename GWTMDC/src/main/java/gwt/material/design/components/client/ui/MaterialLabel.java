@@ -20,10 +20,13 @@
 package gwt.material.design.components.client.ui;
 
 import gwt.material.design.components.client.base.interfaces.HasClamp;
+import gwt.material.design.components.client.base.interfaces.HasWordBreak;
 import gwt.material.design.components.client.base.mixin.ClampMixin;
+import gwt.material.design.components.client.base.mixin.WordBreakMixin;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.HtmlElements;
 import gwt.material.design.components.client.constants.Typography;
+import gwt.material.design.components.client.constants.WordBreak;
 import gwt.material.design.components.client.ui.html.Label;
 
 /**
@@ -31,10 +34,11 @@ import gwt.material.design.components.client.ui.html.Label;
  * @author Richeli Vargas
  *
  */
-public class MaterialLabel extends Label implements HasClamp {
+public class MaterialLabel extends Label implements HasClamp, HasWordBreak {
 
 	protected final ClampMixin<MaterialLabel> clampMixin = new ClampMixin<MaterialLabel>(this);
-
+	protected final WordBreakMixin<MaterialLabel> wordBreakMixin = new WordBreakMixin<>(this);
+	
 	public MaterialLabel() {
 		super(CssName.MDC_TYPOGRAPHY);
 	}
@@ -62,5 +66,15 @@ public class MaterialLabel extends Label implements HasClamp {
 	@Override
 	public int getClamp() {
 		return clampMixin.getClamp();
+	}
+	
+	@Override
+	public void setWordBreak(final WordBreak wordBreak) {
+		wordBreakMixin.setWordBreak(wordBreak);
+	}
+	
+	@Override
+	public WordBreak getWordBreak() {
+		return wordBreakMixin.getWordBreak();
 	}
 }

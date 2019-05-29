@@ -25,7 +25,7 @@ import gwt.material.design.components.client.base.interfaces.FromString;
 import gwt.material.design.components.client.base.interfaces.HasImage;
 import gwt.material.design.components.client.base.mixin.base.PropertyMixin;
 import gwt.material.design.components.client.base.widget.MaterialUIObject;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 
 /**
  * @author Richeli Vargas
@@ -35,7 +35,7 @@ public class ImageMixin<UIO extends MaterialUIObject & HasImage> extends Propert
 	private ImageResource resource;
 
 	public ImageMixin(final UIO uiObject) {
-		super(uiObject, CssAttribute.SRC, FromString.TO_STRING);
+		super(uiObject, HTMLAttributes.SRC, FromString.TO_STRING);
 	}
 
 	@Override

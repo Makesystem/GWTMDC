@@ -19,22 +19,32 @@
  */
 package gwt.material.design.components.client.constants;
 
+import com.google.gwt.dom.client.Style.HasCssName;
+
 /**
  * @author Richeli Vargas
  */
-public enum FlexDirection {
-    ROW("row"),
-    ROW_REVERSE("row-reverse"),
-    COLUMN("column"),
-    COLUMN_REVERSE("column-reverse");
+public enum FlexDirection implements BrowserPrefixCssType, HasCssName {
+	ROW("row"), ROW_REVERSE("row-reverse"), COLUMN("column"), COLUMN_REVERSE("column-reverse");
 
-    private String value;
+	private String value;
 
-    FlexDirection(final String value) {
-        this.value = value;
-    }
+	FlexDirection(final String value) {
+		this.value = value;
+	}
 
-    public String getValue() {
-        return value;
-    }
+	@Override
+	public String getIeValue() {
+		return value;
+	}
+
+	@Override
+	public String getValue() {
+		return value;
+	}
+
+	@Override
+	public String getCssName() {
+		return value;
+	}
 }

@@ -19,28 +19,31 @@
  */
 package gwt.material.design.components.client.base.mixin;
 
-import gwt.material.design.components.client.base.interfaces.FromString;
-import gwt.material.design.components.client.base.interfaces.HasPattern;
-import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
+import gwt.material.design.components.client.base.interfaces.HasWordBreak;
+import gwt.material.design.components.client.base.mixin.base.CssAttributeMixin;
 import gwt.material.design.components.client.base.widget.MaterialUIObject;
-import gwt.material.design.components.client.constants.HTMLAttributes;
+import gwt.material.design.components.client.constants.CssProperties;
+import gwt.material.design.components.client.constants.WordBreak;
 
 /**
  * @author Richeli Vargas
  */
-public class PatternMixin<UIO extends MaterialUIObject & HasPattern> extends AttributeMixin<UIO, String> implements HasPattern {
+public class WordBreakMixin<UIO extends MaterialUIObject & HasWordBreak> extends CssAttributeMixin<UIO> implements HasWordBreak {
 
-	public PatternMixin(final UIO uiObject) {
-		super(uiObject, HTMLAttributes.PATTERN, FromString.TO_STRING);
+	private WordBreak wordBreak;
+	
+	public WordBreakMixin(final UIO uiObject) {
+		super(uiObject, CssProperties.WORD_BREAK);
 	}
 
 	@Override
-	public void setPattern(String pattern) {
-		setValue(pattern);
+	public void setWordBreak(final WordBreak wordBreak) {
+		this.wordBreak = wordBreak;
+		setPropertyValue(wordBreak);
 	}
 
 	@Override
-	public String getPattern() {
-		return getValue();
+	public WordBreak getWordBreak() {
+		return wordBreak;
 	}
 }

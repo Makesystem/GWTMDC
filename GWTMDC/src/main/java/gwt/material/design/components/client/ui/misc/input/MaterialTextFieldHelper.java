@@ -26,7 +26,7 @@ import gwt.material.design.components.client.base.interfaces.FromString;
 import gwt.material.design.components.client.base.interfaces.HasHelperText;
 import gwt.material.design.components.client.base.mixin.ToggleStyleMixin;
 import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.ui.html.P;
 
@@ -42,7 +42,7 @@ public class MaterialTextFieldHelper extends P implements HasHelperText {
 	protected final ToggleStyleMixin<MaterialTextFieldHelper> helpValidationMixin = new ToggleStyleMixin<>(this,
 			CssName.MDC_TEXT_FIELD__HELPER_TEXT_VALIDATION_MSG);
 	protected final AttributeMixin<MaterialTextFieldHelper, Boolean> ariaHiddenMixin = new AttributeMixin<>(this,
-			CssAttribute.ARIA_HIDDEN, true, FromString.TO_BOOLEAN);
+			HTMLAttributes.ARIA_HIDDEN, true, FromString.TO_BOOLEAN);
 
 	public MaterialTextFieldHelper() {
 		super(CssName.MDC_TEXT_FIELD__HELPER_TEXT);

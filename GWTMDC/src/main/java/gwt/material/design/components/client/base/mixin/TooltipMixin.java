@@ -32,7 +32,7 @@ import gwt.material.design.components.client.base.interfaces.HasTooltip;
 import gwt.material.design.components.client.base.mixin.base.AbstractMixin;
 import gwt.material.design.components.client.base.widget.MaterialUIObject;
 import gwt.material.design.components.client.constants.Color;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.HtmlElements;
@@ -62,7 +62,7 @@ public class TooltipMixin<UIO extends MaterialUIObject & HasTooltip> extends Abs
 	@Override
 	public void setTooltip(String tooltip) {
 
-		StyleHelper.setAttribute(uiObject, CssAttribute.TOOLTIP, tooltip);
+		StyleHelper.setAttribute(uiObject, HTMLAttributes.TOOLTIP, tooltip);
 		unbind();
 
 		if (tooltip != null && !tooltip.isEmpty()) {

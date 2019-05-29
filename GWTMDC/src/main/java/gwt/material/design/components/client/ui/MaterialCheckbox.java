@@ -31,7 +31,7 @@ import gwt.material.design.components.client.base.mixin.base.PropertyMixin;
 import gwt.material.design.components.client.base.widget.MaterialSelectedField;
 import gwt.material.design.components.client.constants.BorderRadius;
 import gwt.material.design.components.client.constants.Color;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.InputType;
@@ -61,7 +61,7 @@ public class MaterialCheckbox extends MaterialSelectedField implements HasText, 
 	// Style mixin
 	// /////////////////////////////////////////////////////////////
 	protected final PropertyMixin<Input, Boolean> indeterminateMixin = new PropertyMixin<>(input,
-			CssAttribute.INDETERMINATE, false, FromString.TO_BOOLEAN);
+			HTMLAttributes.INDETERMINATE, false, FromString.TO_BOOLEAN);
 
 	public MaterialCheckbox() {
 		super(CssName.MDC_FORM_FIELD);

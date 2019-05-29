@@ -19,23 +19,26 @@
  */
 package gwt.material.design.components.client.constants;
 
+import com.google.gwt.dom.client.Style.HasCssName;
+
 /**
  * @author Richeli Vargas
  */
-public enum FlexWrap {
-    NOWRAP("nowrap"),
-    WRAP("wrap"),
-    WRAP_REVERSE("wrap-reverse"),
-    INITIAL("initial"),
-    INHERIT("inherit");
+public enum FlexWrap implements HasCssName {
+	NOWRAP("nowrap"), WRAP("wrap"), WRAP_REVERSE("wrap-reverse"), INITIAL("initial"), INHERIT("inherit");
 
-    private final String value;
+	private final String cssName;
 
-    FlexWrap(final String value) {
-        this.value = value;
-    }
+	FlexWrap(final String cssName) {
+		this.cssName = cssName;
+	}
 
-    public String getValue() {
-        return value;
-    }
+	public String getValue() {
+		return cssName;
+	}
+
+	@Override
+	public String getCssName() {
+		return cssName;
+	}
 }

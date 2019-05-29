@@ -26,7 +26,7 @@ import gwt.material.design.components.client.base.interfaces.HasAutoInitData;
 import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
 import gwt.material.design.components.client.base.widget.MaterialUIObject;
 import gwt.material.design.components.client.constants.AutoInitData;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 
 /**
  * @author Richeli Vargas
@@ -37,7 +37,7 @@ public class AutoInitDataMixin<UIO extends MaterialUIObject & HasAutoInitData> e
 	private HandlerRegistration handler;
 
 	public AutoInitDataMixin(final UIO uiObject) {
-		super(uiObject, CssAttribute.DATA_MDC_AUTO_INIT, (value) -> AutoInitData.fromStyleName(value));
+		super(uiObject, HTMLAttributes.DATA_MDC_AUTO_INIT, (value) -> AutoInitData.fromStyleName(value));
 	}
 
 	void init() {

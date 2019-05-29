@@ -19,31 +19,35 @@
  */
 package gwt.material.design.components.client.constants;
 
+import com.google.gwt.dom.client.Style.HasCssName;
+
 /**
- * @author Richeli Vargas 
+ * @author Richeli Vargas
  */
-public enum FlexJustifyContent implements BrowserPrefixCssType {
-    SPACE_BETWEEN("justify", "space-between"),
-    START("start", "flex-start"),
-    CENTER("center", "center"),
-    END("end", "flex-end"),
-    SPACE_AROUND("distribute", "space-around");
+public enum FlexJustifyContent implements BrowserPrefixCssType, HasCssName {
+	SPACE_BETWEEN("justify", "space-between"), START("start", "flex-start"), CENTER("center", "center"),
+	END("end", "flex-end"), SPACE_AROUND("distribute", "space-around");
 
-    private final String ieValue;
-    private final String value;
+	private final String ieValue;
+	private final String cssName;
 
-    FlexJustifyContent(final String ieValue, final String value) {
-        this.ieValue = ieValue;
-        this.value = value;
-    }
+	FlexJustifyContent(final String ieValue, final String cssName) {
+		this.ieValue = ieValue;
+		this.cssName = cssName;
+	}
 
-    @Override
-    public String getValue() {
-        return value;
-    }
+	@Override
+	public String getValue() {
+		return cssName;
+	}
 
-    @Override
-    public String getIeValue() {
-        return ieValue;
-    }
+	@Override
+	public String getIeValue() {
+		return ieValue;
+	}
+	
+	@Override
+	public String getCssName() {
+		return cssName;
+	}
 }

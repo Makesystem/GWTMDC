@@ -26,7 +26,7 @@ import com.google.gwt.user.client.ui.Widget;
 import gwt.material.design.components.client.base.interfaces.FromString;
 import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
 import gwt.material.design.components.client.base.widget.MaterialUIObject;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 
 /**
  * @author Richeli Vargas
@@ -36,7 +36,7 @@ public class EnabledMixin<UIO extends MaterialUIObject & HasEnabled> extends Att
 	private HandlerRegistration handler;
 
 	public EnabledMixin(final UIO uiObject) {
-		super(uiObject, CssAttribute.DISABLED, FromString.TO_BOOLEAN);
+		super(uiObject, HTMLAttributes.DISABLED, FromString.TO_BOOLEAN);
 	}
 
 	void clearHandler() {

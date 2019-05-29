@@ -98,7 +98,7 @@ import gwt.material.design.components.client.base.mixin.TypeMixin;
 import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
 import gwt.material.design.components.client.constants.AutoInitData;
 import gwt.material.design.components.client.constants.Color;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.Elevation;
 import gwt.material.design.components.client.constants.HideOn;
 import gwt.material.design.components.client.constants.Role;
@@ -173,16 +173,16 @@ public class MaterialWidget extends MaterialUIObject
 	protected final TypeMixin<MaterialWidget, Elevation> elevationMixin = new TypeMixin<>(this);
 	protected final TypeMixin<MaterialWidget, HideOn> hideOnMixin = new TypeMixin<>(this);
 	protected final TooltipMixin<MaterialWidget> tooltipMixin = new TooltipMixin<>(this);
-	protected final AttributeMixin<MaterialWidget, Role> roleMixin = new AttributeMixin<>(this, CssAttribute.ROLE, value -> Role.fromStyleName(value));
-	protected final AttributeMixin<MaterialWidget, String> rtlMixin = new AttributeMixin<>(this, CssAttribute.DIR, FromString.TO_STRING);
-	protected final AttributeMixin<MaterialWidget, String> altMixin = new AttributeMixin<>(this, CssAttribute.ALT, FromString.TO_STRING);
-	protected final AttributeMixin<MaterialWidget, String> ariaLabelMixin = new AttributeMixin<>(this, CssAttribute.ARIA_LABEL, FromString.TO_STRING);
-	protected final AttributeMixin<MaterialWidget, String> ariaControlsMixin = new AttributeMixin<>(this, CssAttribute.ARIA_CONTROLS, FromString.TO_STRING);
-	protected final AttributeMixin<MaterialWidget, String> ariaDescribedByMixin = new AttributeMixin<>(this, CssAttribute.ARIA_DESCRIBEDBY, FromString.TO_STRING);
-	protected final AttributeMixin<MaterialWidget, Boolean> ariaSelectedMixin = new AttributeMixin<>(this, CssAttribute.ARIA_SELECTED, false, FromString.TO_BOOLEAN);
-	protected final AttributeMixin<MaterialWidget, Boolean> ariaModalMixin = new AttributeMixin<>(this, CssAttribute.ARIA_MODAL, false, FromString.TO_BOOLEAN);
-	protected final AttributeMixin<MaterialWidget, String> ariaLabelledByMixin = new AttributeMixin<>(this, CssAttribute.ARIA_LABELLEDBY, FromString.TO_STRING);
-	protected final AttributeMixin<MaterialWidget, Integer> tabindexMixin = new AttributeMixin<>(this, CssAttribute.TABINDEX, FromString.TO_INTEGER);
+	protected final AttributeMixin<MaterialWidget, Role> roleMixin = new AttributeMixin<>(this, HTMLAttributes.ROLE, value -> Role.fromStyleName(value));
+	protected final AttributeMixin<MaterialWidget, String> rtlMixin = new AttributeMixin<>(this, HTMLAttributes.DIR, FromString.TO_STRING);
+	protected final AttributeMixin<MaterialWidget, String> altMixin = new AttributeMixin<>(this, HTMLAttributes.ALT, FromString.TO_STRING);
+	protected final AttributeMixin<MaterialWidget, String> ariaLabelMixin = new AttributeMixin<>(this, HTMLAttributes.ARIA_LABEL, FromString.TO_STRING);
+	protected final AttributeMixin<MaterialWidget, String> ariaControlsMixin = new AttributeMixin<>(this, HTMLAttributes.ARIA_CONTROLS, FromString.TO_STRING);
+	protected final AttributeMixin<MaterialWidget, String> ariaDescribedByMixin = new AttributeMixin<>(this, HTMLAttributes.ARIA_DESCRIBEDBY, FromString.TO_STRING);
+	protected final AttributeMixin<MaterialWidget, Boolean> ariaSelectedMixin = new AttributeMixin<>(this, HTMLAttributes.ARIA_SELECTED, false, FromString.TO_BOOLEAN);
+	protected final AttributeMixin<MaterialWidget, Boolean> ariaModalMixin = new AttributeMixin<>(this, HTMLAttributes.ARIA_MODAL, false, FromString.TO_BOOLEAN);
+	protected final AttributeMixin<MaterialWidget, String> ariaLabelledByMixin = new AttributeMixin<>(this, HTMLAttributes.ARIA_LABELLEDBY, FromString.TO_STRING);
+	protected final AttributeMixin<MaterialWidget, Integer> tabindexMixin = new AttributeMixin<>(this, HTMLAttributes.TABINDEX, FromString.TO_INTEGER);
 
 	private String[] initialClasses;
 

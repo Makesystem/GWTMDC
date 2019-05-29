@@ -41,7 +41,7 @@ import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
 import gwt.material.design.components.client.constants.BorderCollapse;
 import gwt.material.design.components.client.constants.BorderRadius;
 import gwt.material.design.components.client.constants.Color;
-import gwt.material.design.components.client.constants.CssAttribute;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.Display;
 import gwt.material.design.components.client.constants.Flex;
@@ -62,7 +62,7 @@ import gwt.material.design.components.client.utils.helper.StyleHelper;
 public class MaterialUIObject extends ComplexPanel implements HasId, HasFlexbox {
 
 	protected final FlexboxMixin<MaterialUIObject> flexboxMixin = new FlexboxMixin<>(this);
-	protected final AttributeMixin<MaterialUIObject, String> idMixin = new AttributeMixin<>(this, CssAttribute.ID,
+	protected final AttributeMixin<MaterialUIObject, String> idMixin = new AttributeMixin<>(this, HTMLAttributes.ID,
 			FromString.TO_STRING);
 
 	public MaterialUIObject(Element element) {
