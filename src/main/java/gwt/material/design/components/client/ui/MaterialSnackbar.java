@@ -62,12 +62,13 @@ public class MaterialSnackbar extends Div implements HasText {
 	@Override
 	protected void onInitialize() {
 		
+		actions.add(action);
+		actions.add(dismiss);
+		
 		surface.setRole(Role.STATUS);
 		surface.setAttribute(HTMLAttributes.ARIA_LIVE, "polite");
 		surface.add(label);
 		surface.add(actions);
-		surface.add(action);
-		surface.add(dismiss);
 		add(surface);
 		
 		super.onInitialize();
@@ -106,7 +107,13 @@ public class MaterialSnackbar extends Div implements HasText {
 		setAttribute(HTMLAttributes.DISMISS, String.valueOf(dismiss).toLowerCase());
 	}
 	
-	public final native void open() /*-{	
+
+	public final void open() {
+		_open();
+		position();
+	}
+	
+	public final native void _open() /*-{	
 		var snackbar = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;		
 		if(snackbar) {
 			
@@ -135,22 +142,54 @@ public class MaterialSnackbar extends Div implements HasText {
 	
 	public final native void position() /*-{	
 		
-		var snackbar = this.@gwt.material.design.components.client.base.widget.MaterialWidget::getElement()();
+		var snackbar = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
 		
-		console.log("top: " + $wnd.jQuery(snackbar).offset().top);
-		console.log("width: " + $wnd.jQuery(snackbar).children()[0].width());
-		console.log("left: " + $wnd.jQuery(snackbar).offset().left);
-		console.log("height: " + $wnd.jQuery(snackbar).children()[0].height());
-	
-		$wnd.jQuery(".mdc-fab").each(function( index ) {
+		if(!snackbar || !snackbar.isOpen)
+			return;
+				
+		var snackbar_surface_class = "." + @gwt.material.design.components.client.constants.CssName::MDC_SNACKBAR__SURFACE;
+		var fab_class = "." + @gwt.material.design.components.client.constants.CssName::MDC_FAB;
+		
+		var snackbar_element = this.@gwt.material.design.components.client.base.widget.MaterialWidget::getElement()();			
+				
+		var snackbar_width = $wnd.jQuery(snackbar_element).find(snackbar_surface_class).outerWidth(true);
+		var snackbar_height = $wnd.jQuery(snackbar_element).find(snackbar_surface_class).outerHeight(true);
+		var snackbar_top = $wnd.jQuery(snackbar_element).offset().top;
+		var snackbar_left = $wnd.jQuery(snackbar_element).offset().left;
+		var snackbar_bottom = snackbar_top + snackbar_height;
+		var snackbar_right = snackbar_left + snackbar_width;
+			
+		var bottom = 0;	
+			
+		$wnd.jQuery(fab_class).each(function( index ) {
 
-  			console.log(index + " -- top: " + $wnd.jQuery(this).offset().top);
-			console.log(index + " -- width: " + $wnd.jQuery(this).width());
-			console.log(index + " -- left: " + $wnd.jQuery(this).offset().left);
-			console.log(index + " -- height: " + $wnd.jQuery(this).height());
+			var fab_width = $wnd.jQuery(this).outerWidth(true);
+			var fab_height = $wnd.jQuery(this).outerHeight(true);
+			var fab_top = $wnd.jQuery(this).offset().top;
+			var fab_left = $wnd.jQuery(this).offset().left;
+			var fab_bottom = fab_top + fab_height;
+			var fab_right = fab_left + fab_width;	
+
+			var fab_inner_snackbar = 
+					fab_top > 0
+				&& 	fab_left > 0
+				&&	((fab_left >= snackbar_left && fab_left <= snackbar_right) 
+				|| 	(fab_right >= snackbar_left && fab_right <= snackbar_right));
+
+			var adjust_bottom;
+			
+			if(fab_inner_snackbar)
+				adjust_bottom = $wnd.jQuery($wnd).height() - fab_top;
+			else
+				adjust_bottom = 0;
+			
+			if(bottom < adjust_bottom)
+				bottom = adjust_bottom;
 
 		});
-	
+
+		$wnd.jQuery(snackbar_element).css("bottom", bottom + "px");
+		
 	}-*/;
 
 }

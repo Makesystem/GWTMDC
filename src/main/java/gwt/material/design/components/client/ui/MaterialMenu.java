@@ -31,8 +31,8 @@ import gwt.material.design.components.client.base.interfaces.HasRole;
 import gwt.material.design.components.client.base.interfaces.HasToggler;
 import gwt.material.design.components.client.base.mixin.TogglerMixin;
 import gwt.material.design.components.client.constants.CloseAction;
-import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssName;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.Role;
 import gwt.material.design.components.client.events.CloseEvent;
 import gwt.material.design.components.client.events.CloseEvent.CloseHandler;
@@ -54,12 +54,11 @@ public class MaterialMenu extends Div implements HasOpen, HasOpenHandlers, HasCl
 	protected final TogglerMixin<MaterialMenu> togglerMixin = new TogglerMixin<>(this);
 
 	private boolean quickOpen = false;
-	private boolean closeOnClick = false;
 
 	private HandlerRegistration handler;
 
 	public MaterialMenu() {
-		super(CssName.MDC_MENU, CssName.MDC_MENU_SURFACE);
+		super(CssName.MDC_MENU_SURFACE);
 	}
 
 	@Override
@@ -70,23 +69,31 @@ public class MaterialMenu extends Div implements HasOpen, HasOpenHandlers, HasCl
 	@Override
 	protected void onInitialize() {
 
-		items.addStyleName(CssName.MDC_MENU__ITEMS);
 		items.setRole(Role.MENU);
 		items.getElement().setAttribute(HTMLAttributes.ARIA_HIDDEN, Boolean.TRUE.toString().toLowerCase());
 
 		super.add(items);
 		super.onInitialize();
 
+		addNativeOpenEvent(getElement());
 		addNativeCloseEvent(getElement());
 
 	}
 
+	protected native void addNativeOpenEvent(Element element)/*-{
+		var _this = this;
+		var handler = function(event) {
+			_this.@gwt.material.design.components.client.ui.MaterialMenu::fireOpenEvent()();
+		};
+		element.addEventListener('MDCMenuSurface:opened', handler);
+	}-*/;
+	
 	protected native void addNativeCloseEvent(Element element)/*-{
 		var _this = this;
 		var handler = function(event) {
 			_this.@gwt.material.design.components.client.ui.MaterialMenu::fireCloseEvent()();
 		};
-		element.addEventListener('MDCMenu:cancel', handler);
+		element.addEventListener('MDCMenuSurface:closed', handler);
 	}-*/;
 
 	@Override
@@ -112,7 +119,7 @@ public class MaterialMenu extends Div implements HasOpen, HasOpenHandlers, HasCl
 				if (((child instanceof HasEnabled) && !((HasEnabled) child).isEnabled()) || prevent)
 					return;
 
-				if (closeOnClick)
+				if (shouldClose(child.getElement()))
 					close();
 
 			}, ClickEvent.getType());
@@ -122,6 +129,20 @@ public class MaterialMenu extends Div implements HasOpen, HasOpenHandlers, HasCl
 		items.add(child);
 	}
 
+	public native boolean shouldClose(final Element element)/*-{
+		
+		var checkbox_class = "." + @gwt.material.design.components.client.constants.CssName::MDC_CHECKBOX;
+		var radio_class = "." + @gwt.material.design.components.client.constants.CssName::MDC_RADIO;
+		var switch_class = "." + @gwt.material.design.components.client.constants.CssName::MDC_SWITCH;
+		
+		var hasCheckbox = $wnd.jQuery(element).has(checkbox_class).length;
+		var hasRadio = $wnd.jQuery(element).has(radio_class).length;
+		var hasSwitch = $wnd.jQuery(element).has(switch_class).length;
+		
+		return !hasCheckbox && !hasRadio && !hasSwitch;
+		
+	}-*/;
+	
 	@Override
 	public Widget getWidget(int index) {
 		return items.getWidget(index);
@@ -140,12 +161,12 @@ public class MaterialMenu extends Div implements HasOpen, HasOpenHandlers, HasCl
 	@Override
 	public void setOpen(boolean open) {
 
-		if (!isAttached() && handler == null) {
+		if (!isAttached() && handler == null)
 
 			handler = addAttachHandler(event -> {
 
-				if (event.isAttached())
-					setNativeOpen(open);
+				if (event.isAttached() && open)
+					open();
 				else if (handler != null) {
 					handler.removeHandler();
 					handler = null;
@@ -153,43 +174,43 @@ public class MaterialMenu extends Div implements HasOpen, HasOpenHandlers, HasCl
 
 			});
 
-		} else
-			setNativeOpen(open);
+		else if (open)
+			open();
+		else
+			close();
 	}
 
 	@Override
-	public void open() {
-		setOpen(true);
-	}
+	public native void open() /*-{
 
-	@Override
-	public void close() {
-		setOpen(false);
-	}
-
-	protected native void setNativeOpen(boolean open)/*-{
-
-		var _this = this;
 		var menu = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+		
+		if(!menu)
+			return;
+			
 		var quickOpen = this.@gwt.material.design.components.client.ui.MaterialMenu::quickOpen;
-		var oldOpen = menu.open;
+		menu.quickOpen = quickOpen;	
+		 			
+		menu.open();
 
-		menu.quickOpen = quickOpen;
-		menu.open = open;
+	}-*/;
 
-		if (oldOpen != open) {
-			if (open)
-				_this.@gwt.material.design.components.client.ui.MaterialMenu::fireOpenEvent()();
-			else
-				_this.@gwt.material.design.components.client.ui.MaterialMenu::fireCloseEvent()();
-		}
+	@Override
+	public native void close() /*-{
 
+		var menu = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+	
+		if(!menu)
+			return;
+		
+		menu.close();
+	
 	}-*/;
 
 	@Override
 	public native boolean isOpen()/*-{
 		var menu = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
-		return menu && menu.open;
+		return menu && menu.isOpen();
 	}-*/;
 
 	protected void fireCloseEvent() {
@@ -232,14 +253,6 @@ public class MaterialMenu extends Div implements HasOpen, HasOpenHandlers, HasCl
 
 	public void setQuickOpen(final boolean quickOpen) {
 		this.quickOpen = quickOpen;
-	}
-
-	public boolean isCloseOnClick() {
-		return closeOnClick;
-	}
-
-	public void setCloseOnClick(boolean closeOnClick) {
-		this.closeOnClick = closeOnClick;
 	}
 
 }

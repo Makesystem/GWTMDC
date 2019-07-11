@@ -182,6 +182,8 @@
 /* ==========================================================================
    List
    ========================================================================== */
+.mdc-list {
+	border-radius: var(--mdc-rounded-border-radius);}
 .mdc-list-item:not([dir="rtl"]){
 	padding-right: 0;}
 	.mdc-list-item[dir="rtl"]{
@@ -484,7 +486,10 @@ i.mdc-list-item__graphic {
 .mdc-top-app-bar .mdc-floating-label,
 .mdc-top-app-bar .mdc-text-field-helper-text {
 	display: none;}	
-
+.mdc-top-app-bar .mdc-top-app-bar__navigation-icon,
+.mdc-top-app-bar .mdc-top-app-bar__action-item {
+	width: 48px;
+	height: 48px;}
 /* Disabled settings */ 
 	
 /* ==========================================================================
@@ -590,15 +595,13 @@ i.mdc-list-item__graphic {
 /* ==========================================================================
    Snackbar
    ========================================================================== */   
-.mdc-snackbar {
-	z-index: 4;}  
+.mdc-snackbar {}  
 
 .mdc-snackbar .mdc-snackbar__action {
 	color: var(--mdc-snackbar-action-ink-color);}
 .mdc-snackbar:not([dismiss=true]) .mdc-snackbar__dismiss,	
 .mdc-snackbar .mdc-snackbar__action:empty {
-	display: none;}
-		
+	display: none;}		
 	
 /* Disabled settings */
 

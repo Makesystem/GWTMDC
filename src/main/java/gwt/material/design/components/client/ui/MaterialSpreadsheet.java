@@ -85,7 +85,7 @@ public class MaterialSpreadsheet extends Div {
 		options.selectionCopy = true;
 		options.tableOverflow = false;
 		options.tableHeight = "300px";
-		options.contextMenuClass = CssName.MDC_MENU;
+		options.contextMenuClass = CssName.MDC_MENU_SURFACE;
 		options.contextMenuTextClass = CssName.MDC_MENU__TEXT;
 		options.contextMenuCommandClass = CssName.MDC_MENU__COMMAND;
 
