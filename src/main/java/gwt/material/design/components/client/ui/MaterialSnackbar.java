@@ -113,7 +113,7 @@ public class MaterialSnackbar extends Div implements HasText {
 		position();
 	}
 	
-	public final native void _open() /*-{	
+	protected final native void _open() /*-{	
 		var snackbar = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;		
 		if(snackbar) {
 			
