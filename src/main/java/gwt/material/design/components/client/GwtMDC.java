@@ -73,12 +73,14 @@ public class GwtMDC implements EntryPoint {
 		//injectJs(MaterialResources.INSTANCE.jExcelDropdownJs());
 		//injectJs(MaterialResources.INSTANCE.jExcelCalendarJs());
 		injectJs(MaterialResources.INSTANCE.jExcelJs());
+		// Data table
+		injectJs(MaterialResources.INSTANCE.dataTableJs());
 	}
 
 	public static void loadCssResources() {
 
 		// Clear old styles
-		for (StyleElement style : styles) {
+		for (final StyleElement style : styles) {
 			style.removeFromParent();
 		}
 
@@ -103,7 +105,9 @@ public class GwtMDC implements EntryPoint {
 				injectCss(MaterialResources.INSTANCE.chartMixinCss()),
 				// Load default values
 				injectCss(MaterialResources.INSTANCE.componentsAttributesCss()),
-				injectCss(MaterialResources.INSTANCE.themeAttributesCss()) };
+				injectCss(MaterialResources.INSTANCE.themeAttributesCss()),
+				// Data Table
+				injectCss(MaterialResources.INSTANCE.dataTableCss())};
 
 	}
 

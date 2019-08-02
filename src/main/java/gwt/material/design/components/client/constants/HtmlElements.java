@@ -64,7 +64,14 @@ public enum HtmlElements {
 	H5("h5"),
 	H6("h6"),
 	SELECT("select"),
-	OPTION("option");
+	OPTION("option"),
+	TABLE("table"),
+	THEAD("thead"),
+	TBODY("tbody"),
+	TFOOT("tfoot"),
+	TH("th"),
+	TD("td"),
+	TR("tr");
 	
 	private final String tag;
 	

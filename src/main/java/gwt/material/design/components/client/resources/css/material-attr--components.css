@@ -236,16 +236,16 @@
 	--mdc-dialog-action-raised-ink-color: var(--mdc-dialog-body-fill-color);
   	
   	/* ================================	*/
-  	/* Text Field attributes														*/
-  	/* Select attributes															*/
-  	/* Notch attributes															*/
+  	/* Text Field attributes			*/
+  	/* Select attributes				*/
+  	/* Notch attributes					*/
   	/* ================================	*/
 	--mdc-input__ink-color: var(--mdc-theme-text-secondary-on-background);
 	--mdc-input__fill-color: var(--mdc-theme-background);
 	--mdc-input__focused-color: var(--mdc-theme-primary);
 	
 	/* ================================	*/
-  	/* Tree attributes																*/
+  	/* Tree attributes					*/
   	/* ================================	*/
 	--mdc-tree--ink-color: var(--mdc-theme-text-primary-on-background);	
   	--mdc-tree--fill-color: var(--mdc-theme-background);
@@ -253,7 +253,7 @@
   	--mdc-tree--hover-ink-color: var(--mdc-theme-on-secondary);
   	
 	/* ================================	*/
-  	/* Spreadsheet attributes													*/
+  	/* Spreadsheet attributes			*/
   	/* ================================	*/
   	--mdc-spreadsheet--cell-padding: 1px;
   	--mdc-spreadsheet--ink-color: var(--mdc-theme-on-surface);  	
@@ -268,17 +268,35 @@
   	--mdc-spreadsheet--corner--border-color: var(--mdc-spreadsheet--selected-ink-color);
   	
   	/* ================================	*/
-  	/* Layout Grid																	*/
+  	/* Datatable attributes			*/
   	/* ================================	*/
-  --mdc-layout-grid-margin-desktop: 24px;
-  --mdc-layout-grid-gutter-desktop: 24px;
-  --mdc-layout-grid-column-width-desktop: 72px;
-  --mdc-layout-grid-margin-tablet: 16px;
-  --mdc-layout-grid-gutter-tablet: 16px;
-  --mdc-layout-grid-column-width-tablet: 72px;
-  --mdc-layout-grid-margin-phone: 16px;
-  --mdc-layout-grid-gutter-phone: 16px;
-  --mdc-layout-grid-column-width-phone: 72px;
+  	--mdc-datatable--cell-padding: 4px;
+  	--mdc-datatable--ink-color: var(--mdc-theme-on-surface);  	
+  	--mdc-datatable--fill-color: var(--mdc-theme-surface);
+  	--mdc-datatable--fixed-ink-color: var(--mdc-spreadsheet--ink-color);  	
+  	--mdc-datatable--fixed-fill-color: var(--mdc-spreadsheet--fill-color);
+  	--mdc-datatable--border-width: 1px;
+  	--mdc-datatable--border-color: var(--mdc-theme-on-surface);
+  	--mdc-datatable--border: var(--mdc-datatable--border-width) solid var(--mdc-datatable--border-color);
+  	--mdc-datatable--selected-color: var(--mdc-theme-primary);
+  	--mdc-datatable--selected-ink-color: var(--mdc-theme-on-primary);
+  	--mdc-datatable--hover-color: var(--mdc-theme-secondary);
+  	--mdc-datatable--hover-ink-color: var(--mdc-theme-on-secondary);
+  	--mdc-datatable--corner--fill-color: var(--mdc-spreadsheet--selected-color);
+  	--mdc-datatable--corner--border-color: var(--mdc-spreadsheet--selected-ink-color);
+  	  	
+  	/* ================================	*/
+  	/* Layout Grid						*/
+  	/* ================================	*/
+  	--mdc-layout-grid-margin-desktop: 24px;
+  	--mdc-layout-grid-gutter-desktop: 24px;
+  	--mdc-layout-grid-column-width-desktop: 72px;
+  	--mdc-layout-grid-margin-tablet: 16px;
+  	--mdc-layout-grid-gutter-tablet: 16px;
+  	--mdc-layout-grid-column-width-tablet: 72px;
+  	--mdc-layout-grid-margin-phone: 16px;
+  	--mdc-layout-grid-gutter-phone: 16px;
+  	--mdc-layout-grid-column-width-phone: 72px;
 }
 
 /* ==========================================================================

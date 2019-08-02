@@ -152,6 +152,15 @@ public interface MaterialResources extends ClientBundle {
 	TextResource leaderLineJs();
 
 	// ////////////////////////////////////////
+	// Data Table
+	// ////////////////////////////////////////
+	@Source("js/data-table.min.js")
+	TextResource dataTableJs();
+	
+	@Source("css/data-table.css")
+	TextResource dataTableCss();
+	
+	// ////////////////////////////////////////
 	// JExcel
 	// ////////////////////////////////////////
 

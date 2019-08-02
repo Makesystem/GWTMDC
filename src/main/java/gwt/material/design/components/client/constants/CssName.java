@@ -586,33 +586,17 @@ public interface CssName {
 
 	String	MDC_DATEPICKER__HEADER__MULTI_DATE				= "mdc-datepicker__header--multi_date";
 
-	// OLD
-
-	String	MDC_DATEPICKER__ITEM_TODAY						= "mdc-datepicker__item_today";
-	String	MDC_DATEPICKER__ITEM__TOOLTIP_INDICATOR			= "mdc-datepicker__item--tooltip-indicator";
-	String	MDC_DATEPICKER__ACTIONS							= "mdc-datepicker__actions";
-	String	MDC_DATEPICKER__ACTION							= "mdc-datepicker__action";
-
-	String	MDC_DATEPICKER__HEADER__YEAR					= "mdc-datepicker__header--year";
-	String	MDC_DATEPICKER__HEADER__DATE					= "mdc-datepicker__header--date";
-	String	MDC_DATEPICKER__HEADER_PERIOD					= "mdc-datepicker__header_period";
-	String	MDC_DATEPICKER__HEADER_PERIOD__PLACEHOLDER		= "mdc-datepicker__header_period--placeholder";
-
-	String	MDC_DATEPICKER__DAY_SELECTOR					= "mdc-datepicker__day-selector";
-	String	MDC_DATEPICKER__DAY_SELECTOR__MONTH__LABEL		= "mdc-datepicker__day-selector--month--label";
-	String	MDC_DATEPICKER__DAY_SELECTOR__WEEK__CONTENT		= "mdc-datepicker__day-selector--week--content";
-	String	MDC_DATEPICKER__DAY_SELECTOR__WEEK__LABEL		= "mdc-datepicker__day-selector--week--label";
-
-	String	MDC_DATEPICKER__MONTH_SELECTOR					= "mdc-datepicker__month-selector";
-	String	MDC_DATEPICKER__YEAR_SELECTOR					= "mdc-datepicker__year-selector";
-
-	String	MDC_DATEPICKER__RANGE__INPUTS					= "mdc-datepicker__range__inputs";
-	String	MDC_DATEPICKER__RANGE__MIN						= "mdc_datepicker__range--min";
-	String	MDC_DATEPICKER__RANGE__MAX						= "mdc_datepicker__range--max";
-	String	MDC_DATEPICKER__RANGE__BETWEEN					= "mdc_datepicker__range--between";
 	// Dialog
 	String	MDC_DATEPICKER__DIALOG							= "mdc-datepicker__dialog";
 
+	// //////////////////////////////////////////////////////
+	// DATA TABLE
+	// //////////////////////////////////////////////////////
+	String	MDC_DATA_TABLE									= "mdc-datatable";
+	String	MDC_DATA_TABLE__TABLE							= "dataTable";
+	String	MDC_DATA_TABLE__SELECT							= "mdc-datatable--select";
+	String	MDC_DATA_TABLE__NUMBERS							= "mdc-datatable--numbers";
+	
 	// //////////////////////////////////////////////////////
 	// COLOR PALETTE
 	// //////////////////////////////////////////////////////
