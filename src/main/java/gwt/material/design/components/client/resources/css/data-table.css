@@ -2,10 +2,10 @@
 	width: 100%;
 	font-family: var(--mdc-font-family);
   	color: var(--mdc-datatable--ink-color);
-  	background-color: var(--mdc-datatable--fill-color);
+  	background-color: var(--mdc-datatable--fill-color); 
+  	border: var(--mdc-datatable--border); 	
+  	border-radius: var(--mdc-rounded-border-radius);
 }
-
-
 
 /*
  * Table styles
@@ -332,13 +332,11 @@ table.dataTable td {
 }
 .dataTables_wrapper .dataTables_info {
   clear: both;
-  float: left;
-  padding-top: 0.755em;
+  float: right;
 }
 .dataTables_wrapper .dataTables_paginate {
   float: right;
   text-align: right;
-  padding-top: 0.25em;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button {
 	font-family: var(--mdc-font-family);
@@ -372,7 +370,8 @@ table.dataTable td {
   	border-radius: 4px;
   	
   	color: var(--mdc-datatable--ink-color);
-  	border-radius: var(--mdc-rounded-border-radius); 
+  	border-radius: var(--mdc-rounded-border-radius);
+  	border-radius: 50%; 
 }
 .paginate_button > i {
 	font-size: 1.5rem;
@@ -392,9 +391,7 @@ table.dataTable td {
 .dataTables_wrapper .dataTables_paginate .paginate_button:active {
   color: var(--mdc-datatable--ink-color);
 }
-.dataTables_wrapper .dataTables_paginate .ellipsis {
-  padding: 0 1em;
-}
+
 .dataTables_wrapper .dataTables_processing {
   position: absolute;
   top: 50%;
@@ -458,10 +455,7 @@ table.dataTable td {
   .dataTables_wrapper .dataTables_info,
   .dataTables_wrapper .dataTables_paginate {
     float: none;
-    text-align: center;
-  }
-  .dataTables_wrapper .dataTables_paginate {
-    margin-top: 0.5em;
+    text-align: right;
   }
 }
 @media screen and (max-width: 640px) {
@@ -489,6 +483,32 @@ table.dataTable td {
 	color: var(--mdc-input__ink-color);
 }
 
-.mdc-datatable .mdc-datatable--numbers {
-	
+.mdc-datatable .mdc-datatable--footer {
+	width: 100%;
+	height: 56px;
+	padding: 0;
+	display: flex;
+	justify-content: flex-end;
+	align-content: center;
+	align-items: center;	
+	flex-wrap: wrap;	
+  	border-top: var(--mdc-datatable--border);
+}
+.mdc-datatable .mdc-datatable--footer > * {
+	margin: 0;
+}
+.mdc-datatable .mdc-datatable--footer > :first-child {
+	flex: 1;
+	text-align: right;
+	justify-content: flex-end;
+}
+.mdc-datatable .mdc-datatable--footer > :first-child {
+	margin-right: 16px;
+}
+.mdc-datatable .mdc-datatable--footer > :last-child {
+	margin-left: 16px;
+}
+.mdc-datatable .mdc-datatable--footer > :not(:first-child):not(:last-child) {
+	margin-left: 16px;
+	margin-right: 16px;
 }

@@ -594,6 +594,7 @@ public interface CssName {
 	// //////////////////////////////////////////////////////
 	String	MDC_DATA_TABLE									= "mdc-datatable";
 	String	MDC_DATA_TABLE__TABLE							= "dataTable";
+	String	MDC_DATA_TABLE__FOOTER							= "mdc-datatable--footer";
 	String	MDC_DATA_TABLE__SELECT							= "mdc-datatable--select";
 	String	MDC_DATA_TABLE__NUMBERS							= "mdc-datatable--numbers";
 	

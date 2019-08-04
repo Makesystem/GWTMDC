@@ -277,6 +277,7 @@
   	--mdc-datatable--fixed-fill-color: var(--mdc-spreadsheet--fill-color);
   	--mdc-datatable--border-width: 1px;
   	--mdc-datatable--border-color: var(--mdc-theme-on-surface);
+  	--mdc-datatable--border-color: var(--mdc-filled-color);
   	--mdc-datatable--border: var(--mdc-datatable--border-width) solid var(--mdc-datatable--border-color);
   	--mdc-datatable--selected-color: var(--mdc-theme-primary);
   	--mdc-datatable--selected-ink-color: var(--mdc-theme-on-primary);

@@ -117,6 +117,11 @@ public class MaterialDataTable extends Div {
 	}
 	
 	protected native Element layout(final Element element, final JsOptions opetions)/*-{
+	
+		var MDC_DATA_TABLE__FOOTER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__FOOTER;
+	
+		opetions.dom = 'rt<"' + MDC_DATA_TABLE__FOOTER + '"lip>';	
+	
 		$wnd.jQuery(element).DataTable(opetions);		
 		
 		var MATERIAL_ICONS = @gwt.material.design.components.client.constants.CssName::MATERIAL_ICONS;
