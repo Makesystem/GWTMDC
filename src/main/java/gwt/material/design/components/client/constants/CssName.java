@@ -593,11 +593,14 @@ public interface CssName {
 	// DATA TABLE
 	// //////////////////////////////////////////////////////
 	String	MDC_DATA_TABLE									= "mdc-datatable";
-	String	MDC_DATA_TABLE__TABLE							= "dataTable";
+	String	MDC_DATA_TABLE__WRAPPER							= "mdc-datatable--wrapper";
+	String	MDC_DATA_TABLE__TABLE							= "mdc-datatable--table";
 	String	MDC_DATA_TABLE__HEADER							= "mdc-datatable--header";
 	String	MDC_DATA_TABLE__FOOTER							= "mdc-datatable--footer";
+	String	MDC_DATA_TABLE__FILTER							= "mdc-datatable--filter";
 	String	MDC_DATA_TABLE__SELECT							= "mdc-datatable--select";
-	String	MDC_DATA_TABLE__NUMBERS							= "mdc-datatable--numbers";
+	String	MDC_DATA_TABLE__PAGINATE						= "mdc-datatable--paginate";
+	String	MDC_DATA_TABLE__PAGINATE_BUTTON					= "mdc-datatable--paginate_button";
 	
 	// //////////////////////////////////////////////////////
 	// COLOR PALETTE

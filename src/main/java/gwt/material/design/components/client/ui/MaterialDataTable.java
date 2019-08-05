@@ -122,7 +122,6 @@ public class MaterialDataTable extends Div {
 		var MDC_DATA_TABLE__FOOTER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__FOOTER;				
 		var MDC_DATA_TABLE__SELECT = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__SELECT;
 		var MDC_TYPOGRAPHY__BODY_2 = @gwt.material.design.components.client.constants.CssName::MDC_TYPOGRAPHY__BODY_2;		
-		var MDC_DATA_TABLE__NUMBERS = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__NUMBERS;
 	
 		opetions.dom = '<"' + MDC_DATA_TABLE__HEADER + '"rf>t<"' + MDC_DATA_TABLE__FOOTER + '"lip>';	
 	
@@ -134,7 +133,6 @@ public class MaterialDataTable extends Div {
 		select.addClass(MDC_DATA_TABLE__SELECT);
 		select.addClass(MDC_TYPOGRAPHY__BODY_2);
 		
-		var select = parent.find(".paging_simple_numbers").find("span").addClass(MDC_DATA_TABLE__NUMBERS);
 		
 		return parent;
 		
