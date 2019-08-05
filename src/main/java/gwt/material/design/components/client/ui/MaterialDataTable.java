@@ -155,7 +155,7 @@ public class MaterialDataTable extends Div {
 	public native void addData(final String... data)/*-{	
 		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
 		if(dataTable)
-			dataTable.row.add(data).draw();
+			dataTable.row.add(data).draw().node();
 	}-*/;
 	
 	public native void adjust()/*-{	
