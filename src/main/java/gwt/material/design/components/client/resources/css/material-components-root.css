@@ -39,7 +39,12 @@ i {
 /* ==========================================================================
    Material disabled adjust
    ========================================================================== */
-[disabled] {
+.disabled,
+.disabled:hover,
+.disabled:active,   
+[disabled],
+[disabled]:hover,
+[disabled]:active {
     filter: grayscale(100%);
     pointer-events: none;
     cursor: default;

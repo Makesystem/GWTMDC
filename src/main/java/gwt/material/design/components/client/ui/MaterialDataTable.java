@@ -62,19 +62,19 @@ public class MaterialDataTable extends Div {
 	private PagingType pagingType = PagingType.SIMPLE;
 	
 	public MaterialDataTable() {
-		super(CssName.MDC_DATA_TABLE);
+		super(CssName.MDC_DATA_TABLE, CssName.MDC_TYPOGRAPHY__BODY_2);
 	}
 	
 	@Override
 	protected native JavaScriptObject jsInit(final Element element)/*-{
-		return element;
+		return null;
 	}-*/;
 	
 	public void layout() {
 		
 		options.pagingType = pagingType.getCssName();
 		
-		layout(table.getElement(), options);
+		jsElement = layout(table.getElement(), options);
 	}
 	
 	JsOptions options() {
@@ -100,42 +100,32 @@ public class MaterialDataTable extends Div {
 		options.language.paginate.previous = "<i>navigate_before</i>";
 		options.language.emptyTable = "No data available in table";
 		options.language.info = "_START_ - _END_ of _TOTAL_";
-		options.language.infoEmpty = "Showing 0 to 0 of 0 entries";
-		options.language.infoFiltered = "(filtered from _MAX_ total entries)";
+		options.language.infoEmpty = "0 of ";
+		options.language.infoFiltered = "_MAX_";
 		options.language.infoPostFix = "";
 		options.language.decimal = "";
 		options.language.thousands = ".";
 		options.language.lengthMenu = "Rows per page:  _MENU_";
 		options.language.loadingRecords = "Loading...";
 		options.language.processing = "Processing...";
-		options.language.search = "Search:";
-		options.language.searchPlaceholder = "";
+		options.language.search = "";
+		options.language.searchPlaceholder = "Search";
 		options.language.url = "";
 		options.language.zeroRecords = "No matching records found";
 		
 		return options;
 	}
 	
-	protected native Element layout(final Element element, final JsOptions opetions)/*-{
+	protected native JavaScriptObject layout(final Element element, final JsOptions options)/*-{
 	
 		var MDC_DATA_TABLE__HEADER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__HEADER;
-		var MDC_DATA_TABLE__FOOTER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__FOOTER;				
-		var MDC_DATA_TABLE__SELECT = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__SELECT;
-		var MDC_TYPOGRAPHY__BODY_2 = @gwt.material.design.components.client.constants.CssName::MDC_TYPOGRAPHY__BODY_2;		
+		var MDC_DATA_TABLE__FOOTER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__FOOTER;
 	
-		opetions.dom = '<"' + MDC_DATA_TABLE__HEADER + '"rf>t<"' + MDC_DATA_TABLE__FOOTER + '"lip>';	
+		options.dom = '<"' + MDC_DATA_TABLE__HEADER + '"rf>t<"' + MDC_DATA_TABLE__FOOTER + '"lip>';
+		options.scroller = true;	
+		options.autoWidth = true;
 	
-		$wnd.jQuery(element).DataTable(opetions);				
-				
-		var parent = $wnd.jQuery(element).parent();		
-		
-		var select = parent.find("select");
-		select.addClass(MDC_DATA_TABLE__SELECT);
-		select.addClass(MDC_TYPOGRAPHY__BODY_2);
-		
-		
-		return parent;
-		
+		return $wnd.jQuery(element).DataTable(options);		
 	}-*/;
 	
 	@Override
@@ -180,4 +170,10 @@ public class MaterialDataTable extends Div {
 			tfoot_tr.add(th);
 		});
 	}
+	
+	public native void adjust()/*-{	
+		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+		if(dataTable)
+			dataTable.columns.adjust().draw();
+	}-*/;
 }

@@ -132,8 +132,8 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 	}
 	
 	public static native void autoInit()/*-{
-										$wnd.mdc.autoInit();
-										}-*/;
+		$wnd.mdc.autoInit();
+	}-*/;
 	
 	protected class Appender {
 		
