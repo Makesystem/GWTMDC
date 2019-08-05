@@ -34,6 +34,7 @@ import gwt.material.design.components.client.ui.html.Tfoot;
 import gwt.material.design.components.client.ui.html.Th;
 import gwt.material.design.components.client.ui.html.Thead;
 import gwt.material.design.components.client.ui.html.Tr;
+import gwt.material.design.components.client.ui.misc.dataTable.JsFixedColumns;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguage;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguageAria;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguagePaginate;
@@ -89,6 +90,10 @@ public class MaterialDataTable extends Div {
 		final int[] lengthMenu = { 10, 25, 50, 100 };
 		options.lengthMenu = lengthMenu;
 		
+		options.fixedColumns = new JsFixedColumns();
+		options.fixedColumns.leftColumns = 1;
+		options.fixedColumns.rightColumns = 1;
+		
 		options.language = new JsLanguage();
 		options.language.aria = new JsLanguageAria();
 		options.language.aria.sortAscending = ": activate to sort column ascending";
@@ -123,7 +128,7 @@ public class MaterialDataTable extends Div {
 	
 		options.dom = '<"' + MDC_DATA_TABLE__HEADER + '"rf>t<"' + MDC_DATA_TABLE__FOOTER + '"lip>';
 		options.scroller = true;	
-		options.autoWidth = true;
+		options.autoWidth = false;
 	
 		return $wnd.jQuery(element).DataTable(options);		
 	}-*/;

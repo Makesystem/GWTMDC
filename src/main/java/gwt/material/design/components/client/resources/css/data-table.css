@@ -5,13 +5,14 @@
   	background-color: var(--mdc-datatable--fill-color); 
   	border: var(--mdc-datatable--border); 	
   	border-radius: var(--mdc-rounded-border-radius);
+  	overflow-x: auto; 
 }
 
 /*
  * Table styles
  */
 table.mdc-datatable--table {
-	width: 100%;
+	min-width: 100%;
 	margin: 0 auto;
 	clear: both;
 	border-collapse: separate;
@@ -352,7 +353,7 @@ table.mdc-datatable--table td {
   	clear: both;
   	*zoom: 1;
   	zoom: 1;
-  	width: 100%;
+  	min-width: 100%;
 }
 .mdc-datatable--wrapper .mdc-datatable--length {
   float: left;

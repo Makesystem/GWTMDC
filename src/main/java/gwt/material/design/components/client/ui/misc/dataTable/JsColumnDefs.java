@@ -5,27 +5,18 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 @JsType(isNative = true, name = "Object", namespace = JsPackage.GLOBAL)
-public class JsOptions {
+public class JsColumnDefs {
 
 	
 	@JsProperty
-	public String pagingType;
+	public String width;
 	
 	@JsProperty
-	public boolean responsive;
+	public int[] targets;
 	
 	@JsProperty
-	public boolean paging;
+	public boolean visible;
 	
 	@JsProperty
-	public boolean lengthChange;
-	
-	@JsProperty
-	public int[] lengthMenu;
-	
-	@JsProperty
-	public JsLanguage language;
-	
-	@JsProperty
-	public JsFixedColumns fixedColumns;
+	public boolean searchable;
 }
