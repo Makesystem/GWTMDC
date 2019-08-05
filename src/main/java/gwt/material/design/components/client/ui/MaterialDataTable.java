@@ -118,18 +118,15 @@ public class MaterialDataTable extends Div {
 	
 	protected native Element layout(final Element element, final JsOptions opetions)/*-{
 	
-		var MDC_DATA_TABLE__FOOTER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__FOOTER;
-	
-		opetions.dom = 'rt<"' + MDC_DATA_TABLE__FOOTER + '"lip>';	
-	
-		$wnd.jQuery(element).DataTable(opetions);		
-		
-		var MATERIAL_ICONS = @gwt.material.design.components.client.constants.CssName::MATERIAL_ICONS;
-		
+		var MDC_DATA_TABLE__HEADER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__HEADER;
+		var MDC_DATA_TABLE__FOOTER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__FOOTER;				
 		var MDC_DATA_TABLE__SELECT = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__SELECT;
-		var MDC_TYPOGRAPHY__BODY_2 = @gwt.material.design.components.client.constants.CssName::MDC_TYPOGRAPHY__BODY_2;
-		
-		var MDC_DATA_TABLE__NUMBERS = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__NUMBERS;		
+		var MDC_TYPOGRAPHY__BODY_2 = @gwt.material.design.components.client.constants.CssName::MDC_TYPOGRAPHY__BODY_2;		
+		var MDC_DATA_TABLE__NUMBERS = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__NUMBERS;
+	
+		opetions.dom = '<"' + MDC_DATA_TABLE__HEADER + '"rf>t<"' + MDC_DATA_TABLE__FOOTER + '"lip>';	
+	
+		$wnd.jQuery(element).DataTable(opetions);				
 				
 		var parent = $wnd.jQuery(element).parent();		
 		
