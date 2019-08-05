@@ -26,14 +26,9 @@ import com.google.gwt.dom.client.Element;
 
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.PagingType;
-import gwt.material.design.components.client.constants.Typography;
 import gwt.material.design.components.client.ui.html.Div;
 import gwt.material.design.components.client.ui.html.Table;
-import gwt.material.design.components.client.ui.html.Tbody;
-import gwt.material.design.components.client.ui.html.Tfoot;
-import gwt.material.design.components.client.ui.html.Th;
-import gwt.material.design.components.client.ui.html.Thead;
-import gwt.material.design.components.client.ui.html.Tr;
+import gwt.material.design.components.client.ui.misc.dataTable.JsColumn;
 import gwt.material.design.components.client.ui.misc.dataTable.JsFixedColumns;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguage;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguageAria;
@@ -50,15 +45,7 @@ import gwt.material.design.components.client.ui.misc.dataTable.JsOptions;
 public class MaterialDataTable extends Div {
 	
 	protected final Table table = new Table(CssName.MDC_DATA_TABLE__TABLE, "display");
-	
-	protected final Thead thead = new Thead();
-	protected final Tr thead_tr = new Tr();
-	
-	protected final Tbody tbody = new Tbody();
-	
-	protected final Tfoot tfoot = new Tfoot();
-	protected final Tr tfoot_tr = new Tr();
-	
+		
 	protected final JsOptions options = options();
 	private PagingType pagingType = PagingType.SIMPLE;
 	
@@ -67,16 +54,15 @@ public class MaterialDataTable extends Div {
 	}
 	
 	@Override
-	protected native JavaScriptObject jsInit(final Element element)/*-{
-		return null;
-	}-*/;
-	
-	public void layout() {
-		
-		options.pagingType = pagingType.getCssName();
-		
-		jsElement = layout(table.getElement(), options);
+	protected JavaScriptObject jsInit(final Element element){
+		options.pagingType = pagingType.getCssName();		
+		return draw(table.getElement(), options);
 	}
+	
+	public void draw() {
+		jsInit(getElement());
+	}
+	
 	
 	JsOptions options() {
 		
@@ -89,10 +75,6 @@ public class MaterialDataTable extends Div {
 		
 		final int[] lengthMenu = { 10, 25, 50, 100 };
 		options.lengthMenu = lengthMenu;
-		
-		options.fixedColumns = new JsFixedColumns();
-		options.fixedColumns.leftColumns = 1;
-		options.fixedColumns.rightColumns = 1;
 		
 		options.language = new JsLanguage();
 		options.language.aria = new JsLanguageAria();
@@ -116,13 +98,38 @@ public class MaterialDataTable extends Div {
 		options.language.search = "";
 		options.language.searchPlaceholder = "Search";
 		options.language.url = "";
-		options.language.zeroRecords = "No matching records found";
+		options.language.zeroRecords = "No matching records found";		
+
+		// /////////////////////////
+		// Fixed columns test
+		// /////////////////////////
+		options.fixedColumns = new JsFixedColumns();
+		options.fixedColumns.leftColumns = 1;
+		options.fixedColumns.rightColumns = 1;
 		
+		// /////////////////////////
+		// Defs columns test
+		// /////////////////////////		
+		final JsColumn def = new JsColumn();
+		def.defaultContent = "teste";
+		
+		final JsColumn def_width = new JsColumn();
+		def_width.width = "96px";
+		def_width.orderable = false;
+		
+		options.columns = new JsColumn[] {def, def_width}; 
+				
 		return options;
 	}
 	
-	protected native JavaScriptObject layout(final Element element, final JsOptions options)/*-{
+	protected native JavaScriptObject draw(final Element element, final JsOptions options)/*-{
 	
+		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+		if(dataTable) {
+			dataTable.destroy();			
+			$wnd.jQuery(element).empty(); // empty in case the columns change
+		}
+		
 		var MDC_DATA_TABLE__HEADER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__HEADER;
 		var MDC_DATA_TABLE__FOOTER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__FOOTER;
 	
@@ -130,55 +137,76 @@ public class MaterialDataTable extends Div {
 		options.scroller = true;	
 		options.autoWidth = false;
 	
-		return $wnd.jQuery(element).DataTable(options);		
+		return $wnd.jQuery(element).DataTable(options);	
+			
 	}-*/;
 	
 	@Override
-	protected void onInitialize() {
-		
-		thead.add(thead_tr);
-		tfoot.add(tfoot_tr);
-		
-		table.add(thead);
-		table.add(tbody);
-		table.add(tfoot);
-		
-		add(table);
-		
+	protected void onInitialize() {		
+		add(table);		
 		super.onInitialize();
 	}
 	
-	public void setHeader(final String... data) {
-		thead_tr.clear();
-		Arrays.stream(data).forEach(header -> {
-			final Th th = new Th(Typography.BODY_2.getCssName());
-			th.getElement().setInnerHTML(header);
-			thead_tr.add(th);
-		});
+	public void setColumns(final Column... columns) {
+		options.columns = Arrays.stream(columns).map(Column::toNative).toArray(JsColumn[]::new);
+		jsInit();
 	}
 	
-	public void addData(final String... data) {
-		final Tr tr = new Tr();
-		Arrays.stream(data).forEach(header -> {
-			final Th th = new Th(Typography.BODY_2.getCssName());
-			th.getElement().setInnerHTML(header);
-			tr.add(th);
-		});
-		tbody.add(tr);
-	}
-	
-	public void setFooter(final String... data) {
-		tfoot_tr.clear();
-		Arrays.stream(data).forEach(header -> {
-			final Th th = new Th(Typography.BODY_2.getCssName());
-			th.getElement().setInnerHTML(header);
-			tfoot_tr.add(th);
-		});
-	}
+	public native void addData(final String... data)/*-{	
+		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+		if(dataTable)
+			dataTable.row.add(data).draw();
+	}-*/;
 	
 	public native void adjust()/*-{	
 		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
 		if(dataTable)
 			dataTable.columns.adjust().draw();
 	}-*/;
+	
+	public static class Column {
+		
+		private final JsColumn jsColumn;
+		
+		public Column(
+				final String title) {
+			this(title, null, null, true, true, true);
+		}
+		
+		public Column(
+				final String title, 
+				final String defaultContent) {
+			this(title, null, defaultContent, true, true, true);
+		}
+		
+		public Column(
+				final String title, 
+				final String defaultContent, 
+				final boolean visible, 
+				final boolean orderable, 
+				final boolean searchable) {
+			this(title, null, defaultContent, visible, orderable, searchable);
+		}
+		
+		public Column(
+				final String title, 
+				final String width, 
+				final String defaultContent, 
+				final boolean visible, 
+				final boolean orderable, 
+				final boolean searchable) {
+			jsColumn = new JsColumn();
+			jsColumn.title = title;
+			jsColumn.width = width;
+			jsColumn.defaultContent = defaultContent;
+			jsColumn.visible = visible;
+			jsColumn.orderable = orderable;
+			jsColumn.searchable = searchable;
+		}
+		
+		protected JsColumn toNative() {
+			return jsColumn;
+		}
+		
+	}
 }

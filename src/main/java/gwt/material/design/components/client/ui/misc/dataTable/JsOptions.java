@@ -27,5 +27,8 @@ public class JsOptions {
 	public JsLanguage language;
 	
 	@JsProperty
+	public JsColumn[] columns;
+	
+	@JsProperty
 	public JsFixedColumns fixedColumns;
 }

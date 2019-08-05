@@ -5,17 +5,22 @@ import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 @JsType(isNative = true, name = "Object", namespace = JsPackage.GLOBAL)
-public class JsColumnDefs {
+public class JsColumn {
 
+	@JsProperty
+	public String title;
 	
 	@JsProperty
 	public String width;
 	
 	@JsProperty
-	public int[] targets;
-	
+	public String defaultContent;
+		
 	@JsProperty
 	public boolean visible;
+
+	@JsProperty
+	public boolean orderable;
 	
 	@JsProperty
 	public boolean searchable;
