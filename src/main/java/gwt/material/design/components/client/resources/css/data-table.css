@@ -145,7 +145,8 @@ table.mdc-datatable--table.cell-border tbody tr:first-child td {
 	border-top: none;
 }
 table.mdc-datatable--table.stripe tbody tr.odd, 
-table.mdc-datatable--table.display tbody tr.odd {
+table.mdc-datatable--table.display tbody tr.odd,
+table.mdc-datatable--table td.mdc-datatable--empty { 
 	background-color: var(--mdc-datatable--fill-color);
 }
 table.mdc-datatable--table.stripe tbody tr.odd.selected, 
@@ -413,7 +414,9 @@ table.mdc-datatable--table td {
 	line-height: 1.5rem;
 }
 .mdc-datatable--paginate__button.next, 
-.mdc-datatable--paginate__button.previous {
+.mdc-datatable--paginate__button.previous,
+.mdc-datatable--paginate__button.first, 
+.mdc-datatable--paginate__button.last {
 	max-width: 36px;
 	max-height: 36px;
 }

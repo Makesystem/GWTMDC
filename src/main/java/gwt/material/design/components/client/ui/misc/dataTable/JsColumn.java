@@ -1,5 +1,7 @@
 package gwt.material.design.components.client.ui.misc.dataTable;
 
+import com.google.gwt.core.client.JavaScriptObject;
+
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
@@ -24,4 +26,16 @@ public class JsColumn {
 	
 	@JsProperty
 	public boolean searchable;
+	
+	@JsProperty
+	public int[] orderData;
+	
+	@JsProperty
+	public String type;
+	
+	@JsProperty
+	public JavaScriptObject render;
+
+	@JsProperty
+	public String data;
 }

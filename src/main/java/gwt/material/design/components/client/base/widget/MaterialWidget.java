@@ -220,8 +220,8 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 	}
 	
 	protected native JavaScriptObject jsInit(final Element element)/*-{
-																									return element;
-																									}-*/;
+		return element;
+	}-*/;
 	
 	@Override
 	protected void onLoad() {

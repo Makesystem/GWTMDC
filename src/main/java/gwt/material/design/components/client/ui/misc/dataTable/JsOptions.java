@@ -31,4 +31,7 @@ public class JsOptions {
 	
 	@JsProperty
 	public JsFixedColumns fixedColumns;
+	
+	@JsProperty
+	public Object[] data;
 }

@@ -20,16 +20,18 @@
 package gwt.material.design.components.client.ui;
 
 import java.util.Arrays;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 
+import gwt.material.design.components.client.constants.ColumnType;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.PagingType;
+import gwt.material.design.components.client.constants.RenderType;
 import gwt.material.design.components.client.ui.html.Div;
 import gwt.material.design.components.client.ui.html.Table;
 import gwt.material.design.components.client.ui.misc.dataTable.JsColumn;
-import gwt.material.design.components.client.ui.misc.dataTable.JsFixedColumns;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguage;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguageAria;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguagePaginate;
@@ -38,11 +40,12 @@ import gwt.material.design.components.client.ui.misc.dataTable.JsOptions;
 /**
  * @see https://datatables.net/reference/option/pagingType
  * 
+ * <T> Row type
  * 
  * @author Richeli Vargas
  *
  */
-public class MaterialDataTable extends Div {
+public class MaterialDataTable<T> extends Div {
 	
 	protected final Table table = new Table(CssName.MDC_DATA_TABLE__TABLE, "display");
 		
@@ -55,14 +58,8 @@ public class MaterialDataTable extends Div {
 	
 	@Override
 	protected JavaScriptObject jsInit(final Element element){
-		options.pagingType = pagingType.getCssName();		
 		return draw(table.getElement(), options);
 	}
-	
-	public void draw() {
-		jsInit(getElement());
-	}
-	
 	
 	JsOptions options() {
 		
@@ -70,7 +67,7 @@ public class MaterialDataTable extends Div {
 		
 		options.responsive = true;
 		options.paging = true;
-		options.pagingType = PagingType.SIMPLE.getCssName();
+		options.pagingType = PagingType.FULL.getCssName();
 		options.lengthChange = true;
 		
 		final int[] lengthMenu = { 10, 25, 50, 100 };
@@ -81,8 +78,8 @@ public class MaterialDataTable extends Div {
 		options.language.aria.sortAscending = ": activate to sort column ascending";
 		options.language.aria.sortDescending = ": activate to sort column descending";
 		options.language.paginate = new JsLanguagePaginate();
-		options.language.paginate.first = "First";
-		options.language.paginate.last = "Last";
+		options.language.paginate.first = "<i>first_page</i>";
+		options.language.paginate.last = "<i>last_page</i>";
 		options.language.paginate.next = "<i>navigate_next</i>";
 		options.language.paginate.previous = "<i>navigate_before</i>";
 		options.language.emptyTable = "No data available in table";
@@ -99,7 +96,7 @@ public class MaterialDataTable extends Div {
 		options.language.searchPlaceholder = "Search";
 		options.language.url = "";
 		options.language.zeroRecords = "No matching records found";		
-
+/*
 		// /////////////////////////
 		// Fixed columns test
 		// /////////////////////////
@@ -118,17 +115,25 @@ public class MaterialDataTable extends Div {
 		def_width.orderable = false;
 		
 		options.columns = new JsColumn[] {def, def_width}; 
-				
+*/				
 		return options;
+	}
+
+	public void draw() {
+		jsInit();
 	}
 	
 	protected native JavaScriptObject draw(final Element element, final JsOptions options)/*-{
 	
 		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
 		if(dataTable) {
+			console.log('teste');
 			dataTable.destroy();			
 			$wnd.jQuery(element).empty(); // empty in case the columns change
 		}
+		
+		if(!options.columns)
+			return null;
 		
 		var MDC_DATA_TABLE__HEADER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__HEADER;
 		var MDC_DATA_TABLE__FOOTER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__FOOTER;
@@ -136,6 +141,7 @@ public class MaterialDataTable extends Div {
 		options.dom = '<"' + MDC_DATA_TABLE__HEADER + '"rf>t<"' + MDC_DATA_TABLE__FOOTER + '"lip>';
 		options.scroller = true;	
 		options.autoWidth = false;
+		options.processing = true;
 	
 		return $wnd.jQuery(element).DataTable(options);	
 			
@@ -147,12 +153,19 @@ public class MaterialDataTable extends Div {
 		super.onInitialize();
 	}
 	
-	public void setColumns(final Column... columns) {
-		options.columns = Arrays.stream(columns).map(Column::toNative).toArray(JsColumn[]::new);
-		jsInit();
+	@SuppressWarnings("unchecked")
+	public void setColumns(final Column<T>... columns) {
+		final AtomicInteger index = new AtomicInteger(0);
+		options.columns = Arrays.stream(columns).map(column -> column.setPosition(index.getAndIncrement()).toNative()).toArray(JsColumn[]::new);
+		draw();
 	}
 	
-	public native void addData(final String... data)/*-{	
+	public void setRows(@SuppressWarnings("unchecked") final T... data) {
+		options.data = data;
+		draw();
+	}
+	
+	public native void addData(@SuppressWarnings("unchecked") final T... data)/*-{	
 		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
 		if(dataTable)
 			dataTable.row.add(data).draw().node();
@@ -164,14 +177,48 @@ public class MaterialDataTable extends Div {
 			dataTable.columns.adjust().draw();
 	}-*/;
 	
-	public static class Column {
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public static interface ColumnRender<D> {		
+		public String render(
+				final String data, 
+				final RenderType type, 
+				final D rowData, 
+				final Integer rowIndex,
+				final Integer columnIndex);		
+	}
+	
+	public static class Column<D> {
 		
 		private final JsColumn jsColumn;
+		private int position;
+		
+		public Column(
+				final String title, final ColumnRender<D> render) {
+			this(title, null, null, null, true, true, true, render);
+		}
 		
 		public Column(
 				final String title) {
 			this(title, null, null, true, true, true);
 		}
+		
 		
 		public Column(
 				final String title, 
@@ -191,22 +238,67 @@ public class MaterialDataTable extends Div {
 		public Column(
 				final String title, 
 				final String width, 
-				final String defaultContent, 
+				final String defaultContent,
 				final boolean visible, 
 				final boolean orderable, 
 				final boolean searchable) {
+			this(title, width, defaultContent, null, visible, orderable, searchable, null);
+		}
+		
+		public Column(
+				final String title, 
+				final String width, 
+				final String defaultContent,
+				final ColumnType type,
+				final boolean visible, 
+				final boolean orderable, 
+				final boolean searchable, 
+				final ColumnRender<D> render) {
+			
 			jsColumn = new JsColumn();
 			jsColumn.title = title;
 			jsColumn.width = width;
 			jsColumn.defaultContent = defaultContent;
+			jsColumn.type = type == null ? null : type.getCssName();
 			jsColumn.visible = visible;
 			jsColumn.orderable = orderable;
 			jsColumn.searchable = searchable;
+			jsColumn.render = toFunction(render);
+					
 		}
 		
 		protected JsColumn toNative() {
 			return jsColumn;
 		}
 		
+		protected int getPosition() {
+			return position;
+		}
+		
+		protected Column<D> setPosition(final int position) {
+			this.position = position;
+			return this;
+		}
+		
+		protected native JavaScriptObject toFunction(final ColumnRender<D> render)/*-{
+		
+			if(!render)
+				return null;
+		
+			return function (data, type, row_data, meta) {
+							
+				var render_type = @gwt.material.design.components.client.constants.RenderType::fromStyleName(Ljava/lang/String;)(type);
+			
+				return render.@gwt.material.design.components.client.ui.MaterialDataTable.ColumnRender::render(
+      				Ljava/lang/String;
+      				Lgwt/material/design/components/client/constants/RenderType;
+      				Ljava/lang/Object;
+      				Ljava/lang/Integer;
+      				Ljava/lang/Integer;)
+      				(data, render_type, row_data, meta.row, meta.col);
+    		};
+    		
+		}-*/;
+
 	}
 }
