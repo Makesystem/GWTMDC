@@ -23,4 +23,5 @@ package gwt.material.design.components.client.constants;
  * @author Richeli Vargas
  */
 public interface Align {
+	
 }

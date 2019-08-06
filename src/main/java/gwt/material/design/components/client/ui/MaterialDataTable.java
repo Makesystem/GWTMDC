@@ -29,6 +29,7 @@ import gwt.material.design.components.client.constants.ColumnType;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.PagingType;
 import gwt.material.design.components.client.constants.RenderType;
+import gwt.material.design.components.client.constants.TextAlign;
 import gwt.material.design.components.client.ui.html.Div;
 import gwt.material.design.components.client.ui.html.Table;
 import gwt.material.design.components.client.ui.misc.dataTable.JsColumn;
@@ -139,9 +140,9 @@ public class MaterialDataTable<T> extends Div {
 		var MDC_DATA_TABLE__FOOTER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__FOOTER;
 	
 		options.dom = '<"' + MDC_DATA_TABLE__HEADER + '"rf>t<"' + MDC_DATA_TABLE__FOOTER + '"lip>';
-		options.scroller = true;	
-		options.autoWidth = false;
-		options.processing = true;
+		//options.scroller = true;	
+		//options.autoWidth = false;
+		//options.processing = true;
 	
 		return $wnd.jQuery(element).DataTable(options);	
 			
@@ -211,14 +212,13 @@ public class MaterialDataTable<T> extends Div {
 		
 		public Column(
 				final String title, final ColumnRender<D> render) {
-			this(title, null, null, null, true, true, true, render);
+			this(title, null, null, null, true, true, true, null, render);
 		}
 		
 		public Column(
 				final String title) {
 			this(title, null, null, true, true, true);
-		}
-		
+		}		
 		
 		public Column(
 				final String title, 
@@ -242,7 +242,7 @@ public class MaterialDataTable<T> extends Div {
 				final boolean visible, 
 				final boolean orderable, 
 				final boolean searchable) {
-			this(title, width, defaultContent, null, visible, orderable, searchable, null);
+			this(title, width, defaultContent, null, visible, orderable, searchable, null, null);
 		}
 		
 		public Column(
@@ -253,6 +253,7 @@ public class MaterialDataTable<T> extends Div {
 				final boolean visible, 
 				final boolean orderable, 
 				final boolean searchable, 
+				final TextAlign textAlign,
 				final ColumnRender<D> render) {
 			
 			jsColumn = new JsColumn();
@@ -264,6 +265,7 @@ public class MaterialDataTable<T> extends Div {
 			jsColumn.orderable = orderable;
 			jsColumn.searchable = searchable;
 			jsColumn.render = toFunction(render);
+			jsColumn.className = (textAlign == null ? "" : textAlign.getCssName()) + " mdc-truncate";
 					
 		}
 		

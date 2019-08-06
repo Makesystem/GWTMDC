@@ -250,100 +250,32 @@ table.mdc-datatable--table.order-column.hover tbody tr:hover.selected > .mdc-dat
   	background-color: var(--mdc-filled-color);
 }
 table.mdc-datatable--table.no-footer {
-  border-bottom: var(--mdc-datatable--border);
+  	border-bottom: var(--mdc-datatable--border);
 }
 table.mdc-datatable--table.nowrap th, 
 table.mdc-datatable--table.nowrap td {
-  white-space: nowrap;
+  	white-space: nowrap;
 }
 table.mdc-datatable--table.compact thead th,
 table.mdc-datatable--table.compact thead td {
-  padding: 4px 17px 4px 4px;
+  	padding: 4px 17px 4px 4px;
 }
 table.mdc-datatable--table.compact tfoot th,
 table.mdc-datatable--table.compact tfoot td {
-  padding: 4px;
+  	padding: 4px;
 }
 table.mdc-datatable--table.compact tbody th,
 table.mdc-datatable--table.compact tbody td {
-  padding: 4px;
+  	padding: 4px;
 }
-table.mdc-datatable--table th.dt-left,
-table.mdc-datatable--table td.dt-left {
-  text-align: left;
+table.mdc-datatable--table th,
+table.mdc-datatable--table td {
+  	text-align: left;
 }
-table.mdc-datatable--table th.dt-center,
-table.mdc-datatable--table td.dt-center,
-table.mdc-datatable--table td.mdc-datatable--empty {
-  text-align: center;
-}
-table.mdc-datatable--table th.dt-right,
-table.mdc-datatable--table td.dt-right {
-  text-align: right;
-}
-table.mdc-datatable--table th.dt-justify,
-table.mdc-datatable--table td.dt-justify {
-  text-align: justify;
-}
-table.mdc-datatable--table th.dt-nowrap,
-table.mdc-datatable--table td.dt-nowrap {
-  white-space: nowrap;
-}
-table.mdc-datatable--table thead th.dt-head-left,
-table.mdc-datatable--table thead td.dt-head-left,
-table.mdc-datatable--table tfoot th.dt-head-left,
-table.mdc-datatable--table tfoot td.dt-head-left {
-  text-align: left;
-}
-table.mdc-datatable--table thead th.dt-head-center,
-table.mdc-datatable--table thead td.dt-head-center,
-table.mdc-datatable--table tfoot th.dt-head-center,
-table.mdc-datatable--table tfoot td.dt-head-center {
-  text-align: center;
-}
-table.mdc-datatable--table thead th.dt-head-right,
-table.mdc-datatable--table thead td.dt-head-right,
-table.mdc-datatable--table tfoot th.dt-head-right,
-table.mdc-datatable--table tfoot td.dt-head-right {
-  text-align: right;
-}
-table.mdc-datatable--table thead th.dt-head-justify,
-table.mdc-datatable--table thead td.dt-head-justify,
-table.mdc-datatable--table tfoot th.dt-head-justify,
-table.mdc-datatable--table tfoot td.dt-head-justify {
-  text-align: justify;
-}
-table.mdc-datatable--table thead th.dt-head-nowrap,
-table.mdc-datatable--table thead td.dt-head-nowrap,
-table.mdc-datatable--table tfoot th.dt-head-nowrap,
-table.mdc-datatable--table tfoot td.dt-head-nowrap {
-  white-space: nowrap;
-}
-table.mdc-datatable--table tbody th.dt-body-left,
-table.mdc-datatable--table tbody td.dt-body-left {
-  text-align: left;
-}
-table.mdc-datatable--table tbody th.dt-body-center,
-table.mdc-datatable--table tbody td.dt-body-center {
-  text-align: center;
-}
-table.mdc-datatable--table tbody th.dt-body-right,
-table.mdc-datatable--table tbody td.dt-body-right {
-  text-align: right;
-}
-table.mdc-datatable--table tbody th.dt-body-justify,
-table.mdc-datatable--table tbody td.dt-body-justify {
-  text-align: justify;
-}
-table.mdc-datatable--table tbody th.dt-body-nowrap,
-table.mdc-datatable--table tbody td.dt-body-nowrap {
-  white-space: nowrap;
-}
-
 table.mdc-datatable--table,
 table.mdc-datatable--table th,
 table.mdc-datatable--table td {
-  box-sizing: content-box;
+  	box-sizing: content-box;
 }
 
 /*
@@ -527,15 +459,14 @@ table.mdc-datatable--table td {
 }
 .mdc-datatable .mdc-datatable--header,
 .mdc-datatable .mdc-datatable--footer {
-	width: 100%;
+	min-width: 100%;
 	height: 56px;
 	padding: 0;
 	display: flex;
 	justify-content: flex-end;
 	align-content: center;
 	align-items: center;	
-	flex-wrap: wrap;	
-  	border-top: var(--mdc-datatable--border);}
+	flex-wrap: nowrap;	}
 .mdc-datatable .mdc-datatable--header:empty,
 .mdc-datatable .mdc-datatable--footer:empty{
 	display: none;}
@@ -569,11 +500,15 @@ table.mdc-datatable--table td {
 .mdc-datatable .mdc-datatable--header .mdc-datatable--filter__input::-webkit-outer-spin-button,
 .mdc-datatable .mdc-datatable--header .mdc-datatable--filter__input::-webkit-inner-spin-button {
 	display: none;}
-  	
-  	
+	  	
 .mdc-datatable .mdc-datatable--footer {
+  	background-color: blue;
   	border-top: var(--mdc-datatable--border);}  	
 .mdc-datatable .mdc-datatable--footer > * {
+	min-width: -webkit-max-content;
+  	min-width: -moz-max-content;
+  	min-width: max-content;
+  	background-color: red;
 	margin: 0;}
 .mdc-datatable .mdc-datatable--footer > :first-child {
 	flex: 1;

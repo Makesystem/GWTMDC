@@ -24,14 +24,14 @@ import gwt.material.design.components.client.utils.helper.EnumHelper;
 /**
  * @author Richeli Vargas
  */
-public enum LayoutGridAlign implements Align, CssType {
-	LEFT("mdc-element--align--left"), 
-	CENTER("mdc-element--align--center"), 
-	RIGHT("mdc-element--align--right");
+public enum TextAlign implements Align, CssType {
+	LEFT("mdc-text--align--left"), 
+	CENTER("mdc-text--align--center"), 
+	RIGHT("mdc-text--align--right");
 
 	private final String cssClass;
 
-	LayoutGridAlign(final String cssClass) {
+	TextAlign(final String cssClass) {
 		this.cssClass = cssClass;
 	}
 
@@ -40,7 +40,7 @@ public enum LayoutGridAlign implements Align, CssType {
 		return cssClass;
 	}
 
-	public static LayoutGridAlign fromStyleName(final String styleName) {
-		return EnumHelper.fromStyleName(styleName, LayoutGridAlign.class, CENTER);
+	public static TextAlign fromStyleName(final String styleName) {
+		return EnumHelper.fromStyleName(styleName, TextAlign.class, CENTER);
 	}
 }

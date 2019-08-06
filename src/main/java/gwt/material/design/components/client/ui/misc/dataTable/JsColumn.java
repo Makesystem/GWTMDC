@@ -37,5 +37,5 @@ public class JsColumn {
 	public JavaScriptObject render;
 
 	@JsProperty
-	public String data;
+	public String className;
 }

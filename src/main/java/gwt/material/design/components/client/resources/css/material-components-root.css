@@ -142,6 +142,32 @@ textarea,
 	display: -webkit-box;
 	-webkit-line-clamp: var(--mdc-clamp);
  	-webkit-box-orient: vertical;}
+ 	
+/* ==========================================================================
+   Text Align
+   ========================================================================== */ 	
+.mdc-text--align--center {
+	text-align: center;
+}
+.mdc-text--align--left {
+	text-align: left;
+}
+.mdc-text--align--right {
+	text-align: right;
+}
+
+/* ==========================================================================
+   Element align
+   ========================================================================== */
+.mdc-element--align--left {
+	margin-left: 0;
+	margin-right: auto;}
+.mdc-element--align--center {
+	margin-left: auto;
+	margin-right: auto;}
+.mdc-element--align--right {
+	margin-left: auto;
+	margin-right: 0;}
 	
 /* ==========================================================================
    Configure the text selection
