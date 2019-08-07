@@ -97,8 +97,7 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 	protected final MaterialLineRipple lineRipple = new MaterialLineRipple();
 	protected final MaterialNotchedOutline notchedOutline = new MaterialNotchedOutline();
 	protected final MaterialIcon icon = new MaterialIcon(CssName.MDC_TEXT_FIELD__ICON);
-	protected final MaterialFloatLabel label = new MaterialFloatLabel();
-
+	
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Style mixin TextFieldIconPosition
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -129,8 +128,8 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 
 	@Override
 	protected native JavaScriptObject jsInit(final Element element)/*-{
-								       return new $wnd.mdc.textField.MDCTextField(element);
-								       }-*/;
+		return new $wnd.mdc.textField.MDCTextField(element);
+	}-*/;
 
 	protected MaterialWidget constructInput() {
 		return new Input(InputType.TEXT, CssName.MDC_TEXT_FIELD__INPUT);
@@ -139,7 +138,7 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 	@Override
 	protected void onInitialize() {
 
-		label.setFor(input.getId());
+		notchedOutline.setFor(input.getId());
 
 		icon.addClickHandler(event -> {
 			event.preventDefault();
@@ -147,9 +146,6 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 			IconClickEvent.fire(this);
 			input.getElement().focus();
 		});
-
-		if (getLabel() != null && !getLabel().isEmpty())
-			notchedOutline.add(label);
 
 		add(icon);
 		add(input);
@@ -161,17 +157,18 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 		super.onInitialize();
 
 		// To prevent label over the placeholder when input is empty
-		input.addBlurHandler(event -> label.updateFloatLabelAbove(this));
-		label.updateFloatLabelAbove(this);
+		// notchedOutline.addStyleName(CssName.MDC_NOTCHED_OUTLINE__NOTCHED);
+		input.addBlurHandler(event -> notchedOutline.updateFloatLabelAbove(this));
+		notchedOutline.updateFloatLabelAbove(this);
 		// Update icon position class
 		inputIconMixin.updateIconPositionClass();
 	}
 
 	protected native void layout()/*-{
-				      var jsElement = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
-				      if (jsElement)
-				      jsElement.layout();
-				      }-*/;
+		var jsElement = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+		if (jsElement)
+			jsElement.layout();
+	}-*/;
 
 	private void fireValidation() {
 		final Collection<Result> results = validate();
@@ -255,13 +252,13 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 
 	@Override
 	public native void setValue(String value, boolean fireEvents)/*-{
-								     var textfield = this.@gwt.material.design.components.client.ui.misc.input.MaterialInput::input;
-								     var element = textfield.@gwt.material.design.components.client.ui.html.Div::getElement()();
-								     element.value = value;
+		var textfield = this.@gwt.material.design.components.client.ui.misc.input.MaterialInput::input;
+		var element = textfield.@gwt.material.design.components.client.ui.html.Div::getElement()();
+		element.value = value;
 								     
-								     if (fireEvents)
-								     this.@gwt.material.design.components.client.ui.misc.input.MaterialInput::fireChangeEvent()();
-								     }-*/;
+		if (fireEvents)
+			this.@gwt.material.design.components.client.ui.misc.input.MaterialInput::fireChangeEvent()();
+	}-*/;
 
 	@Override
 	public String getText() {
@@ -294,20 +291,20 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 
 	@Override
 	public void setLabel(String label) {
-		this.label.setText(label);
+		this.notchedOutline.setLabel(label);
 
-		if (initialized) {
-			final boolean isEmpty = label != null && !label.isEmpty();
-			if (isEmpty && this.label.getParent() != null)
-				this.label.removeFromParent();
-			else if (!isEmpty)
-				notchedOutline.add(this);
-		}
+		//if (initialized) {
+		//	final boolean isEmpty = label != null && !label.isEmpty();
+		//	if (isEmpty && this.label.getParent() != null)
+		//		this.label.removeFromParent();
+		//	else if (!isEmpty)
+		//		notchedOutline.add(this.label);
+		//}
 	}
 
 	@Override
 	public String getLabel() {
-		return label.getText();
+		return notchedOutline.getLabel();
 	}
 
 	@Override

@@ -5,7 +5,8 @@
   	background-color: var(--mdc-datatable--fill-color); 
   	border: var(--mdc-datatable--border); 	
   	border-radius: var(--mdc-rounded-border-radius);
-}
+  	display: flex;
+  	flex-direction: column;}
 
 /*
  * Table styles
@@ -304,7 +305,7 @@ table.mdc-datatable--table td {
   float: right;
   text-align: right;
 }
-.mdc-datatable--wrapper .mdc-datatable--filter input {
+.mdc-datatable--wrapper .mdc-datatable--filter .mdc-datatable--filter__input {
   margin-left: 0.5em;
 }
 .mdc-datatable--wrapper .mdc-datatable--info {
@@ -482,7 +483,7 @@ table.mdc-datatable--table td {
 	
 .mdc-datatable .mdc-datatable--header {
   	border-bottom: var(--mdc-datatable--border);}
-.mdc-datatable .mdc-datatable--header .mdc-datatable--filter__input {	
+.mdc-datatable .mdc-datatable--filter__input {	
 	border: 1px solid var(--mdc-datatable--ink-color);
   	border-radius: var(--mdc-rounded-border-radius);
 	color: var(--mdc-datatable--ink-color);
@@ -495,19 +496,19 @@ table.mdc-datatable--table td {
   	-webkit-appearance: none;
        -moz-appearance: none;
             appearance: none;}
-.mdc-datatable .mdc-datatable--header .mdc-datatable--filter__input:hover,            
-.mdc-datatable .mdc-datatable--header .mdc-datatable--filter__input:focus {
+.mdc-datatable .mdc-datatable--filter__input:hover,            
+.mdc-datatable .mdc-datatable--filter__input:focus {
   	outline: none;
   	border-color: var(--mdc-datatable--selected-color);}
-.mdc-datatable .mdc-datatable--header .mdc-datatable--filter__input:invalid {
+.mdc-datatable .mdc-datatable--filter__input:invalid {
   	box-shadow: none;}
 	
-.mdc-datatable .mdc-datatable--header .mdc-datatable--filter__input::-webkit-search-decoration,
-.mdc-datatable .mdc-datatable--header .mdc-datatable--filter__input::-webkit-search-cancel-button,
-.mdc-datatable .mdc-datatable--header .mdc-datatable--filter__input::-webkit-search-results-button,
-.mdc-datatable .mdc-datatable--header .mdc-datatable--filter__input::-webkit-search-results-decoration,
-.mdc-datatable .mdc-datatable--header .mdc-datatable--filter__input::-webkit-outer-spin-button,
-.mdc-datatable .mdc-datatable--header .mdc-datatable--filter__input::-webkit-inner-spin-button {
+.mdc-datatable .mdc-datatable--filter__input::-webkit-search-decoration,
+.mdc-datatable .mdc-datatable--filter__input::-webkit-search-cancel-button,
+.mdc-datatable .mdc-datatable--filter__input::-webkit-search-results-button,
+.mdc-datatable .mdc-datatable--filter__input::-webkit-search-results-decoration,
+.mdc-datatable .mdc-datatable--filter__input::-webkit-outer-spin-button,
+.mdc-datatable .mdc-datatable--filter__input::-webkit-inner-spin-button {
 	display: none;}
 	  	
 .mdc-datatable .mdc-datatable--footer {

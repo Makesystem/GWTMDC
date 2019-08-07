@@ -405,6 +405,7 @@ public interface CssName {
 	String	MDC_NOTCHED_OUTLINE__LEADING					= "mdc-notched-outline__leading";
 	String	MDC_NOTCHED_OUTLINE__NOTCH						= "mdc-notched-outline__notch";
 	String	MDC_NOTCHED_OUTLINE__TRAILING					= "mdc-notched-outline__trailing";
+	String	MDC_NOTCHED_OUTLINE__NOTCHED					= "mdc-notched-outline--notched";
 	// //////////////////////////////////////////////////////
 	// Tree
 	// //////////////////////////////////////////////////////

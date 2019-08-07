@@ -25,21 +25,23 @@ import java.util.concurrent.atomic.AtomicInteger;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 
+import gwt.material.design.components.client.base.mixin.PlaceholderMixin;
 import gwt.material.design.components.client.base.widget.MaterialWidget;
 import gwt.material.design.components.client.constants.ColumnType;
 import gwt.material.design.components.client.constants.CssName;
-import gwt.material.design.components.client.constants.IconType;
 import gwt.material.design.components.client.constants.PagingType;
 import gwt.material.design.components.client.constants.RenderType;
 import gwt.material.design.components.client.constants.TextAlign;
+import gwt.material.design.components.client.constants.TextFieldType;
+import gwt.material.design.components.client.resources.message.IMessages;
 import gwt.material.design.components.client.ui.html.Div;
+import gwt.material.design.components.client.ui.html.Input;
 import gwt.material.design.components.client.ui.html.Table;
 import gwt.material.design.components.client.ui.misc.dataTable.JsColumn;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguage;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguageAria;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguagePaginate;
 import gwt.material.design.components.client.ui.misc.dataTable.JsOptions;
-import gwt.material.design.components.client.utils.helper.DOMHelper;
 
 /**
  * @see https://datatables.net/reference/option/pagingType
@@ -51,10 +53,16 @@ import gwt.material.design.components.client.utils.helper.DOMHelper;
  */
 public class MaterialDataTable<T> extends Div {
 	
+	protected final Div header = new Div(CssName.MDC_DATA_TABLE__HEADER);
+	protected final Input filterInput = new Input(CssName.MDC_DATA_TABLE__FILTER__INPUT, CssName.MDC_TYPOGRAPHY__BODY_2);
 	protected final Table table = new Table(CssName.MDC_DATA_TABLE__TABLE, "display");
 		
+	protected final PlaceholderMixin<MaterialWidget> placeholderMixin = new PlaceholderMixin<>(filterInput);
+	
 	protected final JsOptions options = options();
 	private PagingType pagingType = PagingType.SIMPLE;
+	
+	private boolean showFilter;
 	
 	public MaterialDataTable() {
 		super(CssName.MDC_DATA_TABLE, CssName.MDC_TYPOGRAPHY__BODY_2);
@@ -125,15 +133,6 @@ public class MaterialDataTable<T> extends Div {
 
 	public void draw() {
 		jsInit();
-		
-		final Element header = DOMHelper.getElement("." + CssName.MDC_DATA_TABLE__HEADER ,getElement());
-		if(header != null) {
-		final MaterialWidget widget = new MaterialWidget(header);
-		
-		final MaterialIconButton icon = new MaterialIconButton(IconType.MORE_VERT);
-		
-		widget.add(icon);
-		}
 	}
 	
 	protected native JavaScriptObject draw(final Element element, final JsOptions options)/*-{
@@ -150,7 +149,7 @@ public class MaterialDataTable<T> extends Div {
 		var MDC_DATA_TABLE__HEADER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__HEADER;
 		var MDC_DATA_TABLE__FOOTER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__FOOTER;
 	
-		options.dom = '<"' + MDC_DATA_TABLE__HEADER + '"rf>t<"' + MDC_DATA_TABLE__FOOTER + '"lip>';
+		options.dom = '<"' + MDC_DATA_TABLE__HEADER + '"r>t<"' + MDC_DATA_TABLE__FOOTER + '"lip>';
 		options.autoWidth = true;
 		options.scrollX = true;
 		
@@ -159,7 +158,12 @@ public class MaterialDataTable<T> extends Div {
 	}-*/;
 	
 	@Override
-	protected void onInitialize() {		
+	protected void onInitialize() {
+		
+		placeholderMixin.setPlaceholder(IMessages.INSTANCE.mdc_datatable__search());		
+		header.add(filterInput);
+		
+		add(header);
 		add(table);		
 		super.onInitialize();
 	}
@@ -188,8 +192,27 @@ public class MaterialDataTable<T> extends Div {
 			dataTable.columns.adjust().draw();
 	}-*/;
 	
+	public void filter(final String text) {
+		filter(text, false, true, true);
+	}
 	
+	public native void filter(final String text, final boolean regex, final boolean smart, final boolean caseInsensitive)/*-{	
+		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+		if(dataTable)
+			dataTable.search(text, regex, smart, caseInsensitive).draw();
+	}-*/;
 	
+	public void showFilter(final boolean showFilter) {
+		this.showFilter = showFilter;
+		
+		if (initialized)
+			if (showFilter)
+				if (filterInput.getParent() == null)
+					header.add(filterInput);
+				else if (filterInput.getParent() != null)
+					filterInput.removeFromParent();
+				
+	}
 	
 	
 	

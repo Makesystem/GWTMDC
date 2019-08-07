@@ -180,7 +180,7 @@ public class DOMHelper {
 		else
 			return null;
 	}-*/;
-
+	
 	@SuppressWarnings("unchecked")
 	public static <W extends Widget> Set<W> findByClass(final Class<W> _class, final Widget parent) {
 		final Set<W> widgets = new LinkedHashSet<>();

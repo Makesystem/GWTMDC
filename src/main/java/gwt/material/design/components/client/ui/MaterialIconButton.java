@@ -53,4 +53,8 @@ public class MaterialIconButton extends MaterialIcon {
 		setCssProperty(CssMixin.MDC_ICON_BUTTON__INK_COLOR, color.getCssName());
 	}
 	
+	@Override
+	public void onAttach() {
+		super.onAttach();
+	}
 }

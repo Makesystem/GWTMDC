@@ -39,7 +39,6 @@ import gwt.material.design.components.client.constants.HtmlElements;
 import gwt.material.design.components.client.constants.SelectMenuType;
 import gwt.material.design.components.client.ui.html.Icon;
 import gwt.material.design.components.client.ui.html.Select;
-import gwt.material.design.components.client.ui.misc.input.MaterialFloatLabel;
 import gwt.material.design.components.client.ui.misc.input.MaterialLineRipple;
 import gwt.material.design.components.client.ui.misc.input.MaterialNotchedOutline;
 
@@ -52,7 +51,6 @@ public class MaterialSelect<V> extends MaterialValuedField<V>
 		implements HasLabel, HasType<SelectMenuType>, HasUnbordered {
 
 	protected final Select select = new Select(CssName.MDC_SELECT__NATIVE_CONTROL);
-	protected final MaterialFloatLabel label = new MaterialFloatLabel();
 	protected final MaterialLineRipple lineRipple = new MaterialLineRipple();
 	protected final MaterialNotchedOutline notchedOutline = new MaterialNotchedOutline();
 	protected final Icon dropdownIcon = new Icon(CssName.MDC_SELECT__DROPDOWN_ICON);
@@ -72,7 +70,6 @@ public class MaterialSelect<V> extends MaterialValuedField<V>
 
 	@Override
 	protected void onInitialize() {
-		notchedOutline.add(label);
 		add(dropdownIcon);
 		add(select);
 		add(lineRipple);
@@ -183,12 +180,12 @@ public class MaterialSelect<V> extends MaterialValuedField<V>
 
 	@Override
 	public void setLabel(String label) {
-		this.label.setText(label);
+		this.notchedOutline.setLabel(label);
 	}
 
 	@Override
 	public String getLabel() {
-		return this.label.getText();
+		return this.notchedOutline.getLabel();
 	}
 
 	@Override

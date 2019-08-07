@@ -181,4 +181,10 @@ public interface IMessages extends Messages {
 	
 	@DefaultMessage("Order descending")
 	String mdc_jexcel_order_descending();
+	
+	@DefaultMessage("Filter for")
+	String mdc_datatable__filter_for();
+	
+	@DefaultMessage("Search")
+	String mdc_datatable__search();
 }
