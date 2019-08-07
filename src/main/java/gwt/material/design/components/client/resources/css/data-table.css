@@ -1,11 +1,10 @@
 .mdc-datatable {
-	width: 100%;
+	min-width: 100%;
 	font-family: var(--mdc-font-family);
   	color: var(--mdc-datatable--ink-color);
   	background-color: var(--mdc-datatable--fill-color); 
   	border: var(--mdc-datatable--border); 	
   	border-radius: var(--mdc-rounded-border-radius);
-  	overflow-x: auto; 
 }
 
 /*
@@ -31,7 +30,7 @@ table.mdc-datatable--table tfoot th {
 }
 table.mdc-datatable--table thead th,
 table.mdc-datatable--table thead td {
-	padding: 10px 18px;
+	padding: var(--mdc-datatable--cell-padding);
 	border-bottom: var(--mdc-datatable--border);
 }
 table.mdc-datatable--table thead th:active,
@@ -40,7 +39,7 @@ table.mdc-datatable--table thead td:active {
 }
 table.mdc-datatable--table tfoot th,
 table.mdc-datatable--table tfoot td {
-	padding: 10px 18px 6px 18px;
+	padding: var(--mdc-datatable--cell-padding);
 	border-top: var(--mdc-datatable--border);
 }
 table.mdc-datatable--table thead .mdc-datatable--sorting,
@@ -102,6 +101,15 @@ table.mdc-datatable--table thead .mdc-datatable--sorting_asc_disabled:after {
 table.mdc-datatable--table thead .mdc-datatable--sorting_desc_disabled:after {
 	content: "expand_more";
 }
+
+.mdc-datatable--scroll_body thead .mdc-datatable--sorting:after,
+.mdc-datatable--scroll_body thead .mdc-datatable--sorting_asc:after,
+.mdc-datatable--scroll_body thead .mdc-datatable--sorting_desc:after,
+.mdc-datatable--scroll_body thead .mdc-datatable--sorting_asc_disabled:after,
+.mdc-datatable--scroll_body thead .mdc-datatable--sorting_desc_disabled:after {
+	display: none;
+}
+
 table.mdc-datatable--table thead .mdc-datatable--sorting_asc_disabled:after,
 table.mdc-datatable--table thead .mdc-datatable--sorting_desc_disabled:after {
 	filter: grayscale(100%);
@@ -502,13 +510,11 @@ table.mdc-datatable--table td {
 	display: none;}
 	  	
 .mdc-datatable .mdc-datatable--footer {
-  	background-color: blue;
   	border-top: var(--mdc-datatable--border);}  	
 .mdc-datatable .mdc-datatable--footer > * {
 	min-width: -webkit-max-content;
   	min-width: -moz-max-content;
   	min-width: max-content;
-  	background-color: red;
 	margin: 0;}
 .mdc-datatable .mdc-datatable--footer > :first-child {
 	flex: 1;

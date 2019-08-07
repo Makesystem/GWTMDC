@@ -140,9 +140,8 @@ public class MaterialDataTable<T> extends Div {
 		var MDC_DATA_TABLE__FOOTER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__FOOTER;
 	
 		options.dom = '<"' + MDC_DATA_TABLE__HEADER + '"rf>t<"' + MDC_DATA_TABLE__FOOTER + '"lip>';
-		//options.scroller = true;	
-		//options.autoWidth = false;
-		//options.processing = true;
+		options.autoWidth = true;
+		options.scrollX = true;
 	
 		return $wnd.jQuery(element).DataTable(options);	
 			

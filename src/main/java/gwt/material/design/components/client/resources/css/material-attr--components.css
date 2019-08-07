@@ -270,7 +270,7 @@
   	/* ================================	*/
   	/* Datatable attributes			*/
   	/* ================================	*/
-  	--mdc-datatable--cell-padding: 4px;
+  	--mdc-datatable--cell-padding: 8px;
   	--mdc-datatable--ink-color: var(--mdc-theme-on-surface);  	
   	--mdc-datatable--fill-color: var(--mdc-theme-surface);
   	--mdc-datatable--fixed-ink-color: var(--mdc-spreadsheet--ink-color);  	
