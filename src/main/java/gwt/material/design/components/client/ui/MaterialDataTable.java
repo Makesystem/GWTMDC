@@ -25,8 +25,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 
+import gwt.material.design.components.client.base.widget.MaterialWidget;
 import gwt.material.design.components.client.constants.ColumnType;
 import gwt.material.design.components.client.constants.CssName;
+import gwt.material.design.components.client.constants.IconType;
 import gwt.material.design.components.client.constants.PagingType;
 import gwt.material.design.components.client.constants.RenderType;
 import gwt.material.design.components.client.constants.TextAlign;
@@ -37,6 +39,7 @@ import gwt.material.design.components.client.ui.misc.dataTable.JsLanguage;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguageAria;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguagePaginate;
 import gwt.material.design.components.client.ui.misc.dataTable.JsOptions;
+import gwt.material.design.components.client.utils.helper.DOMHelper;
 
 /**
  * @see https://datatables.net/reference/option/pagingType
@@ -122,6 +125,15 @@ public class MaterialDataTable<T> extends Div {
 
 	public void draw() {
 		jsInit();
+		
+		final Element header = DOMHelper.getElement("." + CssName.MDC_DATA_TABLE__HEADER ,getElement());
+		if(header != null) {
+		final MaterialWidget widget = new MaterialWidget(header);
+		
+		final MaterialIconButton icon = new MaterialIconButton(IconType.MORE_VERT);
+		
+		widget.add(icon);
+		}
 	}
 	
 	protected native JavaScriptObject draw(final Element element, final JsOptions options)/*-{
@@ -141,7 +153,7 @@ public class MaterialDataTable<T> extends Div {
 		options.dom = '<"' + MDC_DATA_TABLE__HEADER + '"rf>t<"' + MDC_DATA_TABLE__FOOTER + '"lip>';
 		options.autoWidth = true;
 		options.scrollX = true;
-	
+		
 		return $wnd.jQuery(element).DataTable(options);	
 			
 	}-*/;
