@@ -276,8 +276,9 @@ table.mdc-datatable--table.compact tbody th,
 table.mdc-datatable--table.compact tbody td {
   	padding: 4px;
 }
-table.mdc-datatable--table th,
-table.mdc-datatable--table td {
+table.mdc-datatable--table thead,
+table.mdc-datatable--table tbody,
+table.mdc-datatable--table tfoot {
   	text-align: left;
 }
 table.mdc-datatable--table,

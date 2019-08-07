@@ -128,7 +128,6 @@ public class MaterialDataTable<T> extends Div {
 	
 		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
 		if(dataTable) {
-			console.log('teste');
 			dataTable.destroy();			
 			$wnd.jQuery(element).empty(); // empty in case the columns change
 		}
@@ -264,7 +263,7 @@ public class MaterialDataTable<T> extends Div {
 			jsColumn.orderable = orderable;
 			jsColumn.searchable = searchable;
 			jsColumn.render = toFunction(render);
-			jsColumn.className = (textAlign == null ? "" : textAlign.getCssName()) + " mdc-truncate";
+			jsColumn.className = (textAlign == null ? null : textAlign.getCssName());
 					
 		}
 		
