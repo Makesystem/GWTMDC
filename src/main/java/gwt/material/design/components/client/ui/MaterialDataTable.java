@@ -24,6 +24,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.uibinder.client.UiChild;
+import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.components.client.base.mixin.PlaceholderMixin;
 import gwt.material.design.components.client.base.widget.MaterialWidget;
@@ -32,7 +34,6 @@ import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.PagingType;
 import gwt.material.design.components.client.constants.RenderType;
 import gwt.material.design.components.client.constants.TextAlign;
-import gwt.material.design.components.client.constants.TextFieldType;
 import gwt.material.design.components.client.resources.message.IMessages;
 import gwt.material.design.components.client.ui.html.Div;
 import gwt.material.design.components.client.ui.html.Input;
@@ -108,26 +109,7 @@ public class MaterialDataTable<T> extends Div {
 		options.language.searchPlaceholder = "Search";
 		options.language.url = "";
 		options.language.zeroRecords = "No matching records found";		
-/*
-		// /////////////////////////
-		// Fixed columns test
-		// /////////////////////////
-		options.fixedColumns = new JsFixedColumns();
-		options.fixedColumns.leftColumns = 1;
-		options.fixedColumns.rightColumns = 1;
-		
-		// /////////////////////////
-		// Defs columns test
-		// /////////////////////////		
-		final JsColumn def = new JsColumn();
-		def.defaultContent = "teste";
-		
-		final JsColumn def_width = new JsColumn();
-		def_width.width = "96px";
-		def_width.orderable = false;
-		
-		options.columns = new JsColumn[] {def, def_width}; 
-*/				
+	
 		return options;
 	}
 
@@ -161,11 +143,16 @@ public class MaterialDataTable<T> extends Div {
 	protected void onInitialize() {
 		
 		placeholderMixin.setPlaceholder(IMessages.INSTANCE.mdc_datatable__search());		
-		header.add(filterInput);
+		header.insert(filterInput, 0);
 		
 		add(header);
 		add(table);		
 		super.onInitialize();
+	}
+	
+	@UiChild(tagname = "button")
+	public void addButtons(final Widget child) {
+		header.add(child);
 	}
 	
 	@SuppressWarnings("unchecked")

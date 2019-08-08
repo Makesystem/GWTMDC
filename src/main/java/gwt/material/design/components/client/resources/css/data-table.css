@@ -500,6 +500,12 @@ table.mdc-datatable--table td {
 .mdc-datatable .mdc-datatable--filter__input:focus {
   	outline: none;
   	border-color: var(--mdc-datatable--selected-color);}
+.mdc-datatable .mdc-datatable--header > *,
+.mdc-datatable .mdc-datatable--footer > * {  	
+  	max-height: 40px;} 	
+.mdc-datatable .mdc-datatable--header > i,
+.mdc-datatable .mdc-datatable--footer > i {  	
+  	max-width: 40px;}
 .mdc-datatable .mdc-datatable--filter__input:invalid {
   	box-shadow: none;}
 	
