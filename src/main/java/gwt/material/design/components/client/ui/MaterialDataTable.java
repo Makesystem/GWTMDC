@@ -27,8 +27,6 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.uibinder.client.UiChild;
 import com.google.gwt.user.client.ui.Widget;
 
-import gwt.material.design.components.client.base.mixin.PlaceholderMixin;
-import gwt.material.design.components.client.base.widget.MaterialWidget;
 import gwt.material.design.components.client.constants.ColumnType;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.PagingType;
@@ -36,8 +34,8 @@ import gwt.material.design.components.client.constants.RenderType;
 import gwt.material.design.components.client.constants.TextAlign;
 import gwt.material.design.components.client.resources.message.IMessages;
 import gwt.material.design.components.client.ui.html.Div;
-import gwt.material.design.components.client.ui.html.Input;
 import gwt.material.design.components.client.ui.html.Table;
+import gwt.material.design.components.client.ui.misc.dataTable.FilterInput;
 import gwt.material.design.components.client.ui.misc.dataTable.JsColumn;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguage;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguageAria;
@@ -55,11 +53,9 @@ import gwt.material.design.components.client.ui.misc.dataTable.JsOptions;
 public class MaterialDataTable<T> extends Div {
 	
 	protected final Div header = new Div(CssName.MDC_DATA_TABLE__HEADER);
-	protected final Input filterInput = new Input(CssName.MDC_DATA_TABLE__FILTER__INPUT, CssName.MDC_TYPOGRAPHY__BODY_2);
+	protected final FilterInput filterInput = new FilterInput();
 	protected final Table table = new Table(CssName.MDC_DATA_TABLE__TABLE, "display");
-		
-	protected final PlaceholderMixin<MaterialWidget> placeholderMixin = new PlaceholderMixin<>(filterInput);
-	
+			
 	protected final JsOptions options = options();
 	private PagingType pagingType = PagingType.SIMPLE;
 	
@@ -72,6 +68,114 @@ public class MaterialDataTable<T> extends Div {
 	@Override
 	protected JavaScriptObject jsInit(final Element element){
 		return draw(table.getElement(), options);
+	}
+	
+	
+
+	public void draw() {
+		jsInit();
+	}
+	
+	protected native JavaScriptObject draw(final Element element, final JsOptions options)/*-{
+	
+		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+		if(dataTable) {
+			dataTable.destroy();			
+			$wnd.jQuery(element).empty(); // empty in case the columns change
+		}
+		
+		if(!options.columns)
+			return null;
+		
+		var MDC_DATA_TABLE__HEADER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__HEADER;
+		var MDC_DATA_TABLE__FOOTER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__FOOTER;
+	
+		options.dom = '<"' + MDC_DATA_TABLE__HEADER + '"r>t<"' + MDC_DATA_TABLE__FOOTER + '"lip>';
+		options.autoWidth = true;
+		options.scrollX = true;
+		
+		return $wnd.jQuery(element).DataTable(options);	
+			
+	}-*/;
+	
+	@Override
+	protected void onInitialize() {
+		
+		filterInput.addTypingHandler(event -> filter(event.getText()));		
+		filterInput.setPlaceholder(IMessages.INSTANCE.mdc_datatable__search());		
+		header.insert(filterInput, 0);
+		
+		add(header);
+		add(table);		
+		super.onInitialize();
+	}
+	
+	void searchFunction() {
+		
+	}
+	
+	@UiChild(tagname = "button")
+	public void addButtons(final Widget child) {
+		header.add(child);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public void setColumns(final Column<T>... columns) {
+		final AtomicInteger index = new AtomicInteger(0);
+		options.columns = Arrays.stream(columns).map(column -> column.setPosition(index.getAndIncrement()).toNative()).toArray(JsColumn[]::new);
+		draw();
+	}
+	
+	public void setRows(@SuppressWarnings("unchecked") final T... data) {
+		options.data = data;
+		draw();
+	}
+	
+	public native void addData(@SuppressWarnings("unchecked") final T... data)/*-{	
+		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+		if(dataTable)
+			dataTable.row.add(data).draw().node();
+	}-*/;
+	
+	public native void adjust()/*-{	
+		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+		if(dataTable)
+			dataTable.columns.adjust().draw();
+	}-*/;
+	
+	public void filter(final String text) {
+		filter(text, false, true, true);
+	}
+	
+	public void filter(final String text, final boolean regex) {
+		filter(text, regex, true, true);
+	}
+	
+	public void filter(final String text, final boolean regex, final boolean caseSensitive) {
+		filter(text, regex, true, !caseSensitive);
+	}
+	
+	protected native void filter(
+			final String text, 
+			final boolean regex, 
+			final boolean smart, 
+			final boolean caseSensitive) /*-{
+		console.log('aqui');				
+		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+		if(dataTable)
+			dataTable.search(text, regex, smart, !caseSensitive).draw();
+	}-*/;
+	
+	public void showFilter(final boolean showFilter) {
+		this.showFilter = showFilter;
+		
+		if (initialized)
+			if (showFilter)
+				if (filterInput.getParent() == null)
+					header.add(filterInput);
+				else if (filterInput.getParent() != null)
+					filterInput.removeFromParent();
+				
 	}
 	
 	JsOptions options() {
@@ -112,96 +216,6 @@ public class MaterialDataTable<T> extends Div {
 	
 		return options;
 	}
-
-	public void draw() {
-		jsInit();
-	}
-	
-	protected native JavaScriptObject draw(final Element element, final JsOptions options)/*-{
-	
-		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
-		if(dataTable) {
-			dataTable.destroy();			
-			$wnd.jQuery(element).empty(); // empty in case the columns change
-		}
-		
-		if(!options.columns)
-			return null;
-		
-		var MDC_DATA_TABLE__HEADER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__HEADER;
-		var MDC_DATA_TABLE__FOOTER = @gwt.material.design.components.client.constants.CssName::MDC_DATA_TABLE__FOOTER;
-	
-		options.dom = '<"' + MDC_DATA_TABLE__HEADER + '"r>t<"' + MDC_DATA_TABLE__FOOTER + '"lip>';
-		options.autoWidth = true;
-		options.scrollX = true;
-		
-		return $wnd.jQuery(element).DataTable(options);	
-			
-	}-*/;
-	
-	@Override
-	protected void onInitialize() {
-		
-		placeholderMixin.setPlaceholder(IMessages.INSTANCE.mdc_datatable__search());		
-		header.insert(filterInput, 0);
-		
-		add(header);
-		add(table);		
-		super.onInitialize();
-	}
-	
-	@UiChild(tagname = "button")
-	public void addButtons(final Widget child) {
-		header.add(child);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public void setColumns(final Column<T>... columns) {
-		final AtomicInteger index = new AtomicInteger(0);
-		options.columns = Arrays.stream(columns).map(column -> column.setPosition(index.getAndIncrement()).toNative()).toArray(JsColumn[]::new);
-		draw();
-	}
-	
-	public void setRows(@SuppressWarnings("unchecked") final T... data) {
-		options.data = data;
-		draw();
-	}
-	
-	public native void addData(@SuppressWarnings("unchecked") final T... data)/*-{	
-		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
-		if(dataTable)
-			dataTable.row.add(data).draw().node();
-	}-*/;
-	
-	public native void adjust()/*-{	
-		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
-		if(dataTable)
-			dataTable.columns.adjust().draw();
-	}-*/;
-	
-	public void filter(final String text) {
-		filter(text, false, true, true);
-	}
-	
-	public native void filter(final String text, final boolean regex, final boolean smart, final boolean caseInsensitive)/*-{	
-		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
-		if(dataTable)
-			dataTable.search(text, regex, smart, caseInsensitive).draw();
-	}-*/;
-	
-	public void showFilter(final boolean showFilter) {
-		this.showFilter = showFilter;
-		
-		if (initialized)
-			if (showFilter)
-				if (filterInput.getParent() == null)
-					header.add(filterInput);
-				else if (filterInput.getParent() != null)
-					filterInput.removeFromParent();
-				
-	}
-	
-	
 	
 	
 	
