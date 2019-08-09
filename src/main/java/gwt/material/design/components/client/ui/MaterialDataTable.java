@@ -20,6 +20,8 @@
 package gwt.material.design.components.client.ui;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -70,7 +72,7 @@ public class MaterialDataTable<T> extends Div {
 		return draw(table.getElement(), options);
 	}
 	
-	public void draw() {
+	public void redraw() {
 		jsInit();
 	}
 	
@@ -117,18 +119,46 @@ public class MaterialDataTable<T> extends Div {
 	public void setColumns(final Column<T>... columns) {
 		final AtomicInteger index = new AtomicInteger(0);
 		options.columns = Arrays.stream(columns).map(column -> column.setPosition(index.getAndIncrement()).toNative()).toArray(JsColumn[]::new);
-		draw();
+		redraw();
 	}
 	
-	public void setRows(@SuppressWarnings("unchecked") final T... data) {
+	public void clear() {
+		options.data = null;
+		redraw();
+	}
+	
+	public void setData(@SuppressWarnings("unchecked") final T... data) {
 		options.data = data;
-		draw();
+		redraw();
 	}
 	
-	public native void addData(@SuppressWarnings("unchecked") final T... data)/*-{	
+	public void addData(@SuppressWarnings("unchecked") final T... data) {
+		if (options.data == null)
+			options.data = data;
+		else
+			options.data = concat(options.data, data);
+
+		if (jsElement != null) {
+			Arrays.stream(data).forEach(row -> addRow(jsElement, row));
+			draw();
+		}
+	}
+	
+	public final Object[] concat(final Object[] first, final Object[] last) {
+        final Collection<Object> collection = new LinkedList<>();
+        collection.addAll(Arrays.asList(first));
+        collection.addAll(Arrays.asList(last));
+        return collection.stream().toArray();
+    }
+	
+	protected native void addRow(final JavaScriptObject dataTable, final Object data)/*-{	
+		dataTable.row.add(data);
+	}-*/;
+	
+	public native void draw()/*-{	
 		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
 		if(dataTable)
-			dataTable.row.add(data).draw().node();
+			dataTable.draw();
 	}-*/;
 	
 	public native void adjust()/*-{	
