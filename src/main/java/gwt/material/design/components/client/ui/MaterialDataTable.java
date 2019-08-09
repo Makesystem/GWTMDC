@@ -70,8 +70,6 @@ public class MaterialDataTable<T> extends Div {
 		return draw(table.getElement(), options);
 	}
 	
-	
-
 	public void draw() {
 		jsInit();
 	}
@@ -109,11 +107,7 @@ public class MaterialDataTable<T> extends Div {
 		add(table);		
 		super.onInitialize();
 	}
-	
-	void searchFunction() {
 		
-	}
-	
 	@UiChild(tagname = "button")
 	public void addButtons(final Widget child) {
 		header.add(child);
@@ -144,11 +138,11 @@ public class MaterialDataTable<T> extends Div {
 	}-*/;
 	
 	public void filter(final String text) {
-		filter(text, false, true, true);
+		filter(text, false, true, false);
 	}
 	
 	public void filter(final String text, final boolean regex) {
-		filter(text, regex, true, true);
+		filter(text, regex, true, false);
 	}
 	
 	public void filter(final String text, final boolean regex, final boolean caseSensitive) {
@@ -159,8 +153,7 @@ public class MaterialDataTable<T> extends Div {
 			final String text, 
 			final boolean regex, 
 			final boolean smart, 
-			final boolean caseSensitive) /*-{
-		console.log('aqui');				
+			final boolean caseSensitive) /*-{			
 		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
 		if(dataTable)
 			dataTable.search(text, regex, smart, !caseSensitive).draw();
@@ -192,27 +185,27 @@ public class MaterialDataTable<T> extends Div {
 		
 		options.language = new JsLanguage();
 		options.language.aria = new JsLanguageAria();
-		options.language.aria.sortAscending = ": activate to sort column ascending";
-		options.language.aria.sortDescending = ": activate to sort column descending";
+		options.language.aria.sortAscending = IMessages.INSTANCE.mdc_datatable__aria__sort_ascending();
+		options.language.aria.sortDescending = IMessages.INSTANCE.mdc_datatable__aria__sort_descending();
 		options.language.paginate = new JsLanguagePaginate();
 		options.language.paginate.first = "<i>first_page</i>";
 		options.language.paginate.last = "<i>last_page</i>";
 		options.language.paginate.next = "<i>navigate_next</i>";
 		options.language.paginate.previous = "<i>navigate_before</i>";
-		options.language.emptyTable = "No data available in table";
-		options.language.info = "_START_ - _END_ of _TOTAL_";
-		options.language.infoEmpty = "0 of ";
-		options.language.infoFiltered = "_MAX_";
-		options.language.infoPostFix = "";
-		options.language.decimal = "";
+		options.language.emptyTable = IMessages.INSTANCE.mdc_datatable__empty_table();
+		options.language.info = IMessages.INSTANCE.mdc_datatable__info("_START_","_END_","_TOTAL_");
+		options.language.infoEmpty = IMessages.INSTANCE.mdc_datatable__info_empty();
+		options.language.infoFiltered = IMessages.INSTANCE.mdc_datatable__info_filtered();
+		options.language.infoPostFix = IMessages.INSTANCE.mdc_datatable__info_post_fix();
+		options.language.decimal = ",";
 		options.language.thousands = ".";
-		options.language.lengthMenu = "Rows per page:  _MENU_";
-		options.language.loadingRecords = "Loading...";
-		options.language.processing = "Processing...";
+		options.language.lengthMenu = IMessages.INSTANCE.mdc_datatable__length_menu("_MENU_");
+		options.language.loadingRecords = IMessages.INSTANCE.mdc_datatable__loading_records();
+		options.language.processing = IMessages.INSTANCE.mdc_datatable__processing();
 		options.language.search = "";
-		options.language.searchPlaceholder = "Search";
+		options.language.searchPlaceholder = IMessages.INSTANCE.mdc_datatable__search();
 		options.language.url = "";
-		options.language.zeroRecords = "No matching records found";		
+		options.language.zeroRecords = IMessages.INSTANCE.mdc_datatable__zero_records();		
 	
 		return options;
 	}

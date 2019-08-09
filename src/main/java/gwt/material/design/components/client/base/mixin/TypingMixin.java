@@ -30,7 +30,6 @@ import gwt.material.design.components.client.base.widget.MaterialUIObject;
 import gwt.material.design.components.client.events.TypingEvent;
 import gwt.material.design.components.client.events.TypingEvent.HasTypingHandlers;
 import gwt.material.design.components.client.events.TypingEvent.TypingHandler;
-import gwt.material.design.components.client.utils.debug.Console;
 import gwt.material.design.components.client.utils.helper.TimerHelper;
 
 /**
@@ -70,8 +69,6 @@ public class TypingMixin<UIO extends MaterialUIObject & HasTypingHandlers & HasK
 		if (this.handler == null)
 			this.handler = uiObject.addKeyUpHandler(event -> {
 				
-				Console.log("aqui 0");
-				
 				final String newValue = uiObject.getValue();
 				
 				if(newValue.equals(lastValue))
@@ -79,12 +76,8 @@ public class TypingMixin<UIO extends MaterialUIObject & HasTypingHandlers & HasK
 				
 				lastValue = newValue;
 				
-				Console.log("aqui 1");
-				
 				if (typingTimer != null)
 					typingTimer.cancel();
-				
-				Console.log("aqui 2");
 				
 				typingTimer = TimerHelper.schedule(typingDelay, () -> fireTypingEvent());
 			});

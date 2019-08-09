@@ -33,6 +33,7 @@ import gwt.material.design.components.client.constants.InputType;
 import gwt.material.design.components.client.events.TypingEvent.HasTypingHandlers;
 import gwt.material.design.components.client.events.TypingEvent.TypingHandler;
 import gwt.material.design.components.client.ui.html.Input;
+import gwt.material.design.components.client.utils.helper.DOMHelper;
 
 /**
  * 
@@ -71,13 +72,13 @@ public class FilterInput extends Input implements HasTypingHandlers, HasValue<St
 
 	@Override
 	public String getValue() {
-		return getElement().getInnerText();
+		return DOMHelper.getValue(getElement());
 	}
 
 	@Override
 	public void setValue(final String value) {
 		hasValueMixin.setValue(value);
-		getElement().setInnerText(value);
+		DOMHelper.setValue(getElement(), value);
 	}
 
 	@Override

@@ -187,4 +187,38 @@ public interface IMessages extends Messages {
 	
 	@DefaultMessage("Search")
 	String mdc_datatable__search();
+	
+
+	@DefaultMessage(": activate to sort column ascending")
+	String mdc_datatable__aria__sort_ascending();
+	
+	@DefaultMessage(": activate to sort column descending")
+	String mdc_datatable__aria__sort_descending();
+	
+	@DefaultMessage("No data available in table")
+	String mdc_datatable__empty_table();
+
+	@DefaultMessage("{0} - {1} of {2}")
+	String mdc_datatable__info(final String start, final String end, final String total);
+	
+	@DefaultMessage("0 of ")
+	String mdc_datatable__info_empty();
+	
+	@DefaultMessage("_MAX_")
+	String mdc_datatable__info_filtered();
+
+	@DefaultMessage("")
+	String mdc_datatable__info_post_fix();
+	
+	@DefaultMessage("Rows per page:  {0}")
+	String mdc_datatable__length_menu(final String total);
+	
+	@DefaultMessage("Loading...")
+	String mdc_datatable__loading_records();
+
+	@DefaultMessage("Processing...")
+	String mdc_datatable__processing();
+	
+	@DefaultMessage("No matching records found")
+	String mdc_datatable__zero_records();
 }
