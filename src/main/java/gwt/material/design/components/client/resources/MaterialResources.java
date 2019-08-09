@@ -157,6 +157,9 @@ public interface MaterialResources extends ClientBundle {
 	@Source("js/data-table.min.js")
 	TextResource dataTableJs();
 	
+	@Source("js/data-table.select.min.js")
+	TextResource dataTableSelectJs();
+	
 	@Source("css/data-table.css")
 	TextResource dataTableCss();
 	

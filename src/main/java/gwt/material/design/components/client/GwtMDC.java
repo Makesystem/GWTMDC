@@ -75,6 +75,7 @@ public class GwtMDC implements EntryPoint {
 		injectJs(MaterialResources.INSTANCE.jExcelJs());
 		// Data table
 		injectJs(MaterialResources.INSTANCE.dataTableJs());
+		injectJs(MaterialResources.INSTANCE.dataTableSelectJs());
 	}
 
 	public static void loadCssResources() {

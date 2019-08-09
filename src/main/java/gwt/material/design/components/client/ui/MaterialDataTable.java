@@ -61,7 +61,7 @@ public class MaterialDataTable<T> extends Div {
 	protected final JsOptions options = options();
 	private PagingType pagingType = PagingType.SIMPLE;
 	
-	private boolean showFilter;
+	private boolean showFilter = true;
 	
 	public MaterialDataTable() {
 		super(CssName.MDC_DATA_TABLE, CssName.MDC_TYPOGRAPHY__BODY_2);
@@ -93,8 +93,15 @@ public class MaterialDataTable<T> extends Div {
 		options.dom = '<"' + MDC_DATA_TABLE__HEADER + '"r>t<"' + MDC_DATA_TABLE__FOOTER + '"lip>';
 		options.autoWidth = true;
 		options.scrollX = true;
+		options.select = {
+			items: 'row',
+            style: 'multi',
+            info: true
+        };
 		
-		return $wnd.jQuery(element).DataTable(options);	
+		dataTable = $wnd.jQuery(element).DataTable(options);
+		dataTable.select();
+		return dataTable;	
 			
 	}-*/;
 	
@@ -103,7 +110,9 @@ public class MaterialDataTable<T> extends Div {
 		
 		filterInput.addTypingHandler(event -> filter(event.getText()));		
 		filterInput.setPlaceholder(IMessages.INSTANCE.mdc_datatable__search());		
-		header.insert(filterInput, 0);
+		
+		if(showFilter)
+			header.insert(filterInput, 0);
 		
 		add(header);
 		add(table);		

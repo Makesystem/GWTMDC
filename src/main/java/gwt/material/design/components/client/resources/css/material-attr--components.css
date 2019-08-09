@@ -279,10 +279,12 @@
   	--mdc-datatable--border-color: var(--mdc-theme-on-surface);
   	--mdc-datatable--border-color: var(--mdc-filled-color);
   	--mdc-datatable--border: var(--mdc-datatable--border-width) solid var(--mdc-datatable--border-color);
-  	--mdc-datatable--selected-color: var(--mdc-theme-primary);
-  	--mdc-datatable--selected-ink-color: var(--mdc-theme-on-primary);
-  	--mdc-datatable--hover-color: var(--mdc-theme-secondary);
-  	--mdc-datatable--hover-ink-color: var(--mdc-theme-on-secondary);
+  	--mdc-datatable--selected-color: var(--mdc-theme-secondary);
+  	--mdc-datatable--selected-ink-color: var(--mdc-theme-on-secondary);
+  	--mdc-datatable--hover-color: var(--mdc-filled-color);
+  	--mdc-datatable--hover-ink-color: var(--mdc-datatable--ink-color);
+  	--mdc-datatable--sort-color: var(--mdc-filled-color);
+  	--mdc-datatable--sort-ink-color: var(--mdc-datatable--ink-color);
   	--mdc-datatable--corner--fill-color: var(--mdc-spreadsheet--selected-color);
   	--mdc-datatable--corner--border-color: var(--mdc-spreadsheet--selected-ink-color);
   	  	

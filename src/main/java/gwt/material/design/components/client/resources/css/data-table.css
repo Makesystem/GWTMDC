@@ -53,7 +53,7 @@ table.mdc-datatable--table thead .mdc-datatable--sorting_desc_disabled {
 }
 table.mdc-datatable--table thead .mdc-datatable--sorting_asc,
 table.mdc-datatable--table thead .mdc-datatable--sorting_desc{
-	background-color: var(--mdc-filled-color);;
+	background-color: var(--mdc-datatable--sort-color);;
 }
 table.mdc-datatable--table thead .mdc-datatable--sorting:after,
 table.mdc-datatable--table thead .mdc-datatable--sorting_asc:after,
@@ -184,79 +184,79 @@ table.mdc-datatable--table.order-column tbody tr.selected > .mdc-datatable--sort
 table.mdc-datatable--table.display tbody tr.selected > .mdc-datatable--sorting_1,
 table.mdc-datatable--table.display tbody tr.selected > .mdc-datatable--sorting_2,
 table.mdc-datatable--table.display tbody tr.selected > .mdc-datatable--sorting_3 {
-	background-color: var(--mdc-filled-color);
+	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr.odd > .mdc-datatable--sorting_1, 
 table.mdc-datatable--table.order-column.stripe tbody tr.odd > .mdc-datatable--sorting_1 {
-	background-color: var(--mdc-filled-color);
+	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr.odd > .mdc-datatable--sorting_2, 
 table.mdc-datatable--table.order-column.stripe tbody tr.odd > .mdc-datatable--sorting_2 {
-	background-color: var(--mdc-filled-color);
+	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr.odd > .mdc-datatable--sorting_3, 
 table.mdc-datatable--table.order-column.stripe tbody tr.odd > .mdc-datatable--sorting_3 {
-	background-color: var(--mdc-filled-color);
+	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr.odd.selected > .mdc-datatable--sorting_1, 
 table.mdc-datatable--table.order-column.stripe tbody tr.odd.selected > .mdc-datatable--sorting_1 {
-	background-color: var(--mdc-filled-color);
+	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr.odd.selected > .mdc-datatable--sorting_2, 
 table.mdc-datatable--table.order-column.stripe tbody tr.odd.selected > .mdc-datatable--sorting_2 {
-	background-color: var(--mdc-filled-color);
+	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr.odd.selected > .mdc-datatable--sorting_3, 
 table.mdc-datatable--table.order-column.stripe tbody tr.odd.selected > .mdc-datatable--sorting_3 {
-	background-color: var(--mdc-filled-color);
+	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr.even > .mdc-datatable--sorting_1, 
 table.mdc-datatable--table.order-column.stripe tbody tr.even > .mdc-datatable--sorting_1 {
-	background-color: var(--mdc-filled-color);
+	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr.even > .mdc-datatable--sorting_2, 
 table.mdc-datatable--table.order-column.stripe tbody tr.even > .mdc-datatable--sorting_2 {
-	background-color: var(--mdc-filled-color);
+	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr.even > .mdc-datatable--sorting_3, 
 table.mdc-datatable--table.order-column.stripe tbody tr.even > .mdc-datatable--sorting_3 {
-  	background-color: var(--mdc-filled-color);
+  	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr.even.selected > .mdc-datatable--sorting_1, 
 table.mdc-datatable--table.order-column.stripe tbody tr.even.selected > .mdc-datatable--sorting_1 {
-  	background-color: var(--mdc-filled-color);
+  	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr.even.selected > .mdc-datatable--sorting_2, 
 table.mdc-datatable--table.order-column.stripe tbody tr.even.selected > .mdc-datatable--sorting_2 {
-  	background-color: var(--mdc-filled-color);
+  	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr.even.selected > .mdc-datatable--sorting_3, 
 table.mdc-datatable--table.order-column.stripe tbody tr.even.selected > .mdc-datatable--sorting_3 {
-  	background-color: var(--mdc-filled-color);
+  	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr:hover > .mdc-datatable--sorting_1, 
 table.mdc-datatable--table.order-column.hover tbody tr:hover > .mdc-datatable--sorting_1 {
-  	background-color: var(--mdc-filled-color);
+  	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr:hover > .mdc-datatable--sorting_2, 
 table.mdc-datatable--table.order-column.hover tbody tr:hover > .mdc-datatable--sorting_2 {
-  	background-color: var(--mdc-filled-color);
+  	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr:hover > .mdc-datatable--sorting_3, 
 table.mdc-datatable--table.order-column.hover tbody tr:hover > .mdc-datatable--sorting_3 {
-  	background-color: var(--mdc-filled-color);
+  	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr:hover.selected > .mdc-datatable--sorting_1, 
 table.mdc-datatable--table.order-column.hover tbody tr:hover.selected > .mdc-datatable--sorting_1 {
-  	background-color: var(--mdc-filled-color);
+  	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr:hover.selected > .mdc-datatable--sorting_2, 
 table.mdc-datatable--table.order-column.hover tbody tr:hover.selected > .mdc-datatable--sorting_2 {
-  	background-color: var(--mdc-filled-color);
+  	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr:hover.selected > .mdc-datatable--sorting_3, 
 table.mdc-datatable--table.order-column.hover tbody tr:hover.selected > .mdc-datatable--sorting_3 {
-  	background-color: var(--mdc-filled-color);
+  	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.no-footer {
   	border-bottom: var(--mdc-datatable--border);
@@ -364,10 +364,10 @@ table.mdc-datatable--table td {
 }
 .mdc-datatable--wrapper .mdc-datatable--paginate .mdc-datatable--paginate__button.current, 
 .mdc-datatable--wrapper .mdc-datatable--paginate .mdc-datatable--paginate__button.current:hover {
-	background-color: var(--mdc-filled-color); 
+	background-color: var(--mdc-datatable--hover-color); 
 }
 .mdc-datatable--wrapper .mdc-datatable--paginate .mdc-datatable--paginate__button:hover {
-	background-color: var(--mdc-filled-color);
+	background-color: var(--mdc-datatable--hover-color);
 }
 .mdc-datatable--wrapper .mdc-datatable--paginate .mdc-datatable--paginate__button:active {
   	color: var(--mdc-datatable--ink-color);
