@@ -535,3 +535,8 @@ table.mdc-datatable--table td {
 .mdc-datatable .mdc-datatable--footer > :not(:first-child):not(:last-child) {
 	margin-left: 16px;
 	margin-right: 16px;}
+	
+.mdc-datatable--select__info {
+	padding-left: 4px;
+	padding-right: 4px; 
+}	

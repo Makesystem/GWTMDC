@@ -12,6 +12,9 @@ public class JsLanguage {
 	
 	@JsProperty
 	public JsLanguagePaginate paginate;
+	
+	@JsProperty
+	public JsLanguageSelect select;
 		
 	@JsProperty
 	public String emptyTable;

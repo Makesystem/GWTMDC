@@ -20,8 +20,6 @@
 package gwt.material.design.components.client.ui;
 
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -42,7 +40,9 @@ import gwt.material.design.components.client.ui.misc.dataTable.JsColumn;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguage;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguageAria;
 import gwt.material.design.components.client.ui.misc.dataTable.JsLanguagePaginate;
+import gwt.material.design.components.client.ui.misc.dataTable.JsLanguageSelect;
 import gwt.material.design.components.client.ui.misc.dataTable.JsOptions;
+import gwt.material.design.components.client.utils.helper.ObjectHelper;
 
 /**
  * @see https://datatables.net/reference/option/pagingType
@@ -120,7 +120,7 @@ public class MaterialDataTable<T> extends Div {
 	}
 		
 	@UiChild(tagname = "button")
-	public void addButtons(final Widget child) {
+	public void addButton(final Widget child) {
 		header.add(child);
 	}
 	
@@ -141,26 +141,19 @@ public class MaterialDataTable<T> extends Div {
 		redraw();
 	}
 	
-	public void addData(@SuppressWarnings("unchecked") final T... data) {
-		if (options.data == null)
-			options.data = data;
-		else
-			options.data = concat(options.data, data);
-
-		if (jsElement != null) {
+	public void addData(@SuppressWarnings("unchecked") final T... data) {		
+		if (initialized && jsElement != null) {
 			Arrays.stream(data).forEach(row -> addRow(jsElement, row));
 			draw();
 		}
+		
+		if (options.data == null)
+			options.data = data;
+		else
+			options.data = ObjectHelper.concat(options.data, data);
 	}
-	
-	public final Object[] concat(final Object[] first, final Object[] last) {
-        final Collection<Object> collection = new LinkedList<>();
-        collection.addAll(Arrays.asList(first));
-        collection.addAll(Arrays.asList(last));
-        return collection.stream().toArray();
-    }
-	
-	protected native void addRow(final JavaScriptObject dataTable, final Object data)/*-{	
+		
+	protected native void addRow(final JavaScriptObject dataTable, final T data)/*-{	
 		dataTable.row.add(data);
 	}-*/;
 	
@@ -246,10 +239,31 @@ public class MaterialDataTable<T> extends Div {
 		options.language.url = "";
 		options.language.zeroRecords = IMessages.INSTANCE.mdc_datatable__zero_records();		
 	
+		options.language.select = new JsLanguageSelect();
+		options.language.select.rows = selectLanguage(
+				IMessages.INSTANCE.mdc_datatable__select__rows__zero_recoreds(), 
+				IMessages.INSTANCE.mdc_datatable__select__rows__one_recoreds(), 
+				IMessages.INSTANCE.mdc_datatable__select__rows__defauld());
+		options.language.select.columns = selectLanguage(
+				IMessages.INSTANCE.mdc_datatable__select__columns__zero_recoreds(), 
+				IMessages.INSTANCE.mdc_datatable__select__columns__one_recoreds(), 
+				IMessages.INSTANCE.mdc_datatable__select__columns__defauld());
+		options.language.select.cells = selectLanguage(
+				IMessages.INSTANCE.mdc_datatable__select__cells__zero_recoreds(), 
+				IMessages.INSTANCE.mdc_datatable__select__cells__one_recoreds(), 
+				IMessages.INSTANCE.mdc_datatable__select__cells__defauld());
+		
 		return options;
 	}
 	
-	
+	native JavaScriptObject selectLanguage(final String zero, final String one, final String more)/*-{
+		return {
+			_: more,
+            0: '',
+            1: one            
+		};
+	}-*/;
+
 	
 	
 	

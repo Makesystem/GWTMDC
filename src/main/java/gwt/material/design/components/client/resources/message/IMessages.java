@@ -221,4 +221,31 @@ public interface IMessages extends Messages {
 	
 	@DefaultMessage("No matching records found")
 	String mdc_datatable__zero_records();
+	
+	@DefaultMessage("Selected %d rows")
+	String mdc_datatable__select__rows__defauld();
+	
+	@DefaultMessage("Click a row to select it")
+	String mdc_datatable__select__rows__zero_recoreds();
+	
+	@DefaultMessage("Selected 1 row")
+	String mdc_datatable__select__rows__one_recoreds();
+	
+	@DefaultMessage("Selected %d columns")
+	String mdc_datatable__select__columns__defauld();
+	
+	@DefaultMessage("Click a column to select it")
+	String mdc_datatable__select__columns__zero_recoreds();
+	
+	@DefaultMessage("Selected 1 column")
+	String mdc_datatable__select__columns__one_recoreds();
+	
+	@DefaultMessage("Selected %d cells")
+	String mdc_datatable__select__cells__defauld();
+	
+	@DefaultMessage("Click a cell to select it")
+	String mdc_datatable__select__cells__zero_recoreds();
+	
+	@DefaultMessage("Selected 1 cell")
+	String mdc_datatable__select__cells__one_recoreds();
 }
