@@ -24,6 +24,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiChild;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -32,6 +33,9 @@ import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.PagingType;
 import gwt.material.design.components.client.constants.RenderType;
 import gwt.material.design.components.client.constants.TextAlign;
+import gwt.material.design.components.client.events.SelectionEvent;
+import gwt.material.design.components.client.events.SelectionEvent.HasSelectionHandlers;
+import gwt.material.design.components.client.events.SelectionEvent.SelectionHandler;
 import gwt.material.design.components.client.resources.message.IMessages;
 import gwt.material.design.components.client.ui.html.Div;
 import gwt.material.design.components.client.ui.html.Table;
@@ -52,7 +56,7 @@ import gwt.material.design.components.client.utils.helper.ObjectHelper;
  * @author Richeli Vargas
  *
  */
-public class MaterialDataTable<T> extends Div {
+public class MaterialDataTable<T> extends Div implements HasSelectionHandlers<T[]> {
 	
 	protected final Div header = new Div(CssName.MDC_DATA_TABLE__HEADER);
 	protected final FilterInput filterInput = new FilterInput();
@@ -72,12 +76,23 @@ public class MaterialDataTable<T> extends Div {
 		return draw(table.getElement(), options);
 	}
 	
+	protected final void fireSelectionEvent(final T[] value) {		
+		SelectionEvent.fire(this, value);
+	}
+	
+	@Override
+	public HandlerRegistration addSelectionHandler(final SelectionHandler<T[]> handler) {
+		return addHandler(handler, SelectionEvent.getType());
+	}
+	
 	public void redraw() {
 		jsInit();
 	}
 	
 	protected native JavaScriptObject draw(final Element element, final JsOptions options)/*-{
 	
+		var _this = this;
+		
 		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
 		if(dataTable) {
 			dataTable.destroy();			
@@ -101,6 +116,16 @@ public class MaterialDataTable<T> extends Div {
 		
 		dataTable = $wnd.jQuery(element).DataTable(options);
 		dataTable.select();
+		
+		dataTable.on('select', function (e, dt, type, indexes ) {
+			if ( type === 'row' ) {
+        		var data = dataTable.rows(indexes).data();
+        		console.log('antes: ' + data.length);
+        		if(data && data.length > 0)
+        			_this.@gwt.material.design.components.client.ui.MaterialDataTable::fireSelectionEvent([Ljava/lang/Object;)(data);        		
+    		}
+		});
+		
 		return dataTable;	
 			
 	}-*/;
@@ -202,6 +227,8 @@ public class MaterialDataTable<T> extends Div {
 					filterInput.removeFromParent();
 				
 	}
+	
+	
 	
 	JsOptions options() {
 		
