@@ -20,7 +20,8 @@
 package gwt.material.design.components.client.ui;
 
 import java.util.Arrays;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Collection;
+import java.util.LinkedList;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
@@ -28,14 +29,14 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.uibinder.client.UiChild;
 import com.google.gwt.user.client.ui.Widget;
 
-import gwt.material.design.components.client.constants.ColumnType;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.PagingType;
-import gwt.material.design.components.client.constants.RenderType;
-import gwt.material.design.components.client.constants.TextAlign;
 import gwt.material.design.components.client.events.SelectionEvent;
 import gwt.material.design.components.client.events.SelectionEvent.HasSelectionHandlers;
 import gwt.material.design.components.client.events.SelectionEvent.SelectionHandler;
+import gwt.material.design.components.client.events.UnselectionEvent;
+import gwt.material.design.components.client.events.UnselectionEvent.HasUnselectionHandlers;
+import gwt.material.design.components.client.events.UnselectionEvent.UnselectionHandler;
 import gwt.material.design.components.client.resources.message.IMessages;
 import gwt.material.design.components.client.ui.html.Div;
 import gwt.material.design.components.client.ui.html.Table;
@@ -56,7 +57,7 @@ import gwt.material.design.components.client.utils.helper.ObjectHelper;
  * @author Richeli Vargas
  *
  */
-public class MaterialDataTable<T> extends Div implements HasSelectionHandlers<T[]> {
+public class MaterialDataTable<T> extends Div implements HasSelectionHandlers<Collection<T>>, HasUnselectionHandlers<Collection<T>> {
 	
 	protected final Div header = new Div(CssName.MDC_DATA_TABLE__HEADER);
 	protected final FilterInput filterInput = new FilterInput();
@@ -76,13 +77,22 @@ public class MaterialDataTable<T> extends Div implements HasSelectionHandlers<T[
 		return draw(table.getElement(), options);
 	}
 	
-	protected final void fireSelectionEvent(final T[] value) {		
-		SelectionEvent.fire(this, value);
+	protected final void fireSelectionEvent(final int[] indexes) {
+		SelectionEvent.fire(this, toCollection(indexes));
 	}
 	
 	@Override
-	public HandlerRegistration addSelectionHandler(final SelectionHandler<T[]> handler) {
+	public HandlerRegistration addSelectionHandler(final SelectionHandler<Collection<T>> handler) {
 		return addHandler(handler, SelectionEvent.getType());
+	}
+	
+	protected final void fireUnselectionEvent(final int[] indexes) {
+		UnselectionEvent.fire(this, toCollection(indexes));
+	}
+	
+	@Override
+	public HandlerRegistration addUnselectionHandler(final UnselectionHandler<Collection<T>> handler) {
+		return addHandler(handler, UnselectionEvent.getType());
 	}
 	
 	public void redraw() {
@@ -95,6 +105,8 @@ public class MaterialDataTable<T> extends Div implements HasSelectionHandlers<T[
 		
 		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
 		if(dataTable) {
+			dataTable.off('select');
+			dataTable.off('deselect');
 			dataTable.destroy();			
 			$wnd.jQuery(element).empty(); // empty in case the columns change
 		}
@@ -119,10 +131,14 @@ public class MaterialDataTable<T> extends Div implements HasSelectionHandlers<T[
 		
 		dataTable.on('select', function (e, dt, type, indexes ) {
 			if ( type === 'row' ) {
-        		var data = dataTable.rows(indexes).data();
-        		console.log('antes: ' + data.length);
-        		if(data && data.length > 0)
-        			_this.@gwt.material.design.components.client.ui.MaterialDataTable::fireSelectionEvent([Ljava/lang/Object;)(data);        		
+        		if(indexes && indexes.length > 0)
+        			_this.@gwt.material.design.components.client.ui.MaterialDataTable::fireSelectionEvent([I)(indexes);        		
+    		}
+		});
+		dataTable.on('deselect', function (e, dt, type, indexes ) {
+			if ( type === 'row' ) {
+        		if(indexes && indexes.length > 0)
+        			_this.@gwt.material.design.components.client.ui.MaterialDataTable::fireUnselectionEvent([I)(indexes);        		
     		}
 		});
 		
@@ -150,9 +166,8 @@ public class MaterialDataTable<T> extends Div implements HasSelectionHandlers<T[
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void setColumns(final Column<T>... columns) {
-		final AtomicInteger index = new AtomicInteger(0);
-		options.columns = Arrays.stream(columns).map(column -> column.setPosition(index.getAndIncrement()).toNative()).toArray(JsColumn[]::new);
+	public void setColumns(final MaterialDataTableColumn<T>... columns) {
+		options.columns = Arrays.stream(columns).map(column -> column.toNative()).toArray(JsColumn[]::new);
 		redraw();
 	}
 	
@@ -188,6 +203,18 @@ public class MaterialDataTable<T> extends Div implements HasSelectionHandlers<T[
 			dataTable.draw();
 	}-*/;
 	
+	public native void drawHold()/*-{	
+		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+		if(dataTable)
+			dataTable.draw('full-hold');
+	}-*/;
+	
+	public native void drawPage()/*-{	
+		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+		if(dataTable)
+			dataTable.draw('page');
+	}-*/;
+	
 	public native void adjust()/*-{	
 		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
 		if(dataTable)
@@ -217,18 +244,32 @@ public class MaterialDataTable<T> extends Div implements HasSelectionHandlers<T[
 	}-*/;
 	
 	public void showFilter(final boolean showFilter) {
-		this.showFilter = showFilter;
-		
+		this.showFilter = showFilter;		
 		if (initialized)
 			if (showFilter)
 				if (filterInput.getParent() == null)
 					header.add(filterInput);
 				else if (filterInput.getParent() != null)
-					filterInput.removeFromParent();
-				
+					filterInput.removeFromParent();				
 	}
 	
-	
+	@SuppressWarnings("unchecked")
+	public final Collection<T> toCollection(final int... indexes) {
+		final Collection<T> values = new LinkedList<>();
+		if (options.data != null) {
+			if (indexes == null || indexes.length == 0)
+				values.addAll((Collection<? extends T>) Arrays.asList(options.data));
+			else {
+				final int dataLength = options.data.length;
+				for (int index = 0; index < indexes.length; index++) {
+					final int valueIndex = indexes[index];
+					if (valueIndex < dataLength)
+						values.add((T) options.data[valueIndex]);
+				}
+			}
+		}
+		return values;
+	}
 	
 	JsOptions options() {
 		
@@ -291,123 +332,4 @@ public class MaterialDataTable<T> extends Div implements HasSelectionHandlers<T[
 		};
 	}-*/;
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public static interface ColumnRender<D> {		
-		public String render(
-				final String data, 
-				final RenderType type, 
-				final D rowData, 
-				final Integer rowIndex,
-				final Integer columnIndex);		
-	}
-	
-	public static class Column<D> {
-		
-		private final JsColumn jsColumn;
-		private int position;
-		
-		public Column(
-				final String title, final ColumnRender<D> render) {
-			this(title, null, null, null, true, true, true, null, render);
-		}
-		
-		public Column(
-				final String title) {
-			this(title, null, null, true, true, true);
-		}		
-		
-		public Column(
-				final String title, 
-				final String defaultContent) {
-			this(title, null, defaultContent, true, true, true);
-		}
-		
-		public Column(
-				final String title, 
-				final String defaultContent, 
-				final boolean visible, 
-				final boolean orderable, 
-				final boolean searchable) {
-			this(title, null, defaultContent, visible, orderable, searchable);
-		}
-		
-		public Column(
-				final String title, 
-				final String width, 
-				final String defaultContent,
-				final boolean visible, 
-				final boolean orderable, 
-				final boolean searchable) {
-			this(title, width, defaultContent, null, visible, orderable, searchable, null, null);
-		}
-		
-		public Column(
-				final String title, 
-				final String width, 
-				final String defaultContent,
-				final ColumnType type,
-				final boolean visible, 
-				final boolean orderable, 
-				final boolean searchable, 
-				final TextAlign textAlign,
-				final ColumnRender<D> render) {
-			
-			jsColumn = new JsColumn();
-			jsColumn.title = title;
-			jsColumn.width = width;
-			jsColumn.defaultContent = defaultContent;
-			jsColumn.type = type == null ? null : type.getCssName();
-			jsColumn.visible = visible;
-			jsColumn.orderable = orderable;
-			jsColumn.searchable = searchable;
-			jsColumn.render = toFunction(render);
-			jsColumn.className = (textAlign == null ? null : textAlign.getCssName());
-					
-		}
-		
-		protected JsColumn toNative() {
-			return jsColumn;
-		}
-		
-		protected int getPosition() {
-			return position;
-		}
-		
-		protected Column<D> setPosition(final int position) {
-			this.position = position;
-			return this;
-		}
-		
-		protected native JavaScriptObject toFunction(final ColumnRender<D> render)/*-{
-		
-			if(!render)
-				return null;
-		
-			return function (data, type, row_data, meta) {
-							
-				var render_type = @gwt.material.design.components.client.constants.RenderType::fromStyleName(Ljava/lang/String;)(type);
-			
-				return render.@gwt.material.design.components.client.ui.MaterialDataTable.ColumnRender::render(
-      				Ljava/lang/String;
-      				Lgwt/material/design/components/client/constants/RenderType;
-      				Ljava/lang/Object;
-      				Ljava/lang/Integer;
-      				Ljava/lang/Integer;)
-      				(data, render_type, row_data, meta.row, meta.col);
-    		};
-    		
-		}-*/;
-
-	}
 }
