@@ -45,8 +45,9 @@ public class GwtMDC implements EntryPoint {
 	}
 
 	public static void loadJsResources() {
-		// Google Material Components
+		// JQuery
 		injectJs(MaterialResources.INSTANCE.jquery());
+		// Google Material Components		
 		injectJs(MaterialResources.INSTANCE.resizeSensor());
 		injectJs(MaterialResources.INSTANCE.materialComponentsWebJs());
 		// Tree
@@ -76,7 +77,6 @@ public class GwtMDC implements EntryPoint {
 		// Data table
 		injectJs(MaterialResources.INSTANCE.dataTableJs());
 		injectJs(MaterialResources.INSTANCE.dataTableSelectJs());
-		//injectJs(MaterialResources.INSTANCE.dataTableFixedColumnJs());
 	}
 
 	public static void loadCssResources() {

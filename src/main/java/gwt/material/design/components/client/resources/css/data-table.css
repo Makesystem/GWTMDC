@@ -86,22 +86,15 @@ table.mdc-datatable--table thead .mdc-datatable--sorting_desc_disabled:after {
 }
 
 table.mdc-datatable--table thead .mdc-datatable--sorting:after {
-	content: "unfold_more";
-}	
+	content: "unfold_more";}	
 table.mdc-datatable--table thead .mdc-datatable--sorting_asc:after {
-	content: "expand_less";
-	color: var(--mdc-datatable--hover-color);
-}
+	content: "expand_less";}
 table.mdc-datatable--table thead .mdc-datatable--sorting_desc:after {
-	content: "expand_more";
-	color: var(--mdc-datatable--hover-color);
-}
+	content: "expand_more";}
 table.mdc-datatable--table thead .mdc-datatable--sorting_asc_disabled:after {
-	content: "expand_less";
-}
+	content: "expand_less";}
 table.mdc-datatable--table thead .mdc-datatable--sorting_desc_disabled:after {
-	content: "expand_more";
-}
+	content: "expand_more";}
 
 .mdc-datatable--scroll_body thead .mdc-datatable--sorting:after,
 .mdc-datatable--scroll_body thead .mdc-datatable--sorting_asc:after,
@@ -116,30 +109,35 @@ table.mdc-datatable--table thead .mdc-datatable--sorting_desc_disabled:after {
 	filter: grayscale(100%);
     pointer-events: none;
     cursor: default;
-	opacity: var(--mdc-disabled-opacity);
-}
+	opacity: var(--mdc-disabled-opacity);}
 table.mdc-datatable--table tbody tr {
 	background-color: var(--mdc-datatable--fill-color);
-}
-table.mdc-datatable--table tbody tr.selected {
-	background-color: var(--mdc-datatable--selected-color);
-}
+	height: var(--mdc-datatable--row-height);
+	position: relative;}	
+table.mdc-datatable--table tbody tr::after {
+	content: ''; 
+	width: 100%; 
+	height: var(--mdc-datatable--row-height);	
+	opacity: 0;
+	position: relative; 
+	position: absolute; 
+	left: 0;
+	z-index: 0;}
 table.mdc-datatable--table tbody th,
 table.mdc-datatable--table tbody td {
-	padding: var(--mdc-datatable--cell-padding);
-}
+	z-index: 1;
+	position: relative;
+	padding: var(--mdc-datatable--cell-padding);}			
 table.mdc-datatable--table.row-border tbody th, 
 table.mdc-datatable--table.row-border tbody td, 
 table.mdc-datatable--table.display tbody th, 
 table.mdc-datatable--table.display tbody td {
-	border-top: var(--mdc-datatable--border);
-}
+	border-top: var(--mdc-datatable--border);}
 table.mdc-datatable--table.row-border tbody tr:first-child th,
 table.mdc-datatable--table.row-border tbody tr:first-child td, 
 table.mdc-datatable--table.display tbody tr:first-child th,
 table.mdc-datatable--table.display tbody tr:first-child td {
-	border-top: none;
-}
+	border-top: none;}
 table.mdc-datatable--table.cell-border tbody th, 
 table.mdc-datatable--table.cell-border tbody td {
 	border-top: var(--mdc-datatable--border);
@@ -158,18 +156,10 @@ table.mdc-datatable--table.display tbody tr.odd,
 table.mdc-datatable--table td.mdc-datatable--empty { 
 	background-color: var(--mdc-datatable--fill-color);
 }
-table.mdc-datatable--table.stripe tbody tr.odd.selected, 
-table.mdc-datatable--table.display tbody tr.odd.selected {
-	background-color: var(--mdc-datatable--selected-color);
-}
-table.mdc-datatable--table.hover tbody tr:hover, 
-table.mdc-datatable--table.display tbody tr:hover {
-	background-color: var(--mdc-datatable--hover-color);
-}
-table.mdc-datatable--table.hover tbody tr:hover.selected, 
-table.mdc-datatable--table.display tbody tr:hover.selected {
-	background-color: var(--mdc-datatable--selected-color);
-}
+table.mdc-datatable--table.hover tbody tr:hover::after, 
+table.mdc-datatable--table.display tbody tr:hover::after {
+	background-color: var(--mdc-datatable--ink-color);	
+	opacity: var(--mdc-overlay-opacity--hover);}
 table.mdc-datatable--table.order-column tbody tr > .mdc-datatable--sorting_1,
 table.mdc-datatable--table.order-column tbody tr > .mdc-datatable--sorting_2,
 table.mdc-datatable--table.order-column tbody tr > .mdc-datatable--sorting_3, 
@@ -177,14 +167,6 @@ table.mdc-datatable--table.display tbody tr > .mdc-datatable--sorting_1,
 table.mdc-datatable--table.display tbody tr > .mdc-datatable--sorting_2,
 table.mdc-datatable--table.display tbody tr > .mdc-datatable--sorting_3 {
 	background-color: var(--mdc-datatable--fill-color);
-}
-table.mdc-datatable--table.order-column tbody tr.selected > .mdc-datatable--sorting_1,
-table.mdc-datatable--table.order-column tbody tr.selected > .mdc-datatable--sorting_2,
-table.mdc-datatable--table.order-column tbody tr.selected > .mdc-datatable--sorting_3, 
-table.mdc-datatable--table.display tbody tr.selected > .mdc-datatable--sorting_1,
-table.mdc-datatable--table.display tbody tr.selected > .mdc-datatable--sorting_2,
-table.mdc-datatable--table.display tbody tr.selected > .mdc-datatable--sorting_3 {
-	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr.odd > .mdc-datatable--sorting_1, 
 table.mdc-datatable--table.order-column.stripe tbody tr.odd > .mdc-datatable--sorting_1 {
@@ -196,18 +178,6 @@ table.mdc-datatable--table.order-column.stripe tbody tr.odd > .mdc-datatable--so
 }
 table.mdc-datatable--table.display tbody tr.odd > .mdc-datatable--sorting_3, 
 table.mdc-datatable--table.order-column.stripe tbody tr.odd > .mdc-datatable--sorting_3 {
-	background-color: var(--mdc-datatable--sort-color);
-}
-table.mdc-datatable--table.display tbody tr.odd.selected > .mdc-datatable--sorting_1, 
-table.mdc-datatable--table.order-column.stripe tbody tr.odd.selected > .mdc-datatable--sorting_1 {
-	background-color: var(--mdc-datatable--sort-color);
-}
-table.mdc-datatable--table.display tbody tr.odd.selected > .mdc-datatable--sorting_2, 
-table.mdc-datatable--table.order-column.stripe tbody tr.odd.selected > .mdc-datatable--sorting_2 {
-	background-color: var(--mdc-datatable--sort-color);
-}
-table.mdc-datatable--table.display tbody tr.odd.selected > .mdc-datatable--sorting_3, 
-table.mdc-datatable--table.order-column.stripe tbody tr.odd.selected > .mdc-datatable--sorting_3 {
 	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.display tbody tr.even > .mdc-datatable--sorting_1, 
@@ -222,18 +192,6 @@ table.mdc-datatable--table.display tbody tr.even > .mdc-datatable--sorting_3,
 table.mdc-datatable--table.order-column.stripe tbody tr.even > .mdc-datatable--sorting_3 {
   	background-color: var(--mdc-datatable--sort-color);
 }
-table.mdc-datatable--table.display tbody tr.even.selected > .mdc-datatable--sorting_1, 
-table.mdc-datatable--table.order-column.stripe tbody tr.even.selected > .mdc-datatable--sorting_1 {
-  	background-color: var(--mdc-datatable--sort-color);
-}
-table.mdc-datatable--table.display tbody tr.even.selected > .mdc-datatable--sorting_2, 
-table.mdc-datatable--table.order-column.stripe tbody tr.even.selected > .mdc-datatable--sorting_2 {
-  	background-color: var(--mdc-datatable--sort-color);
-}
-table.mdc-datatable--table.display tbody tr.even.selected > .mdc-datatable--sorting_3, 
-table.mdc-datatable--table.order-column.stripe tbody tr.even.selected > .mdc-datatable--sorting_3 {
-  	background-color: var(--mdc-datatable--sort-color);
-}
 table.mdc-datatable--table.display tbody tr:hover > .mdc-datatable--sorting_1, 
 table.mdc-datatable--table.order-column.hover tbody tr:hover > .mdc-datatable--sorting_1 {
   	background-color: var(--mdc-datatable--sort-color);
@@ -244,18 +202,6 @@ table.mdc-datatable--table.order-column.hover tbody tr:hover > .mdc-datatable--s
 }
 table.mdc-datatable--table.display tbody tr:hover > .mdc-datatable--sorting_3, 
 table.mdc-datatable--table.order-column.hover tbody tr:hover > .mdc-datatable--sorting_3 {
-  	background-color: var(--mdc-datatable--sort-color);
-}
-table.mdc-datatable--table.display tbody tr:hover.selected > .mdc-datatable--sorting_1, 
-table.mdc-datatable--table.order-column.hover tbody tr:hover.selected > .mdc-datatable--sorting_1 {
-  	background-color: var(--mdc-datatable--sort-color);
-}
-table.mdc-datatable--table.display tbody tr:hover.selected > .mdc-datatable--sorting_2, 
-table.mdc-datatable--table.order-column.hover tbody tr:hover.selected > .mdc-datatable--sorting_2 {
-  	background-color: var(--mdc-datatable--sort-color);
-}
-table.mdc-datatable--table.display tbody tr:hover.selected > .mdc-datatable--sorting_3, 
-table.mdc-datatable--table.order-column.hover tbody tr:hover.selected > .mdc-datatable--sorting_3 {
   	background-color: var(--mdc-datatable--sort-color);
 }
 table.mdc-datatable--table.no-footer {
@@ -536,7 +482,66 @@ table.mdc-datatable--table td {
 	margin-left: 16px;
 	margin-right: 16px;}
 	
+	
+	
+	
+	
 .mdc-datatable--select__info {
 	padding-left: 4px;
 	padding-right: 4px; 
 }	
+
+
+
+
+
+
+
+
+/* --------------- */
+/* Select settings */
+/* --------------- */
+	
+table.mdc-datatable--table tbody tr.selected::after {
+	background-color: var(--mdc-datatable--selected-color);
+	opacity: var(--mdc-overlay-opacity--selected);}
+table.mdc-datatable--table.hover tbody tr.selected:hover::after, 
+table.mdc-datatable--table.display tbody tr.selected:hover::after {
+	background-color: var(--mdc-datatable--selected-color);
+	opacity: calc(var(--mdc-overlay-opacity--hover) + var(--mdc-overlay-opacity--selected));}
+	
+table.mdc-datatable--table tbody td.mdc-datatable--select__checkbox,
+table.mdc-datatable--table tbody th.mdc-datatable--select__checkbox {
+	position: relative;}
+table.mdc-datatable--table tbody td.mdc-datatable--select__checkbox:before, table.mdc-datatable--table tbody td.mdc-datatable--select__checkbox:after,
+table.mdc-datatable--table tbody th.mdc-datatable--select__checkbox:before,
+table.mdc-datatable--table tbody th.mdc-datatable--select__checkbox:after {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 18px;
+	height: 18px;
+	box-sizing: border-box;}
+table.mdc-datatable--table tbody td.mdc-datatable--select__checkbox:before,
+table.mdc-datatable--table tbody th.mdc-datatable--select__checkbox:before {
+	content: ' ';
+	margin-top: -9px;
+	margin-left: -9px;
+	border: 2px solid var(--mdc-checkbox-unchecked-color);
+	border-radius: 2px;}
+	
+table.mdc-datatable--table tr.selected td.mdc-datatable--select__checkbox:before,
+table.mdc-datatable--table tr.selected th.mdc-datatable--select__checkbox:before {
+	border-color: var(--mdc-checkbox-checked-color);
+	background-color: var(--mdc-checkbox-checked-color);}
+table.mdc-datatable--table tr.selected td.mdc-datatable--select__checkbox:after,
+table.mdc-datatable--table tr.selected th.mdc-datatable--select__checkbox:after {
+	content: '';
+	width: 6px;
+	height: 12px;
+	border-right: 2px solid var(--mdc-checkbox-on-checked-color);
+	border-bottom: 2px solid var(--mdc-checkbox-on-checked-color);
+	transform: rotate(45deg);
+	margin-top: -7px;
+	margin-left: -3px;}

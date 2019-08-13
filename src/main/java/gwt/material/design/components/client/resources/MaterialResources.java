@@ -46,7 +46,7 @@ public interface MaterialResources extends ClientBundle {
 	// JQuery
 	// ////////////////////////////////////////
 
-	@Source("js/jquery-3.3.1.min.js")
+	@Source("js/jquery-3.4.1.min.js")
 	TextResource jquery();
 
 	// ////////////////////////////////////////
@@ -159,10 +159,7 @@ public interface MaterialResources extends ClientBundle {
 	
 	@Source("js/data-table.select.min.js")
 	TextResource dataTableSelectJs();
-	
-	@Source("js/data-table.fexed-column.min.js")
-	TextResource dataTableFixedColumnJs();
-		
+			
 	@Source("css/data-table.css")
 	TextResource dataTableCss();
 	

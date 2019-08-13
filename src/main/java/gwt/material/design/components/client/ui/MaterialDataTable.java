@@ -21,6 +21,7 @@ package gwt.material.design.components.client.ui;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -67,6 +68,7 @@ public class MaterialDataTable<T> extends Div implements HasSelectionHandlers<Co
 	private PagingType pagingType = PagingType.SIMPLE;
 	
 	private boolean showFilter = true;
+	private final Collection<T> selectedItems = new LinkedHashSet<>();
 	
 	public MaterialDataTable() {
 		super(CssName.MDC_DATA_TABLE, CssName.MDC_TYPOGRAPHY__BODY_2);
@@ -78,7 +80,9 @@ public class MaterialDataTable<T> extends Div implements HasSelectionHandlers<Co
 	}
 	
 	protected final void fireSelectionEvent(final int[] indexes) {
-		SelectionEvent.fire(this, toCollection(indexes));
+		final Collection<T> items = toCollection(indexes);
+		select(items);
+		SelectionEvent.fire(this, items);
 	}
 	
 	@Override
@@ -87,8 +91,22 @@ public class MaterialDataTable<T> extends Div implements HasSelectionHandlers<Co
 	}
 	
 	protected final void fireUnselectionEvent(final int[] indexes) {
-		UnselectionEvent.fire(this, toCollection(indexes));
+		final Collection<T> items = toCollection(indexes);
+		unselect(items);
+		UnselectionEvent.fire(this, items);
 	}
+	
+	protected void select(final Collection<T> items) {
+		selectedItems.addAll(items);
+	}
+	
+	protected void unselect(final Collection<T> items) {
+		selectedItems.removeAll(items);
+	}
+	
+	public boolean isSelected(final T item) {
+		return selectedItems.contains(item);
+	}	
 	
 	@Override
 	public HandlerRegistration addUnselectionHandler(final UnselectionHandler<Collection<T>> handler) {
@@ -120,20 +138,17 @@ public class MaterialDataTable<T> extends Div implements HasSelectionHandlers<Co
 		options.dom = '<"' + MDC_DATA_TABLE__HEADER + '"r>t<"' + MDC_DATA_TABLE__FOOTER + '"lip>';
 		options.autoWidth = true;
 		options.scrollX = true;
-		options.select = {
+		
+        options.select = {
 			items: 'row',
             style: 'multi',
-            info: true
+            info: false,
+            selector: 'td:first-child'
         };
-        
-        options.scrollCollapse = true;
-        options.fixedColumns = {
-            leftColumns: 1,
-            rightColumns: 1
-        };
-		
+		options.order =[[ 2, 'desc' ], [ 1, 'asc' ]];
+        		
 		dataTable = $wnd.jQuery(element).DataTable(options);
-		//dataTable.select();
+		dataTable.select();
 		
 		dataTable.on('select', function (e, dt, type, indexes ) {
 			if ( type === 'row' ) {
@@ -178,6 +193,7 @@ public class MaterialDataTable<T> extends Div implements HasSelectionHandlers<Co
 	}
 	
 	public void clear() {
+		selectedItems.clear();
 		options.data = null;
 		redraw();
 	}

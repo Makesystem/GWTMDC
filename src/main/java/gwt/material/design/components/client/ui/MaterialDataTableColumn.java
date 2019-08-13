@@ -54,7 +54,7 @@ public class MaterialDataTableColumn<D> {
 	private Render<D> render;
 	
 	private String className;
-		
+	
 	public String getTitle() {
 		return title;
 	}
@@ -177,10 +177,11 @@ public class MaterialDataTableColumn<D> {
 			Ljava/lang/Integer;
 			Ljava/lang/Integer;);
 
-		return function (data, type, row_data, meta) {							
+		return function (data, type, row_data, meta) {
 			var render_type = valueOf(type);
-			return callRender(data, render_type, row_data, meta.row, meta.col);					
+			return callRender(data, render_type, row_data, meta.row, meta.col);			
 		};	
+		
 	}-*/;
 
 
