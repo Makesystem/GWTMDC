@@ -125,9 +125,15 @@ public class MaterialDataTable<T> extends Div implements HasSelectionHandlers<Co
             style: 'multi',
             info: true
         };
+        
+        options.scrollCollapse = true;
+        options.fixedColumns = {
+            leftColumns: 1,
+            rightColumns: 1
+        };
 		
 		dataTable = $wnd.jQuery(element).DataTable(options);
-		dataTable.select();
+		//dataTable.select();
 		
 		dataTable.on('select', function (e, dt, type, indexes ) {
 			if ( type === 'row' ) {

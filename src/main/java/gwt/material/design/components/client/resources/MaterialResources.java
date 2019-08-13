@@ -160,6 +160,9 @@ public interface MaterialResources extends ClientBundle {
 	@Source("js/data-table.select.min.js")
 	TextResource dataTableSelectJs();
 	
+	@Source("js/data-table.fexed-column.min.js")
+	TextResource dataTableFixedColumnJs();
+		
 	@Source("css/data-table.css")
 	TextResource dataTableCss();
 	

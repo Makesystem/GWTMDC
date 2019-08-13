@@ -155,7 +155,12 @@ public class MaterialDataTableColumn<D> {
 		jsColumn.orderable = orderable;
 		jsColumn.searchable = searchable;
 		jsColumn.render = toFunction(render);
-		jsColumn.className = (textAlign == null ? className : textAlign.getCssName() + " " + (className == null ? "" : className));
+		jsColumn.className = (textAlign == null 
+				? className 
+				: textAlign.getCssName() + " " + (
+						className == null 
+						? "" 
+						: className));
 
 		return jsColumn;
 	}
