@@ -1,23 +1,17 @@
-package gwt.material.design.components.client.ui.misc.dataTable;
+package gwt.material.design.components.client.ui.misc.dataTable.options;
 
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 @JsType(isNative = true, name = "Object", namespace = JsPackage.GLOBAL)
-public class JsLanguagePaginate {
+public class JsFixedColumns {
 
 	
 	@JsProperty
-	public String first;
+	public int leftColumns;
 	
 	@JsProperty
-	public String last;
-	
-	@JsProperty
-	public String next;
-	
-	@JsProperty
-	public String previous;
+	public int rightColumns;
 		
 }

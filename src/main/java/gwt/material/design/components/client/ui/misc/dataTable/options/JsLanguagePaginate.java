@@ -1,22 +1,23 @@
-package gwt.material.design.components.client.ui.misc.dataTable;
-
-import com.google.gwt.core.client.JavaScriptObject;
+package gwt.material.design.components.client.ui.misc.dataTable.options;
 
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 @JsType(isNative = true, name = "Object", namespace = JsPackage.GLOBAL)
-public class JsLanguageSelect {
+public class JsLanguagePaginate {
 
 	
 	@JsProperty
-	public JavaScriptObject rows;
+	public String first;
 	
 	@JsProperty
-	public JavaScriptObject columns;
+	public String last;
 	
 	@JsProperty
-	public JavaScriptObject cells;
+	public String next;
+	
+	@JsProperty
+	public String previous;
 		
 }

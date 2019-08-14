@@ -1,17 +1,17 @@
-package gwt.material.design.components.client.ui.misc.dataTable;
+package gwt.material.design.components.client.ui.misc.dataTable.options;
 
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 @JsType(isNative = true, name = "Object", namespace = JsPackage.GLOBAL)
-public class JsFixedColumns {
+public class JsLanguageAria {
 
 	
 	@JsProperty
-	public int leftColumns;
+	public String sortAscending;
 	
 	@JsProperty
-	public int rightColumns;
+	public String sortDescending;
 		
 }

@@ -1,4 +1,4 @@
-package gwt.material.design.components.client.ui.misc.dataTable;
+package gwt.material.design.components.client.ui.misc.dataTable.options;
 
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;

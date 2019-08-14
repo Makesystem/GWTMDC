@@ -1,17 +1,22 @@
-package gwt.material.design.components.client.ui.misc.dataTable;
+package gwt.material.design.components.client.ui.misc.dataTable.options;
 
 import jsinterop.annotations.JsPackage;
 import jsinterop.annotations.JsProperty;
 import jsinterop.annotations.JsType;
 
 @JsType(isNative = true, name = "Object", namespace = JsPackage.GLOBAL)
-public class JsLanguageAria {
+public class JsSelect {
 
 	
 	@JsProperty
-	public String sortAscending;
+	public String items;
 	
 	@JsProperty
-	public String sortDescending;
-		
+	public String style;
+	
+	@JsProperty
+	public boolean info;
+	
+	@JsProperty
+	public String selector;
 }

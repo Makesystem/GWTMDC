@@ -63,6 +63,7 @@ public class MaterialSpreadsheet extends Div {
 	}
 
 	protected void loadDefaultOptions() {
+		
 		options.tableId = spreadsheet.getId();
 		options.defaultColWidth = 100;
 		options.minSpareRows = 0;
