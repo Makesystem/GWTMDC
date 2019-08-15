@@ -13,7 +13,7 @@
 	--mdc-scrollbar-track-fill: transparent;
 	--mdc-scrollbar-thumb-corner: 3px;
 	--mdc-scrollbar-thumb-fill: var(--mdc-theme-text-hint-on-background);
-	--mdc-placeholder-ink-color: var(--mdc-theme-text-hint-on-background);
+	--mdc-placeholder-ink-color: var(--mdc-theme-text-primary-on-background);
 	--mdc-disabled-color: var(--mdc-theme-text-primary-on-background);
 	--mdc-filled-color: rgba(127,127,127,.25);
 	/* Misc */
@@ -30,7 +30,8 @@
 	--mdc-clamp: 1;
 	/* ================================	*/
   	/* Overlay opacity																		 	*/
-  	/* ================================	*/ 
+  	/* ================================	*/
+  	--mdc-overlay-opacity--placeholder: .24; 
   	--mdc-overlay-opacity--hover: .04;
   	--mdc-overlay-opacity--focus: .12;
   	--mdc-overlay-opacity--selected: .08;

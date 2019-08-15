@@ -430,6 +430,7 @@ table.mdc-datatable--table td {
 .mdc-datatable .mdc-datatable--header {
   	border-bottom: var(--mdc-datatable--border);}
 .mdc-datatable .mdc-datatable--filter__input {	
+	--mdc-placeholder-ink-color: var(--mdc-datatable--ink-color);
 	border: 1px solid var(--mdc-datatable--ink-color);
   	border-radius: var(--mdc-rounded-border-radius);
 	color: var(--mdc-datatable--ink-color);
