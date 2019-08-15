@@ -19,4 +19,7 @@ public class JsSelect {
 	
 	@JsProperty
 	public String selector;
+	
+	@JsProperty
+	public String className;
 }

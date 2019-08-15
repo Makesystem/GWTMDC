@@ -159,7 +159,8 @@ public class MaterialDataTable<T> extends Div
 	}
 	
 	public void setData(final Collection<T> data) {
-		this.clear();
+		this.data.clear();
+		this.selectedData.clear();
 		this.data.addAll(data);
 		this.rebuild();
 	}
@@ -177,7 +178,6 @@ public class MaterialDataTable<T> extends Div
         if (dataTable) {
 	        dataTable.rows.add(data);
 	        dataTable.draw();
-
         }
 	}-*/;
 	
@@ -262,8 +262,8 @@ public class MaterialDataTable<T> extends Div
 	 * ************* */
 
 	public native void build()/*-{
-
-        var _this = this;
+	
+		var _this = this;
 
         var options = this.@gwt.material.design.components.client.ui.MaterialDataTable::options;
 
@@ -282,8 +282,7 @@ public class MaterialDataTable<T> extends Div
         var element = table.@gwt.material.design.components.client.base.widget.MaterialWidget::getElement()();
 
         var dataTable = $wnd.jQuery(element).DataTable(options);
-        //dataTable.select();
-
+        
         var fireSelectionEvent = function(e, dt, type, indexes) {
 	        if (type === 'row')
 		        if (indexes && indexes.length > 0)

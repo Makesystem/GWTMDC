@@ -97,7 +97,11 @@ public class DataTableOptions extends AbstractOptions<JsOptions> {
 	public void setSelectInfo(final boolean selectInfo) {
 		this.selectInfo = selectInfo;
 	}
-	
+
+	public void setSelectCheckbox(boolean selectCheckbox) {
+		this.selectCheckbox = selectCheckbox;
+	}
+
 	@Override
 	public JsOptions toNative() {
 		
@@ -107,8 +111,11 @@ public class DataTableOptions extends AbstractOptions<JsOptions> {
 		options.autoWidth = true;
 		options.scrollX = true;
 		
-		options.columns = Arrays.stream(columns).map(column -> column.toNative()).toArray(JsColumn[]::new);
-		options.order = Arrays.stream(order).map(_order -> _order.toNative()).toArray(JavaScriptObject[]::new);
+		if (columns != null)
+			options.columns = Arrays.stream(columns).map(column -> column.toNative()).toArray(JsColumn[]::new);
+		
+		if (order != null)
+			options.order = Arrays.stream(order).map(_order -> _order.toNative()).toArray(JavaScriptObject[]::new);
 		
 		options.responsive = true;
 		options.paging = paging;
@@ -121,14 +128,20 @@ public class DataTableOptions extends AbstractOptions<JsOptions> {
 		if (select) {
 			
 			options.select = new JsSelect();
-			options.select.items = "rows";
+			options.select.items = "row";
+			options.select.className = "selected";
 			options.select.style = (selectType == null ? SelectType.OS : selectType).getCssName();
 			options.select.info = selectInfo;
 			
 			if (selectCheckbox) {
 				options.select.selector = "td:first-child";
+				
 				options.columns = ObjectHelper.concat(new JsColumn[] { new CheckboxColumn().toNative() },
 						options.columns);
+				
+				if (order == null)
+					options.order = new JavaScriptObject[] {new Order(1, OrderBy.ASC).toNative()};
+					
 			}
 			
 		}
@@ -173,11 +186,11 @@ public class DataTableOptions extends AbstractOptions<JsOptions> {
 	}
 	
 	native JavaScriptObject selectLanguage(final String zero, final String one, final String more)/*-{
-		return {
-			_: more,
-			0: '',
-			1: one            
-		};
+        return {
+            _ : more,
+            0 : '',
+            1 : one
+        };
 	}-*/;
 	
 	/**
@@ -261,7 +274,7 @@ public class DataTableOptions extends AbstractOptions<JsOptions> {
 		}
 		
 		native JavaScriptObject toNative(final int column, final String order)/*-{
-			return [column, order];
+            return [ column, order ];
 		}-*/;
 		
 	}
@@ -322,9 +335,9 @@ public class DataTableOptions extends AbstractOptions<JsOptions> {
 		}
 		
 		native JavaScriptObject render()/*-{
-			return function (data, type, row_data, meta) {
-				return "";			
-			};	
+            return function(data, type, row_data, meta) {
+	            return "";
+            };
 		}-*/;
 		
 	}
