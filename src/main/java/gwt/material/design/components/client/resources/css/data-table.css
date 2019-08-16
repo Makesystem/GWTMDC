@@ -1,4 +1,5 @@
 .mdc-datatable {
+	--mdc-checkbox-unchecked-color: var(--mdc-datatable--ink-color);
 	min-width: 100%;
 	font-family: var(--mdc-font-family);
   	color: var(--mdc-datatable--ink-color);
@@ -17,44 +18,30 @@ table.mdc-datatable--table {
 	clear: both;
 	border-collapse: separate;
 	border-spacing: 0;	
-	/*
-	* Header and footer styles
-   	*/
-  	/*
-   	* Body styles
-   	*/
-  	outline: none;
-}
+  	outline: none;}
 table.mdc-datatable--table thead th,
 table.mdc-datatable--table tfoot th {
-	font-weight: 500;
-}
+	font-weight: 500;}
 table.mdc-datatable--table thead th,
 table.mdc-datatable--table thead td {
 	padding: var(--mdc-datatable--cell-padding);
-	border-bottom: var(--mdc-datatable--border);
-}
+	border-bottom: var(--mdc-datatable--border);}
 table.mdc-datatable--table thead th:active,
 table.mdc-datatable--table thead td:active {
-	outline: none;
-}
+	outline: none;}
 table.mdc-datatable--table tfoot th,
 table.mdc-datatable--table tfoot td {
 	padding: var(--mdc-datatable--cell-padding);
-	border-top: var(--mdc-datatable--border);
-}
+	border-top: var(--mdc-datatable--border);}
 table.mdc-datatable--table thead .mdc-datatable--sorting,
 table.mdc-datatable--table thead .mdc-datatable--sorting_asc,
 table.mdc-datatable--table thead .mdc-datatable--sorting_desc,
 table.mdc-datatable--table thead .mdc-datatable--sorting_asc_disabled,
 table.mdc-datatable--table thead .mdc-datatable--sorting_desc_disabled {
-	cursor: pointer;
-	*cursor: hand;
-}
+	cursor: pointer;}
 table.mdc-datatable--table thead .mdc-datatable--sorting_asc,
 table.mdc-datatable--table thead .mdc-datatable--sorting_desc{
-	background-color: var(--mdc-datatable--sort-color);;
-}
+	background-color: var(--mdc-datatable--sort-color);}
 table.mdc-datatable--table thead .mdc-datatable--sorting:after,
 table.mdc-datatable--table thead .mdc-datatable--sorting_asc:after,
 table.mdc-datatable--table thead .mdc-datatable--sorting_desc:after,
@@ -82,8 +69,7 @@ table.mdc-datatable--table thead .mdc-datatable--sorting_desc_disabled:after {
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 	width: 16px;
-	height: 16px;
-}
+	height: 16px;}
 
 table.mdc-datatable--table thead .mdc-datatable--sorting:after {
 	content: "unfold_more";}	
@@ -95,14 +81,13 @@ table.mdc-datatable--table thead .mdc-datatable--sorting_asc_disabled:after {
 	content: "expand_less";}
 table.mdc-datatable--table thead .mdc-datatable--sorting_desc_disabled:after {
 	content: "expand_more";}
-
+	
 .mdc-datatable--scroll_body thead .mdc-datatable--sorting:after,
 .mdc-datatable--scroll_body thead .mdc-datatable--sorting_asc:after,
 .mdc-datatable--scroll_body thead .mdc-datatable--sorting_desc:after,
 .mdc-datatable--scroll_body thead .mdc-datatable--sorting_asc_disabled:after,
 .mdc-datatable--scroll_body thead .mdc-datatable--sorting_desc_disabled:after {
-	display: none;
-}
+	display: none;}
 
 table.mdc-datatable--table thead .mdc-datatable--sorting_asc_disabled:after,
 table.mdc-datatable--table thead .mdc-datatable--sorting_desc_disabled:after {
@@ -141,21 +126,17 @@ table.mdc-datatable--table.display tbody tr:first-child td {
 table.mdc-datatable--table.cell-border tbody th, 
 table.mdc-datatable--table.cell-border tbody td {
 	border-top: var(--mdc-datatable--border);
-	border-right: var(--mdc-datatable--border);
-}
+	border-right: var(--mdc-datatable--border);}
 table.mdc-datatable--table.cell-border tbody tr th:first-child,
 table.mdc-datatable--table.cell-border tbody tr td:first-child {
-	border-left: var(--mdc-datatable--border-width) solid var(--mdc-datatable--border-color);
-}
+	border-left: var(--mdc-datatable--border-width) solid var(--mdc-datatable--border-color);}
 table.mdc-datatable--table.cell-border tbody tr:first-child th,
 table.mdc-datatable--table.cell-border tbody tr:first-child td {
-	border-top: none;
-}
+	border-top: none;}
 table.mdc-datatable--table.stripe tbody tr.odd, 
 table.mdc-datatable--table.display tbody tr.odd,
 table.mdc-datatable--table td.mdc-datatable--empty { 
-	background-color: var(--mdc-datatable--fill-color);
-}
+	background-color: var(--mdc-datatable--fill-color);}
 table.mdc-datatable--table.hover tbody tr:hover::after, 
 table.mdc-datatable--table.display tbody tr:hover::after {
 	background-color: var(--mdc-datatable--ink-color);	
@@ -166,73 +147,47 @@ table.mdc-datatable--table.order-column tbody tr > .mdc-datatable--sorting_3,
 table.mdc-datatable--table.display tbody tr > .mdc-datatable--sorting_1,
 table.mdc-datatable--table.display tbody tr > .mdc-datatable--sorting_2,
 table.mdc-datatable--table.display tbody tr > .mdc-datatable--sorting_3 {
-	background-color: var(--mdc-datatable--fill-color);
-}
+	background-color: var(--mdc-datatable--fill-color);}
 table.mdc-datatable--table.display tbody tr.odd > .mdc-datatable--sorting_1, 
 table.mdc-datatable--table.order-column.stripe tbody tr.odd > .mdc-datatable--sorting_1 {
-	background-color: var(--mdc-datatable--sort-color);
-}
+	background-color: var(--mdc-datatable--sort-color);}
 table.mdc-datatable--table.display tbody tr.odd > .mdc-datatable--sorting_2, 
 table.mdc-datatable--table.order-column.stripe tbody tr.odd > .mdc-datatable--sorting_2 {
-	background-color: var(--mdc-datatable--sort-color);
-}
+	background-color: var(--mdc-datatable--sort-color);}
 table.mdc-datatable--table.display tbody tr.odd > .mdc-datatable--sorting_3, 
 table.mdc-datatable--table.order-column.stripe tbody tr.odd > .mdc-datatable--sorting_3 {
-	background-color: var(--mdc-datatable--sort-color);
-}
+	background-color: var(--mdc-datatable--sort-color);}
 table.mdc-datatable--table.display tbody tr.even > .mdc-datatable--sorting_1, 
 table.mdc-datatable--table.order-column.stripe tbody tr.even > .mdc-datatable--sorting_1 {
-	background-color: var(--mdc-datatable--sort-color);
-}
+	background-color: var(--mdc-datatable--sort-color);}
 table.mdc-datatable--table.display tbody tr.even > .mdc-datatable--sorting_2, 
 table.mdc-datatable--table.order-column.stripe tbody tr.even > .mdc-datatable--sorting_2 {
-	background-color: var(--mdc-datatable--sort-color);
-}
+	background-color: var(--mdc-datatable--sort-color);}
 table.mdc-datatable--table.display tbody tr.even > .mdc-datatable--sorting_3, 
 table.mdc-datatable--table.order-column.stripe tbody tr.even > .mdc-datatable--sorting_3 {
-  	background-color: var(--mdc-datatable--sort-color);
-}
+  	background-color: var(--mdc-datatable--sort-color);}
 table.mdc-datatable--table.display tbody tr:hover > .mdc-datatable--sorting_1, 
 table.mdc-datatable--table.order-column.hover tbody tr:hover > .mdc-datatable--sorting_1 {
-  	background-color: var(--mdc-datatable--sort-color);
-}
+  	background-color: var(--mdc-datatable--sort-color);}
 table.mdc-datatable--table.display tbody tr:hover > .mdc-datatable--sorting_2, 
 table.mdc-datatable--table.order-column.hover tbody tr:hover > .mdc-datatable--sorting_2 {
-  	background-color: var(--mdc-datatable--sort-color);
-}
+  	background-color: var(--mdc-datatable--sort-color);}
 table.mdc-datatable--table.display tbody tr:hover > .mdc-datatable--sorting_3, 
 table.mdc-datatable--table.order-column.hover tbody tr:hover > .mdc-datatable--sorting_3 {
-  	background-color: var(--mdc-datatable--sort-color);
-}
+  	background-color: var(--mdc-datatable--sort-color);}
 table.mdc-datatable--table.no-footer {
-  	border-bottom: var(--mdc-datatable--border);
-}
+  	border-bottom: var(--mdc-datatable--border);}
 table.mdc-datatable--table.nowrap th, 
 table.mdc-datatable--table.nowrap td {
-  	white-space: nowrap;
-}
-table.mdc-datatable--table.compact thead th,
-table.mdc-datatable--table.compact thead td {
-  	padding: 4px 17px 4px 4px;
-}
-table.mdc-datatable--table.compact tfoot th,
-table.mdc-datatable--table.compact tfoot td {
-  	padding: 4px;
-}
-table.mdc-datatable--table.compact tbody th,
-table.mdc-datatable--table.compact tbody td {
-  	padding: 4px;
-}
+  	white-space: nowrap;}
 table.mdc-datatable--table thead,
 table.mdc-datatable--table tbody,
 table.mdc-datatable--table tfoot {
-  	text-align: left;
-}
+  	text-align: left;}
 table.mdc-datatable--table,
 table.mdc-datatable--table th,
 table.mdc-datatable--table td {
-  	box-sizing: content-box;
-}
+  	box-sizing: content-box;}
 
 /*
  * Control feature layout
@@ -240,28 +195,21 @@ table.mdc-datatable--table td {
 .mdc-datatable--wrapper {
   	position: relative;
   	clear: both;
-  	*zoom: 1;
   	zoom: 1;
-  	min-width: 100%;
-}
+  	min-width: 100%;}
 .mdc-datatable--wrapper .mdc-datatable--length {
-  float: left;
-}
+ 	float: left;}
 .mdc-datatable--wrapper .mdc-datatable--filter {
-  float: right;
-  text-align: right;
-}
+  	float: right;
+  	text-align: right;}
 .mdc-datatable--wrapper .mdc-datatable--filter .mdc-datatable--filter__input {
-  margin-left: 0.5em;
-}
+  	margin-left: 0.5em;}
 .mdc-datatable--wrapper .mdc-datatable--info {
-  clear: both;
-  float: right;
-}
+  	clear: both;
+  	float: right;}
 .mdc-datatable--wrapper .mdc-datatable--paginate {
-  float: right;
-  text-align: right;
-}
+  	float: right;
+  	text-align: right;}
 .mdc-datatable--wrapper .mdc-datatable--paginate .mdc-datatable--paginate__button {
 	font-family: var(--mdc-font-family);
 	-moz-osx-font-smoothing: grayscale;
@@ -295,29 +243,23 @@ table.mdc-datatable--table td {
   	
   	color: var(--mdc-datatable--ink-color);
   	border-radius: var(--mdc-rounded-border-radius);
-  	border-radius: 50%; 
-}
+  	border-radius: 50%; }
 .mdc-datatable--paginate__button > i {
 	font-size: 1.5rem;
-	line-height: 1.5rem;
-}
+	line-height: 1.5rem;}
 .mdc-datatable--paginate__button.next, 
 .mdc-datatable--paginate__button.previous,
 .mdc-datatable--paginate__button.first, 
 .mdc-datatable--paginate__button.last {
 	max-width: 36px;
-	max-height: 36px;
-}
+	max-height: 36px;}
 .mdc-datatable--wrapper .mdc-datatable--paginate .mdc-datatable--paginate__button.current, 
 .mdc-datatable--wrapper .mdc-datatable--paginate .mdc-datatable--paginate__button.current:hover {
-	background-color: var(--mdc-datatable--hover-color); 
-}
+	background-color: var(--mdc-datatable--hover-color);}
 .mdc-datatable--wrapper .mdc-datatable--paginate .mdc-datatable--paginate__button:hover {
-	background-color: var(--mdc-datatable--hover-color);
-}
+	background-color: var(--mdc-datatable--hover-color);}
 .mdc-datatable--wrapper .mdc-datatable--paginate .mdc-datatable--paginate__button:active {
-  	color: var(--mdc-datatable--ink-color);
-}
+  	color: var(--mdc-datatable--ink-color);}
 
 .mdc-datatable--wrapper .mdc-datatable--processing {
   position: absolute;
@@ -336,28 +278,22 @@ table.mdc-datatable--table td {
   background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
   background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
   background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
-}
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);}
 .mdc-datatable--wrapper .mdc-datatable--length,
 .mdc-datatable--wrapper .mdc-datatable--filter,
 .mdc-datatable--wrapper .mdc-datatable--info,
 .mdc-datatable--wrapper .mdc-datatable--processing,
 .mdc-datatable--wrapper .mdc-datatable--paginate {
-  color: var(--mdc-datatable--ink-color);
-}
+  color: var(--mdc-datatable--ink-color);}
 .mdc-datatable--wrapper .mdc-datatable--scroll {
-  clear: both;
-}
+  clear: both;}
 .mdc-datatable--wrapper .mdc-datatable--scroll div.mdc-datatable--scroll_body {
-  *margin-top: -1px;
-  -webkit-overflow-scrolling: touch;
-}
+  -webkit-overflow-scrolling: touch;}
 .mdc-datatable--wrapper .mdc-datatable--scroll div.mdc-datatable--scroll_body > table > thead > tr > th, 
 .mdc-datatable--wrapper .mdc-datatable--scroll div.mdc-datatable--scroll_body > table > thead > tr > td, 
 .mdc-datatable--wrapper .mdc-datatable--scroll div.mdc-datatable--scroll_body > table > tbody > tr > th, 
 .mdc-datatable--wrapper .mdc-datatable--scroll div.mdc-datatable--scroll_body > table > tbody > tr > td {
-  vertical-align: middle;
-}
+  vertical-align: middle;}
 .mdc-datatable--wrapper .mdc-datatable--scroll div.mdc-datatable--scroll_body > table > thead > tr > th > div.mdc-datatable--sizing,
 .mdc-datatable--wrapper .mdc-datatable--scroll div.mdc-datatable--scroll_body > table > thead > tr > td > div.mdc-datatable--sizing, 
 .mdc-datatable--wrapper .mdc-datatable--scroll div.mdc-datatable--scroll_body > table > tbody > tr > th > div.mdc-datatable--sizing,
@@ -365,22 +301,18 @@ table.mdc-datatable--table td {
   height: 0;
   overflow: hidden;
   margin: 0 !important;
-  padding: 0 !important;
-}
+  padding: 0 !important;}
 .mdc-datatable--wrapper.no-footer .mdc-datatable--scroll_body {
-  border-bottom: var(--mdc-datatable--border);
-}
+  border-bottom: var(--mdc-datatable--border);}
 .mdc-datatable--wrapper.no-footer div.mdc-datatable--scroll_head table.dataTable,
 .mdc-datatable--wrapper.no-footer div.mdc-datatable--scroll_body > table {
-  border-bottom: none;
-}
+  border-bottom: none;}
 .mdc-datatable--wrapper:after {
   visibility: hidden;
   display: block;
   content: "";
   clear: both;
-  height: 0;
-}
+  height: 0;}
 
 @media screen and (max-width: 767px) {
   .mdc-datatable--wrapper .mdc-datatable--info,
@@ -400,6 +332,10 @@ table.mdc-datatable--table td {
   }
 }
 
+/* ---------------------- */
+/* Length select settings */
+/* ---------------------- */	
+
 .mdc-datatable .mdc-datatable--length__select {
 	outline: none;
 	border: none;
@@ -407,28 +343,15 @@ table.mdc-datatable--table td {
   	background-color: transparent;
   	white-space: nowrap;
   	cursor: pointer;
-    padding: 0;        
-}
+    padding: 0;}
 .mdc-datatable .mdc-datatable--length__select option {
 	background-color: var(--mdc-input__fill-color);
-	color: var(--mdc-input__ink-color);
-}
-.mdc-datatable .mdc-datatable--header,
-.mdc-datatable .mdc-datatable--footer {
-	min-width: 100%;
-	height: 56px;
-	padding: 0;
-	display: flex;
-	justify-content: flex-end;
-	align-content: center;
-	align-items: center;	
-	flex-wrap: nowrap;	}
-.mdc-datatable .mdc-datatable--header:empty,
-.mdc-datatable .mdc-datatable--footer:empty{
-	display: none;}
-	
-.mdc-datatable .mdc-datatable--header {
-  	border-bottom: var(--mdc-datatable--border);}
+	color: var(--mdc-input__ink-color);}
+
+/* --------------------- */
+/* Filter input settings */
+/* --------------------- */	  	  	
+  	
 .mdc-datatable .mdc-datatable--filter__input {	
 	--mdc-placeholder-ink-color: var(--mdc-datatable--ink-color);
 	border: 1px solid var(--mdc-datatable--ink-color);
@@ -442,27 +365,56 @@ table.mdc-datatable--table td {
   	box-shadow: none;
   	-webkit-appearance: none;
        -moz-appearance: none;
-            appearance: none;}
+            appearance: none;} 
+.mdc-datatable .mdc-datatable--filter__input:invalid {
+  	box-shadow: none;}	
 .mdc-datatable .mdc-datatable--filter__input:hover,            
 .mdc-datatable .mdc-datatable--filter__input:focus {
   	outline: none;
-  	border-color: var(--mdc-datatable--selected-color);}
-.mdc-datatable .mdc-datatable--header > *,
-.mdc-datatable .mdc-datatable--footer > * {  	
-  	max-height: 40px;} 	
-.mdc-datatable .mdc-datatable--header > i,
-.mdc-datatable .mdc-datatable--footer > i {  	
-  	max-width: 40px;}
-.mdc-datatable .mdc-datatable--filter__input:invalid {
-  	box-shadow: none;}
-	
+  	border-color: var(--mdc-datatable--selected-color);}  	
 .mdc-datatable .mdc-datatable--filter__input::-webkit-search-decoration,
 .mdc-datatable .mdc-datatable--filter__input::-webkit-search-cancel-button,
 .mdc-datatable .mdc-datatable--filter__input::-webkit-search-results-button,
 .mdc-datatable .mdc-datatable--filter__input::-webkit-search-results-decoration,
 .mdc-datatable .mdc-datatable--filter__input::-webkit-outer-spin-button,
 .mdc-datatable .mdc-datatable--filter__input::-webkit-inner-spin-button {
-	display: none;}
+	display: none;}  
+  	
+/* ------------------------ */
+/* Header / Footer settings */
+/* ------------------------ */ 	
+ 
+.mdc-datatable .mdc-datatable--header,
+.mdc-datatable .mdc-datatable--footer {
+	min-width: 100%;
+	height: 56px;
+	padding: 0;
+	display: flex;
+	justify-content: flex-end;
+	align-content: center;
+	align-items: center;	
+	flex-wrap: nowrap;	}
+.mdc-datatable .mdc-datatable--header:empty,
+.mdc-datatable .mdc-datatable--footer:empty{
+	display: none;}         
+
+.mdc-datatable .mdc-datatable--header > *,
+.mdc-datatable .mdc-datatable--footer > * {  	
+  	max-height: 40px;} 	
+.mdc-datatable .mdc-datatable--header > i,
+.mdc-datatable .mdc-datatable--footer > i {  	
+  	max-width: 40px;}
+
+/* --------------- */
+/* Header settings */
+/* --------------- */
+	
+.mdc-datatable .mdc-datatable--header {
+  	border-bottom: var(--mdc-datatable--border);} 	
+	  	
+/* --------------- */
+/* Footer settings */
+/* --------------- */	  	
 	  	
 .mdc-datatable .mdc-datatable--footer {
   	border-top: var(--mdc-datatable--border);}  	
@@ -482,22 +434,6 @@ table.mdc-datatable--table td {
 .mdc-datatable .mdc-datatable--footer > :not(:first-child):not(:last-child) {
 	margin-left: 16px;
 	margin-right: 16px;}
-	
-	
-	
-	
-	
-.mdc-datatable--select__info {
-	padding-left: 4px;
-	padding-right: 4px; 
-}	
-
-
-
-
-
-
-
 
 /* --------------- */
 /* Select settings */
@@ -513,7 +449,8 @@ table.mdc-datatable--table.display tbody tr.selected:hover::after {
 	
 table.mdc-datatable--table tbody td.mdc-datatable--select__checkbox,
 table.mdc-datatable--table tbody th.mdc-datatable--select__checkbox {
-	position: relative;}
+	position: relative;
+	cursor: pointer;}
 table.mdc-datatable--table tbody td.mdc-datatable--select__checkbox:before, table.mdc-datatable--table tbody td.mdc-datatable--select__checkbox:after,
 table.mdc-datatable--table tbody th.mdc-datatable--select__checkbox:before,
 table.mdc-datatable--table tbody th.mdc-datatable--select__checkbox:after {
@@ -546,3 +483,8 @@ table.mdc-datatable--table tr.selected th.mdc-datatable--select__checkbox:after 
 	transform: rotate(45deg);
 	margin-top: -7px;
 	margin-left: -3px;}
+	
+.mdc-datatable--select__info {
+	padding-left: 4px;
+	padding-right: 4px;}	
+	

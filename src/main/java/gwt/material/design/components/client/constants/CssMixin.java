@@ -176,6 +176,16 @@ public interface CssMixin {
 	String MDC_BANNER__AVATAR_INK_COLOR = "--mdc-banner--avatar-ink-color";
 
 	// ////////////////////////////////////////////////////////////////////////////
+	// Card
+	// ////////////////////////////////////////////////////////////////////////////
+	String MDC_CARD__FILL_COLOR 				= "--mdc-card-fill-color";
+	String MDC_CARD__INK_COLOR 					= "--mdc-card-ink-color";
+	String MDC_CARD__BUTTON_COLOR 				= "--mdc-card-button-color";
+	String MDC_CARD__RAISED_BUTTON_INK_COLOR 	= "--mdc-card-raised-button-ink-color";
+	String MDC_CARD__ICON_COLOR		 			= "--mdc-card-icon-color";
+	String MDC_CARD__RAISED_ICON_INK_COLOR 		= "--mdc-card-raised-icon-ink-color";
+
+	// ////////////////////////////////////////////////////////////////////////////
 	// Side Sheet
 	// ////////////////////////////////////////////////////////////////////////////
 	String MDC_SIDE_SHEET__FILL_COLOR = "--mdc-side-sheet--fill-color";

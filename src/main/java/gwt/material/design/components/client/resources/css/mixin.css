@@ -81,10 +81,10 @@
 	margin-left: 12px;
 	margin-right: -8px;}
 .mdc-fab:not(.mdc-fab--extended).mdc-fab--mix_with_extended {
-  width: 48px;
-  height: 48px;}
-  .mdc-fab.mdc-fab--mix_with_extended:not(.mdc-fab--extended) {
-  border-radius: 24px; }  	
+  	width: 48px;
+  	height: 48px;}
+ .mdc-fab.mdc-fab--mix_with_extended:not(.mdc-fab--extended) {
+  	border-radius: 24px; }  	
 .mdc-fab--fixed > label:empty {
 	display: none;}
 .mdc-fab--fixed {
@@ -657,10 +657,10 @@ i.mdc-list-item__graphic {
    ========================================================================== */
 .mdc-card {
 	overflow: hidden;
-	border-radius: var(--mdc-rounded-border-radius);}
-.mdc-card__content {
-	width: 100%;
+	border-radius: var(--mdc-rounded-border-radius);
 	background-color: var(--mdc-card-fill-color);}
+.mdc-card__content {
+	width: 100%;}
 .mdc-card__content:empty {
 	display: none;}
 .mdc-card .mdc-typography {
@@ -689,9 +689,11 @@ i.mdc-list-item__graphic {
 	color: var(--mdc-icon-button-ink-color);}		
 /* buttons */	
 .mdc-card__action--button.mdc-button, 
-.mdc-card__action--button.mdc-button--outlined:not(:disabled) {
+.mdc-card__action--button.mdc-button--outlined {
 	--mdc-button-ink-color: var(--mdc-card-button-color);
 	color: var(--mdc-button-ink-color);}
+.mdc-card__action--button.mdc-button--outlined {
+	border-color: var(--mdc-button-ink-color);}	
 .mdc-card__action--button.mdc-button--raised:not(:disabled),
 .mdc-card__action--button.mdc-button--unelevated:not(:disabled) {
 	--mdc-button-raised-ink-color: var(--mdc-card-raised-button-ink-color);
@@ -699,11 +701,13 @@ i.mdc-list-item__graphic {
 	color: var(--mdc-button-raised-ink-color);
 	background-color: var(--mdc-button-raised-fill-color);}		
 .mdc-card__action--icon.mdc-button, 
-.mdc-card__action--icon.mdc-button--outlined:not(:disabled) {
+.mdc-card__action--icon.mdc-button--outlined {
 	--mdc-button-ink-color: var(--mdc-card-icon-color);
 	color: var(--mdc-button-ink-color);}
-.mdc-card__action--icon.mdc-button--raised:not(:disabled),
-.mdc-card__action--icon.mdc-button--unelevated:not(:disabled) {
+.mdc-card__action--icon.mdc-button--outlined {
+	border-color: var(--mdc-button-ink-color);}	
+.mdc-card__action--icon.mdc-button--raised,
+.mdc-card__action--icon.mdc-button--unelevated {
 	--mdc-button-raised-ink-color: var(--mdc-card-raised-icon-ink-color);
 	--mdc-button-raised-fill-color: var(--mdc-card-icon-color);
 	color: var(--mdc-button-raised-ink-color);

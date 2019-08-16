@@ -19,17 +19,17 @@
 	/* Misc */
 	--mdc-track-opacity: .38;
 	--mdc-container-opacity: .12;
-	--mdc-selected-opacity: .08;
 	--mdc-track-background-opacity: linear-gradient(rgba(255, 255, 255, calc(1.0 - var(--mdc-track-opacity))), rgba(255, 255, 255, calc(1.0 - var(--mdc-track-opacity)))) no-repeat;
 	--mdc-container-background-opacity: linear-gradient(rgba(127, 127, 127, calc(1.0 - var(--mdc-container-opacity))), rgba(127,127,127,calc(1.0 - var(--mdc-container-opacity)))) no-repeat;
-	--mdc-selected-background-opacity: linear-gradient(rgba(255, 255, 255, calc(1.0 - var(--mdc-selected-opacity))), rgba(255, 255, 255, calc(1.0 - var(--mdc-selected-opacity)))) no-repeat;
+	--mdc-selected-background-opacity: linear-gradient(rgba(255, 255, 255, calc(1.0 - var(--mdc-overlay-opacity--selected))), rgba(255, 255, 255, calc(1.0 - var(--mdc-overlay-opacity--selected)))) no-repeat;
 	/* Animations */
 	--mdc-animation--expand: mdc-expand .3s ease-in-out;
 	--mdc-animation--alternate: mdc-alternate .4s alternate ease-in;
 	/* Clamp */
 	--mdc-clamp: 1;
+	
 	/* ================================	*/
-  	/* Overlay opacity																		 	*/
+  	/* Overlay opacity					*/
   	/* ================================	*/
   	--mdc-overlay-opacity--placeholder: .24; 
   	--mdc-overlay-opacity--hover: .04;
@@ -39,26 +39,26 @@
   	--mdc-overlay-opacity--pressed: .16;
   	--mdc-overlay-opacity--dragged: .08;
 	/* ================================	*/
-  	/* Divider																		 	*/
+  	/* Divider							*/
   	/* ================================	*/  	
 	--mdc-divider-color: var(--mdc-theme-on-surface);
 	--mdc-divider-opacity: .12;
 	  	
   	/* ================================	*/
-  	/* Side Sheet attributes													*/
+  	/* Side Sheet attributes			*/
   	/* ================================	*/
   	--mdc-side-sheet--ink-color: var(--mdc-theme-on-surface);
 	--mdc-side-sheet--fill-color: var(--mdc-theme-surface);
 	--mdc-side-sheet--content-width: 256px;
   	
   	/* ================================	*/
-  	/* Tooltip attributes															*/
+  	/* Tooltip attributes				*/
   	/* ================================	*/
 	--mdc-tooltip--fill-color: var(--mdc-theme-on-surface);
 	--mdc-tooltip--ink-color: var(--mdc-theme-surface);
   	
   	/* ================================	*/
-  	/* Banner attributes															*/
+  	/* Banner attributes				*/
   	/* ================================	*/
 	--mdc-banner--animation-duration: 250ms;
 	--mdc-banner--fill-color: var(--mdc-theme-surface);
@@ -68,7 +68,7 @@
 	--mdc-banner--label_lines_number: 3;
   	
   	/* ================================	*/
-  	/* Circular Progress attributes											*/
+  	/* Circular Progress attributes*/
   	/* ================================	*/
 	--mdc-circular-progress-width: 48px;
 	--mdc-circular-progress-stroke-width: 6;
@@ -77,13 +77,13 @@
 	--mdc-circular-progress-track-color: var(--mdc-theme-secondary);
   	
   	/* ================================	*/
-  	/* Fab Progress attributes												*/
+  	/* Fab Progress attributes	*/
   	/* ================================	*/
 	--mdc-fab-progess--animation-duration: 400ms;
 	--mdc-fab-progess--animation-property: background-color;
   	
   	/* ================================ 	*/
-  	/* DatePiker attributes														*/
+  	/* DatePiker attributes			*/
   	/* ================================ 	*/
   	--mdc-datepicker-tooltip-indicator: var(--mdc-theme-secondary);
   	--mdc-datepicker-ink: var(--mdc-theme-on-surface);
@@ -109,26 +109,26 @@
   	*/
   	--mdc-datepicker-width: calc(var(--mdc-datepicker--item-width) * 7);
   	/* ================================	*/
-  	/* Top app bar attributes													*/
+  	/* Top app bar attributes		*/
   	/* ================================	*/
 	--mdc-top-app-bar-fill-color: var(--mdc-theme-primary);
 	--mdc-top-app-bar-ink-color: var(--mdc-theme-on-primary);
   	
   	/* ================================	*/
-  	/* Drawer attributes															*/
+  	/* Drawer attributes				*/
   	/* ================================	*/
 	--mdc-drawer-fill-color: var(--mdc-theme-surface);
 	--mdc-drawer-ink-color: var(--mdc-theme-on-surface);
   	
   	/* ================================	*/
-  	/* Snackbar attributes														*/
+  	/* Snackbar attributes			*/
   	/* ================================	*/
 	--mdc-snackbar-bottom: 8px;
 	--mdc-snackbar-position-adjust: 0px;
 	--mdc-snackbar-action-ink-color: var(--mdc-theme-secondary);
   	
   	/* ================================	*/
-  	/* Button attributes															*/
+  	/* Button attributes				*/
   	/* ================================	*/
 	--mdc-button-fill-color: transparent;
 	--mdc-button-ink-color: var(--mdc-theme-primary);
@@ -137,30 +137,30 @@
 	--mdc-button-raised-ink-color: var(--mdc-theme-on-primary);	
 
   	/* ================================	*/
-  	/* Link attributes																*/
+  	/* Link attributes					*/
   	/* ================================ 	*/
   	--mdc-link-ink-color:  var(--mdc-theme-primary);
   	
   	/* ================================	*/
-  	/* Fab attributes																*/
+  	/* Fab attributes					*/
   	/* ================================ 	*/
 	--mdc-fab-fill-color: var(--mdc-theme-secondary);
 	--mdc-fab-ink-color: var(--mdc-theme-on-secondary);
   	
   	/* ================================	*/
-  	/* Icon button attributes													*/
+  	/* Icon button attributes		*/
   	/* ================================	*/
 	--mdc-icon-button-ink-color: var(--mdc-theme-primary);
   	  	
   	/* ================================	*/
-  	/* Radio button attributes												*/
+  	/* Radio button attributes	*/
   	/* ================================	*/
 	--mdc-radio-checked-color: var(--mdc-theme-secondary);
 	--mdc-radio-unchecked-color: var(--mdc-theme-text-secondary-on-background);
 	--mdc-radio-label-color: var(--mdc-theme-text-primary-on-background);
   	
   	/* ================================	*/
-  	/* Checkbox attributes														*/
+  	/* Checkbox attributes			*/
   	/* ================================	*/
 	--mdc-checkbox-checked-color: var(--mdc-theme-secondary);
 	--mdc-checkbox-on-checked-color: var(--mdc-theme-on-secondary);
@@ -168,24 +168,24 @@
 	--mdc-checkbox-label-color: var(--mdc-theme-text-primary-on-background);
   	
   	/* ================================	*/
-  	/* Switch attributes															*/
+  	/* Switch attributes				*/
   	/* ================================	*/
 	--mdc-switch-checked-color: var(--mdc-theme-secondary);
 	--mdc-switch-unchecked-color: var(--mdc-theme-text-secondary-on-background);
 	--mdc-switch-label-color: var(--mdc-theme-text-primary-on-background);
   	
   	/* ================================	*/
-  	/* Card attributes																*/
+  	/* Card attributes					*/
   	/* ================================	*/
 	--mdc-card-fill-color: var(--mdc-theme-surface);
 	--mdc-card-ink-color: var(--mdc-theme-on-surface); 
+	--mdc-card-icon-color: var(--mdc-theme-on-surface);
 	--mdc-card-button-color: var(--mdc-theme-primary);
 	--mdc-card-raised-button-ink-color: var(--mdc-theme-on-primary);
-	--mdc-card-icon-color: var(--mdc-theme-on-surface);
 	--mdc-card-raised-icon-ink-color: var(--mdc-theme-on-primary);
   	
   	/* ================================	*/
-  	/* Chip attributes																*/
+  	/* Chip attributes					*/
   	/* ================================	*/
 	--mdc-chip-corner-radius: 16px;
 	--mdc-chip-container-fill-color: var(--mdc-theme-on-surface);
@@ -195,13 +195,13 @@
 	--mdc-chip-icon_selected-color: var(--mdc-theme-secondary);
   	
   	/* ================================	*/
-  	/* Linear Progress attributes											*/
+  	/* Linear Progress attributes*/
   	/* ================================	*/
 	--mdc-linear-progress-indicator-color: var(--mdc-theme-secondary);
 	--mdc-linear-progress-track-color: var(--mdc-theme-secondary);
   	
   	/* ================================	*/
-  	/* Slider attributes																*/
+  	/* Slider attributes					*/
   	/* ================================	*/
 	--mdc-slider-track-color: var(--mdc-theme-secondary);
  	--mdc-slider-track-fill-color: var(--mdc-theme-secondary);
@@ -211,7 +211,7 @@
   	--mdc-slider-value-pin-color: var(--mdc-theme-on-secondary);
   	
   	/* ================================	*/
-  	/* Tab attributes																*/
+  	/* Tab attributes					*/
   	/* ================================	*/
   	--mdc-tab-ink-color: var(--mdc-theme-text-primary-on-background);
   	--mdc-tab-fill-color: var(--mdc-theme-background);
@@ -229,13 +229,13 @@
 	--mdc-list-item-selected-meta-ink-color: var(--mdc-theme-secondary);
   	
   	/* ================================	*/
-  	/* Menu attributes															*/
+  	/* Menu attributes				*/
   	/* ================================	*/
   	--mdc-menu__ink-color: var(--mdc-theme-on-surface);
 	--mdc-menu__fill-color: var(--mdc-theme-surface);
   	
   	/* ================================	*/
-  	/* Dialog attributes															*/
+  	/* Dialog attributes				*/
   	/* ================================	*/
 	--mdc-dialog-header-fill-color: transparent;
 	--mdc-dialog-header-ink-color: var(--mdc-theme-on-surface);

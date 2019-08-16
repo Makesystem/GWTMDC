@@ -30,6 +30,8 @@ import gwt.material.design.components.client.base.mixin.AspectRatioMixin;
 import gwt.material.design.components.client.base.mixin.ImageMixin;
 import gwt.material.design.components.client.base.mixin.ToggleStyleMixin;
 import gwt.material.design.components.client.constants.AspectRatio;
+import gwt.material.design.components.client.constants.Color;
+import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.ui.html.Div;
@@ -138,6 +140,29 @@ public class MaterialCard extends Div implements HasImage, HasAspectRatio {
 		return outlineMixin.isApplied();
 	}
 
+	@Override
+	public void setBackgroundColor(final Color color) {
+		setCssProperty(CssMixin.MDC_CARD__FILL_COLOR, color.getCssName());
+	}
+
+	@Override
+	public void setColor(final Color color) {
+		setCssProperty(CssMixin.MDC_CARD__INK_COLOR, color.getCssName());
+	}
+
+	public void setIconColor(final Color color) {
+		setCssProperty(CssMixin.MDC_CARD__ICON_COLOR, color.getCssName());
+	}
+
+	public void setButtonColor(final Color color) {
+		setCssProperty(CssMixin.MDC_CARD__BUTTON_COLOR, color.getCssName());
+	}
+
+	public void setButtonTextColor(final Color color) {
+		setCssProperty(CssMixin.MDC_CARD__RAISED_BUTTON_INK_COLOR, color.getCssName());
+		setCssProperty(CssMixin.MDC_CARD__RAISED_ICON_INK_COLOR, color.getCssName());
+	}
+
 	protected class CardMedia extends Div implements HasImage, HasAspectRatio {
 
 		private Div mediaContent = new Div(CssName.MDC_CARD__MEDIA_CONTENT);
@@ -145,7 +170,7 @@ public class MaterialCard extends Div implements HasImage, HasAspectRatio {
 		protected final ImageMixin<CardMedia> imageMixin = new ImageMixin<CardMedia>(CardMedia.this) {
 			@Override
 			public void setUrl(String url) {
-				super.setUrl(url);				
+				super.setUrl(url);
 				CardMedia.this.removeAttribute(HTMLAttributes.SRC);
 				CardMedia.this.setCssProperty("backgroundImage", "url(" + url + ")");
 			}
