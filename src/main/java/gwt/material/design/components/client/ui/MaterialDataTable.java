@@ -219,9 +219,7 @@ public class MaterialDataTable<T> extends Div
 		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
 		if (dataTable) 
 			dataTable.rows.add(array).draw();
-		
-		console.log("add");
-		
+				
 	}-*/;
 
 	public int[] getIndexes(@SuppressWarnings("unchecked") final T... data) {
@@ -233,7 +231,7 @@ public class MaterialDataTable<T> extends Div
 
 	public Collection<T> getData(final int... indexes) {
 		if (indexes == null || indexes.length == 0 || this.data.isEmpty())
-			return data.stream().collect(Collectors.toList());
+			return data.stream().collect(Collectors.toCollection(LinkedList::new));
 		else {
 			final int data_size = data.size();
 			return Arrays.stream(indexes).filter(index -> index > -1 && index < data_size)
@@ -242,7 +240,7 @@ public class MaterialDataTable<T> extends Div
 	}
 
 	public Collection<T> getSelectedData(){
-		return selectedData.stream().collect(Collectors.toList());
+		return selectedData.stream().collect(Collectors.toCollection(LinkedList::new));
 	}
 	
 	/*
