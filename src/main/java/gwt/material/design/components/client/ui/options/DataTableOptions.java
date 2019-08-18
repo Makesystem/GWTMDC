@@ -129,7 +129,7 @@ public class DataTableOptions extends AbstractOptions<JsOptions> {
 			
 			options.select = new JsSelect();
 			options.select.items = "row";
-			options.select.className = "selected";
+			options.select.className = CssName.MDC_DATA_TABLE__SELECT__SELECTED;
 			options.select.style = (selectType == null ? SelectType.OS : selectType).getCssName();
 			options.select.info = selectInfo;
 			

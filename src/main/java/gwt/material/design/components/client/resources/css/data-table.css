@@ -134,8 +134,7 @@ table.mdc-datatable--table.cell-border tbody tr:first-child th,
 table.mdc-datatable--table.cell-border tbody tr:first-child td {
 	border-top: none;}
 table.mdc-datatable--table.stripe tbody tr.odd, 
-table.mdc-datatable--table.display tbody tr.odd,
-table.mdc-datatable--table td.mdc-datatable--empty { 
+table.mdc-datatable--table.display tbody tr.odd { 
 	background-color: var(--mdc-datatable--fill-color);}
 table.mdc-datatable--table.hover tbody tr:hover::after, 
 table.mdc-datatable--table.display tbody tr:hover::after {
@@ -188,6 +187,10 @@ table.mdc-datatable--table,
 table.mdc-datatable--table th,
 table.mdc-datatable--table td {
   	box-sizing: content-box;}
+ 
+table.mdc-datatable--table td.mdc-datatable--empty {
+	text-align: center;
+	background-color: var(--mdc-datatable--fill-color);} 	
 
 /*
  * Control feature layout
@@ -439,11 +442,11 @@ table.mdc-datatable--table td {
 /* Select settings */
 /* --------------- */
 	
-table.mdc-datatable--table tbody tr.selected::after {
+table.mdc-datatable--table tbody tr.mdc-datatable--select__selected::after {
 	background-color: var(--mdc-datatable--selected-color);
 	opacity: var(--mdc-overlay-opacity--selected);}
-table.mdc-datatable--table.hover tbody tr.selected:hover::after, 
-table.mdc-datatable--table.display tbody tr.selected:hover::after {
+table.mdc-datatable--table.hover tbody tr.mdc-datatable--select__selected:hover::after, 
+table.mdc-datatable--table.display tbody tr.mdc-datatable--select__selected:hover::after {
 	background-color: var(--mdc-datatable--selected-color);
 	opacity: calc(var(--mdc-overlay-opacity--hover) + var(--mdc-overlay-opacity--selected));}
 	
@@ -469,12 +472,12 @@ table.mdc-datatable--table tbody th.mdc-datatable--select__checkbox:before {
 	border: 2px solid var(--mdc-checkbox-unchecked-color);
 	border-radius: 2px;}
 	
-table.mdc-datatable--table tr.selected td.mdc-datatable--select__checkbox:before,
-table.mdc-datatable--table tr.selected th.mdc-datatable--select__checkbox:before {
+table.mdc-datatable--table tr.mdc-datatable--select__selected td.mdc-datatable--select__checkbox:before,
+table.mdc-datatable--table tr.mdc-datatable--select__selected th.mdc-datatable--select__checkbox:before {
 	border-color: var(--mdc-checkbox-checked-color);
 	background-color: var(--mdc-checkbox-checked-color);}
-table.mdc-datatable--table tr.selected td.mdc-datatable--select__checkbox:after,
-table.mdc-datatable--table tr.selected th.mdc-datatable--select__checkbox:after {
+table.mdc-datatable--table tr.mdc-datatable--select__selected td.mdc-datatable--select__checkbox:after,
+table.mdc-datatable--table tr.mdc-datatable--select__selected th.mdc-datatable--select__checkbox:after {
 	content: '';
 	width: 6px;
 	height: 12px;

@@ -609,6 +609,7 @@ public interface CssName {
 	String	MDC_DATA_TABLE__PAGINATE__BUTTON				= "mdc-datatable--paginate__button";
 	String	MDC_DATA_TABLE__SELECT__INFO					= "mdc-datatable--select__info";
 	String	MDC_DATA_TABLE__SELECT__CHECKBOX				= "mdc-datatable--select__checkbox";
+	String	MDC_DATA_TABLE__SELECT__SELECTED				= "mdc-datatable--select__selected";
 	
 	// //////////////////////////////////////////////////////
 	// COLOR PALETTE
