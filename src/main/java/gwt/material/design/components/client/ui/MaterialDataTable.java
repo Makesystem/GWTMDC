@@ -102,7 +102,7 @@ public class MaterialDataTable<T> extends Div
 
 	protected final void fireSelectionEvent(final int[] indexes) {
 		final Collection<T> items = getData(indexes);
-		select(items);
+		selectedData.addAll(items);
 		SelectionEvent.fire(this, items);
 	}
 
@@ -113,7 +113,7 @@ public class MaterialDataTable<T> extends Div
 
 	protected final void fireUnselectionEvent(final int[] indexes) {
 		final Collection<T> items = getData(indexes);
-		unselect(items);
+		selectedData.removeAll(items);
 		UnselectionEvent.fire(this, items);
 	}
 
@@ -126,24 +126,42 @@ public class MaterialDataTable<T> extends Div
 	 * ************* Select *************
 	 */
 
-	protected void select(final Collection<T> items) {
-		select(items, true);
+	public void select(@SuppressWarnings("unchecked") final T... data) {
+		this.select(Arrays.asList(data));
 	}
 
-	protected void select(final Collection<T> items, final boolean fireEvent) {
-		selectedData.addAll(items);
+	public native void select(final Collection<T> data)/*-{
+		var selector = this.@gwt.material.design.components.client.ui.MaterialDataTable::getIndexes(Ljava/util/Collection;)(data);
+		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+		if (dataTable)
+			dataTable.rows(selector).select();
+		else {
+			var selectedData = this.@gwt.material.design.components.client.ui.MaterialDataTable::selectedData;
+			selectedData.@java.util.LinkedList::addAll(Ljava/util/Collection;)(data);
+		}
+	}-*/;
+
+	public void unselect(@SuppressWarnings("unchecked") final T... data) {
+		this.unselect(Arrays.asList(data));
 	}
 
-	protected void unselect(final Collection<T> items) {
-		unselect(items, true);
-	}
-
-	protected void unselect(final Collection<T> items, final boolean fireEvent) {
-		selectedData.removeAll(items);
-	}
+	public native void unselect(final Collection<T> data)/*-{
+		var selector = this.@gwt.material.design.components.client.ui.MaterialDataTable::getIndexes(Ljava/util/Collection;)(data);
+		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+		if (dataTable)
+			dataTable.rows(selector).deselect();
+		else {
+			var selectedData = this.@gwt.material.design.components.client.ui.MaterialDataTable::selectedData;
+			selectedData.@java.util.LinkedList::removeAll(Ljava/util/Collection;)(data);
+		}
+	}-*/;
 
 	public boolean isSelected(final T item) {
 		return selectedData.contains(item);
+	}
+
+	public Collection<T> getSelectedData() {
+		return selectedData.stream().collect(Collectors.toCollection(LinkedList::new));
 	}
 
 	/*
@@ -203,7 +221,8 @@ public class MaterialDataTable<T> extends Div
 		this.data.clear();
 		this.selectedData.clear();
 		this.data.addAll(data);
-		this.rebuild();
+		if (this.options != null)
+			this.rebuild();
 	}
 
 	public void addData(@SuppressWarnings("unchecked") final T... data) {
@@ -217,14 +236,17 @@ public class MaterialDataTable<T> extends Div
 		var array = data.@java.util.LinkedList::toArray()();
 
 		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
-		if (dataTable) 
+		if (dataTable)
 			dataTable.rows.add(array).draw();
-				
+
 	}-*/;
 
 	public int[] getIndexes(@SuppressWarnings("unchecked") final T... data) {
-		final Set<Integer> indexes = Arrays.stream(data).map(item -> this.data.indexOf(item))
-				.collect(Collectors.toSet());
+		return getIndexes(Arrays.asList(data));
+	}
+
+	public int[] getIndexes(final Collection<T> data) {
+		final Set<Integer> indexes = data.stream().map(item -> this.data.indexOf(item)).collect(Collectors.toSet());
 		indexes.remove(-1);
 		return indexes.stream().mapToInt(Integer::intValue).toArray();
 	}
@@ -239,10 +261,6 @@ public class MaterialDataTable<T> extends Div
 		}
 	}
 
-	public Collection<T> getSelectedData(){
-		return selectedData.stream().collect(Collectors.toCollection(LinkedList::new));
-	}
-	
 	/*
 	 * ************* Filter *************
 	 */
@@ -328,6 +346,14 @@ public class MaterialDataTable<T> extends Div
 		var element = table.@gwt.material.design.components.client.base.widget.MaterialWidget::getElement()();
 
 		var dataTable = $wnd.jQuery(element).DataTable(options);
+
+		// Select the items pré-selected
+		var selectedData = this.@gwt.material.design.components.client.ui.MaterialDataTable::selectedData;
+		var hasSelectedData = selectedData.@java.util.Collection::isEmpty()();
+		if (!hasSelectedData) {
+			var selector = this.@gwt.material.design.components.client.ui.MaterialDataTable::getIndexes(Ljava/util/Collection;)(selectedData);
+			dataTable.rows(selector).select();
+		}
 
 		var fireSelectionEvent = function(e, dt, type, indexes) {
 			if (type === 'row')
