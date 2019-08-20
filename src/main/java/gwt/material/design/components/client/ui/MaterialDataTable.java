@@ -140,6 +140,17 @@ public class MaterialDataTable<T> extends Div
 			selectedData.@java.util.LinkedList::addAll(Ljava/util/Collection;)(data);
 		}
 	}-*/;
+	
+	public native void select(final int... indexes)/*-{
+		var dataTable = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+		if (dataTable)
+			dataTable.rows(indexes).select();
+		else {
+			var data = this.@gwt.material.design.components.client.ui.MaterialDataTable::getData([I)(indexes);
+			var selectedData = this.@gwt.material.design.components.client.ui.MaterialDataTable::selectedData;
+			selectedData.@java.util.LinkedList::addAll(Ljava/util/Collection;)(data);
+		}
+	}-*/;
 
 	public void unselect(@SuppressWarnings("unchecked") final T... data) {
 		this.unselect(Arrays.asList(data));
