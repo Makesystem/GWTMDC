@@ -132,8 +132,8 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 	}
 	
 	public static native void autoInit()/*-{
-										$wnd.mdc.autoInit();
-										}-*/;
+        $wnd.mdc.autoInit();
+	}-*/;
 	
 	protected class Appender {
 		
@@ -220,8 +220,8 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 	}
 	
 	protected native JavaScriptObject jsInit(final Element element)/*-{
-																	return element;
-																	}-*/;
+        return element;
+	}-*/;
 	
 	@Override
 	protected void onLoad() {
@@ -292,7 +292,8 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 	}
 	
 	private static native Element resolve(Element maybePotential) /*-{
-		return maybePotential.__gwt_resolve ? maybePotential.__gwt_resolve() : maybePotential;
+        return maybePotential.__gwt_resolve ? maybePotential.__gwt_resolve()
+                : maybePotential;
 	}-*/;
 	
 	@Override
@@ -602,16 +603,18 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 	private boolean resizeSensorInitialized = false;
 	
 	protected native void initializeResizeSensor() /*-{
-													var _this = this;		
-													var initialized = this.@gwt.material.design.components.client.base.widget.MaterialWidget::resizeSensorInitialized;
-													if (!initialized) {
-													this.@gwt.material.design.components.client.base.widget.MaterialWidget::resizeSensorInitialized = true;
-													var element = this.@gwt.material.design.components.client.base.widget.MaterialWidget::getElement()();	
-													new $wnd.ResizeSensor(element, function() {
-													_this.@gwt.material.design.components.client.base.widget.MaterialWidget::fireResizeEvent()();
-													});
-													}
-													}-*/;
+        var _this = this;
+        var initialized = this.@gwt.material.design.components.client.base.widget.MaterialWidget::resizeSensorInitialized;
+        if (!initialized) {
+	        this.@gwt.material.design.components.client.base.widget.MaterialWidget::resizeSensorInitialized = true;
+	        var element = this.@gwt.material.design.components.client.base.widget.MaterialWidget::getElement()();
+	        new $wnd.ResizeSensor(
+	                element,
+	                function() {
+		                _this.@gwt.material.design.components.client.base.widget.MaterialWidget::fireResizeEvent()();
+	                });
+        }
+	}-*/;
 	
 	protected final void fireResizeEvent() {
 		ResizeEvent.fire(this);
@@ -827,7 +830,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 	}
 	
 	public native void toggle() /*-{
-								var element = this.@gwt.material.design.components.client.base.widget.MaterialWidget::getElement()();	
-								$wnd.jQuery(element).toggle();
-								}-*/;
+        var element = this.@gwt.material.design.components.client.base.widget.MaterialWidget::getElement()();
+        $wnd.jQuery(element).toggle();
+	}-*/;
 }
