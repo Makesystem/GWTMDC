@@ -53,6 +53,9 @@ public interface CssMixin {
 	// Snackbar
 	// ////////////////////////////////////////////////////////////////////////////
 	String MDC_SNACKBAR__POSITION_ADJUST = "--mdc-snackbar-position-adjust";
+	String MDC_SNACKBAR__INK_COLOR = "--mdc-snackbar-ink-color";
+	String MDC_SNACKBAR__FILL_COLOR = "--mdc-snackbar-fill-color";
+	String MDC_SNACKBAR__ACTION_INK_COLOR = "--mdc-snackbar-action-ink-color";
 
 	// ////////////////////////////////////////////////////////////////////////////
 	// Link

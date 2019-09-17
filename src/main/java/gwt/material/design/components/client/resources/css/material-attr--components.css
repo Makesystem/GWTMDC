@@ -125,6 +125,8 @@
   	/* ================================	*/
 	--mdc-snackbar-bottom: 8px;
 	--mdc-snackbar-position-adjust: 0px;
+	--mdc-snackbar-fill-color: #333333;
+	--mdc-snackbar-ink-color: rgba(255, 255, 255, 0.87);
 	--mdc-snackbar-action-ink-color: var(--mdc-theme-secondary);
   	
   	/* ================================	*/

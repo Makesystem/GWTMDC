@@ -27,6 +27,8 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasText;
 
 import gwt.material.design.components.client.base.mixin.ToggleStyleMixin;
+import gwt.material.design.components.client.constants.Color;
+import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.IconType;
@@ -74,6 +76,20 @@ public class MaterialSnackbar extends Div implements HasText {
 		super.onInitialize();
 		Window.addResizeHandler(event -> position());
 		position();
+	}
+	
+	@Override
+	public void setBackgroundColor(Color color) {
+		setCssProperty(CssMixin.MDC_SNACKBAR__FILL_COLOR, color.getCssName());
+	}
+
+	@Override
+	public void setColor(Color color) {
+		setCssProperty(CssMixin.MDC_SNACKBAR__INK_COLOR, color.getCssName());
+	}
+	
+	public void setActionColor(Color color) {
+		setCssProperty(CssMixin.MDC_SNACKBAR__ACTION_INK_COLOR, color.getCssName());
 	}
 	
 	@Override

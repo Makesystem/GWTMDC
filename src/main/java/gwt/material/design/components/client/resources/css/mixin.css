@@ -597,8 +597,12 @@ i.mdc-list-item__graphic {
    ========================================================================== */   
 .mdc-snackbar {}  
 
+.mdc-snackbar__surface {
+  background-color: var(--mdc-snackbar-fill-color);}
+.mdc-snackbar__label {
+  color: var(--mdc-snackbar-ink-color);}
 .mdc-snackbar .mdc-snackbar__action {
-	color: var(--mdc-snackbar-action-ink-color);}
+  color: var(--mdc-snackbar-action-ink-color);}
 .mdc-snackbar:not([dismiss=true]) .mdc-snackbar__dismiss,	
 .mdc-snackbar .mdc-snackbar__action:empty {
 	display: none;}		
