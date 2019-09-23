@@ -24,7 +24,6 @@ import gwt.material.design.components.client.base.interfaces.HasWordBreak;
 import gwt.material.design.components.client.base.mixin.ClampMixin;
 import gwt.material.design.components.client.base.mixin.WordBreakMixin;
 import gwt.material.design.components.client.constants.CssName;
-import gwt.material.design.components.client.constants.HtmlElements;
 import gwt.material.design.components.client.constants.Typography;
 import gwt.material.design.components.client.constants.WordBreak;
 import gwt.material.design.components.client.ui.html.Label;
@@ -55,7 +54,6 @@ public class MaterialLabel extends Label implements HasClamp, HasWordBreak {
 		if (getTypography() == null)
 			setTypography(Typography.BODY_2);
 
-		getElement().appendChild(HtmlElements.BR.createElement());
 	}
 
 	@Override
