@@ -49,7 +49,7 @@ public class MaterialTopAppBar extends Header implements HasType<TopAppBarType> 
 	}-*/;
 	
 	@Override
-	public void setType(TopAppBarType type) {
+	public void setType(final TopAppBarType type) {
 		typeMixin.setType(type);
 	}
 
