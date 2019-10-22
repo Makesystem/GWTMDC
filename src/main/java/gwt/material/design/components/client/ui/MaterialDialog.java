@@ -62,8 +62,9 @@ import gwt.material.design.components.client.utils.helper.UiHelper;
  * @author Richeli Vargas
  *
  */
-public class MaterialDialog extends Div implements  HasAcceptHandlers, HasCancelHandlers, HasOpenHandlers, HasOpeningHandlers, HasCloseHandlers, HasClosingHandlers,HasOpen, HasToggler {
-
+public class MaterialDialog extends Div implements HasAcceptHandlers, HasCancelHandlers, HasOpenHandlers,
+		HasOpeningHandlers, HasCloseHandlers, HasClosingHandlers, HasOpen, HasToggler {
+	
 	protected static final String NATIVE_ACTION_ACCEPT = "accept";
 	protected static final String NATIVE_ACTION_CANCEL = "close";
 	
@@ -78,7 +79,7 @@ public class MaterialDialog extends Div implements  HasAcceptHandlers, HasCancel
 	protected final MaterialButton accept = new MaterialButton();
 	protected final MaterialButton cancel = new MaterialButton();
 	protected final Div scrim = new Div(CssName.MDC_DIALOG__SCRIM);
-
+	
 	protected final TogglerMixin<MaterialDialog> togglerMixin = new TogglerMixin<>(this);
 	
 	private boolean autoStackButtons = false;
@@ -88,17 +89,17 @@ public class MaterialDialog extends Div implements  HasAcceptHandlers, HasCancel
 		setRole(Role.ALERT_DIALOG);
 		setAriaModal(true);
 	}
-
+	
 	@Override
 	protected native JavaScriptObject jsInit(final Element element)/*-{
-		return new $wnd.mdc.dialog.MDCDialog(element);
+        return new $wnd.mdc.dialog.MDCDialog(element);
 	}-*/;
-
+	
 	@Override
-	protected void onInitialize() {	
+	protected void onInitialize() {
 		
-		scrim.setAttribute(HTMLAttributes.DATA_MDC_DIALOG_ACTION, NATIVE_ACTION_CANCEL);	
-
+		scrim.setAttribute(HTMLAttributes.DATA_MDC_DIALOG_ACTION, NATIVE_ACTION_CANCEL);
+		
 		cancel.addStyleName(CssName.MDC_DIALOG__BUTTON);
 		cancel.setAttribute(HTMLAttributes.DATA_MDC_DIALOG_ACTION, NATIVE_ACTION_CANCEL);
 		footer.add(cancel);
@@ -110,14 +111,14 @@ public class MaterialDialog extends Div implements  HasAcceptHandlers, HasCancel
 		surface.add(title);
 		surface.add(content);
 		surface.add(footer);
-
+		
 		container.add(surface);
-
+		
 		add(container);
 		add(scrim);
-
+		
 		super.onInitialize();
-
+		
 		setAutoStackButtons(autoStackButtons);
 		preventFooter();
 		initEvents();
@@ -128,51 +129,60 @@ public class MaterialDialog extends Div implements  HasAcceptHandlers, HasCancel
 		UiHelper.setAttrIfIsEmpty(cancel, HTMLAttributes.EMPTY);
 		UiHelper.setAttrIfIsEmpty(footer, HTMLAttributes.EMPTY);
 	}
-
+	
 	protected native void initEvents()/*-{
-		var _this = this; 
-		var dialog = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+        var _this = this;
+        var dialog = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
 
-		function getCloseAction(action){
-			if(action == @gwt.material.design.components.client.ui.MaterialDialog::NATIVE_ACTION_ACCEPT)
-				return @gwt.material.design.components.client.constants.CloseAction::ACCEPT;
-			 else if(action == @gwt.material.design.components.client.ui.MaterialDialog::NATIVE_ACTION_CANCEL)
-				return @gwt.material.design.components.client.constants.CloseAction::CANCEL;			
-			 else 
-				return @gwt.material.design.components.client.constants.CloseAction::NONE;			
-		}
+        function getCloseAction(action) {
+	        if (action == @gwt.material.design.components.client.ui.MaterialDialog::NATIVE_ACTION_ACCEPT)
+		        return @gwt.material.design.components.client.constants.CloseAction::ACCEPT;
+	        else if (action == @gwt.material.design.components.client.ui.MaterialDialog::NATIVE_ACTION_CANCEL)
+		        return @gwt.material.design.components.client.constants.CloseAction::CANCEL;
+	        else
+		        return @gwt.material.design.components.client.constants.CloseAction::NONE;
+        }
 
-		dialog.listen('MDCDialog:opening', function(event) {
-			_this.@gwt.material.design.components.client.ui.MaterialDialog::fireOpeningEvent()();
-		});
-		dialog.listen('MDCDialog:opened', function(event) { 
-			_this.@gwt.material.design.components.client.ui.MaterialDialog::fireOpenEvent()();
-		});
-		dialog.listen('MDCDialog:closing', function(event) {
-			var action = event.detail.action;
-			var closeAction = getCloseAction(action);
-			_this.@gwt.material.design.components.client.ui.MaterialDialog::fireClosingEvent(Lgwt/material/design/components/client/constants/CloseAction;)(closeAction);
-		});
-		dialog.listen('MDCDialog:closed', function(event) {
-			var action = event.detail.action;
-			var closeAction = getCloseAction(action);
-			_this.@gwt.material.design.components.client.ui.MaterialDialog::fireCloseEvent(Lgwt/material/design/components/client/constants/CloseAction;)(closeAction);	
-		});		
+        var fireOpening = function() {
+	        _this.@gwt.material.design.components.client.ui.MaterialDialog::fireOpeningEvent()();
+        };
+
+        var fireOpen = function() {
+	        _this.@gwt.material.design.components.client.ui.MaterialDialog::fireOpenEvent()();
+        };
+
+        var fireClosing = function(event) {
+	        var action = event.detail.action;
+	        var closeAction = getCloseAction(action);
+	        _this.@gwt.material.design.components.client.ui.MaterialDialog::fireClosingEvent(Lgwt/material/design/components/client/constants/CloseAction;)(closeAction);
+        };
+
+        var fireClose = function(event) {
+	        var action = event.detail.action;
+	        var closeAction = getCloseAction(action);
+	        _this.@gwt.material.design.components.client.ui.MaterialDialog::fireCloseEvent(Lgwt/material/design/components/client/constants/CloseAction;)(closeAction);
+        };
+
+        dialog.listen('MDCDialog:opening', fireOpening);
+        dialog.listen('MDCDialog:opened', fireOpen);
+        dialog.listen('MDCDialog:closing', fireClosing);
+        dialog.listen('MDCDialog:closed', fireClose);
+        
 	}-*/;
-
+	
 	protected void fireAcceptEvent() {
 		AcceptEvent.fire(MaterialDialog.this);
 	}
-
+	
 	@Override
 	public HandlerRegistration addAcceptHandler(final AcceptHandler handler) {
 		return addHandler(handler, AcceptEvent.getType());
 	}
-
+	
 	protected void fireCancelEvent() {
 		CancelEvent.fire(MaterialDialog.this);
 	}
-
+	
 	@Override
 	public HandlerRegistration addCancelHandler(final CancelHandler handler) {
 		return addHandler(handler, CancelEvent.getType());
@@ -181,7 +191,7 @@ public class MaterialDialog extends Div implements  HasAcceptHandlers, HasCancel
 	protected void fireOpenEvent() {
 		OpenEvent.fire(MaterialDialog.this);
 	}
-
+	
 	@Override
 	public HandlerRegistration addOpenHandler(final OpenHandler handler) {
 		return addHandler(handler, OpenEvent.getType());
@@ -190,7 +200,7 @@ public class MaterialDialog extends Div implements  HasAcceptHandlers, HasCancel
 	protected void fireOpeningEvent() {
 		OpeningEvent.fire(MaterialDialog.this);
 	}
-
+	
 	@Override
 	public HandlerRegistration addOpeningHandler(final OpeningHandler handler) {
 		return addHandler(handler, OpeningEvent.getType());
@@ -199,17 +209,17 @@ public class MaterialDialog extends Div implements  HasAcceptHandlers, HasCancel
 	protected void fireCloseEvent(final CloseAction action) {
 		CloseEvent.fire(MaterialDialog.this, action);
 		switch (action) {
-		case ACCEPT:
-			fireAcceptEvent();
-			break;
-		case CANCEL:
-			fireCancelEvent();
-			break;
-		default:
-			break;
+			case ACCEPT:
+				fireAcceptEvent();
+				break;
+			case CANCEL:
+				fireCancelEvent();
+				break;
+			default:
+				break;
 		}
 	}
-
+	
 	@Override
 	public HandlerRegistration addCloseHandler(final CloseHandler handler) {
 		return addHandler(handler, CloseEvent.getType());
@@ -218,7 +228,7 @@ public class MaterialDialog extends Div implements  HasAcceptHandlers, HasCancel
 	protected void fireClosingEvent(final CloseAction action) {
 		ClosingEvent.fire(MaterialDialog.this, action);
 	}
-
+	
 	@Override
 	public HandlerRegistration addClosingHandler(final ClosingHandler handler) {
 		return addHandler(handler, ClosingEvent.getType());
@@ -228,23 +238,23 @@ public class MaterialDialog extends Div implements  HasAcceptHandlers, HasCancel
 	public void addContent(final Widget child) {
 		content.add(child);
 	}
-
+	
 	public boolean isAutoStackButtons() {
 		return autoStackButtons;
 	}
-
+	
 	@Override
 	public void setTitle(String title) {
 		this.title.setText(title);
 	}
-
+	
 	public native void setAutoStackButtons(final boolean autoStackButtons)/*-{
-		this.@gwt.material.design.components.client.ui.MaterialDialog::autoStackButtons = autoStackButtons;
-		var dialog = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
-		if (dialog)
-			dialog.autoStackButtons = autoStackButtons;
+        this.@gwt.material.design.components.client.ui.MaterialDialog::autoStackButtons = autoStackButtons;
+        var dialog = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+        if (dialog)
+	        dialog.autoStackButtons = autoStackButtons;
 	}-*/;
-
+	
 	@Override
 	public void setOpen(boolean open) {
 		if (open)
@@ -252,33 +262,32 @@ public class MaterialDialog extends Div implements  HasAcceptHandlers, HasCancel
 		else
 			close();
 	}
-
+	
 	@Override
 	public native boolean isOpen() /*-{
-		var dialog = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
-		return dialog && dialog.isOpen;
-	}-*/;
-
-	@Override
-	public native void open()/*-{
-		var dialog = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
-		if (dialog)
-			dialog.open();
-	}-*/;
-
-	@Override
-	public native void close() /*-{
-		var dialog = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
-		if (dialog)
-			dialog.close();
+        var dialog = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+        return dialog && dialog.isOpen;
 	}-*/;
 	
-
+	@Override
+	public native void open()/*-{
+        var dialog = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+        if (dialog)
+	        dialog.open();
+	}-*/;
+	
+	@Override
+	public native void close() /*-{
+        var dialog = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+        if (dialog)
+	        dialog.close();
+	}-*/;
+	
 	@Override
 	public void setToggler(String togglerId) {
-		togglerMixin.setToggler(togglerId);		
+		togglerMixin.setToggler(togglerId);
 	}
-
+	
 	@Override
 	public String getToggler() {
 		return togglerMixin.getToggler();
@@ -288,7 +297,7 @@ public class MaterialDialog extends Div implements  HasAcceptHandlers, HasCancel
 		accept.setText(text);
 		preventFooter();
 	}
-
+	
 	public String getAcceptText() {
 		return accept.getText();
 	}
@@ -296,12 +305,12 @@ public class MaterialDialog extends Div implements  HasAcceptHandlers, HasCancel
 	public void setAcceptEnabled(final boolean enabled) {
 		accept.setEnabled(enabled);
 	}
-
+	
 	public void setCancelText(final String text) {
 		cancel.setText(text);
 		preventFooter();
 	}
-
+	
 	public String getCancelText() {
 		return cancel.getText();
 	}
@@ -309,26 +318,26 @@ public class MaterialDialog extends Div implements  HasAcceptHandlers, HasCancel
 	public void setHeaderBackgroundColor(Color color) {
 		setCssProperty(CssMixin.MDC_DIALOG__HEADER_FILL_COLOR, color.getCssName());
 	}
-
+	
 	public void setHeaderTextColor(Color color) {
 		setCssProperty(CssMixin.MDC_DIALOG__HEADER_INK_COLOR, color.getCssName());
 	}
-
+	
 	@Override
 	public void setBackgroundColor(Color color) {
 		setCssProperty(CssMixin.MDC_DIALOG__BODY_FILL_COLOR, color.getCssName());
 	}
-
+	
 	@Override
 	public void setColor(Color color) {
 		setCssProperty(CssMixin.MDC_DIALOG__BODY_INK_COLOR, color.getCssName());
 	}
-
+	
 	public void setFooterBackgroundColor(Color color) {
 		setCssProperty(CssMixin.MDC_DIALOG__ACTION_FILL_COLOR, color.getCssName());
 		setCssProperty(CssMixin.MDC_DIALOG__ACTION_RAISED_INK_COLOR, color.getCssName());
 	}
-
+	
 	public void setFooterTextColor(Color color) {
 		setCssProperty(CssMixin.MDC_DIALOG__ACTION_INK_COLOR, color.getCssName());
 	}
