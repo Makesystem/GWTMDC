@@ -496,6 +496,7 @@ i.mdc-list-item__graphic {
    Drawer
    ========================================================================== */
 .mdc-drawer {	
+  	width: var(--mdc-drawer-width);
 	color: var(--mdc-drawer-ink-color);	
 	background-color: var(--mdc-drawer-fill-color);
 	/* Radio button */
@@ -534,10 +535,19 @@ i.mdc-list-item__graphic {
     color: var(--mdc-list-item-selected-graphic-ink-color); }	
 .mdc-drawer .mdc-list-item {
     border-radius: var(--mdc-rounded-border-radius); }
+
+.mdc-drawer.mdc-drawer--open:not(.mdc-drawer--closing) + .mdc-drawer-app-content {
+	margin-left: var(--mdc-drawer-width);}
+[dir=rtl] .mdc-drawer.mdc-drawer--open:not(.mdc-drawer--closing) + .mdc-drawer-app-content, .mdc-drawer.mdc-drawer--open:not(.mdc-drawer--closing) + .mdc-drawer-app-content[dir=rtl] {
+	margin-right: var(--mdc-drawer-width);}
+    
 .mdc-drawer-app-content {
 	width: 100%;
 	flex: 1;
 	display: flex;}
+
+.mdc-drawer.mdc-drawer--open:not(.mdc-drawer--modal):not(.mdc-drawer--closing) ~ .mdc-drawer-app-content > .mdc-top-app-bar {
+	width: calc(100% - var(--mdc-drawer-width));}	
 
 /* Disabled settings */ 
 
