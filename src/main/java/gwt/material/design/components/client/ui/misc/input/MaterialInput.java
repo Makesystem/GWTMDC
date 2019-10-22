@@ -85,11 +85,11 @@ import gwt.material.design.components.client.validation.ValidationRegistration;
  * @author Richeli Vargas
  *
  */
-public class MaterialInput extends MaterialValuedField<String> implements HasText, HasLabel, HasDense, HasUnbordered,
-		HasRequired, HasPlaceholder, HasType<TextFieldType>, HasInputMask, HasState, HasIcon,
-		HasIconClickHandlers, HasValidationHandlers<Result>, HasReadOnly, HasIconPosition,
-		HasValidation<MaterialInput, Validation<MaterialInput>>, HasTypingHandlers {
-
+public class MaterialInput extends MaterialValuedField<String>
+		implements HasText, HasLabel, HasDense, HasUnbordered, HasRequired, HasPlaceholder, HasType<TextFieldType>,
+		HasInputMask, HasState, HasIcon, HasIconClickHandlers, HasValidationHandlers<Result>, HasReadOnly,
+		HasIconPosition, HasValidation<MaterialInput, Validation<MaterialInput>>, HasTypingHandlers {
+	
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Elements
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -121,41 +121,41 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 	protected final TypingMixin<MaterialInput> typingMixin = new TypingMixin<>(this);
 	protected final ValidationMixin<MaterialInput, Validation<MaterialInput>> validationMixin = new ValidationMixin<>(
 			this);
-
+	
 	public MaterialInput() {
 		super(CssName.MDC_TEXT_FIELD);
 	}
-
+	
 	@Override
 	protected native JavaScriptObject jsInit(final Element element)/*-{
-		return new $wnd.mdc.textField.MDCTextField(element);
+        return new $wnd.mdc.textField.MDCTextField(element);
 	}-*/;
-
+	
 	protected MaterialWidget constructInput() {
 		return new Input(InputType.TEXT, CssName.MDC_TEXT_FIELD__INPUT);
 	}
-
+	
 	@Override
 	protected void onInitialize() {
-
+		
 		notchedOutline.setFor(input.getId());
-
+		
 		icon.addClickHandler(event -> {
 			event.preventDefault();
 			event.stopPropagation();
 			IconClickEvent.fire(this);
 			input.getElement().focus();
 		});
-
+		
 		add(icon);
 		add(input);
 		add(lineRipple);
 		add(notchedOutline);
-
+		
 		// Add event to fire validation
 		UiHelper.bindNativeEvent(input, BrowserEvents.KEYUP, () -> fireValidation());
 		super.onInitialize();
-
+		
 		// To prevent label over the placeholder when input is empty
 		// notchedOutline.addStyleName(CssName.MDC_NOTCHED_OUTLINE__NOTCHED);
 		input.addBlurHandler(event -> notchedOutline.updateFloatLabelAbove(this));
@@ -163,37 +163,37 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 		// Update icon position class
 		inputIconMixin.updateIconPositionClass();
 	}
-
+	
 	protected native void layout()/*-{
-		var jsElement = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
-		if (jsElement)
-			jsElement.layout();
+        var jsElement = this.@gwt.material.design.components.client.base.widget.MaterialWidget::jsElement;
+        if (jsElement)
+	        jsElement.layout();
 	}-*/;
-
+	
 	private void fireValidation() {
 		final Collection<Result> results = validate();
 		applyResultValidation(ValidationMixin.toResult(results));
 		results.forEach(result -> fireValidationEvent(result));
 	}
-
+	
 	protected void applyResultValidation(final Result result) {
 		setState(result.getState());
 	}
-
+	
 	@Override
 	public ValidationRegistration addValidation(final Validation<MaterialInput> validation) {
 		return validationMixin.addValidation(validation);
 	}
-
+	
 	@Override
 	public Collection<Result> validate() {
 		return validationMixin.validate();
 	}
-
+	
 	protected void fireValidationEvent(final Result result) {
 		ValidationEvent.fire(this, result);
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public HandlerRegistration addValidationHandler(ValidationHandler<Result> handler) {
@@ -201,37 +201,37 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 			handler.onValidate((ValidationEvent<Result>) (ValidationEvent<?>) event);
 		}, ValidationEvent.getType());
 	}
-
+	
 	@Override
 	public HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
 		return input.addKeyDownHandler(handler);
 	}
-
+	
 	@Override
 	public HandlerRegistration addKeyUpHandler(KeyUpHandler handler) {
 		return input.addKeyUpHandler(handler);
 	}
-
+	
 	@Override
 	public HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
 		return input.addKeyPressHandler(handler);
 	}
-
+	
 	@Override
 	public HandlerRegistration addTypingHandler(TypingHandler handler) {
 		return typingMixin.addTypingHandler(handler);
 	}
-
+	
 	@Override
 	public HandlerRegistration addBlurHandler(BlurHandler handler) {
 		return input.addBlurHandler(handler);
 	}
-
+	
 	@Override
 	public HandlerRegistration addFocusHandler(FocusHandler handler) {
 		return input.addFocusHandler(handler);
 	}
-
+	
 	public HandlerRegistration addIconClickHandler(IconClickHandler handler) {
 		icon.setTabindex(0);
 		return addHandler(event -> {
@@ -239,146 +239,159 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 				handler.onClick(event);
 		}, IconClickEvent.getType());
 	}
-
+	
 	@Override
 	public void setTypeingDelay(int typingDelay) {
 		typingMixin.setTypeingDelay(typingDelay);
 	}
-
+	
 	@Override
 	public String getValue() {
 		return inputMaskMixin.getValue();
 	}
-
+	
 	@Override
-	public native void setValue(String value, boolean fireEvents)/*-{
-		var textfield = this.@gwt.material.design.components.client.ui.misc.input.MaterialInput::input;
-		var element = textfield.@gwt.material.design.components.client.ui.html.Div::getElement()();
-		element.value = value;
-								     
-		if (fireEvents)
-			this.@gwt.material.design.components.client.ui.misc.input.MaterialInput::fireChangeEvent()();
-	}-*/;
+	public void setValue(final String value) {
+		super.setValue(value);
+		value(value);
+	}
+	
+	@Override
+	public void setValue(String value, boolean fireEvents) {
+		super.setValue(value, fireEvents);
+		value(value);
+	}
+	
+	public native void value(String value)/*-{
 
+        var textfield = this.@gwt.material.design.components.client.ui.misc.input.MaterialInput::input;
+        var element = textfield.@gwt.material.design.components.client.ui.html.Div::getElement()();
+        
+        $wnd.jQuery(element).val(value);        
+        $wnd.jQuery(element).focus();
+        $wnd.jQuery(element).blur();
+
+	}-*/;
+	
 	@Override
 	public String getText() {
 		return getValue();
 	}
-
+	
 	@Override
 	public void setText(String text) {
 		setValue(text);
 	}
-
+	
 	@Override
 	public void setTextColor(Color color) {
 		input.setTextColor(color);
 	}
-
+	
 	@Override
 	public void setBackgroundColor(Color color) {
 		setCssProperty(CssMixin.MDC_INPUT__FILL_COLOR, color.getCssName());
 	}
-
+	
 	@Override
 	public void setColor(Color color) {
 		setCssProperty(CssMixin.MDC_INPUT__INK_COLOR, color.getCssName());
 	}
-
+	
 	public void setFocusedColor(Color color) {
 		setCssProperty(CssMixin.MDC_INPUT__FOCUSED_COLOR, color.getCssName());
 	}
-
+	
 	@Override
 	public void setLabel(String label) {
 		this.notchedOutline.setLabel(label);
-
-		//if (initialized) {
-		//	final boolean isEmpty = label != null && !label.isEmpty();
-		//	if (isEmpty && this.label.getParent() != null)
-		//		this.label.removeFromParent();
-		//	else if (!isEmpty)
-		//		notchedOutline.add(this.label);
-		//}
+		
+		// if (initialized) {
+		// final boolean isEmpty = label != null && !label.isEmpty();
+		// if (isEmpty && this.label.getParent() != null)
+		// this.label.removeFromParent();
+		// else if (!isEmpty)
+		// notchedOutline.add(this.label);
+		// }
 	}
-
+	
 	@Override
 	public String getLabel() {
 		return notchedOutline.getLabel();
 	}
-
+	
 	@Override
 	public void setDense(boolean dense) {
 		denseMixin.toggle(dense);
 	}
-
+	
 	@Override
 	public boolean isDense() {
 		return denseMixin.isApplied();
 	}
-
+	
 	@Override
 	public void setPlaceholder(String placeholder) {
 		placeholderMixin.setPlaceholder(placeholder);
 	}
-
+	
 	@Override
 	public String getPlaceholder() {
 		return placeholderMixin.getPlaceholder();
 	}
-
+	
 	@Override
 	public void setPlaceholderColor(Color color) {
 		placeholderMixin.setPlaceholderColor(color);
 	}
-
+	
 	public void setInputType(InputType type) {
 		if (input instanceof Input)
 			((Input) input).setType(type);
 	}
-
+	
 	public InputType getInputType() {
 		if (input instanceof Input)
 			return ((Input) input).getType();
 		return null;
 	}
-
+	
 	@Override
 	public void setType(TextFieldType type) {
 		inputIconMixin.setType(type);
 	}
-
+	
 	@Override
 	public TextFieldType getType() {
 		return inputIconMixin.getType();
 	}
-
+	
 	public void setMinLength(final Integer length) {
 		minLengthMixin.setValue(length);
 	}
-
+	
 	public Integer getMinLength() {
 		return minLengthMixin.getValue();
 	}
-
+	
 	public void setMaxLength(final Integer length) {
 		maxLengthMixin.setValue(length);
 	}
-
+	
 	public Integer getMaxLength() {
 		return maxLengthMixin.getValue();
 	}
-
+	
 	@Override
 	public boolean isRequired() {
 		return requeridMixin.getValue();
 	}
-
+	
 	@Override
 	public void setRequired(boolean value) {
 		requeridMixin.setValue(value);
 	};
-
+	
 	@Override
 	public void setInputMask(String inputMask) {
 		inputMaskMixin.setInputMask(inputMask);
@@ -387,98 +400,98 @@ public class MaterialInput extends MaterialValuedField<String> implements HasTex
 			setMaxLength(inputMask.length());
 		}
 	}
-
+	
 	@Override
 	public String getInputMask() {
 		return inputMaskMixin.getInputMask();
 	}
-
+	
 	@Override
 	public void setState(State state) {
 		stateMixin.setState(state);
 	}
-
+	
 	@Override
 	public State getState() {
 		return stateMixin.getState();
 	}
-
+	
 	@Override
 	public IconType getIcon() {
 		return inputIconMixin.getIcon();
 	}
-
+	
 	@Override
 	public void setIcon(IconType iconType) {
 		inputIconMixin.setIcon(iconType, false);
 	}
-
+	
 	@Override
 	public void setIcon(IconType iconType, boolean animate) {
 		inputIconMixin.setIcon(iconType, animate);
 	}
-
+	
 	@Override
 	public void setIconColor(Color color) {
 		inputIconMixin.setIconColor(color);
 	}
-
+	
 	@Override
 	public IconPosition getIconPosition() {
 		return inputIconMixin.getIconPosition();
 	}
-
+	
 	@Override
 	public void setIconPosition(IconPosition iconPosition) {
 		inputIconMixin.setIconPosition(iconPosition);
 	}
-
+	
 	@Override
 	public void setWidth(String width) {
 		super.setWidth(width);
 		input.setWidth(width);
 	}
-
+	
 	@Override
 	public void setMaxWidth(String maxWidth) {
 		super.setMaxWidth(maxWidth);
 		input.setMaxWidth(maxWidth);
 	}
-
+	
 	@Override
 	public void setMinHeight(String minHeight) {
 		super.setMinHeight(minHeight);
 		input.setMinHeight(minHeight);
 	}
-
+	
 	@Override
 	public void setReadOnly(boolean readOnly) {
 		readOnlyMixin.setValue(readOnly);
 	}
-
+	
 	@Override
 	public boolean isReadOnly() {
 		return readOnlyMixin.getValue();
 	}
-
+	
 	@Override
 	public void setUnbordered(boolean unbordered) {
 		unborderedMixin.toggle(unbordered);
 	}
-
+	
 	@Override
 	public boolean isUnbordered() {
 		return unborderedMixin.isApplied();
 	}
-
+	
 	@Override
 	public void focus() {
 		input.getElement().focus();
 	}
-
+	
 	@Override
 	public void blur() {
 		input.getElement().blur();
 	}
-
+	
 }
