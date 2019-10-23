@@ -19,6 +19,7 @@
  */
 package gwt.material.design.components.client.ui;
 
+import java.util.Arrays;
 import java.util.List;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -47,6 +48,11 @@ public class MaterialTabBar extends Div implements HasAlign<TabScrollerAlign>, H
 	public MaterialTabBar() {
 		super(CssName.MDC_TAB_BAR);
 		setRole(Role.TAB_BAR);
+	}
+	
+	public MaterialTabBar(final MaterialTab ... tabs) {
+		this();
+		Arrays.stream(tabs).forEach(tab -> add(tab));
 	}
 
 	@Override

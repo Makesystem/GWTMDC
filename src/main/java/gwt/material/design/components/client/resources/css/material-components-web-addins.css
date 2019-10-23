@@ -502,6 +502,57 @@ svg.mdc-link__icon {
 	height: 40px;}
 
 /* ==========================================================================
+   Theme editor
+   ========================================================================== */
+.mdc-theme-editor {
+	
+	color: var(--mdc-theme-on-surface);
+	background-color: var(--mdc-theme-surface);
+	border-radius: var(--mdc-rounded-border-radius);
+	
+	display: flex;
+	flex-direction: column;
+	
+	
+	border: 1px solid rgba(127,127,127,.5);
+	width: 268px;
+	max-width: 320px;	
+}
+.mdc-theme-editor--content {
+	width: auto;
+	flex: 1;}	
+	
+.mdc-theme-editor--content > div {
+	height: auto;
+	min-height: 256px;
+	display: none;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	align-items: flex-start;
+	justify-content: flex-start;
+	padding: 8px;}
+	
+.mdc-theme-editor--content__show_item {
+	display: flex !important;}	
+	
+.mdc-theme-editor--content--color {}
+.mdc-theme-editor--content--color__subheader {
+	width: 100%;
+	padding-left: 8px;
+	margin-top: 24px;
+	margin-bottom: 8px;
+}
+.mdc-theme-editor--content--color__item {
+	border: 2px solid var(--mdc-icon-button-ink-color);
+	margin: 4px;}	
+	
+.mdc-theme-editor--content--font {}
+	
+.mdc-theme-editor--content--misc {}
+
+	
+/* ==========================================================================
    Color palette
    ========================================================================== */
 .mdc-color-palette {

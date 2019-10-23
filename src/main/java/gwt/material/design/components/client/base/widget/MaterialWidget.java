@@ -833,4 +833,9 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
         var element = this.@gwt.material.design.components.client.base.widget.MaterialWidget::getElement()();
         $wnd.jQuery(element).toggle();
 	}-*/;
+	
+	public native void toggle(final String className) /*-{
+    	var element = this.@gwt.material.design.components.client.base.widget.MaterialWidget::getElement()();
+    	$wnd.jQuery(element).toggleClass(className);
+	}-*/;
 }

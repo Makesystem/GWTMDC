@@ -55,6 +55,27 @@ public class MaterialTab extends MaterialSelectedField implements HasText, HasIc
 		super.initializeSelectedMixin(CssName.MDC_TAB__ACTIVE);
 		setRole(Role.TAB);
 	}
+	
+	public MaterialTab(final String text) {
+		this();
+		setText(text);
+	}
+	
+	public MaterialTab(final IconType icon) {
+		this();
+		setIcon(icon);
+	}
+	
+	public MaterialTab(final String text, final IconType icon) {
+		this();
+		setText(text);
+		setIcon(icon);
+	}
+	
+	public MaterialTab(final String text, final IconType icon, final boolean stacked) {
+		this(text, icon);
+		setStacked(stacked);
+	}
 
 	@Override
 	protected native JavaScriptObject jsInit(final Element element)/*-{
