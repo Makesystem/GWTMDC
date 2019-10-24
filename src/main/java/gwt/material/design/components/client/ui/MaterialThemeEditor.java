@@ -20,11 +20,13 @@
 package gwt.material.design.components.client.ui;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.ui.Widget;
 
+import gwt.material.design.components.client.base.widget.MaterialWidget;
 import gwt.material.design.components.client.constants.Color;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.IconType;
+import gwt.material.design.components.client.constants.ThemeAttribute;
+import gwt.material.design.components.client.theme.Theme;
 import gwt.material.design.components.client.ui.html.Div;
 import gwt.material.design.components.client.utils.helper.ColorHelper;
 import gwt.material.design.components.client.utils.helper.StyleHelper;
@@ -35,6 +37,10 @@ import gwt.material.design.components.client.utils.helper.StyleHelper;
  *
  */
 public class MaterialThemeEditor extends Div {
+	
+	enum Theme_Attribute {
+		PRIMARY,
+		SECONDARY};
 	
 	protected final MaterialTab colorTab = new MaterialTab(IconType.PALETTE);
 	protected final MaterialTab fontTab = new MaterialTab(IconType.TEXT_FORMAT);
@@ -50,7 +56,7 @@ public class MaterialThemeEditor extends Div {
 	 * Color content
 	 */
 	protected final Div contentColor = new Div(CssName.MDC_THEME_EDITOR__CONTENT__COLOR);
-	
+	protected final ColorChooser colorChooser = new ColorChooser();
 	/*
 	 * Font content
 	 */
@@ -71,8 +77,8 @@ public class MaterialThemeEditor extends Div {
 	}
 	
 	@Override
-	protected void onLoad() {
-		super.onLoad();
+	protected void onInitialize() {
+		super.onInitialize();
 		
 		colorTab.addClickHandler(event -> toggle(contentColor));
 		fontTab.addClickHandler(event -> toggle(contentFont));
@@ -88,6 +94,8 @@ public class MaterialThemeEditor extends Div {
 		color();
 		
 		toggle(contentColor);
+		
+		GWT.log(new Theme().toString());
 	}
 	
 	void toggle(final Div content) {
@@ -96,18 +104,17 @@ public class MaterialThemeEditor extends Div {
 			return;
 		
 		if (active != null)
-			active.toggle(CssName.MDC_THEME_EDITOR__CONTENT__SHOW_ITEM);
+			active.toggle(CssName.MDC_THEME_EDITOR__CONTENT__SHOW);
 		active = content;
-		active.toggle(CssName.MDC_THEME_EDITOR__CONTENT__SHOW_ITEM);
+		active.toggle(CssName.MDC_THEME_EDITOR__CONTENT__SHOW);
 	}
 	
 	void color() {
 		
-		GWT.log("aqui: " + StyleHelper.getCssProperty("--mdc-theme-primary"));
 		
 		final MaterialLabel colorPalette = new MaterialLabel("Theme color palete");
 		colorPalette.addStyleName(CssName.MDC_THEME_EDITOR__CONTENT__COLOR__SUBHEADER);
-		contentColor.add(colorPalette);		
+		contentColor.add(colorPalette);
 		contentColor.add(color("Primary", Color.MDC_THEME_ON_PRIMARY, Color.MDC_THEME_PRIMARY));
 		contentColor.add(color("Secondary", Color.MDC_THEME_ON_SECONDARY, Color.MDC_THEME_SECONDARY));
 		contentColor.add(color("Background", Color.MDC_THEME_TEXT_PRIMARY_ON_BACKGROUND, Color.MDC_THEME_BACKGROUND));
@@ -119,9 +126,11 @@ public class MaterialThemeEditor extends Div {
 		contentColor.add(color("Success", Color.MDC_THEME_ON_SUCCESS, Color.MDC_THEME_SUCCESS));
 		contentColor.add(color("Warning", Color.MDC_THEME_ON_WARNING, Color.MDC_THEME_WARNING));
 		contentColor.add(color("Error", Color.MDC_THEME_ON_ERROR, Color.MDC_THEME_ERROR));
+		
+		contentColor.add(colorChooser);
 	}
 	
-	Widget color(final String text, final Color color, final Color background) {
+	MaterialWidget color(final String text, final Color color, final Color background) {
 		
 		final MaterialIconButton item = new MaterialIconButton(IconType.INVERT_COLORS);
 		item.setColor(color);
@@ -129,6 +138,51 @@ public class MaterialThemeEditor extends Div {
 		item.setTooltip(text);
 		item.addStyleName(CssName.MDC_THEME_EDITOR__CONTENT__COLOR__ITEM);
 		
+		item.addClickHandler(event -> colorChooser.toggle(CssName.MDC_THEME_EDITOR__CONTENT__SHOW));
+		
 		return item;
+	}
+
+	
+	class ColorChooser extends Div {
+		
+		protected final Div previewContent = new Div(CssName.MDC_THEME_EDITOR__CONTENT__COLOR_CHOOSER__PREVIEW);
+		
+		protected final MaterialIconButton preview = new MaterialIconButton(IconType.INVERT_COLORS);
+		protected final MaterialLabel title = new MaterialLabel();
+		protected final MaterialLabel value = new MaterialLabel();
+		
+		protected final MaterialColorPalette palette = new MaterialColorPalette(false, true);
+		
+		public ColorChooser() {
+			super(CssName.MDC_THEME_EDITOR__CONTENT__COLOR_CHOOSER);			
+			final Color primary = Color.fromCssValue(StyleHelper.getCssProperty(ThemeAttribute.MDC_THEME_PRIMARY));			
+			select(primary);
+		}
+		
+		@Override
+		protected void onInitialize() {
+			super.onInitialize();		
+			
+			preview.addStyleName(CssName.MDC_THEME_EDITOR__CONTENT__COLOR__ITEM);
+			preview.addClickHandler(event -> toggle(CssName.MDC_THEME_EDITOR__CONTENT__SHOW));
+			palette.addValueChangeHandler(event -> select(event.getValue()));
+			
+			previewContent.add(preview);
+			previewContent.add(title);
+			previewContent.add(value);
+			
+			add(previewContent);
+			add(palette);
+		}
+		
+		public void select(final Color color) {
+			palette.setValue(color, false);
+			if (color != null) {
+				value.getElement().setInnerHTML(color.toString().replace("_", " ") + "<br/>"+ color.asHex());
+				preview.setBackgroundColor(color);
+				preview.setColor(ColorHelper.isDark(color.getCssName()) ? Color.WHITE : Color.BLACK);
+			}
+		}
 	}
 }

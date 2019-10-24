@@ -37,23 +37,20 @@ import gwt.material.design.components.client.constants.CssType;
  *
  */
 public class ColorHelper {
-
+	
 	/**
 	 * Returns first enum constant found..
 	 *
-	 * @param styleName
-	 *            Space-separated list of styles
-	 * @param enumClass
-	 *            Type of enum
-	 * @param defaultValue
-	 *            Default value of no match was found
+	 * @param styleName    Space-separated list of styles
+	 * @param enumClass    Type of enum
+	 * @param defaultValue Default value of no match was found
 	 * @return First enum constant found or default value
 	 */
 	public static <E extends Enum<? extends Style.HasCssName>> E fromStyleName(final String styleName,
 			final Class<E> enumClass, final E defaultValue) {
 		return EnumHelper.fromStyleName(styleName, enumClass, defaultValue, true);
 	}
-
+	
 	public static String setupComputedBackgroundColor(Color color) {
 		MaterialWidget temp = new MaterialWidget(Document.get().createDivElement());
 		temp.setBackgroundColor(color);
@@ -62,15 +59,15 @@ public class ColorHelper {
 		temp.removeFromParent();
 		return computed;
 	}
-
+	
 	/**
 	 * Native call to getComputedStyle.
 	 */
 	public static native String getComputedBackgroundColor(final Element e)/*-{
-		var cs = $wnd.document.defaultView.getComputedStyle(e, null);
-		return cs.getPropertyValue('background-color');
+        var cs = $wnd.document.defaultView.getComputedStyle(e, null);
+        return cs.getPropertyValue('background-color');
 	}-*/;
-
+	
 	/**
 	 * https://gka.github.io/chroma.js/
 	 * 
@@ -78,30 +75,26 @@ public class ColorHelper {
 	 * 
 	 * @param colorStart
 	 * @param colorEnd
-	 * @param count
-	 *            number of colors to return
+	 * @param count      number of colors to return
 	 * @return
 	 */
 	public static native String[] generatePalette(final int count, final String... colors)/*-{
-		return $wnd.chroma.scale(Array.from(colors)).colors(count);
+        return $wnd.chroma.scale(Array.from(colors)).colors(count);
 	}-*/;
-
+	
 	/**
 	 * Generate a color palette from a single color
 	 * 
-	 * @param count
-	 *            number of colors to return
-	 * @param color
-	 *            color to generate the palette
-	 * @param limit
-	 *            number of different colors
+	 * @param count number of colors to return
+	 * @param color color to generate the palette
+	 * @param limit number of different colors
 	 * @return
 	 */
 	public static String[] generatePalette(final int count, final String color, final int limit) {
-
+		
 		final String[] palette = generatePalette(limit + 1, color, "#eee");
 		final List<String> cleanedColors = Arrays.asList(palette).subList(0, palette.length - 1);
-
+		
 		final String[] colors = new String[count];
 		for (int i = 0; i < colors.length;) {
 			for (String c : cleanedColors) {
@@ -110,59 +103,60 @@ public class ColorHelper {
 				colors[i++] = c;
 			}
 		}
-
+		
 		return colors;
 	}
-
+	
 	/**
 	 * Generate a colored color palette
 	 * 
-	 * @param count
-	 *            number of colors to return
-	 * @param color
-	 *            color to start the palette
+	 * @param count number of colors to return
+	 * @param color color to start the palette
 	 * @return
 	 */
 	public static String[] generateColloredPalette(final int count, final String color) {
-
+		
 		final String[] colors = new String[count];
-
+		
 		String auxColor = color;
 		for (int i = 0; i < colors.length;) {
-
+			
 			double hue = getHue(auxColor) + 10;
-
+			
 			if (hue > 360)
 				hue = hue - 360;
-
+			
 			auxColor = getColor(hue, 1, 0.4);
-
+			
 			for (String c : Arrays.asList(generatePalette(6, auxColor, "#eee")).subList(2, 3))
 				colors[i++] = c;
 		}
-
+		
 		return colors;
 	}
-
+	
 	public static native String getColor(final double hue, final double saturation, final double lightness)/*-{
-		return $wnd.chroma(hue, saturation, lightness, 'hsl');
+        return $wnd.chroma(hue, saturation, lightness, 'hsl');
 	}-*/;
-
+	
+	public static boolean isDark(final String color) {
+		return isDark(luminance(color));
+	}
+	
+	public static boolean isDark(final double luminance) {
+		return luminance < 0.5;
+	}
+	
 	/**
 	 * https://gka.github.io/chroma.js/
 	 * 
 	 * @param color
 	 * @return If the luminance is bigger than 0.5 return Black, else return White
 	 */
-	public static native String getColorIn(final String color)/*-{
-		var luminance = $wnd.chroma(color).luminance();
-		if (luminance > 0.5) {
-			return '#000';
-		} else {
-			return '#fff';
-		}
-	}-*/;
-
+	public static String getColorIn(final String color) {
+		return isDark(color) ? "#fff" : "#000";
+	}
+	
 	/**
 	 * https://gka.github.io/chroma.js/
 	 * 
@@ -173,9 +167,9 @@ public class ColorHelper {
 	 * @return The luminance
 	 */
 	public static native double luminance(final String color)/*-{
-		return $wnd.chroma(color).luminance();
+        return $wnd.chroma(color).luminance();
 	}-*/;
-
+	
 	/**
 	 * https://gka.github.io/chroma.js/
 	 * 
@@ -188,7 +182,7 @@ public class ColorHelper {
 	public static double luminance(final Color color) {
 		return luminance(setupComputedBackgroundColor(color));
 	}
-
+	
 	/**
 	 * Once loaded, chroma.js can change colors. One way we already saw above, you
 	 * can change the lightness.
@@ -197,9 +191,9 @@ public class ColorHelper {
 	 * @return
 	 */
 	public static native String darken(final String color)/*-{
-		return $wnd.chroma(color).darken();
+        return $wnd.chroma(color).darken();
 	}-*/;
-
+	
 	/**
 	 * Similar to darken, but the opposite direction
 	 * 
@@ -207,9 +201,9 @@ public class ColorHelper {
 	 * @return
 	 */
 	public static native String brighten(final String color)/*-{
-		return $wnd.chroma(color).brighten();
+        return $wnd.chroma(color).brighten();
 	}-*/;
-
+	
 	/**
 	 * Similar to darken, but the opposite direction
 	 * 
@@ -217,20 +211,20 @@ public class ColorHelper {
 	 * @return
 	 */
 	public static native String saturate(final String color, final int saturation)/*-{
-		return $wnd.chroma(color).saturate(saturation);
+        return $wnd.chroma(color).saturate(saturation);
 	}-*/;
-
+	
 	public static native double getHue(final String color)/*-{
-		var hsl = $wnd.chroma(color).hsl();
+        var hsl = $wnd.chroma(color).hsl();
 
-		if (hsl[0] == null) {
-			return 0;
-		}
+        if (hsl[0] == null) {
+	        return 0;
+        }
 
-		return hsl[0];
+        return hsl[0];
 
 	}-*/;
-
+	
 	/**
 	 * https://gka.github.io/chroma.js/
 	 * 
@@ -241,56 +235,56 @@ public class ColorHelper {
 	 * @return
 	 */
 	public static native String mix(final String colorA, final String colorB)/*-{
-		return $wnd.chroma.mix(colorA, colorB, 0.5, 'rgb');
+        return $wnd.chroma.mix(colorA, colorB, 0.5, 'rgb');
 	}-*/;
-
+	
 	public enum MixMode implements CssType {
-
+		
 		RGB("rgb"), HSL("hsl"), LAB("lab"), LCH("lch"), LRGB("lrgb");
-
+		
 		private final String cssClass;
-
+		
 		MixMode(final String cssClass) {
 			this.cssClass = cssClass;
 		}
-
+		
 		@Override
 		public String getCssName() {
 			return cssClass;
 		}
-
+		
 		public static MixMode fromStyleName(final String styleName) {
 			return EnumHelper.fromStyleName(styleName, MixMode.class, RGB);
 		}
 	}
-
+	
 	public static native String mix(final String colorA, final String colorB, final double ratio,
 			final MixMode mixMode)/*-{
-		return $wnd.chroma.mix(colorA, colorB, ratio, mixMode.toString()
-				.toLowerCase());
+        return $wnd.chroma.mix(colorA, colorB, ratio, mixMode.toString()
+                .toLowerCase());
 	}-*/;
-
+	
 	public enum BlendMode implements CssType {
-
-		MULTIPLY("multiply"), DARKEN("darken"), LIGHTEN("lighten"), SCREEN("screen"), OVERLAY("overlay"), BURN(
-				"burn"), DODGE("dodge");
-
+		
+		MULTIPLY("multiply"), DARKEN("darken"), LIGHTEN("lighten"), SCREEN("screen"), OVERLAY("overlay"), BURN("burn"),
+		DODGE("dodge");
+		
 		private final String cssClass;
-
+		
 		BlendMode(final String cssClass) {
 			this.cssClass = cssClass;
 		}
-
+		
 		@Override
 		public String getCssName() {
 			return cssClass;
 		}
-
+		
 		public static BlendMode fromStyleName(final String styleName) {
 			return EnumHelper.fromStyleName(styleName, BlendMode.class, MULTIPLY);
 		}
 	}
-
+	
 	/**
 	 * Blends two colors using RGB channel-wise blend functions. Valid blend modes
 	 * are multiply, darken, lighten, screen, overlay, burn, and dodge.
@@ -300,8 +294,8 @@ public class ColorHelper {
 	 * @return
 	 */
 	private static native String blend(final String colorA, final String colorB, final BlendMode blendMode)/*-{
-		return $wnd.chroma.blend(colorA, colorB, blendMode.toString()
-				.toLowerCase());
+        return $wnd.chroma.blend(colorA, colorB, blendMode.toString()
+                .toLowerCase());
 	}-*/;
-
+	
 }
