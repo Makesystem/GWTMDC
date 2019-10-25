@@ -524,7 +524,7 @@ svg.mdc-link__icon {
 	
 .mdc-theme-editor--content > div {
 	height: auto;
-	min-height: 256px;
+	min-height: 480px;
 	display: none;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -585,7 +585,11 @@ svg.mdc-link__icon {
 	justify-content: flex-start;
 	margin-top: 8px;
 	margin-bottom: 24px;}
-.mdc-theme-editor--content--color-chosser__preview :last-child{
+.mdc-theme-editor--content--color-chosser__preview > label {
+	padding: 4px;
+	font-size: 9pt;
+	text-transform: capitalize;}	
+.mdc-theme-editor--content--color-chosser__preview :last-child {
 	flex: 1;
 	text-align: right;
 	text-transform: uppercase;}	

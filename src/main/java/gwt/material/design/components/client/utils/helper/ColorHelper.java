@@ -167,7 +167,7 @@ public class ColorHelper {
 	 * @return The luminance
 	 */
 	public static native double luminance(final String color)/*-{
-        return $wnd.chroma(color).luminance();
+        return $wnd.chroma(color.split(' ').join('')).luminance();
 	}-*/;
 	
 	/**
