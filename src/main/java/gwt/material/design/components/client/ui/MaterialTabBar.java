@@ -29,6 +29,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.components.client.base.interfaces.HasAlign;
 import gwt.material.design.components.client.constants.Color;
+import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.Role;
 import gwt.material.design.components.client.constants.TabScrollerAlign;
@@ -109,7 +110,7 @@ public class MaterialTabBar extends Div implements HasAlign<TabScrollerAlign>, H
 	
 	@Override
 	public void setBackgroundColor(Color color) {
-		scrollArea.setBackgroundColor(color);
+		setCssProperty(CssMixin.MDC_TAB__FILL_COLOR, color.getCssName());
 	}
 	
 	@Override

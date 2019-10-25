@@ -48,7 +48,8 @@ public enum ThemeProperty implements CssType {
 	MDC_THEME_TEXT_ICON_ON_BACKGROUND("--mdc-theme-text-icon-on-background", Color.BLACK, .38),
 	//
 	MDC_THEME_SUCCESS("--mdc-state--success", Color.GREEN_600),
-	MDC_THEME_WARNING("--mdc-state--warning", Color.YELLOW_600), MDC_THEME_ERROR("--mdc-state--error", Color.RED_600),
+	MDC_THEME_WARNING("--mdc-state--warning", Color.YELLOW_600), 
+	MDC_THEME_ERROR("--mdc-state--error", Color.RED_600),
 	//
 	MDC_THEME_ON_SUCCESS("--mdc-state--on-success", Color.WHITE),
 	MDC_THEME_ON_WARNING("--mdc-state--on-warning", Color.BLACK),

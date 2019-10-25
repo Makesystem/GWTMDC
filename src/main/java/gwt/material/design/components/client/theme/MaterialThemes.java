@@ -32,8 +32,8 @@ public interface MaterialThemes extends ClientBundle {
 	MaterialThemes INSTANCE = GWT.create(MaterialThemes.class);
 
 	@Source("themes/theme_indigo_pink.css")
-	TextResource indigo_pink();
+	TextResource indigo__pink();
 	
-	@Source("themes/theme_dark_amber.css")
-	TextResource dark_amber();
+	@Source("themes/theme__dark__ligth_blue.css")
+	TextResource dark__ligth_blue();
 }

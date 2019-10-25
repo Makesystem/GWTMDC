@@ -176,7 +176,9 @@
 .mdc-tab--active .mdc-tab-indicator > .mdc-tab-indicator__content--underline,
 .mdc-tab--active .mdc-tab__ripple::before, 
 .mdc-tab--active .mdc-tab__ripple::after {
-    background-color: var(--mdc-tab-actived-color);}        
+    background-color: var(--mdc-tab-actived-color);}  
+.mdc-tab-indicator .mdc-tab-indicator__content--underline {
+	border-color: var(--mdc-tab-actived-color);}          
 .mdc-tab-scroller--align-start .mdc-tab,
 .mdc-tab-scroller--align-center .mdc-tab,
 .mdc-tab-scroller--align-end .mdc-tab {

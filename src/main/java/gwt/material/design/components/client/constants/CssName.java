@@ -620,11 +620,14 @@ public interface CssName {
 	String MDC_THEME_EDITOR__CONTENT__COLOR = "mdc-theme-editor--content--color";
 	String MDC_THEME_EDITOR__CONTENT__FONT = "mdc-theme-editor--content--font";
 	String MDC_THEME_EDITOR__CONTENT__MISC = "mdc-theme-editor--content--misc";
+	String MDC_THEME_EDITOR__ACTIONS = "mdc-theme-editor--actions";
+	
+	String MDC_THEME_EDITOR__CONTENT__COLOR__PREVIEW = 		"mdc-theme-editor--content--color__preview";
+	String MDC_THEME_EDITOR__CONTENT__COLOR__PREVIEW_ITEM = "mdc-theme-editor--content--color__preview_item";
 	String MDC_THEME_EDITOR__CONTENT__COLOR_CHOOSER = "mdc-theme-editor--content--color-chosser";
 	String MDC_THEME_EDITOR__CONTENT__COLOR_CHOOSER__PREVIEW = "mdc-theme-editor--content--color-chosser__preview";
+	String MDC_THEME_EDITOR__CONTENT__COLOR_CHOOSER__PALETTE = "mdc-theme-editor--content--color-chosser__palette";
 	
-	String MDC_THEME_EDITOR__CONTENT__COLOR__SUBHEADER = "mdc-theme-editor--content--color__subheader";
-	String MDC_THEME_EDITOR__CONTENT__COLOR__ITEM = "mdc-theme-editor--content--color__item";
 	
 	// //////////////////////////////////////////////////////
 	// COLOR PALETTE
