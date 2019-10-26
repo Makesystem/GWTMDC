@@ -30,85 +30,87 @@ import gwt.material.design.components.client.utils.helper.StyleHelper;
  *
  */
 public enum ThemeProperty implements CssType {
-	
+
 	//
 	// Main
 	//
-	MDC_THEME_PRIMARY("--mdc-theme-primary", Color.BLUE), MDC_THEME_SECONDARY("--mdc-theme-secondary", Color.PINK),
-	MDC_THEME_SURFACE("--mdc-theme-surface", Color.WHITE), MDC_THEME_BACKGROUND("--mdc-theme-background", Color.WHITE),
+	MDC_THEME_PRIMARY("--mdc-theme-primary", "rgb(33, 150, 243)"),
+	MDC_THEME_SECONDARY("--mdc-theme-secondary", "rgb(233, 30, 99)"),
+	MDC_THEME_SURFACE("--mdc-theme-surface", "rgb(255, 255, 255)"),
+	MDC_THEME_BACKGROUND("--mdc-theme-background", "rgb(255, 255, 255)"),
 	//
-	MDC_THEME_ON_PRIMARY("--mdc-theme-on-primary", Color.WHITE),
-	MDC_THEME_ON_SECONDARY("--mdc-theme-on-secondary", Color.WHITE),
-	MDC_THEME_ON_SURFACE("--mdc-theme-on-surface", Color.BLACK),
+	MDC_THEME_ON_PRIMARY("--mdc-theme-on-primary", "rgb(255, 255, 255)"),
+	MDC_THEME_ON_SECONDARY("--mdc-theme-on-secondary", "rgb(255, 255, 255)"),
+	MDC_THEME_ON_SURFACE("--mdc-theme-on-surface", "rgb(0, 0, 0)"),
 	//
-	MDC_THEME_TEXT_PRIMARY_ON_BACKGROUND("--mdc-theme-text-primary-on-background", Color.BLACK, .87),
-	MDC_THEME_TEXT_SECONDARY_ON_BACKGROUND("--mdc-theme-text-secondary-on-background", Color.BLACK, .54),
-	MDC_THEME_TEXT_HINT_ON_BACKGROUND("--mdc-theme-text-hint-on-background", Color.BLACK, .12),
-	MDC_THEME_TEXT_DISABLED_ON_BACKGROUND("--mdc-theme-text-disabled-on-background", Color.BLACK, .38),
-	MDC_THEME_TEXT_ICON_ON_BACKGROUND("--mdc-theme-text-icon-on-background", Color.BLACK, .38),
+	MDC_THEME_TEXT_PRIMARY_ON_BACKGROUND("--mdc-theme-text-primary-on-background", "rgb(0, 0, 0, .87)"),
+	MDC_THEME_TEXT_SECONDARY_ON_BACKGROUND("--mdc-theme-text-secondary-on-background", "rgb(0, 0, 0, .54)"),
+	MDC_THEME_TEXT_HINT_ON_BACKGROUND("--mdc-theme-text-hint-on-background", "rgb(0, 0, 0, .12)"),
+	MDC_THEME_TEXT_DISABLED_ON_BACKGROUND("--mdc-theme-text-disabled-on-background", "rgb(0, 0, 0, .38)"),
+	MDC_THEME_TEXT_ICON_ON_BACKGROUND("--mdc-theme-text-icon-on-background", "rgb(0, 0, 0, .38)"),
 	//
-	MDC_THEME_SUCCESS("--mdc-state--success", Color.GREEN_600),
-	MDC_THEME_WARNING("--mdc-state--warning", Color.YELLOW_600), 
-	MDC_THEME_ERROR("--mdc-state--error", Color.RED_600),
+	MDC_THEME_SUCCESS("--mdc-state--success", "rgb(67, 160, 71)"),
+	MDC_THEME_WARNING("--mdc-state--warning", "rgb(253, 216, 53)"),
+	MDC_THEME_ERROR("--mdc-state--error", "rgb(229, 57, 53)"),
 	//
-	MDC_THEME_ON_SUCCESS("--mdc-state--on-success", Color.WHITE),
-	MDC_THEME_ON_WARNING("--mdc-state--on-warning", Color.BLACK),
-	MDC_THEME_ON_ERROR("--mdc-state--on-error", Color.WHITE),
+	MDC_THEME_ON_SUCCESS("--mdc-state--on-success", "rgb(255, 255, 255)"),
+	MDC_THEME_ON_WARNING("--mdc-state--on-warning", "rgb(0, 0, 0)"),
+	MDC_THEME_ON_ERROR("--mdc-state--on-error", "rgb(255, 255, 255)"),
 	//
 	// Chart
 	//
-	MDC_CHARTIST__SERIES_A("--mdc-chartist--series_a", Color.PINK_A200),
-	MDC_CHARTIST__LABEL_A("--mdc-chartist--label_a", Color.WHITE),
+	MDC_CHARTIST__SERIES_A("--mdc-chartist--series_a", "rgb(255, 64, 129)"),
+	MDC_CHARTIST__LABEL_A("--mdc-chartist--label_a", "rgb(255, 255, 255)"),
 	MDC_CHARTIST__SERIES_B("--mdc-chartist--series_b", "#fd568f"),
-	MDC_CHARTIST__LABEL_B("--mdc-chartist--label_b", Color.WHITE),
+	MDC_CHARTIST__LABEL_B("--mdc-chartist--label_b", "rgb(255, 255, 255)"),
 	MDC_CHARTIST__SERIES_C("--mdc-chartist--series_c", "#fb6c9c"),
-	MDC_CHARTIST__LABEL_C("--mdc-chartist--label_c", Color.WHITE),
+	MDC_CHARTIST__LABEL_C("--mdc-chartist--label_c", "rgb(255, 255, 255)"),
 	MDC_CHARTIST__SERIES_D("--mdc-chartist--series_d", "#f981aa"),
-	MDC_CHARTIST__LABEL_D("--mdc-chartist--label_d", Color.WHITE),
+	MDC_CHARTIST__LABEL_D("--mdc-chartist--label_d", "rgb(255, 255, 255)"),
 	MDC_CHARTIST__SERIES_E("--mdc-chartist--series_e", "#f797b8"),
-	MDC_CHARTIST__LABEL_E("--mdc-chartist--label_e", Color.WHITE),
+	MDC_CHARTIST__LABEL_E("--mdc-chartist--label_e", "rgb(255, 255, 255)"),
 	MDC_CHARTIST__SERIES_F("--mdc-chartist--series_f", "#f4adc5"),
-	MDC_CHARTIST__LABEL_F("--mdc-chartist--label_f", Color.BLACK),
+	MDC_CHARTIST__LABEL_F("--mdc-chartist--label_f", "rgb(0, 0, 0)"),
 	MDC_CHARTIST__SERIES_G("--mdc-chartist--series_g", "#f2c3d3"),
-	MDC_CHARTIST__LABEL_G("--mdc-chartist--label_g", Color.BLACK),
+	MDC_CHARTIST__LABEL_G("--mdc-chartist--label_g", "rgb(0, 0, 0)"),
 	MDC_CHARTIST__SERIES_H("--mdc-chartist--series_h", "#f0d8e0"),
-	MDC_CHARTIST__LABEL_H("--mdc-chartist--label_h", Color.BLACK),
+	MDC_CHARTIST__LABEL_H("--mdc-chartist--label_h", "rgb(0, 0, 0)"),
 	MDC_CHARTIST__SERIES_I("--mdc-chartist--series_i", "#ff4081"),
-	MDC_CHARTIST__LABEL_I("--mdc-chartist--label_i", Color.WHITE),
+	MDC_CHARTIST__LABEL_I("--mdc-chartist--label_i", "rgb(255, 255, 255)"),
 	MDC_CHARTIST__SERIES_J("--mdc-chartist--series_j", "#fd568f"),
-	MDC_CHARTIST__LABEL_J("--mdc-chartist--label_j", Color.WHITE),
+	MDC_CHARTIST__LABEL_J("--mdc-chartist--label_j", "rgb(255, 255, 255)"),
 	MDC_CHARTIST__SERIES_K("--mdc-chartist--series_k", "#fb6c9c"),
-	MDC_CHARTIST__LABEL_K("--mdc-chartist--label_k", Color.WHITE),
+	MDC_CHARTIST__LABEL_K("--mdc-chartist--label_k", "rgb(255, 255, 255)"),
 	MDC_CHARTIST__SERIES_L("--mdc-chartist--series_l", "#f981aa"),
-	MDC_CHARTIST__LABEL_L("--mdc-chartist--label_l", Color.WHITE),
+	MDC_CHARTIST__LABEL_L("--mdc-chartist--label_l", "rgb(255, 255, 255)"),
 	MDC_CHARTIST__SERIES_M("--mdc-chartist--series_m", "#f797b8"),
-	MDC_CHARTIST__LABEL_M("--mdc-chartist--label_m", Color.WHITE),
+	MDC_CHARTIST__LABEL_M("--mdc-chartist--label_m", "rgb(255, 255, 255)"),
 	MDC_CHARTIST__SERIES_N("--mdc-chartist--series_n", "#f4adc5"),
-	MDC_CHARTIST__LABEL_N("--mdc-chartist--label_n", Color.BLACK),
+	MDC_CHARTIST__LABEL_N("--mdc-chartist--label_n", "rgb(0, 0, 0)"),
 	MDC_CHARTIST__SERIES_O("--mdc-chartist--series_o", "#f2c3d3"),
-	MDC_CHARTIST__LABEL_O("--mdc-chartist--label_o", Color.BLACK),
+	MDC_CHARTIST__LABEL_O("--mdc-chartist--label_o", "rgb(0, 0, 0)"),
 	MDC_CHARTIST__SERIES_P("--mdc-chartist--series_p", "#f0d8e0"),
-	MDC_CHARTIST__LABEL_P("--mdc-chartist--label_p", Color.BLACK),
+	MDC_CHARTIST__LABEL_P("--mdc-chartist--label_p", "rgb(0, 0, 0)"),
 	MDC_CHARTIST__SERIES_Q("--mdc-chartist--series_q", "#ff4081"),
-	MDC_CHARTIST__LABEL_Q("--mdc-chartist--label_q", Color.WHITE),
+	MDC_CHARTIST__LABEL_Q("--mdc-chartist--label_q", "rgb(255, 255, 255)"),
 	MDC_CHARTIST__SERIES_R("--mdc-chartist--series_r", "#fd568f"),
-	MDC_CHARTIST__LABEL_R("--mdc-chartist--label_r", Color.WHITE),
+	MDC_CHARTIST__LABEL_R("--mdc-chartist--label_r", "rgb(255, 255, 255)"),
 	MDC_CHARTIST__SERIES_S("--mdc-chartist--series_s", "#fb6c9c"),
-	MDC_CHARTIST__LABEL_S("--mdc-chartist--label_s", Color.WHITE),
+	MDC_CHARTIST__LABEL_S("--mdc-chartist--label_s", "rgb(255, 255, 255)"),
 	MDC_CHARTIST__SERIES_T("--mdc-chartist--series_t", "#f981aa"),
-	MDC_CHARTIST__LABEL_T("--mdc-chartist--label_t", Color.WHITE),
+	MDC_CHARTIST__LABEL_T("--mdc-chartist--label_t", "rgb(255, 255, 255)"),
 	MDC_CHARTIST__SERIES_U("--mdc-chartist--series_u", "#f797b8"),
-	MDC_CHARTIST__LABEL_U("--mdc-chartist--label_u", Color.WHITE),
+	MDC_CHARTIST__LABEL_U("--mdc-chartist--label_u", "rgb(255, 255, 255)"),
 	MDC_CHARTIST__SERIES_V("--mdc-chartist--series_v", "#f4adc5"),
-	MDC_CHARTIST__LABEL_V("--mdc-chartist--label_v", Color.BLACK),
+	MDC_CHARTIST__LABEL_V("--mdc-chartist--label_v", "rgb(0, 0, 0)"),
 	MDC_CHARTIST__SERIES_W("--mdc-chartist--series_w", "#f2c3d3"),
-	MDC_CHARTIST__LABEL_W("--mdc-chartist--label_w", Color.BLACK),
+	MDC_CHARTIST__LABEL_W("--mdc-chartist--label_w", "rgb(0, 0, 0)"),
 	MDC_CHARTIST__SERIES_X("--mdc-chartist--series_x", "#f0d8e0"),
-	MDC_CHARTIST__LABEL_X("--mdc-chartist--label_x", Color.BLACK),
+	MDC_CHARTIST__LABEL_X("--mdc-chartist--label_x", "rgb(0, 0, 0)"),
 	MDC_CHARTIST__SERIES_Y("--mdc-chartist--series_y", "#ff4081"),
-	MDC_CHARTIST__LABEL_Y("--mdc-chartist--label_y", Color.WHITE),
+	MDC_CHARTIST__LABEL_Y("--mdc-chartist--label_y", "rgb(255, 255, 255)"),
 	MDC_CHARTIST__SERIES_Z("--mdc-chartist--series_z", "#fd568f"),
-	MDC_CHARTIST__LABEL_Z("--mdc-chartist--label_z", Color.WHITE),
+	MDC_CHARTIST__LABEL_Z("--mdc-chartist--label_z", "rgb(255, 255, 255)"),
 	//
 	// MaterialCode
 	//
@@ -142,63 +144,55 @@ public enum ThemeProperty implements CssType {
 	MDC_THEME_CODE_TOKEN_KEYWORD("--mdc-theme-code-token-keyword", "#66d9ef"),
 	MDC_THEME_CODE_TOKEN_REGEX("--mdc-theme-code-token-regex", "#fd971f"),
 	MDC_THEME_CODE_TOKEN_IMPORTANT("--mdc-theme-code-token-important", "#fd971f");
-	
+
 	private final String cssClass;
 	private final String defaultValue;
-	
-	ThemeProperty(final String cssClass, final Color color) {
-		this(cssClass, color.getCssName());
-	}
-	
-	ThemeProperty(final String cssClass, final Color color, final double alpha) {
-		this(cssClass, color.getCssName(alpha));
-	}
-	
+
 	ThemeProperty(final String cssClass, final String defaultValue) {
 		this.cssClass = cssClass;
 		this.defaultValue = defaultValue;
 	}
-	
+
 	@Override
 	public String getCssName() {
 		return cssClass;
 	}
-	
+
 	public String getDefaultValue() {
 		return defaultValue;
 	}
-	
+
 	public String load() {
 		return StyleHelper.getCssProperty(cssClass);
 	}
-	
+
 	public String loadOrDefault() {
 		return loadOrDefault(defaultValue);
 	}
-	
+
 	public String loadOrDefault(final String defaultValue) {
 		final String value = StyleHelper.getCssProperty(cssClass);
 		return value == null || value.trim().isEmpty() ? defaultValue : value;
 	}
-	
+
 	public static final ThemeProperty[] chartistSeries() {
 		return Arrays.stream(ThemeProperty.values())
 				.filter(property -> property.getCssName().startsWith("--mdc-chartist--series_"))
 				.toArray(ThemeProperty[]::new);
 	}
-	
+
 	public static final ThemeProperty[] chartistLabels() {
 		return Arrays.stream(ThemeProperty.values())
 				.filter(property -> property.getCssName().startsWith("--mdc-chartist--label_"))
 				.toArray(ThemeProperty[]::new);
 	}
-	
+
 	public static final ThemeProperty[] codeToken() {
 		return Arrays.stream(ThemeProperty.values())
 				.filter(property -> property.getCssName().startsWith("--mdc-theme-code-token-"))
 				.toArray(ThemeProperty[]::new);
 	}
-	
+
 	public static final ThemeProperty fromStyleName(final String styleName) {
 		return EnumHelper.fromStyleName(styleName, ThemeProperty.class, null);
 	}

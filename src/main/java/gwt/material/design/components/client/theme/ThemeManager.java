@@ -33,10 +33,6 @@ import gwt.material.design.components.client.GwtMDC;
 public class ThemeManager {
 
 	private static StyleElement currentTheme;
-
-	public static void applyTheme(final MaterialTheme theme) {
-		applyTheme(theme.getAsText());
-	}
 	
 	public static void applyTheme(final TextResource resource) {
 		applyTheme(resource.getText());

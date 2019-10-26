@@ -33,7 +33,6 @@ import gwt.material.design.components.client.constants.Color;
 import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.CssName;
 import gwt.material.design.components.client.constants.IconType;
-import gwt.material.design.components.client.constants.ThemeAttribute;
 import gwt.material.design.components.client.constants.ThemeProperty;
 import gwt.material.design.components.client.theme.Theme;
 import gwt.material.design.components.client.ui.html.Div;
@@ -87,13 +86,8 @@ public class MaterialThemeEditor extends Div {
 	 */
 	protected Div active;
 	
-	protected final Theme theme = new Theme() {
-		public void set(ThemeProperty property, String value) {
-			super.set(property, value);
-			colorPreviews.forEach(element -> element.setCssProperty(property.getCssName(), value));
-		};
-	};
-	
+	protected final Theme theme = new Theme();
+		
 	public MaterialThemeEditor() {
 		super(CssName.MDC_THEME_EDITOR);
 	}
@@ -268,7 +262,7 @@ public class MaterialThemeEditor extends Div {
 		
 		public ColorChooser() {
 			super(CssName.MDC_THEME_EDITOR__CONTENT__COLOR_CHOOSER);
-			final Color primary = Color.fromCssValue(StyleHelper.getCssProperty(ThemeAttribute.MDC_THEME_PRIMARY));
+			final Color primary = Color.fromCssValue(ThemeProperty.MDC_THEME_PRIMARY.load());
 			setValue(primary, false);
 		}
 		
