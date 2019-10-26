@@ -19,8 +19,6 @@
  */
 package gwt.material.design.components.client.ui;
 
-import java.util.Collection;
-import java.util.LinkedList;
 import java.util.stream.IntStream;
 
 import com.google.gwt.dom.client.Element;
@@ -63,7 +61,6 @@ public class MaterialThemeEditor extends Div {
 	protected final Div contentColor = new Div(CssName.MDC_THEME_EDITOR__CONTENT__COLOR);
 	protected final Div contentColorPreview = new Div(CssName.MDC_THEME_EDITOR__CONTENT__COLOR__PREVIEW);
 	protected final ColorChooser colorChooser = new ColorChooser();
-	protected final Collection<MaterialWidget> colorPreviews = new LinkedList<>();
 	
 	/*
 	 * Font content
@@ -96,6 +93,8 @@ public class MaterialThemeEditor extends Div {
 	protected void onInitialize() {
 		super.onInitialize();
 		
+		theme.addChangeHandler((property, value) -> updateProperty(property, value));
+		
 		colorTab.addClickHandler(event -> toggle(contentColor));
 		fontTab.addClickHandler(event -> toggle(contentFont));
 		miscTab.addClickHandler(event -> toggle(contentMisc));
@@ -120,14 +119,21 @@ public class MaterialThemeEditor extends Div {
 		toggle(contentColor);
 	}
 	
+	void updateProperty(final ThemeProperty property, final String value) {
+		updateProperty(property.getCssName(), value);
+	}
+	
+	native void updateProperty(final String property, final String value) /*-{
+		$wnd.jQuery('.' + property).css(property, value);
+	}-*/;
+
+
 	void download() {
 		download("mdc_theme.css", theme.toString());
 	}
 	
 	native void download(final String fileName, final String text) /*-{
 	
-		console.log(text);
-
         var element = document.createElement('a');
         element.setAttribute('href', 'data:text/css;charset=utf-8,'
                 + encodeURIComponent(text));
@@ -158,8 +164,7 @@ public class MaterialThemeEditor extends Div {
 		previewContent.add(subheader("Theme color palete"));
 		previewContent.add(color(ThemeProperty.MDC_THEME_PRIMARY, ThemeProperty.MDC_THEME_ON_PRIMARY));
 		previewContent.add(color(ThemeProperty.MDC_THEME_SECONDARY, ThemeProperty.MDC_THEME_ON_SECONDARY));
-		previewContent
-				.add(color(ThemeProperty.MDC_THEME_BACKGROUND, ThemeProperty.MDC_THEME_TEXT_PRIMARY_ON_BACKGROUND));
+		previewContent.add(color(ThemeProperty.MDC_THEME_BACKGROUND, ThemeProperty.MDC_THEME_TEXT_PRIMARY_ON_BACKGROUND));
 		previewContent.add(color(ThemeProperty.MDC_THEME_SURFACE, ThemeProperty.MDC_THEME_ON_SURFACE));
 		
 		previewContent.add(subheader("States"));
@@ -193,6 +198,8 @@ public class MaterialThemeEditor extends Div {
 		item.setTooltip(colorProperty.toString().replace("MDC_THEME_", "").replace("_", " "));
 		item.addStyleName(CssName.MDC_THEME_EDITOR__CONTENT__COLOR__PREVIEW_ITEM);
 		item.setDataObject(Color.fromCssValue(StyleHelper.getCssProperty(colorProperty.getCssName())));
+		item.addStyleName(colorProperty.getCssName());
+		item.addStyleName(onColorProperty.getCssName());
 		
 		item.addClickHandler(event -> {
 			colorChooser.setProperty(colorProperty);
@@ -200,9 +207,7 @@ public class MaterialThemeEditor extends Div {
 			colorChooser.setValue(item.getDataObject(), false);
 			colorChooser.toggle(CssName.MDC_THEME_EDITOR__CONTENT__SHOW);
 		});
-		
-		colorPreviews.add(item);
-		
+				
 		return item;
 	}
 	

@@ -174,7 +174,7 @@ public enum ThemeProperty implements CssType {
 		final String value = StyleHelper.getCssProperty(cssClass);
 		return value == null || value.trim().isEmpty() ? defaultValue : value;
 	}
-
+	
 	public static final ThemeProperty[] chartistSeries() {
 		return Arrays.stream(ThemeProperty.values())
 				.filter(property -> property.getCssName().startsWith("--mdc-chartist--series_"))
