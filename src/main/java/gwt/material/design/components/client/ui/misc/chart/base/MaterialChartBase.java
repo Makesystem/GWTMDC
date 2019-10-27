@@ -19,8 +19,10 @@
  */
 package gwt.material.design.components.client.ui.misc.chart.base;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
@@ -38,6 +40,7 @@ import gwt.material.design.components.client.constants.ChartAspectRatio;
 import gwt.material.design.components.client.constants.Color;
 import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.HtmlElements;
+import gwt.material.design.components.client.constants.ThemeProperty;
 import gwt.material.design.components.client.ui.misc.chart.helper.ChartHelper;
 import gwt.material.design.components.client.ui.misc.chart.js.base.JsChartData;
 import gwt.material.design.components.client.ui.misc.chart.js.base.JsChartOptions;
@@ -52,8 +55,12 @@ import gwt.material.design.components.client.utils.helper.StyleHelper;
  * @author Richeli Vargas
  *
  */
-public class MaterialChartBase<V, L, O extends JsChartOptions> extends MaterialUIObject
-		implements HasValue<MaterialChartSerie<V, L>[]>, HasChartAspectRatio {
+public class MaterialChartBase<V, L, O extends JsChartOptions>
+		extends
+			MaterialUIObject
+		implements
+			HasValue<MaterialChartSerie<V, L>[]>,
+			HasChartAspectRatio {
 
 	private boolean valueChangeHandlerInitialized;
 
@@ -92,7 +99,8 @@ public class MaterialChartBase<V, L, O extends JsChartOptions> extends MaterialU
 
 	protected void initializeDefaultOptions() {
 		this.tooltipOptions.showTooltip = false;
-		this.options.plugins = JsHelper.toJsArray(getPlugins().stream().toArray());
+		this.options.plugins = JsHelper
+				.toJsArray(getPlugins().stream().toArray());
 	}
 
 	protected List<JavaScriptObject> getPlugins() {
@@ -107,59 +115,62 @@ public class MaterialChartBase<V, L, O extends JsChartOptions> extends MaterialU
 	}
 
 	protected native void initializeRedrawOnResize()/*-{
-		var _this = this;
-		var element = this.@gwt.material.design.components.client.ui.misc.chart.base.MaterialChartBase::getElement()();
-		var handler = function() {
-			_this.@gwt.material.design.components.client.ui.misc.chart.base.MaterialChartBase::redraw(Z)(false);
-		};
-		new $wnd.ResizeSensor(element, handler);
-	}-*/;
+													var _this = this;
+													var element = this.@gwt.material.design.components.client.ui.misc.chart.base.MaterialChartBase::getElement()();
+													var handler = function() {
+													_this.@gwt.material.design.components.client.ui.misc.chart.base.MaterialChartBase::redraw(Z)(false);
+													};
+													new $wnd.ResizeSensor(element, handler);
+													}-*/;
 
-	protected final native JavaScriptObject loadTooltipPlugin(final O options)/*-{
-
-		var _this = this;
-		var element = this.@gwt.material.design.components.client.ui.misc.chart.base.MaterialChartBase::getElement()();
-		var tooltipClass = @gwt.material.design.components.client.constants.CssName::MDC_CHART__TOOLTIP;
-		var tooltipOptions = _this.@gwt.material.design.components.client.ui.misc.chart.base.MaterialChartBase::tooltipOptions; 
-		
-		if (!tooltipOptions.showTooltip)
-			return null;
-
-		// Instantiete the plugin
-		// Find correct point class
-		var pointClass;
-		if (options.classNames.point)
-			pointClass = options.classNames.point;
-		else if (options.classNames.bar)
-			pointClass = options.classNames.bar;
-		else if (options.classNames.slicePie)
-			pointClass = options.classNames.slicePie;
-		else if (options.donut && !options.donutSolid
-				&& options.classNames.sliceDonut)
-			pointClass = options.classNames.sliceDonut;
-		else if (options.donut && options.donutSolid
-				&& options.classNames.sliceDonutSolid)
-			pointClass = options.classNames.sliceDonutSolid;
-		else if (options.classNames.slicePie)
-			pointClass = options.classNames.slicePie;
-
-		// Create a function to format the value
-		var func = function(value) {
-			return _this.@gwt.material.design.components.client.ui.misc.chart.base.MaterialChartBase::format(Ljava/lang/Double;)(value);
-		};
-
-		tooltipOptions.transformTooltipTextFnc = func;
-		tooltipOptions.pointClass = pointClass;
-
-		// Create the tooltip plugin
-		var tooltipPlugin = $wnd.Chartist.plugins.tooltip(tooltipOptions);
-
-		return tooltipPlugin;
-
-	}-*/;
+	protected final native JavaScriptObject loadTooltipPlugin(
+			final O options)/*-{
+							
+							var _this = this;
+							var element = this.@gwt.material.design.components.client.ui.misc.chart.base.MaterialChartBase::getElement()();
+							var tooltipClass = @gwt.material.design.components.client.constants.CssName::MDC_CHART__TOOLTIP;
+							var tooltipOptions = _this.@gwt.material.design.components.client.ui.misc.chart.base.MaterialChartBase::tooltipOptions; 
+							
+							if (!tooltipOptions.showTooltip)
+							return null;
+							
+							// Instantiete the plugin
+							// Find correct point class
+							var pointClass;
+							if (options.classNames.point)
+							pointClass = options.classNames.point;
+							else if (options.classNames.bar)
+							pointClass = options.classNames.bar;
+							else if (options.classNames.slicePie)
+							pointClass = options.classNames.slicePie;
+							else if (options.donut && !options.donutSolid
+							&& options.classNames.sliceDonut)
+							pointClass = options.classNames.sliceDonut;
+							else if (options.donut && options.donutSolid
+							&& options.classNames.sliceDonutSolid)
+							pointClass = options.classNames.sliceDonutSolid;
+							else if (options.classNames.slicePie)
+							pointClass = options.classNames.slicePie;
+							
+							// Create a function to format the value
+							var func = function(value) {
+							return _this.@gwt.material.design.components.client.ui.misc.chart.base.MaterialChartBase::format(Ljava/lang/Double;)(value);
+							};
+							
+							tooltipOptions.transformTooltipTextFnc = func;
+							tooltipOptions.pointClass = pointClass;
+							
+							// Create the tooltip plugin
+							var tooltipPlugin = $wnd.Chartist.plugins.tooltip(tooltipOptions);
+							
+							return tooltipPlugin;
+							
+							}-*/;
 
 	protected String format(final Double value) {
-		return formatter == null ? String.valueOf(value) : formatter.format(value);
+		return formatter == null
+				? String.valueOf(value)
+				: formatter.format(value);
 	}
 
 	@Override
@@ -176,61 +187,65 @@ public class MaterialChartBase<V, L, O extends JsChartOptions> extends MaterialU
 
 	protected void redraw(final boolean animate) {
 		if (initialized && jsElement != null) {
-			this.options.plugins = JsHelper.toJsArray(getPlugins().stream().toArray());
+			this.options.plugins = JsHelper
+					.toJsArray(getPlugins().stream().toArray());
 			// Some redrawers does not need be animated
 			final boolean isAnimated = isAnimated();
 			setAnimated(animate);
 			jsInit();
-			//update(jsElement, getValue() == null ? new JsChartData() : ChartHelper.toNativeData(getValue()), options);
+			// update(jsElement, getValue() == null ? new JsChartData() :
+			// ChartHelper.toNativeData(getValue()), options);
 			setAnimated(isAnimated);
 		}
 	}
 
 	protected native void clearEvents(final JavaScriptObject chart) /*-{
-		chart.off();
-	}-*/;
+																	chart.off();
+																	}-*/;
 
-	protected native void update(final JavaScriptObject chart, final JsChartData data,
-			final JsChartOptions options) /*-{
-		chart.update(data, options, true);
-	}-*/;
+	protected native void update(final JavaScriptObject chart,
+			final JsChartData data, final JsChartOptions options) /*-{
+																	chart.update(data, options, true);
+																	}-*/;
 
 	protected native void detach(final JavaScriptObject chart) /*-{
-		chart.detach();
-	}-*/;
+																chart.detach();
+																}-*/;
 
 	protected void jsInit() {
 
 		jsElement = jsInit(getElement(), getValue(), options);
 
-		if (getValue() != null) {
-			for (int v = 0; v < getValue().length; v++) {
-				final Color color = getValue()[v].getColor();
-				if (color != null)
-					setCssProperty(CssMixin.MDC_CHARTIST__SERIES + "_" + ChartHelper.alphaNumerate(v),
-							color.getCssName());
-			}
-		}
+		if (getValue() != null)
+			setSeriesColors(Arrays.stream(getValue())
+					.map(value -> value.getColor()).toArray(Color[]::new));
 
 		if (animated)
 			applyAnimations(jsElement, animationDuration);
 	}
 
-	protected native void applyAnimations(final JavaScriptObject chart, final int duration) /*-{		
-	}-*/;
+	protected native void applyAnimations(final JavaScriptObject chart,
+			final int duration) /*-{		
+								}-*/;
 
 	public JavaScriptObject asJavaScriptObject() {
 		return jsElement;
 	}
 
-	protected JavaScriptObject jsInit(final Element element, final MaterialChartSerie<V, L>[] value, final O options) {
-		return jsInit(element, value == null ? new JsChartData() : ChartHelper.toNativeData(value), options);
+	protected JavaScriptObject jsInit(final Element element,
+			final MaterialChartSerie<V, L>[] value, final O options) {
+		return jsInit(element,
+				value == null
+						? new JsChartData()
+						: ChartHelper.toNativeData(value),
+				options);
 	}
 
-	protected native JavaScriptObject jsInit(final Element element, final JsChartData data, final O options)/*-{
-	}-*/;
+	protected native JavaScriptObject jsInit(final Element element,
+			final JsChartData data, final O options)/*-{
+													}-*/;
 
-	public HandlerRegistration addChangeHandler(ChangeHandler handler) {
+	public HandlerRegistration addChangeHandler(final ChangeHandler handler) {
 		return addDomHandler(handler, ChangeEvent.getType());
 	}
 
@@ -239,7 +254,8 @@ public class MaterialChartBase<V, L, O extends JsChartOptions> extends MaterialU
 	}
 
 	@Override
-	public HandlerRegistration addValueChangeHandler(ValueChangeHandler<MaterialChartSerie<V, L>[]> handler) {
+	public HandlerRegistration addValueChangeHandler(
+			final ValueChangeHandler<MaterialChartSerie<V, L>[]> handler) {
 		// Initialization code
 		if (!valueChangeHandlerInitialized) {
 			valueChangeHandlerInitialized = true;
@@ -249,7 +265,7 @@ public class MaterialChartBase<V, L, O extends JsChartOptions> extends MaterialU
 	}
 
 	@Override
-	public void setValue(MaterialChartSerie<V, L>[] value) {
+	public void setValue(final MaterialChartSerie<V, L>[] value) {
 		setValue(value, true);
 	}
 
@@ -259,7 +275,8 @@ public class MaterialChartBase<V, L, O extends JsChartOptions> extends MaterialU
 	}
 
 	@Override
-	public void setValue(MaterialChartSerie<V, L>[] value, boolean fireEvents) {
+	public void setValue(final MaterialChartSerie<V, L>[] value,
+			boolean fireEvents) {
 		this.value = value;
 		redraw();
 		if (fireEvents)
@@ -267,7 +284,7 @@ public class MaterialChartBase<V, L, O extends JsChartOptions> extends MaterialU
 	}
 
 	@Override
-	public void setChartAspectRatio(ChartAspectRatio aspectRatio) {
+	public void setChartAspectRatio(final ChartAspectRatio aspectRatio) {
 		aspectRatioMixin.setChartAspectRatio(aspectRatio);
 		redraw(false);
 	}
@@ -278,27 +295,35 @@ public class MaterialChartBase<V, L, O extends JsChartOptions> extends MaterialU
 	}
 
 	@Override
-	public void setTextColor(Color color) {
+	public void setColor(final Color color) {
 		setCssProperty(CssMixin.MDC_CHARTIST__LABEL, color.getCssName());
 	}
 
-	public void setColors(String colors) {
-		final String[] colorsArray = colors.split(" ");
-		for (int i = 0; i < colorsArray.length; i++)
-			setCssProperty(CssMixin.MDC_CHARTIST__SERIES + "_" + ChartHelper.alphaNumerate(i),
-					Color.valueOf(colorsArray[i]).getCssName());
+	@Override
+	public void setBackgroundColor(Color color) {
+		setCssProperty(CssMixin.MDC_CHARTIST__GRID_BACKGROUND,
+				color.getCssName());
 	}
 
-	public void setColors(Color... colors) {
-		for (int i = 0; i < colors.length; i++)
-			setCssProperty(CssMixin.MDC_CHARTIST__SERIES + "_" + ChartHelper.alphaNumerate(i), colors[i].getCssName());
+	public void setLabelsColors(final Color... colors) {
+		final ThemeProperty[] labels = ThemeProperty.chartistLabels();
+		IntStream.range(0, Math.min(colors.length, labels.length))
+				.forEach(index -> setCssProperty(labels[index].getCssName(),
+						colors[index]));
+	}
+
+	public void setSeriesColors(final Color... colors) {
+		final ThemeProperty[] series = ThemeProperty.chartistSeries();
+		IntStream.range(0, Math.min(colors.length, series.length))
+				.forEach(index -> setCssProperty(series[index].getCssName(),
+						colors[index]));
 	}
 
 	public boolean isAnimated() {
 		return animated;
 	}
 
-	public void setAnimated(boolean animated) {
+	public void setAnimated(final boolean animated) {
 		this.animated = animated;
 	}
 
@@ -316,7 +341,7 @@ public class MaterialChartBase<V, L, O extends JsChartOptions> extends MaterialU
 	 * 
 	 * @param animationDuration
 	 */
-	public void setAnimationDuration(int animationDuration) {
+	public void setAnimationDuration(final int animationDuration) {
 		this.animationDuration = animationDuration;
 	}
 
@@ -324,7 +349,7 @@ public class MaterialChartBase<V, L, O extends JsChartOptions> extends MaterialU
 		return options.showLabel;
 	}
 
-	public void setShowLabel(boolean showLabel) {
+	public void setShowLabel(final boolean showLabel) {
 		options.showLabel = showLabel;
 		redraw(false);
 	}
@@ -351,19 +376,19 @@ public class MaterialChartBase<V, L, O extends JsChartOptions> extends MaterialU
 		return options.reverseData;
 	}
 
-	public void setReverseData(boolean reverseData) {
+	public void setReverseData(final boolean reverseData) {
 		options.reverseData = reverseData;
 		redraw();
 	}
 
 	@Override
-	public void setWidth(String width) {
+	public void setWidth(final String width) {
 		options.width = width;
 		redraw(false);
 	}
 
 	@Override
-	public void setHeight(String height) {
+	public void setHeight(final String height) {
 		options.height = height;
 		redraw(false);
 	}
@@ -383,17 +408,19 @@ public class MaterialChartBase<V, L, O extends JsChartOptions> extends MaterialU
 	 * 
 	 * @param showTooltip
 	 */
-	public void setShowTooltip(boolean showTooltip) {
+	public void setShowTooltip(final boolean showTooltip) {
 		this.tooltipOptions.showTooltip = showTooltip;
 		redraw(false);
 	}
 
-	public void setTooltipColor(Color color) {
-		StyleHelper.setCssProperty(this, CssMixin.MDC_TOOLTIP__INK_COLOR, color);
+	public void setTooltipColor(final Color color) {
+		StyleHelper.setCssProperty(this, CssMixin.MDC_TOOLTIP__INK_COLOR,
+				color);
 	}
 
-	public void setTooltipBackgroundColor(Color color) {
-		StyleHelper.setCssProperty(this, CssMixin.MDC_TOOLTIP__FILL_COLOR, color);
+	public void setTooltipBackgroundColor(final Color color) {
+		StyleHelper.setCssProperty(this, CssMixin.MDC_TOOLTIP__FILL_COLOR,
+				color);
 	}
 
 	/**
@@ -410,7 +437,7 @@ public class MaterialChartBase<V, L, O extends JsChartOptions> extends MaterialU
 	 * 
 	 * @param formatter
 	 */
-	public void setValueFormatter(ChartValueFormatter formatter) {
+	public void setValueFormatter(final ChartValueFormatter formatter) {
 		this.formatter = formatter;
 		if (isShowTooltip())
 			redraw(false);

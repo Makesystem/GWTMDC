@@ -202,7 +202,6 @@ public interface CssMixin {
 	// ////////////////////////////////////////////////////////////////////////////
 	// Chart
 	// ////////////////////////////////////////////////////////////////////////////
-	String MDC_CHARTIST__SERIES = "--mdc-chartist--series";
 	String MDC_CHARTIST__LABEL = "--mdc-chartist--label";
 	String MDC_CHARTIST__GRID_BACKGROUND = "--mdc-chartist--grid_background";
 	

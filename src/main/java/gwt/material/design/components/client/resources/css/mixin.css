@@ -557,7 +557,7 @@ i.mdc-list-item__graphic {
 	flex: 1;
 	display: flex;}
 
-.mdc-drawer.mdc-drawer--open:not(.mdc-drawer--modal):not(.mdc-drawer--closing) ~ .mdc-drawer-app-content > .mdc-top-app-bar {
+.mdc-drawer.mdc-drawer--open:not(.mdc-drawer--modal):not(.mdc-drawer--closing) ~ .mdc-drawer-app-content > .mdc-top-app-bar:not(.mdc-top-app-bar--fixed):not(.mdc-top-app-bar--short-collapsed) {
 	width: calc(100% - var(--mdc-drawer-width));}	
 
 /* Disabled settings */ 

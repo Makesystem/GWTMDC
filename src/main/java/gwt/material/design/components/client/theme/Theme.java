@@ -95,7 +95,7 @@ public class Theme implements Serializable {
 	 * @param property
 	 * @param color
 	 */
-	public void setColor(final ThemeProperty property, final Color color) {
+	public void setGroup(final ThemeProperty property, final Color color) {
 		switch (property) {
 		case MDC_THEME_PRIMARY:
 			setPrimary(color);

@@ -50,7 +50,7 @@ public class MaterialRadioButton extends MaterialSelectedField implements HasNam
 	// Control for change value in RadioButton group
 	// Because the event is not trigger when another radio is selected
 	// ////////////////////////////////////////////////////////////////
-	protected final static Map<String, MaterialRadioButton> history = new HashMap<>();
+	protected final static Map<String, MaterialRadioButton> HISTORY = new HashMap<>();
 
 	protected void updateHistory() {
 		if (isSelected())
@@ -60,16 +60,16 @@ public class MaterialRadioButton extends MaterialSelectedField implements HasNam
 	}
 
 	protected void putInHistory(final boolean fireEvent) {
-		final MaterialRadioButton old = history.get(getName());
+		final MaterialRadioButton old = HISTORY.get(getName());
 		if (fireEvent && old != null && old != this)
 			old.fireSelectEvent();
-		history.put(getName(), this);
+		HISTORY.put(getName(), this);
 	}
 
 	protected void removeFromHistory() {
-		final MaterialRadioButton old = history.get(getName());
+		final MaterialRadioButton old = HISTORY.get(getName());
 		if (old == this)
-			history.remove(getName());
+			HISTORY.remove(getName());
 	}
 
 	// /////////////////////////////////////////////////////////////

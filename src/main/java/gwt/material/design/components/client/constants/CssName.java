@@ -614,24 +614,6 @@ public interface CssName {
 	// //////////////////////////////////////////////////////
 	// COLOR PALETTE
 	// //////////////////////////////////////////////////////
-	String MDC_THEME_EDITOR = "mdc-theme-editor";
-	String MDC_THEME_EDITOR__CONTENT = "mdc-theme-editor--content";
-	String MDC_THEME_EDITOR__CONTENT__SHOW = "mdc-theme-editor--content__show";
-	String MDC_THEME_EDITOR__CONTENT__COLOR = "mdc-theme-editor--content--color";
-	String MDC_THEME_EDITOR__CONTENT__FONT = "mdc-theme-editor--content--font";
-	String MDC_THEME_EDITOR__CONTENT__MISC = "mdc-theme-editor--content--misc";
-	String MDC_THEME_EDITOR__ACTIONS = "mdc-theme-editor--actions";
-	
-	String MDC_THEME_EDITOR__CONTENT__COLOR__PREVIEW = 		"mdc-theme-editor--content--color__preview";
-	String MDC_THEME_EDITOR__CONTENT__COLOR__PREVIEW_ITEM = "mdc-theme-editor--content--color__preview_item";
-	String MDC_THEME_EDITOR__CONTENT__COLOR_CHOOSER = "mdc-theme-editor--content--color-chosser";
-	String MDC_THEME_EDITOR__CONTENT__COLOR_CHOOSER__PREVIEW = "mdc-theme-editor--content--color-chosser__preview";
-	String MDC_THEME_EDITOR__CONTENT__COLOR_CHOOSER__PALETTE = "mdc-theme-editor--content--color-chosser__palette";
-	
-	
-	// //////////////////////////////////////////////////////
-	// COLOR PALETTE
-	// //////////////////////////////////////////////////////
 	String MDC_COLOR_PALETTE = "mdc-color-palette";
 	String MDC_COLOR_PALETTE__LABEL = "mdc-color-palette__label";
 	String MDC_COLOR_PALETTE__BUTTON_GROUP = "mdc-color-palette__button_group";
