@@ -45,12 +45,14 @@ public class Theme implements Serializable {
 	 */
 	private static final long serialVersionUID = 4278232411600395883L;
 
-	private final Collection<ChangeHandler> handlers = new LinkedList<>();
-	private final Map<String, String> properties = new LinkedHashMap<>();
+	private final Collection<ChangeHandler> handlers;
+	private final Map<String, String> properties;
 
 	public Theme() {
+		this.handlers = new LinkedList<>();
+		this.properties = new LinkedHashMap<>();
 		Arrays.stream(ThemeProperty.values())
-				.forEach(property -> properties.put(property.getCssName(), property.loadOrDefault()));
+				.forEach(property -> this.properties.put(property.getCssName(), property.loadOrDefault()));
 	}
 
 	public Theme(final ChangeHandler handler) {

@@ -98,8 +98,8 @@ import gwt.material.design.components.client.base.mixin.TypeMixin;
 import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
 import gwt.material.design.components.client.constants.AutoInitData;
 import gwt.material.design.components.client.constants.Color;
-import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.Elevation;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.HideOn;
 import gwt.material.design.components.client.constants.Role;
 import gwt.material.design.components.client.constants.TooltipPosition;
@@ -199,11 +199,14 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 	
 	protected List<Appender> onLoadAdd;
 	
+	private final JQueryElement jQueryElement;
+	
 	protected boolean initialized = false;
 	
-	public MaterialWidget(Element element) {
+	public MaterialWidget(final Element element) {
 		super(element);
 		setAttribute("autofocus", Boolean.TRUE);
+		this.jQueryElement = new JQueryElement(element);
 	}
 	
 	public MaterialWidget(Element element, String... initialClass) {
@@ -821,6 +824,10 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 		return object == null ? null : (O) object;
 	}
 	
+	public JQueryElement jQuery() {
+		return jQueryElement;
+	}
+
 	public void focus() {
 		getElement().focus();
 	}
@@ -828,14 +835,4 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 	public void blur() {
 		getElement().blur();
 	}
-	
-	public native void toggle() /*-{
-        var element = this.@gwt.material.design.components.client.base.widget.MaterialWidget::getElement()();
-        $wnd.jQuery(element).toggle();
-	}-*/;
-	
-	public native void toggle(final String className) /*-{
-    	var element = this.@gwt.material.design.components.client.base.widget.MaterialWidget::getElement()();
-    	$wnd.jQuery(element).toggleClass(className);
-	}-*/;
 }
