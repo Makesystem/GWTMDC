@@ -53,6 +53,11 @@ public class Theme implements Serializable {
 				.forEach(property -> properties.put(property.getCssName(), property.loadOrDefault()));
 	}
 
+	public Theme(final ChangeHandler handler) {
+		this();
+		addChangeHandler(handler);
+	}
+
 	public void set(final ThemeProperty property, final Color color) {
 		set(property, color, 1);
 	}
@@ -81,6 +86,40 @@ public class Theme implements Serializable {
 		string.append("\n}");
 
 		return string.toString();
+	}
+
+	/**
+	 * 
+	 * @param property
+	 * @param color
+	 */
+	public void setColor(final ThemeProperty property, final Color color) {
+		switch (property) {
+		case MDC_THEME_PRIMARY:
+			setPrimary(color);
+			break;
+		case MDC_THEME_SECONDARY:
+			setSecondary(color);
+			break;
+		case MDC_THEME_SURFACE:
+			setSurface(color);
+			break;
+		case MDC_THEME_BACKGROUND:
+			setBackground(color);
+			break;
+		case MDC_THEME_SUCCESS:
+			setSuccess(color);
+			break;
+		case MDC_THEME_WARNING:
+			setWarning(color);
+			break;
+		case MDC_THEME_ERROR:
+			setError(color);
+			break;
+		default:
+			set(property, color);
+			break;
+		}
 	}
 
 	/**
@@ -200,7 +239,7 @@ public class Theme implements Serializable {
 	protected void fireChangeEvents(final ThemeProperty property, final String value) {
 		handlers.forEach(handler -> handler.onChange(property, value));
 	}
-	
+
 	public HandlerRegistration addChangeHandler(final ChangeHandler handler) {
 		handlers.add(handler);
 		return () -> handlers.remove(handler);

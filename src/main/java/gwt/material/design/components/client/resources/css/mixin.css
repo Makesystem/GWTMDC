@@ -282,6 +282,8 @@ i.mdc-list-item__graphic {
 	border-color: var(--mdc-radio-checked-color);}
 .mdc-radio__label{
 	color: var(--mdc-radio-label-color);}
+.mdc-radio__label:empty{
+	display: none;}	
 .mdc-radio.mdc-ripple-upgraded:not(.mdc-radio--selected)::before, 
 .mdc-radio.mdc-ripple-upgraded:not(.mdc-radio--selected)::after {
     background-color: var(--mdc-radio-unchecked-color); }
