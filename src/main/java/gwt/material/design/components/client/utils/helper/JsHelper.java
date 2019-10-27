@@ -291,5 +291,15 @@ public class JsHelper {
 			return null;
 		return $wnd.URL.createObjectURL(blob);
 	}-*/;
+	
+	public static native void cssDownload(final String fileName, final String text) /*-{
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:text/css;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', fileName);
+		element.style.display = 'none';
+		document.body.appendChild(element);
+		element.click();
+		document.body.removeChild(element);
+	}-*/;
 
 }
