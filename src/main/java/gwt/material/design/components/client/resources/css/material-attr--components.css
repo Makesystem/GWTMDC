@@ -74,7 +74,7 @@
 	--mdc-banner--label_lines_number: 3;
   	
   	/* ================================	*/
-  	/* Circular Progress attributes*/
+  	/* Circular Progress attributes		*/
   	/* ================================	*/
 	--mdc-circular-progress-width: 48px;
 	--mdc-circular-progress-stroke-width: 6;
@@ -83,14 +83,14 @@
 	--mdc-circular-progress-track-color: var(--mdc-theme-secondary);
   	
   	/* ================================	*/
-  	/* Fab Progress attributes	*/
+  	/* Fab Progress attributes			*/
   	/* ================================	*/
 	--mdc-fab-progess--animation-duration: 400ms;
 	--mdc-fab-progess--animation-property: background-color;
   	
-  	/* ================================ 	*/
-  	/* DatePiker attributes			*/
-  	/* ================================ 	*/
+  	/* ================================ */
+  	/* DatePiker attributes				*/
+  	/* ================================	*/
   	--mdc-datepicker-tooltip-indicator: var(--mdc-theme-secondary);
   	--mdc-datepicker-ink: var(--mdc-theme-on-surface);
 	--mdc-datepicker-fill: var(--mdc-theme-surface);
@@ -115,7 +115,7 @@
   	*/
   	--mdc-datepicker-width: calc(var(--mdc-datepicker--item-width) * 7);
   	/* ================================	*/
-  	/* Top app bar attributes		*/
+  	/* Top app bar attributes			*/
   	/* ================================	*/
 	--mdc-top-app-bar-fill-color: var(--mdc-theme-primary);
 	--mdc-top-app-bar-ink-color: var(--mdc-theme-on-primary);
@@ -128,7 +128,7 @@
 	--mdc-drawer-ink-color: var(--mdc-theme-on-surface);
   	
   	/* ================================	*/
-  	/* Snackbar attributes			*/
+  	/* Snackbar attributes				*/
   	/* ================================	*/
 	--mdc-snackbar-bottom: 8px;
 	--mdc-snackbar-position-adjust: 0px;
@@ -147,12 +147,12 @@
 
   	/* ================================	*/
   	/* Link attributes					*/
-  	/* ================================ 	*/
+  	/* ================================	*/
   	--mdc-link-ink-color:  var(--mdc-theme-primary);
   	
   	/* ================================	*/
   	/* Fab attributes					*/
-  	/* ================================ 	*/
+  	/* ================================	*/
 	--mdc-fab-fill-color: var(--mdc-theme-secondary);
 	--mdc-fab-ink-color: var(--mdc-theme-on-secondary);
   	
