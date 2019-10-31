@@ -23,8 +23,6 @@ import com.google.gwt.dom.client.StyleElement;
 import com.google.gwt.dom.client.StyleInjector;
 import com.google.gwt.resources.client.TextResource;
 
-import gwt.material.design.components.client.GwtMDC;
-
 /**
  * 
  * @author Richeli Vargas
@@ -39,15 +37,12 @@ public class ThemeManager {
 	}
 
 	public static void applyTheme(final String resource) {
-		
-		
+
 		// Remove old styles
 		if (currentTheme != null) {
 			currentTheme.removeFromParent();
 		}
 
-		GwtMDC.loadCssResources();
-		
 		// Apply the theme
 		currentTheme = StyleInjector.injectStylesheetAtEnd(resource);
 		
