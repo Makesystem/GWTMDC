@@ -379,8 +379,8 @@ i.mdc-list-item__graphic {
     background-color: var(--mdc-switch-checked-color);
     border-color: var(--mdc-switch-checked-color); }
 .mdc-switch:not(.mdc-switch--checked) .mdc-switch__track {
-    background-color: #000;
-    border-color: #000; }
+    background-color: var(--mdc-switch-unchecked-color);
+    border-color: var(--mdc-switch-unchecked-color); }
 .mdc-switch:not(.mdc-switch--checked) .mdc-switch__thumb {
     background-color: var(--mdc-switch-unchecked-color);
     border-color: var(--mdc-switch-unchecked-color); }

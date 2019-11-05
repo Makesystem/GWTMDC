@@ -180,7 +180,7 @@
   	/* Switch attributes				*/
   	/* ================================	*/
 	--mdc-switch-checked-color: var(--mdc-theme-secondary);
-	--mdc-switch-unchecked-color: var(--mdc-theme-text-secondary-on-background);
+	--mdc-switch-unchecked-color: var(--mdc-theme-text-primary-on-background);
 	--mdc-switch-label-color: var(--mdc-theme-text-primary-on-background);
   	
   	/* ================================	*/
