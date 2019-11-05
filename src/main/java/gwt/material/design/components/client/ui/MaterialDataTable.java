@@ -65,7 +65,7 @@ public class MaterialDataTable<T> extends Div
 	private final LinkedList<T> selectedData = new LinkedList<>();
 
 	private boolean showFilter = true;
-
+	
 	public MaterialDataTable() {
 		super(CssName.MDC_DATA_TABLE, CssName.MDC_TYPOGRAPHY__BODY_2);
 	}

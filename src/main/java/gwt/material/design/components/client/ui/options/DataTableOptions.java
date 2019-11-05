@@ -20,6 +20,7 @@
 package gwt.material.design.components.client.ui.options;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
@@ -101,15 +102,17 @@ public class DataTableOptions extends AbstractOptions<JsOptions> {
 	public void setSelectCheckbox(boolean selectCheckbox) {
 		this.selectCheckbox = selectCheckbox;
 	}
-
+	
 	@Override
 	public JsOptions toNative() {
 		
-		final JsOptions options = new JsOptions();
-		
-		options.dom = "<\"" + CssName.MDC_DATA_TABLE__HEADER + "\"r>t<\"" + CssName.MDC_DATA_TABLE__FOOTER + "\"lip>";
-		options.autoWidth = true;
-		options.scrollX = true;
+		final JsOptions options = new JsOptions();		
+		options.dom = concat(
+				builtIn(CssName.MDC_DATA_TABLE__HEADER, "r"),
+				builtIn(CssName.MDC_DATA_TABLE__TABLE_SCROLL, "t"),
+				builtIn(CssName.MDC_DATA_TABLE__FOOTER, "l", "i","p")); 
+		options.autoWidth = false;
+		options.scrollX = false;
 		
 		if (columns != null)
 			options.columns = Arrays.stream(columns).map(column -> column.toNative()).toArray(JsColumn[]::new);
@@ -117,7 +120,7 @@ public class DataTableOptions extends AbstractOptions<JsOptions> {
 		if (order != null)
 			options.order = Arrays.stream(order).map(_order -> _order.toNative()).toArray(JavaScriptObject[]::new);
 		
-		options.responsive = true;
+		//options.responsive = true;
 		options.paging = paging;
 		options.pagingType = (pagingType == null ? PagingType.FULL : pagingType).getCssName();
 		options.lengthChange = lengthChange;
@@ -183,6 +186,20 @@ public class DataTableOptions extends AbstractOptions<JsOptions> {
 				IMessages.INSTANCE.mdc_datatable__select__cells__defauld());
 		
 		return options;
+	}
+
+	String concat(final String... values) {
+		return Arrays.stream(values).collect(Collectors.joining());
+	}
+	
+	String builtIn(final String itemClass, final String... builtIn) {
+		final StringBuilder builder = new StringBuilder();
+		builder.append("<\"");
+		builder.append(itemClass);
+		builder.append("\"");
+		builder.append(concat(builtIn));
+		builder.append(">");
+		return builder.toString();
 	}
 	
 	native JavaScriptObject selectLanguage(final String zero, final String one, final String more)/*-{
@@ -358,6 +375,7 @@ public class DataTableOptions extends AbstractOptions<JsOptions> {
 		
 		private String title;
 		private String width;
+		private String minWidth;
 		private String defaultContent;
 		private boolean visible = true;
 		private boolean orderable = true;
@@ -384,6 +402,14 @@ public class DataTableOptions extends AbstractOptions<JsOptions> {
 			this.width = width;
 		}
 		
+		public String getMinWidth() {
+			return minWidth;
+		}
+
+		public void setMinWidth(String minWidth) {
+			this.minWidth = minWidth;
+		}
+
 		public String getDefaultContent() {
 			return defaultContent;
 		}
@@ -463,6 +489,7 @@ public class DataTableOptions extends AbstractOptions<JsOptions> {
 			
 			jsColumn.title = title;
 			jsColumn.width = width;
+			jsColumn.minWidth = minWidth;
 			jsColumn.defaultContent = defaultContent;
 			jsColumn.type = type == null ? null : type.getCssName();
 			jsColumn.visible = visible;

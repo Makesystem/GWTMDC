@@ -490,4 +490,9 @@ table.mdc-datatable--table tr.mdc-datatable--select__selected th.mdc-datatable--
 .mdc-datatable--select__info {
 	padding-left: 4px;
 	padding-right: 4px;}	
-	
+
+.mdc-datatable--table_scrol {
+	width: 100%;
+	min-width: 100%;
+	max-width: 100%;
+	overflow-x: auto; }		

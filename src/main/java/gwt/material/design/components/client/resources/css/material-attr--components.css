@@ -15,7 +15,8 @@
 	--mdc-scrollbar-thumb-fill: var(--mdc-theme-text-hint-on-background);
 	--mdc-placeholder-ink-color: var(--mdc-theme-text-primary-on-background);
 	--mdc-disabled-color: var(--mdc-theme-text-primary-on-background);
-	--mdc-filled-color: rgba(127,127,127,.25);
+	--mdc-translucent: 127,127,127;
+	--mdc-filled-color: rgba(var(--mdc-translucent),.25);
 	/* Misc */
 	--mdc-track-opacity: .38;
 	--mdc-container-opacity: .12;
@@ -301,9 +302,9 @@
   	--mdc-datatable--border: var(--mdc-datatable--border-width) solid var(--mdc-datatable--border-color);
   	--mdc-datatable--selected-color: var(--mdc-theme-secondary);
   	--mdc-datatable--selected-ink-color: var(--mdc-theme-on-s econdary);
-  	--mdc-datatable--hover-color: var(--mdc-filled-color);
+  	--mdc-datatable--hover-color: rgba(var(--mdc-translucent), var(--mdc-overlay-opacity--hover));
   	--mdc-datatable--hover-ink-color: var(--mdc-datatable--ink-color);
-  	--mdc-datatable--sort-color: var(--mdc-filled-color);
+  	--mdc-datatable--sort-color: rgba(var(--mdc-translucent), var(--mdc-overlay-opacity--focus));
   	--mdc-datatable--sort-ink-color: var(--mdc-datatable--ink-color);
   	--mdc-datatable--corner--fill-color: var(--mdc-spreadsheet--selected-color);
   	--mdc-datatable--corner--border-color: var(--mdc-spreadsheet--selected-ink-color);

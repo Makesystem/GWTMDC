@@ -16,6 +16,9 @@ public class JsColumn {
 	public String width;
 	
 	@JsProperty
+	public String minWidth;
+	
+	@JsProperty
 	public String defaultContent;
 		
 	@JsProperty
