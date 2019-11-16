@@ -51,10 +51,25 @@ public class ScrollMixin<UIO extends MaterialUIObject>
 		uiObject.fireEvent(event);
 	}
 
-	protected void fireScrollEvent(final ScrollOrientation orientation,
-			final ScrollDirection direction, final int scrollPosition,
-			final int scrollSize, final int gapSize, final boolean isInAreaEnds,
-			final boolean isInAreaGap, final boolean infiniteScrollTrigger) {
+	protected void fireScrollEvent(final boolean isVeritical,
+			final boolean isHorizontal, final boolean isUp,
+			final boolean isDown, final boolean isLeft, final boolean isRight,
+			final int scrollPosition, final int scrollSize, final int gapSize,
+			final boolean isInAreaEnds, final boolean isInAreaGap,
+			final boolean infiniteScrollTrigger) {
+
+		final ScrollOrientation orientation = isVeritical
+				? ScrollOrientation.VERTICAL
+				: ScrollOrientation.HORIZONTAL;
+		
+		final ScrollDirection direction = isUp
+				? ScrollDirection.UP
+				: (isDown
+						? ScrollDirection.DOWN
+						: (isLeft
+								? ScrollDirection.LEFT
+								: ScrollDirection.RIGHT));
+		
 		ScrollEvent.fire(uiObject, orientation, direction, scrollPosition,
 				scrollSize, gapSize, isInAreaEnds, isInAreaGap,
 				infiniteScrollTrigger);
@@ -97,7 +112,6 @@ public class ScrollMixin<UIO extends MaterialUIObject>
 			last_y_scroll = scroll_top;
 			last_x_scroll = scroll_left;
 
-
 			// ///////////////////////////////////////////////////////////////////////////
 			// Vertical scrolling
 			// ///////////////////////////////////////////////////////////////////////////
@@ -112,7 +126,8 @@ public class ScrollMixin<UIO extends MaterialUIObject>
 			// To DOWN
 			var at_down_ends = scroll_height == (height + scroll_top);
 			var at_down_gap = scroll_top <= gap_height;
-			var down_infinite_trigger = at_down_gap && !last_at_down_gap && to_down;
+			var down_infinite_trigger = at_down_gap && !last_at_down_gap
+					&& to_down;
 			last_at_down_gap = at_down_gap;
 
 			// ///////////////////////////////////////////////////////////////////////////
@@ -124,15 +139,15 @@ public class ScrollMixin<UIO extends MaterialUIObject>
 			// To LEFT
 			var at_left_ends = scroll_left == 0;
 			var at_left_gap = scroll_left <= gap_width;
-			var left_infinite_trigger = at_left_gap && !last_at_left_gap && to_left;
+			var left_infinite_trigger = at_left_gap && !last_at_left_gap
+					&& to_left;
 			last_at_left_gap = at_left_gap;
 			// To RIGHT
 			var at_right_ends = scroll_width == (width + scroll_left);
 			var at_right_gap = scroll_left <= gap_width;
-			var right_infinite_trigger = at_right_gap && !last_at_right_gap && to_right;
+			var right_infinite_trigger = at_right_gap && !last_at_right_gap
+					&& to_right;
 			last_at_right_gap = at_right_gap;
-
-
 
 		}
 
