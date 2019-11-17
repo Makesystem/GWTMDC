@@ -64,7 +64,7 @@ public class ScrollMixin<UIO extends MaterialUIObject>
 		return uiObject.addHandler(handler, ScrollEvent.getType());
 	}
 
-	native void register(final Widget widget, final int gap,
+	native void register(final Widget widget, final int max_gap,
 			final boolean percent) /*-{
 
 		var toScroll = widget.@com.google.gwt.user.client.ui.Widget::getElement()();
@@ -78,6 +78,8 @@ public class ScrollMixin<UIO extends MaterialUIObject>
 		var last_at_down_gap = true;
 		var last_at_left_gap = true;
 		var last_at_right_gap = true;
+	
+		var gap = .1;
 
 		var infinetScroll = function() {
 
@@ -102,7 +104,10 @@ public class ScrollMixin<UIO extends MaterialUIObject>
 			// ///////////////////////////////////////////////////////////////////////////
 			var height = scroll_content.height();
 			var scroll_height = toScroll.scrollHeight;
-			var gap_height = percent ? scroll_height * gap : gap;
+			var gap_height = scroll_height * gap;
+			if(gap_height > max_gap){
+				gap_height = max_gap;
+			}
 			// To UP
 			var at_up_ends = scroll_top == 0;
 			var at_up_gap = scroll_top <= gap_height;
@@ -120,7 +125,10 @@ public class ScrollMixin<UIO extends MaterialUIObject>
 			// ///////////////////////////////////////////////////////////////////////////
 			var width = scroll_content.width();
 			var scroll_width = toScroll.scrollWidth;
-			var gap_width = percent ? scroll_width * gap : gap;
+			var gap_width = scroll_width * gap;
+			if(gap_width > max_gap){
+				gap_width = max_gap;
+			}
 			// To LEFT
 			var at_left_ends = scroll_left == 0;
 			var at_left_gap = scroll_left <= gap_width;
