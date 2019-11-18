@@ -32,40 +32,34 @@ import gwt.material.design.components.client.events.ScrollEvent.ScrollHandler;
 /**
  * @author Richeli Vargas
  */
-public class ScrollMixin<UIO extends MaterialUIObject>
-		extends
-			AbstractMixin<UIO>
-		implements
-			HasScrollHandlers {
-
+public class ScrollMixin<UIO extends MaterialUIObject> extends AbstractMixin<UIO> implements HasScrollHandlers {
+	
 	protected boolean valueChangeHandlerInitialized = false;
-
+	
 	public ScrollMixin(final UIO uiObject) {
 		this(uiObject, 0, false);
 	}
-
+	
 	public ScrollMixin(final UIO uiObject, final int gap) {
 		this(uiObject, gap, false);
 	}
-
-	public ScrollMixin(final UIO uiObject, final int gap,
-			final boolean percent) {
+	
+	public ScrollMixin(final UIO uiObject, final int gap, final boolean percent) {
 		super(uiObject);
 		this.register(uiObject, gap, percent);
 	}
-
+	
 	@Override
 	public void fireEvent(GwtEvent<?> event) {
 		uiObject.fireEvent(event);
 	}
-
+	
 	@Override
 	public HandlerRegistration addScrollHandler(ScrollHandler handler) {
 		return uiObject.addHandler(handler, ScrollEvent.getType());
 	}
-
-	native void register(final Widget widget, final int max_gap,
-			final boolean percent) /*-{
+	
+	native void register(final Widget widget, final int max_gap, final boolean percent) /*-{
 
 		var toScroll = widget.@com.google.gwt.user.client.ui.Widget::getElement()();
 		var _this = this;
@@ -115,7 +109,7 @@ public class ScrollMixin<UIO extends MaterialUIObject>
 			last_at_up_gap = at_up_gap;
 			// To DOWN
 			var at_down_ends = scroll_height == (height + scroll_top);
-			var at_down_gap = scroll_top >= scroll_height - gap_height;
+			var at_down_gap = (scroll_top + height) >= scroll_height - gap_height;
 			var down_infinite_trigger = at_down_gap && !last_at_down_gap
 					&& to_down;
 			last_at_down_gap = at_down_gap;
@@ -137,7 +131,7 @@ public class ScrollMixin<UIO extends MaterialUIObject>
 			last_at_left_gap = at_left_gap;
 			// To RIGHT
 			var at_right_ends = scroll_width == (width + scroll_left);
-			var at_right_gap = scroll_left >= scroll_width - gap_width;
+			var at_right_gap = (scroll_left + width) >= scroll_width - gap_width;
 			var right_infinite_trigger = at_right_gap && !last_at_right_gap
 					&& to_right;
 			last_at_right_gap = at_right_gap;
@@ -204,9 +198,18 @@ public class ScrollMixin<UIO extends MaterialUIObject>
 			// ///////////////////////////////////////////////////////////////////////////
 			// Fire event
 			// ///////////////////////////////////////////////////////////////////////////			
-			@gwt.material.design.components.client.events.ScrollEvent::fire(Lcom/google/gwt/event/shared/HasHandlers;Lgwt/material/design/components/client/constants/ScrollOrientation;Lgwt/material/design/components/client/constants/ScrollDirection;IIIZZZ)(eventData.target, eventData.orientation, eventData.direction,
-				eventData.scrollPosition, eventData.scrollSize, eventData.gapSize,
-				eventData.isInAreaEnds, eventData.isInAreaGap,
+			@gwt.material.design.components.client.events.ScrollEvent::fire(Lcom/google/gwt/event/shared/HasHandlers;Lgwt/material/design/components/client/constants/ScrollOrientation;Lgwt/material/design/components/client/constants/ScrollDirection;IIIZZZ)(
+				// Element with scroll
+				eventData.target, 
+				// Scroll orientation: VERTICAL or HORIZONTAL
+				eventData.orientation, 
+				// Scroll direction: UP, DOWN, LEFT or RIGHT
+				eventData.direction,
+				eventData.scrollPosition, 
+				eventData.scrollSize, 
+				eventData.gapSize,
+				eventData.isInAreaEnds, 
+				eventData.isInAreaGap,
 				eventData.infiniteScrollTrigger);
 
 		}
@@ -214,5 +217,5 @@ public class ScrollMixin<UIO extends MaterialUIObject>
 		scroll_content.scroll(infinetScroll);
 
 	}-*/;
-
+	
 }
