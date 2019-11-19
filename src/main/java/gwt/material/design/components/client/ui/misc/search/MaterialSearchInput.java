@@ -17,93 +17,80 @@
  * limitations under the License.
  * #L%
  */
-package gwt.material.design.components.client.ui;
+package gwt.material.design.components.client.ui.misc.search;
 
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.HasValue;
 
 import gwt.material.design.components.client.base.interfaces.HasPlaceholder;
+import gwt.material.design.components.client.base.mixin.HasValueMixin;
+import gwt.material.design.components.client.base.mixin.PlaceholderMixin;
+import gwt.material.design.components.client.base.mixin.TypingMixin;
 import gwt.material.design.components.client.constants.Color;
 import gwt.material.design.components.client.constants.CssName;
-import gwt.material.design.components.client.constants.IconType;
 import gwt.material.design.components.client.events.TypingEvent.HasTypingHandlers;
 import gwt.material.design.components.client.events.TypingEvent.TypingHandler;
-import gwt.material.design.components.client.ui.html.Div;
-import gwt.material.design.components.client.ui.misc.search.MaterialSearchInput;
+import gwt.material.design.components.client.ui.html.Input;
 
 /**
  * 
  * @author Richeli Vargas
  *
  */
-public class MaterialSearch extends Div implements HasPlaceholder, HasTypingHandlers, HasValue<String> {
+public class MaterialSearchInput extends Input implements HasPlaceholder, HasTypingHandlers, HasValue<String> {
+
+	protected final PlaceholderMixin<MaterialSearchInput> placeholderMixin = new PlaceholderMixin<>(this);
+	protected final TypingMixin<MaterialSearchInput> typingMixin = new TypingMixin<>(this);
+	protected final HasValueMixin<MaterialSearchInput, String> hasValueMixin = new HasValueMixin<>(this);
 	
-	protected final MaterialSearchInput input = new MaterialSearchInput();
-	protected final MaterialIconButton search = new MaterialIconButton(IconType.SEARCH);
-	protected final MaterialIconButton options = new MaterialIconButton(IconType.ARROW_DROP_DOWN);
-	
-	public MaterialSearch() {
-		super(CssName.MDC_SEARCH);
+	public MaterialSearchInput(){
+		super(CssName.MDC_SEARCH__INPUT);
 	}
-	
-	@Override
-	protected void onInitialize() {
-		super.onInitialize();
-		
-		input.addFocusHandler(event -> setAttribute("actived", "true"));
-		input.addBlurHandler(event -> removeAttribute("actived"));
-		
-		search.addStyleName(CssName.MDC_SEARCH__SEARCH);
-		options.addStyleName(CssName.MDC_SEARCH__OPTIONS);
-		
-		add(search);
-		add(input);
-		add(options);
-	}
-	
-	@Override
-	public void setPlaceholder(final String placeholder) {
-		input.setPlaceholder(placeholder);
-	}
-	
-	@Override
-	public String getPlaceholder() {
-		return input.getPlaceholder();
-	}
-	
-	@Override
-	public void setPlaceholderColor(final Color color) {
-		input.setPlaceholderColor(color);
-	}
-	
-	@Override
-	public HandlerRegistration addValueChangeHandler(final ValueChangeHandler<String> handler) {
-		return input.addValueChangeHandler(handler);
-	}
-	
-	@Override
-	public String getValue() {
-		return input.getValue();
-	}
-	
-	@Override
-	public void setValue(final String value) {
-		input.setValue(value);
-	}
-	
-	@Override
-	public void setValue(final String value, final boolean fireEvents) {
-		input.setValue(value, fireEvents);
-	}
-	
+
 	@Override
 	public HandlerRegistration addTypingHandler(final TypingHandler handler) {
-		return input.addTypingHandler(handler);
+		return typingMixin.addTypingHandler(handler);
 	}
-	
+
 	@Override
 	public void setTypeingDelay(final int typingDelay) {
-		input.setTypeingDelay(typingDelay);
+		typingMixin.setTypeingDelay(typingDelay);		
 	}
+
+	@Override
+	public void setPlaceholder(final String placeholder) {
+		placeholderMixin.setPlaceholder(placeholder);
+	}
+
+	@Override
+	public String getPlaceholder() {
+		return placeholderMixin.getPlaceholder();
+	}
+
+	@Override
+	public void setPlaceholderColor(final Color color) {
+		placeholderMixin.setPlaceholderColor(color);
+	}
+
+	@Override
+	public HandlerRegistration addValueChangeHandler(final ValueChangeHandler<String> handler) {
+		return hasValueMixin.addValueChangeHandler(handler);
+	}
+
+	@Override
+	public String getValue() {
+		return hasValueMixin.getValue();
+	}
+
+	@Override
+	public void setValue(final String value) {
+		hasValueMixin.setValue(value);
+	}
+
+	@Override
+	public void setValue(final String value, final boolean fireEvents) {
+		hasValueMixin.setValue(value, fireEvents);
+	}
+	
 }

@@ -19,6 +19,7 @@
  */
 package gwt.material.design.components.client.base.mixin;
 
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -32,37 +33,47 @@ import gwt.material.design.components.client.base.widget.MaterialUIObject;
 /**
  * @author Richeli Vargas
  */
-public class HasValueMixin<UIO extends MaterialUIObject & HasValue<T>, T>
-		extends AbstractMixin<UIO> implements HasValue<T> {
-
+public class HasValueMixin<UIO extends MaterialUIObject & HasValue<T>, T> extends AbstractMixin<UIO>
+		implements HasValue<T> {
+	
 	protected boolean valueChangeHandlerInitialized = false;
-	protected T value;
-
+	
 	public HasValueMixin(final UIO widget) {
 		super(widget);
 	}
-
+	
 	@Override
 	public void setValue(final T value) {
 		setValue(value, true);
 	}
-
+	
 	@Override
 	public void setValue(final T value, boolean fireEvents) {
-		this.value = value;
+		this.setValue(uiObject.getElement(), value);
 		if (fireEvents)
 			fireChangeEvent();
 	}
-
+	
+	final native void setValue(final Element element, final T value)/*-{
+        $wnd.jQuery(element).val(value);
+        $wnd.jQuery(element).focus();
+        $wnd.jQuery(element).blur();
+	}-*/;
+	
 	@Override
 	public T getValue() {
-		return value;
+		return getValue(uiObject.getElement());
 	}
-
+	
+	final native T getValue(final Element element)/*-{
+		var value = $wnd.jQuery(element).val();
+        return value ? value : null;
+	}-*/;
+	
 	public void fireChangeEvent() {
 		ValueChangeEvent.fire(uiObject, uiObject.getValue());
 	}
-
+	
 	@Override
 	public HandlerRegistration addValueChangeHandler(final ValueChangeHandler<T> handler) {
 		if (!valueChangeHandlerInitialized) {
@@ -75,10 +86,9 @@ public class HasValueMixin<UIO extends MaterialUIObject & HasValue<T>, T>
 		}
 		return uiObject.addHandler(handler, ValueChangeEvent.getType());
 	}
-
+	
 	@Override
 	public void fireEvent(GwtEvent<?> event) {
 		uiObject.fireEvent(event);
 	}
-
 }

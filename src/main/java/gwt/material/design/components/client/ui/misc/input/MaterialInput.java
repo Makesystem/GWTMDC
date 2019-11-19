@@ -57,9 +57,9 @@ import gwt.material.design.components.client.base.mixin.base.PropertyMixin;
 import gwt.material.design.components.client.base.widget.MaterialValuedField;
 import gwt.material.design.components.client.base.widget.MaterialWidget;
 import gwt.material.design.components.client.constants.Color;
-import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.CssName;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.IconPosition;
 import gwt.material.design.components.client.constants.IconType;
 import gwt.material.design.components.client.constants.InputType;
@@ -249,29 +249,6 @@ public class MaterialInput extends MaterialValuedField<String>
 	public String getValue() {
 		return inputMaskMixin.getValue();
 	}
-	
-	@Override
-	public void setValue(final String value) {
-		super.setValue(value);
-		value(value);
-	}
-	
-	@Override
-	public void setValue(String value, boolean fireEvents) {
-		super.setValue(value, fireEvents);
-		value(value);
-	}
-	
-	public native void value(String value)/*-{
-
-        var textfield = this.@gwt.material.design.components.client.ui.misc.input.MaterialInput::input;
-        var element = textfield.@gwt.material.design.components.client.ui.html.Div::getElement()();
-        
-        $wnd.jQuery(element).val(value);        
-        $wnd.jQuery(element).focus();
-        $wnd.jQuery(element).blur();
-
-	}-*/;
 	
 	@Override
 	public String getText() {

@@ -422,6 +422,7 @@ svg.mdc-link__icon {
   	text-decoration: none; 	
 	
 	flex: 1;
+	height: 100%;
 	
 	margin-left: 4px;
 	margin-right: 4px;

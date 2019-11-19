@@ -30,6 +30,7 @@ import gwt.material.design.components.client.base.widget.MaterialUIObject;
 import gwt.material.design.components.client.events.TypingEvent;
 import gwt.material.design.components.client.events.TypingEvent.HasTypingHandlers;
 import gwt.material.design.components.client.events.TypingEvent.TypingHandler;
+import gwt.material.design.components.client.utils.helper.StringHelper;
 import gwt.material.design.components.client.utils.helper.TimerHelper;
 
 /**
@@ -60,7 +61,7 @@ public class TypingMixin<UIO extends MaterialUIObject & HasTypingHandlers & HasK
 	}
 
 	protected void fireTypingEvent() {
-		TypingEvent.fire(uiObject, uiObject.getValue());
+		TypingEvent.fire(uiObject, StringHelper.nullSafe(uiObject.getValue()));		
 	}
 
 	@Override
@@ -69,7 +70,7 @@ public class TypingMixin<UIO extends MaterialUIObject & HasTypingHandlers & HasK
 		if (this.handler == null)
 			this.handler = uiObject.addKeyUpHandler(event -> {
 				
-				final String newValue = uiObject.getValue();
+				final String newValue = StringHelper.nullSafe(uiObject.getValue());
 				
 				if(newValue.equals(lastValue))
 					return;
@@ -80,6 +81,7 @@ public class TypingMixin<UIO extends MaterialUIObject & HasTypingHandlers & HasK
 					typingTimer.cancel();
 				
 				typingTimer = TimerHelper.schedule(typingDelay, () -> fireTypingEvent());
+				
 			});
 
 		return uiObject.addHandler(handler, TypingEvent.getType());
