@@ -363,6 +363,110 @@ svg.mdc-link__icon {
 	overflow: visible;
 	overflow-x: hidden;
 	position: relative;}
+
+/* ==========================================================================
+   Search
+   ========================================================================== */
+.mdc-search input::-webkit-search-decoration,
+.mdc-search input::-webkit-search-cancel-button,
+.mdc-search input::-webkit-search-results-button,
+.mdc-search input::-webkit-search-results-decoration,
+.mdc-search input::-webkit-outer-spin-button,
+.mdc-search input::-webkit-inner-spin-button {
+	display: none;}   
+.mdc-search {
+	flex: 1;
+	width: 100%;
+	display: flex;
+	align-content: center;
+	align-items: center;
+	justify-content: flex-start;
+	position: relative;
+	padding-left: 8px;
+	padding-right: 8px;
+	border-radius: var(--mdc-rounded-border-radius);
+	caret-color: var(--mdc-search__ink-color);
+	color: var(--mdc-search__ink-color);
+	--mdc-icon-button-ink-color: var(--mdc-search__ink-color);}
+	   
+.mdc-search:before{
+	content: ' ';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	background-color: var(--mdc-search__fill-color);
+	opacity: .05;
+	border-radius: var(--mdc-rounded-border-radius);}
+
+.mdc-search[actived] {
+	caret-color: var(--mdc-seacrh__actived-ink-color);
+	color: var(--mdc-seacrh__actived-ink-color);
+	--mdc-icon-button-ink-color: var(--mdc-seacrh__actived-ink-color);
+	box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}	
+.mdc-search[actived]:before {
+	background-color: var(--mdc-seacrh__actived-fill-color);
+	opacity: 1;}
+			/* --mdc-icon-button-ink-color: inherit;  */
+.mdc-search--input {
+	font-family: var(--mdc-font-family);
+	-moz-osx-font-smoothing: grayscale;
+  	-webkit-font-smoothing: antialiased;
+  	font-size: 1rem;
+  	font-variant-ligatures: none;
+  	line-height: 1.75rem;
+  	font-weight: 200;
+  	text-decoration: none; 	
+	
+	flex: 1;
+	
+	margin-left: 4px;
+	margin-right: 4px;
+	
+	outline: none;
+	border: none;
+	
+	background-color: transparent;
+	
+	z-index: 1;
+	caret-color: inherit;
+	color: inherit;}
+
+.mdc-search[actived] .mdc-search--input:hover,
+.mdc-search[actived] .mdc-search--input:focus,
+.mdc-search[actived] .mdc-search--input:active {
+	outline: none;
+	border: none;}	
+	
+.mdc-search .mdc-search--input::-webkit-input-placeholder {
+	opacity: var(--mdc-overlay-opacity--placeholder);
+	color: inherit;}
+.mdc-search .mdc-search--input::-ms-input-placeholder {
+	opacity: var(--mdc-overlay-opacity--placeholder);
+	color: inherit;}
+.mdc-search .mdc-search--input::-ms-input-placeholder {
+	opacity: var(--mdc-overlay-opacity--placeholder);
+	color: inherit;}
+.mdc-search .mdc-search--input::placeholder {
+	opacity: var(--mdc-overlay-opacity--placeholder);
+	color: inherit;}
+
+.mdc-search--search,
+.mdc-search--options {
+	width: 40px;
+	height: 40px;
+	margin: 4px;
+}	
+
+.mdc-top-app-bar--dense .mdc-search--search,
+.mdc-top-app-bar--dense .mdc-search--options {
+	width: 30px;
+	height: 30px;
+	font-size: 18px;
+}
 	
 /* ==========================================================================
    Circular Progress

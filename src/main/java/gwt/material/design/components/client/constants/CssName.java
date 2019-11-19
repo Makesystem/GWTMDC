@@ -591,6 +591,14 @@ public interface CssName {
 	String MDC_DATEPICKER__DIALOG = "mdc-datepicker__dialog";
 	
 	// //////////////////////////////////////////////////////
+	// MATERIAL CONTENT
+	// //////////////////////////////////////////////////////
+	String MDC_SEARCH = "mdc-search";
+	String MDC_SEARCH__INPUT = "mdc-search--input";
+	String MDC_SEARCH__SEARCH = "mdc-search--search";
+	String MDC_SEARCH__OPTIONS = "mdc-search--options";
+	
+	// //////////////////////////////////////////////////////
 	// DATA TABLE
 	// //////////////////////////////////////////////////////
 	String MDC_DATA_TABLE = "mdc-datatable";

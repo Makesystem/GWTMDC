@@ -1,0 +1,60 @@
+@font-face {
+	font-family: 'Google Sans';
+    font-style: normal;
+    font-weight: 100;    
+	src: url("../font/productSans/ProductSans-Thin.ttf");  
+}
+@font-face {
+	font-family: 'Google Sans';
+    font-style: italic;
+    font-weight: 100;    
+	src: url("../font/productSans/ProductSans-ThinItalic.ttf");  
+}
+@font-face {
+	font-family: 'Google Sans';
+    font-style: normal;
+    font-weight: 200;    
+	src: url("../font/productSans/ProductSans-Light.ttf");  
+}
+@font-face {
+	font-family: 'Google Sans';
+    font-style: italic;
+    font-weight: 200;    
+	src: url("../font/productSans/ProductSans-LightItalic.ttf");  
+}
+@font-face {
+	font-family: 'Google Sans';
+    font-style: normal;
+    font-weight: 500;
+	src: url("../font/productSans/ProductSans-Medium.ttf");  
+}
+@font-face {
+	font-family: 'Google Sans';
+    font-style: italic;
+    font-weight: 500;
+	src: url("../font/productSans/ProductSans-MediumItalic.ttf");  
+}
+@font-face {
+	font-family: 'Google Sans';
+    font-style: normal;
+    font-weight: 700;
+	src: url("../font/productSans/ProductSans-Bold.ttf");  
+}
+@font-face {
+	font-family: 'Google Sans';
+    font-style: italic;
+    font-weight: 700;
+	src: url("../font/productSans/ProductSans-BoldItalic.ttf");  
+}
+@font-face {
+	font-family: 'Google Sans';
+    font-style: normal;
+    font-weight: 900;
+	src: url("../font/productSans/ProductSans-Black.ttf");  
+}
+@font-face {
+	font-family: 'Google Sans';
+    font-style: italic;
+    font-weight: 900;
+	src: url("../font/productSans/ProductSans-BlackItalic.ttf");  
+}

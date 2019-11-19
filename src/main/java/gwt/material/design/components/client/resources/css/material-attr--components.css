@@ -37,7 +37,7 @@
 	/* ================================	*/
   	/* Overlay opacity					*/
   	/* ================================	*/
-  	--mdc-overlay-opacity--placeholder: .24; 
+  	--mdc-overlay-opacity--placeholder: .48; 
   	--mdc-overlay-opacity--hover: .04;
   	--mdc-overlay-opacity--focus: .12;
   	--mdc-overlay-opacity--selected: .08;
@@ -263,6 +263,14 @@
 	--mdc-input__ink-color: var(--mdc-theme-text-secondary-on-background);
 	--mdc-input__fill-color: var(--mdc-theme-background);
 	--mdc-input__focused-color: var(--mdc-theme-primary);
+	
+	/* ================================	*/
+  	/* Search							*/
+  	/* ================================	*/
+	--mdc-search__ink-color: var(--mdc-top-app-bar-ink-color);
+	--mdc-search__fill-color: var(--mdc-search__ink-color); /* 10% */
+	--mdc-seacrh__actived-ink-color: #333;
+	--mdc-seacrh__actived-fill-color: white;
 	
 	/* ================================	*/
   	/* Tree attributes					*/
