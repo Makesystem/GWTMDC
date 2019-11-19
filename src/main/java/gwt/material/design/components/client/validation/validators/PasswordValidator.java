@@ -25,44 +25,50 @@ package gwt.material.design.components.client.validation.validators;
  *
  */
 public class PasswordValidator {
-
+	
+	public final static String PARTNER__STRONG_PASSWORD = "^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$";
+	public final static String PARTNER__MEDIUM_PASSWORD = "^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$";
+	public final static String PARTNER__ENOUGH_PASSWORD = "(?=.{6,}).*";
+	public final static String PARTNER__CHAR_SEQUENCE = "(01)|(12)|(23)|(34)|(45)|(56)|(67)|(78)|(89)|(AB)|(BC)|(CD)|(DE)|(EF)|(FG)|(GH)|(HI)|(IJ)|(JK)|(KL)|(LM)|(MN)|(NO)|(OP)|(PQ)|(QR)|(RS)|(ST)|(TU)|(UV)|(VW)|(WX)|(XY)|(YZ)|(ab)|(bc)|(cd)|(de)|(ef)|(fg)|(gh)|(hi)|(ij)|(jk)|(kl)|(lm)|(mn)|(no)|(op)|(pq)|(qr)|(rs)|(st)|(tu)|(uv)|(vw)|(wx)|(xy)|(yz)";
+	
 	/**
 	 * 
 	 * @param value
-	 * @return
-	 * 0 - Very weak
-	 * 1 - Weak
-	 * 2 - Medium
-	 * 3 - Strong
+	 * @return 0 - Very weak 1 - Weak 2 - Medium 3 - Strong
 	 */
 	public static native int passwordLevel(final String value)/*-{
 
-		var strongRegex = new RegExp(
-				"^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\\W).*$", "g");
-		
-		var mediumRegex = new RegExp(
-				"^(?=.{7,})(((?=.*[A-Z])(?=.*[a-z]))|((?=.*[A-Z])(?=.*[0-9]))|((?=.*[a-z])(?=.*[0-9]))).*$",
-				"g");
-		
-		var enoughRegex = new RegExp("(?=.{6,}).*", "g");
+        var strongRegex = new RegExp(
+                @gwt.material.design.components.client.validation.validators.PasswordValidator::PARTNER__STRONG_PASSWORD,
+                "g");
+        var mediumRegex = new RegExp(
+                @gwt.material.design.components.client.validation.validators.PasswordValidator::PARTNER__MEDIUM_PASSWORD,
+                "g");
+        var enoughRegex = new RegExp(
+                @gwt.material.design.components.client.validation.validators.PasswordValidator::PARTNER__ENOUGH_PASSWORD,
+                "g");
 
-		if (value.length == 0) {
-			// Empty
-			return -1;
-		} else if (false == enoughRegex.test(value)) {
-			// Very Weak
-			return 0;
-		} else if (strongRegex.test(value)) {
-			// Strong
-			return 3;
-		} else if (mediumRegex.test(value)) {
-			// Medium
-			return 2;
-		} else {
-			// Weak
-			return 1;
-		}
+        if (value.length == 0) {
+	        // Empty
+	        return -1;
+        } else if (false == enoughRegex.test(value)) {
+	        // Very Weak
+	        return 0;
+        } else if (strongRegex.test(value)) {
+	        // Strong
+	        return 3;
+        } else if (mediumRegex.test(value)) {
+	        // Medium
+	        return 2;
+        } else {
+	        // Weak
+	        return 1;
+        }
 
 	}-*/;
-
+	
+	public static native boolean hasCharSequence(final String value)/*-{
+        var regExp = new RegExp(@gwt.material.design.components.client.validation.validators.PasswordValidator::PARTNER__CHAR_SEQUENCE, 'g');
+        return regExp.test(value);
+	}-*/;
 }
