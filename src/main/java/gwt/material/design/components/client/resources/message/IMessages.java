@@ -134,6 +134,9 @@ public interface IMessages extends Messages {
 	@DefaultMessage("Password is strong")
 	String mdc_validation__password__strong();
 	
+	@DefaultMessage("Password is very strong")
+	String mdc_validation__password__very_strong();
+	
 	@DefaultMessage("The text should has {0} or more characters")
 	String mdc_validation__less_than_min_length(int minLenght);
 	

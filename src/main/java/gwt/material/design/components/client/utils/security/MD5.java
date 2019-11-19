@@ -17,26 +17,36 @@
  * limitations under the License.
  * #L%
  */
-package gwt.material.design.components.client.validation.validators;
+package gwt.material.design.components.client.utils.security;
 
-import gwt.material.design.components.client.utils.security.PasswordMeter;
-import gwt.material.design.components.client.utils.security.PasswordScore;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
- * 
+ *
  * @author Richeli Vargas
  *
  */
-public class PasswordValidator {
+public class MD5 {
+	
+	public static String toMD5(final String data) {
 		
-	protected static final PasswordMeter MATCHER = new PasswordMeter();
-
-
-	public static PasswordScore getScore(final String value) {
-		return MATCHER.getScore(value);
+		try {
+			
+			final MessageDigest m = MessageDigest.getInstance("MD5");
+			m.reset();
+			m.update(data.getBytes());
+			final BigInteger bigInt = new BigInteger(1, m.digest());
+			String hashtext = bigInt.toString(16);
+			while (hashtext.length() < 32) {
+				hashtext = "0" + hashtext;
+			}
+			return hashtext.toUpperCase();
+			
+		} catch (NoSuchAlgorithmException ignore) {
+			return "";
+		}
 	}
 	
-	protected final static native boolean match(final String value, final String partner)/*-{
-        return (new RegExp(partner, "g")).test(value);
-	}-*/;
 }

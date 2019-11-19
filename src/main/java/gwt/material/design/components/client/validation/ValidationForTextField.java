@@ -4,6 +4,7 @@ import gwt.material.design.components.client.constants.State;
 import gwt.material.design.components.client.masker.Masker;
 import gwt.material.design.components.client.resources.message.IMessages;
 import gwt.material.design.components.client.ui.misc.input.MaterialInput;
+import gwt.material.design.components.client.utils.security.PasswordScore;
 import gwt.material.design.components.client.validation.Validation.Result;
 import gwt.material.design.components.client.validation.validators.PasswordValidator;
 
@@ -20,16 +21,16 @@ public class ValidationForTextField {
 
 			final String value = input.getValue();
 
-			final int securityLevel = PasswordValidator.passwordLevel(value);
+			final PasswordScore passwordScore = PasswordValidator.getScore(value);
 
-			switch (securityLevel) {
-			case 0:
+			switch (passwordScore) {
+			case VERY_WEAK:
 				return new Result(State.ERROR, 1201, IMessages.INSTANCE.mdc_validation__password__very_weak());
-			case 1:
+			case WEAK:
 				return new Result(State.ERROR, 1202, IMessages.INSTANCE.mdc_validation__password__weak());
-			case 2:
+			case MEDIUM:
 				return new Result(State.WARNING, 1101, IMessages.INSTANCE.mdc_validation__password__midium());
-			case 3:
+			case STRONG:
 				return new Result(State.SUCCESS, 1001, IMessages.INSTANCE.mdc_validation__password__strong());
 			default:
 				return new Result(State.NONE);

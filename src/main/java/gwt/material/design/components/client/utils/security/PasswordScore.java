@@ -17,26 +17,13 @@
  * limitations under the License.
  * #L%
  */
-package gwt.material.design.components.client.validation.validators;
-
-import gwt.material.design.components.client.utils.security.PasswordMeter;
-import gwt.material.design.components.client.utils.security.PasswordScore;
+package gwt.material.design.components.client.utils.security;
 
 /**
- * 
+ *
  * @author Richeli Vargas
  *
  */
-public class PasswordValidator {
-		
-	protected static final PasswordMeter MATCHER = new PasswordMeter();
-
-
-	public static PasswordScore getScore(final String value) {
-		return MATCHER.getScore(value);
-	}
-	
-	protected final static native boolean match(final String value, final String partner)/*-{
-        return (new RegExp(partner, "g")).test(value);
-	}-*/;
+public enum PasswordScore {
+	EMPYT, VERY_WEAK, WEAK, MEDIUM, STRONG
 }
