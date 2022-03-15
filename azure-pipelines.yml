@@ -1,0 +1,42 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+container: maven:3.8.4-openjdk-17-slim
+
+steps:
+- checkout: self
+  clean: true
+
+- task: DownloadSecureFile@1
+  name: mvnSettings
+  displayName: Download settings.xml
+  inputs:
+    secureFile: 'settings.xml'
+
+- task: Cache@2
+  displayName: Download Maven Cache
+  inputs:
+    key: maven | "$(Agent.OS)" | **/pom.xml
+    path: $(MAVEN_CACHE_FOLDER)
+    restoreKeys: >2-
+              maven | "$(Agent.OS)"
+              maven
+
+- task: Maven@3
+  displayName: Download Maven Dependencies
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'deploy'
+    options: '--settings $(mvnSettings.secureFilePath)'
+    publishJUnitResults: false
+    jdkVersion: 1.17
+    javaHomeOption: 'path'
+    jdkDirectory: '/usr/local/openjdk-17'
+    mavenOpts: '-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true -Xmx2048m -Xms512m -Xss50m -Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)'
