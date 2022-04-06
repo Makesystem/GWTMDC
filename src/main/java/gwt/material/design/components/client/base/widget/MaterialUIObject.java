@@ -51,7 +51,6 @@ import gwt.material.design.components.client.constants.FlexAlignSelf;
 import gwt.material.design.components.client.constants.FlexDirection;
 import gwt.material.design.components.client.constants.FlexJustifyContent;
 import gwt.material.design.components.client.constants.FlexWrap;
-import gwt.material.design.components.client.utils.debug.Console;
 import gwt.material.design.components.client.utils.helper.IdHelper;
 import gwt.material.design.components.client.utils.helper.StyleHelper;
 
@@ -68,11 +67,8 @@ public class MaterialUIObject extends ComplexPanel implements HasId, HasFlexbox 
 
 	public MaterialUIObject(final Element element) {
 		super();
-		Console.log("MaterialUIObject 1");
 		this.setElement(element);
-		Console.log("MaterialUIObject 2");
 		this.setId(IdHelper.createUniqueUiId());
-		Console.log("MaterialUIObject 3");
 	}
 
 	@Override
@@ -102,7 +98,7 @@ public class MaterialUIObject extends ComplexPanel implements HasId, HasFlexbox 
 	}
 
 	public <V> void setAttribute(final String attribute, final V value) {
-		StyleHelper.setAttribute(getElement(), attribute, value);
+		StyleHelper.setAttribute(this.getElement(), attribute, value);
 	}
 
 	public void removeAttribute(final String attribute) {
