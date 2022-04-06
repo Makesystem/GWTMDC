@@ -19,7 +19,7 @@
  */
 package gwt.material.design.components.client.utils.helper;
 
-import java.util.UUID;
+import gwt.material.design.components.client.utils.UUID;
 
 /**
  * 
