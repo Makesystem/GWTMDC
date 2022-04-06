@@ -37,7 +37,6 @@ import gwt.material.design.components.client.events.SelectionEvent;
 import gwt.material.design.components.client.events.SelectionEvent.HasSelectionHandlers;
 import gwt.material.design.components.client.events.SelectionEvent.SelectionHandler;
 import gwt.material.design.components.client.ui.html.Input;
-import gwt.material.design.components.client.utils.debug.Console;
 import gwt.material.design.components.client.utils.helper.DOMHelper;
 import gwt.material.design.components.client.utils.helper.TimerHelper;
 
@@ -57,16 +56,17 @@ public class MaterialSelectedField extends MaterialWidget implements HasSelected
 
 	public MaterialSelectedField(final Element element, final String... initialClasses) {
 		super(element, initialClasses);
-		Console.log("MaterialSelectedField 1");
-		Console.log("MaterialSelectedField ID: " + this.getId());
-		this.setAttribute(HTMLAttributes.DATA_MDC_DIALOG_ACTION, this.getId());
-		Console.log("MaterialSelectedField 2");
 		this.initializeSelectedMixin();
-		Console.log("MaterialSelectedField 3");
 	}
 
+	@Override
+	public void setId(String id) {
+		super.setId(id);
+		this.setAttribute(HTMLAttributes.DATA_MDC_DIALOG_ACTION, id);
+	}
+	
 	public MaterialSelectedField(final String... initialClasses) {
-		super(HtmlElements.DIV.createElement(), initialClasses);
+		this(HtmlElements.DIV.createElement(), initialClasses);
 	}
 
 	protected final void initializeSelectedMixin(final MaterialWidget widget, final String cssClass, final Input checkedInput) {

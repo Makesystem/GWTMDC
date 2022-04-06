@@ -55,9 +55,20 @@ public class AttributeMixin<UIO extends MaterialUIObject, V> extends AbstractMix
 		setValue(attribute, value, uiObject);
 	}
 
-	public void setValue(String attribute, V value, MaterialUIObject uiObject) {
-		uiObject.setAttribute(attribute,
-				value == null || (value instanceof Boolean && !((Boolean) value)) ? null : (value instanceof HasCssName ? ((HasCssName) value).getCssName() : value.toString()));
+	public void setValue(final String attribute, final V value, final MaterialUIObject uiObject) {
+
+		final String var;
+
+		if (value == null)
+			var = null;
+		else if (value instanceof Boolean)
+			var = ((Boolean) value) ? value.toString() : null;
+		else if (value instanceof HasCssName)
+			var = ((HasCssName) value).getCssName();
+		else
+			var = value.toString();
+		
+		uiObject.setAttribute(attribute, var);
 	}
 
 }
