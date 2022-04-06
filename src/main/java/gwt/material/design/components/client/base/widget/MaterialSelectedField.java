@@ -37,6 +37,7 @@ import gwt.material.design.components.client.events.SelectionEvent;
 import gwt.material.design.components.client.events.SelectionEvent.HasSelectionHandlers;
 import gwt.material.design.components.client.events.SelectionEvent.SelectionHandler;
 import gwt.material.design.components.client.ui.html.Input;
+import gwt.material.design.components.client.utils.debug.Console;
 import gwt.material.design.components.client.utils.helper.DOMHelper;
 import gwt.material.design.components.client.utils.helper.TimerHelper;
 
@@ -56,8 +57,11 @@ public class MaterialSelectedField extends MaterialWidget implements HasSelected
 
 	public MaterialSelectedField(final Element element, final String... initialClasses) {
 		super(element, initialClasses);
+		Console.log("MaterialSelectedField 1");
 		this.setAttribute(HTMLAttributes.DATA_MDC_DIALOG_ACTION, getId());
+		Console.log("MaterialSelectedField 2");
 		this.initializeSelectedMixin();
+		Console.log("MaterialSelectedField 3");
 	}
 
 	public MaterialSelectedField(final String... initialClasses) {

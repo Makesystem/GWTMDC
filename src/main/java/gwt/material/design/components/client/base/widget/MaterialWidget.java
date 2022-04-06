@@ -115,6 +115,7 @@ import gwt.material.design.components.client.events.DropEvent;
 import gwt.material.design.components.client.events.ResizeEvent;
 import gwt.material.design.components.client.events.ResizeEvent.HasResizeHandlers;
 import gwt.material.design.components.client.events.ResizeEvent.ResizeHandler;
+import gwt.material.design.components.client.utils.debug.Console;
 
 /**
  * 
@@ -205,13 +206,18 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 	
 	public MaterialWidget(final Element element) {
 		super(element);
+		Console.log("MaterialWidget 1");
 		this.setAttribute("autofocus", Boolean.TRUE);
+		Console.log("MaterialWidget 2");
 		this.jQueryElement = new JQueryElement(element);
+		Console.log("MaterialWidget 3");
 	}
 	
 	public MaterialWidget(Element element, String... initialClass) {
 		this(element);
-		setInitialClasses(initialClass);
+		Console.log("MaterialWidget 4");
+		this.setInitialClasses(initialClass);
+		Console.log("MaterialWidget 5");
 	}
 	
 	protected final void jsInit() {
