@@ -1,7 +1,7 @@
 package gwt.material.design.components.client.utils;
 
 import java.security.MessageDigest;
-import java.security.SecureRandom;
+import java.util.Random;
 
 /**
  * A class that represents an immutable universally unique identifier (UUID). A
@@ -77,7 +77,7 @@ public final class UUID implements java.io.Serializable, Comparable<UUID> {
 	 * In a holder class to defer initialization until needed.
 	 */
 	private static class Holder {
-		static final SecureRandom numberGenerator = new SecureRandom();
+		static final Random numberGenerator = new Random();
 	}
 
 	// Constructors and Factories
@@ -121,7 +121,7 @@ public final class UUID implements java.io.Serializable, Comparable<UUID> {
 	 * @return A randomly generated {@code UUID}
 	 */
 	public static UUID randomUUID() {
-		SecureRandom ng = Holder.numberGenerator;
+		Random ng = Holder.numberGenerator;
 
 		byte[] randomBytes = new byte[16];
 		ng.nextBytes(randomBytes);
@@ -145,7 +145,7 @@ public final class UUID implements java.io.Serializable, Comparable<UUID> {
 		try {
 			md = MessageDigest.getInstance("MD5");
 		} catch (Exception nsae) {
-			throw new InternalError("MD5 not supported", nsae);
+			throw new RuntimeException("MD5 not supported", nsae);
 		}
 		byte[] md5Bytes = md.digest(name);
 		md5Bytes[6] &= 0x0f; /* clear version */
