@@ -86,8 +86,8 @@ public class MaterialDialog extends Div implements HasAcceptHandlers, HasCancelH
 	
 	public MaterialDialog() {
 		super(CssName.MDC_DIALOG);
-		setRole(Role.ALERT_DIALOG);
-		setAriaModal(true);
+		this.setRole(Role.ALERT_DIALOG);
+		this.setAriaModal(true);
 	}
 	
 	@Override

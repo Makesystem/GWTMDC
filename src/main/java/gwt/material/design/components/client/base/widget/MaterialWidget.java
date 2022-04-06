@@ -126,110 +126,115 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 		HasAllFocusHandlers, HasResizeHandlers, HasAutoInitData, HasRole, HasRipple, HasElevation, HasRtl, HasHideOn,
 		HasAlt, HasAriaLabel, HasTabindex, HasAriaControls, HasAriaDescribedBy, HasAriaSelected, HasAriaModal,
 		HasAriaLabelledBy, HasTooltip, HasDataObject {
-	
+
 	static {
 		autoInit();
 	}
-	
+
 	public static native void autoInit()/*-{
-        $wnd.mdc.autoInit();
+		$wnd.mdc.autoInit();
 	}-*/;
-	
+
 	protected class Appender {
-		
+
 		public static final int SEQUENTIAL = -1;
 		public static final int START = -2;
 		public static final int END = -3;
-		
+
 		public Widget widget;
 		public int index = SEQUENTIAL;
-		
+
 		public Appender(Widget widget, int index) {
 			this.widget = widget;
 			this.index = index;
 		}
-		
+
 		public Appender(Widget widget) {
 			this.widget = widget;
 		}
 	}
-	
-// /////////////////////////////////////////////////////////////
-// Initialize java script component
-// /////////////////////////////////////////////////////////////
+
+	// /////////////////////////////////////////////////////////////
+	// Initialize java script component
+	// /////////////////////////////////////////////////////////////
 	protected JavaScriptObject jsElement;
 	
-// /////////////////////////////////////////////////////////////
-// Data object helps the developer to save same entity
-// or any object who is necessary
-// /////////////////////////////////////////////////////////////
+	// /////////////////////////////////////////////////////////////
+	// Data object helps the developer to save same entity
+	// or any object who is necessary
+	// /////////////////////////////////////////////////////////////
 	private Object object;
 	
-// /////////////////////////////////////////////////////////////
-// Mixin list
-// /////////////////////////////////////////////////////////////
-	protected final EnabledMixin<MaterialWidget> enabledMixin = new EnabledMixin<>(this);
-	protected final AutoInitDataMixin<MaterialWidget> autoInitMixin = new AutoInitDataMixin<MaterialWidget>(this);
-	protected final RippleMixin<MaterialWidget> ripleMixin = new RippleMixin<>(this);
-	protected final TypeMixin<MaterialWidget, Elevation> elevationMixin = new TypeMixin<>(this);
-	protected final TypeMixin<MaterialWidget, HideOn> hideOnMixin = new TypeMixin<>(this);
-	protected final TooltipMixin<MaterialWidget> tooltipMixin = new TooltipMixin<>(this);
-	protected final AttributeMixin<MaterialWidget, Role> roleMixin = new AttributeMixin<>(this, HTMLAttributes.ROLE,
-			value -> Role.fromStyleName(value));
-	protected final AttributeMixin<MaterialWidget, String> rtlMixin = new AttributeMixin<>(this, HTMLAttributes.DIR,
-			FromString.TO_STRING);
-	protected final AttributeMixin<MaterialWidget, String> altMixin = new AttributeMixin<>(this, HTMLAttributes.ALT,
-			FromString.TO_STRING);
-	protected final AttributeMixin<MaterialWidget, String> ariaLabelMixin = new AttributeMixin<>(this,
-			HTMLAttributes.ARIA_LABEL, FromString.TO_STRING);
-	protected final AttributeMixin<MaterialWidget, String> ariaControlsMixin = new AttributeMixin<>(this,
-			HTMLAttributes.ARIA_CONTROLS, FromString.TO_STRING);
-	protected final AttributeMixin<MaterialWidget, String> ariaDescribedByMixin = new AttributeMixin<>(this,
-			HTMLAttributes.ARIA_DESCRIBEDBY, FromString.TO_STRING);
-	protected final AttributeMixin<MaterialWidget, Boolean> ariaSelectedMixin = new AttributeMixin<>(this,
-			HTMLAttributes.ARIA_SELECTED, false, FromString.TO_BOOLEAN);
-	protected final AttributeMixin<MaterialWidget, Boolean> ariaModalMixin = new AttributeMixin<>(this,
-			HTMLAttributes.ARIA_MODAL, false, FromString.TO_BOOLEAN);
-	protected final AttributeMixin<MaterialWidget, String> ariaLabelledByMixin = new AttributeMixin<>(this,
-			HTMLAttributes.ARIA_LABELLEDBY, FromString.TO_STRING);
-	protected final AttributeMixin<MaterialWidget, Integer> tabindexMixin = new AttributeMixin<>(this,
-			HTMLAttributes.TABINDEX, FromString.TO_INTEGER);
-	
+	// /////////////////////////////////////////////////////////////
+	// Mixin list
+	// /////////////////////////////////////////////////////////////
+	protected final EnabledMixin<MaterialWidget> enabledMixin;
+	protected final AutoInitDataMixin<MaterialWidget> autoInitMixin;
+	protected final RippleMixin<MaterialWidget> ripleMixin;
+	protected final TypeMixin<MaterialWidget, Elevation> elevationMixin;
+	protected final TypeMixin<MaterialWidget, HideOn> hideOnMixin;
+	protected final TooltipMixin<MaterialWidget> tooltipMixin;
+	protected final AttributeMixin<MaterialWidget, Role> roleMixin;
+	protected final AttributeMixin<MaterialWidget, String> rtlMixin;
+	protected final AttributeMixin<MaterialWidget, String> altMixin;
+	protected final AttributeMixin<MaterialWidget, String> ariaLabelMixin;
+	protected final AttributeMixin<MaterialWidget, String> ariaControlsMixin;
+	protected final AttributeMixin<MaterialWidget, String> ariaDescribedByMixin;
+	protected final AttributeMixin<MaterialWidget, Boolean> ariaSelectedMixin;
+	protected final AttributeMixin<MaterialWidget, Boolean> ariaModalMixin;
+	protected final AttributeMixin<MaterialWidget, String> ariaLabelledByMixin;
+	protected final AttributeMixin<MaterialWidget, Integer> tabindexMixin;
+
 	private String[] initialClasses;
-	
 	protected List<Appender> onLoadAdd;
-	
 	private final JQueryElement jQueryElement;
-	
 	protected boolean initialized = false;
-	
+
 	public MaterialWidget(final Element element) {
 		super(element);
+		// @formatter:off
+		this.enabledMixin 			= new EnabledMixin<>		(this);
+		this.autoInitMixin 			= new AutoInitDataMixin<>	(this);
+		this.ripleMixin 			= new RippleMixin<>			(this);
+		this.elevationMixin 		= new TypeMixin<>			(this);
+		this.hideOnMixin 			= new TypeMixin<>			(this);
+		this.tooltipMixin 			= new TooltipMixin<>		(this);
+		this.roleMixin 				= new AttributeMixin<>		(this, HTMLAttributes.ROLE, value -> Role.fromStyleName(value));
+		this.rtlMixin 				= new AttributeMixin<>		(this, HTMLAttributes.DIR, FromString.TO_STRING);
+		this.altMixin 				= new AttributeMixin<>		(this, HTMLAttributes.ALT, FromString.TO_STRING);
+		this.ariaLabelMixin 		= new AttributeMixin<>		(this, HTMLAttributes.ARIA_LABEL, FromString.TO_STRING);
+		this.ariaControlsMixin 		= new AttributeMixin<>		(this, HTMLAttributes.ARIA_CONTROLS, FromString.TO_STRING);
+		this.ariaDescribedByMixin	= new AttributeMixin<>		(this, HTMLAttributes.ARIA_DESCRIBEDBY, FromString.TO_STRING);
+		this.ariaSelectedMixin 		= new AttributeMixin<>		(this, HTMLAttributes.ARIA_SELECTED, false, FromString.TO_BOOLEAN);
+		this.ariaModalMixin 		= new AttributeMixin<>		(this, HTMLAttributes.ARIA_MODAL, false, FromString.TO_BOOLEAN);
+		this.ariaLabelledByMixin 	= new AttributeMixin<>		(this, HTMLAttributes.ARIA_LABELLEDBY, FromString.TO_STRING);
+		this.tabindexMixin 			= new AttributeMixin<>		(this, HTMLAttributes.TABINDEX, FromString.TO_INTEGER);
+		// @formatter:on
 		this.setAttribute("autofocus", Boolean.TRUE);
 		this.jQueryElement = new JQueryElement(element);
 	}
-	
+
 	public MaterialWidget(Element element, String... initialClass) {
 		this(element);
 		this.setInitialClasses(initialClass);
 	}
-	
+
 	protected final void jsInit() {
 		jsElement = jsInit(getElement());
 	}
-	
+
 	public JavaScriptObject asJavaScriptObject() {
 		return jsElement;
 	}
-	
+
 	protected native JavaScriptObject jsInit(final Element element)/*-{
-        return element;
+		return element;
 	}-*/;
-	
+
 	@Override
 	protected void onLoad() {
 		super.onLoad();
-		
+
 		if (initialClasses != null) {
 			for (String initial : initialClasses) {
 				if (!initial.isEmpty()) {
@@ -238,11 +243,11 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				}
 			}
 		}
-		
+
 		if (onLoadAdd != null) {
-			
+
 			final List<Appender> end = new LinkedList<>();
-			
+
 // Check the onLoadAdd items.
 			for (Appender item : onLoadAdd) {
 				if (item.index == Appender.SEQUENTIAL)
@@ -259,30 +264,30 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 			end.clear();
 			onLoadAdd.clear();
 		}
-		
+
 		if (!initialized) {
 			onInitialize();
 			initialized = true;
 		}
-		
+
 	}
-	
+
 	protected void onInitialize() {
 		jsInit();
 	}
-	
+
 	@Override
 	public void clear() {
 		super.clear();
 		if (onLoadAdd != null)
 			onLoadAdd.clear();
 	}
-	
+
 	@Override
 	public void add(Widget child) {
 		add(child, getElement());
 	}
-	
+
 	@Override
 	protected void add(Widget child, com.google.gwt.user.client.Element container) {
 		if (!isAttached()) {
@@ -293,12 +298,12 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 			super.add(child, container);
 		}
 	}
-	
+
 	private static native Element resolve(Element maybePotential) /*-{
-        return maybePotential.__gwt_resolve ? maybePotential.__gwt_resolve()
-                : maybePotential;
+		return maybePotential.__gwt_resolve ? maybePotential.__gwt_resolve()
+				: maybePotential;
 	}-*/;
-	
+
 	@Override
 	protected void insert(Widget child, com.google.gwt.user.client.Element container, int beforeIndex,
 			boolean domInsert) {
@@ -314,11 +319,11 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				beforeIndex = getWidgetCount();
 			else if (beforeIndex == Appender.SEQUENTIAL)
 				beforeIndex = getWidgetCount();
-			
+
 			super.insert(child, container, beforeIndex, domInsert);
 		}
 	}
-	
+
 	/**
 	 * Inserts a widget at a specific index
 	 *
@@ -328,17 +333,17 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 	public void insert(final Widget child, final int beforeIndex) {
 		insert(child, (Element) getElement(), beforeIndex, true);
 	}
-	
+
 	@Override
 	public void setInitialClasses(String... initialClasses) {
 		this.initialClasses = initialClasses;
 	}
-	
+
 	@Override
 	public String[] getInitialClasses() {
 		return initialClasses;
 	}
-	
+
 	/**
 	 * Set the style attribute of your element. Note that this will override any
 	 * {@link Element#getStyle()} changes and vice-versa.
@@ -346,7 +351,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 	public void setStyle(String style) {
 		getElement().setAttribute("style", style);
 	}
-	
+
 	/**
 	 * Set the 'class' attribute of this element. Note that this will override
 	 * {@link #addStyleName(String)} and vice-versa.
@@ -354,21 +359,21 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 	public void setClass(String cssClasses) {
 		getElement().setAttribute("class", cssClasses);
 	}
-	
+
 	@Override
 	public WidgetCollection getChildren() {
 		return super.getChildren();
 	}
-	
+
 	public List<Widget> getChildrenList() {
 		final List<Widget> children = new ArrayList<>();
 		for (int i = 0; i < getWidgetCount(); i++)
 			children.add(getWidget(i));
 		return children;
 	}
-	
+
 // Events
-	
+
 	@Override
 	public HandlerRegistration addClickHandler(final ClickHandler handler) {
 		return addDomHandler(event -> {
@@ -376,7 +381,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onClick(event);
 		}, ClickEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addMouseDownHandler(final MouseDownHandler handler) {
 		return addDomHandler(event -> {
@@ -384,7 +389,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onMouseDown(event);
 		}, MouseDownEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addMouseMoveHandler(final MouseMoveHandler handler) {
 		return addDomHandler(event -> {
@@ -392,7 +397,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onMouseMove(event);
 		}, MouseMoveEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addMouseOutHandler(final MouseOutHandler handler) {
 		return addDomHandler(event -> {
@@ -400,7 +405,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onMouseOut(event);
 		}, MouseOutEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addMouseOverHandler(final MouseOverHandler handler) {
 		return addDomHandler(event -> {
@@ -408,7 +413,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onMouseOver(event);
 		}, MouseOverEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addMouseUpHandler(final MouseUpHandler handler) {
 		return addDomHandler(event -> {
@@ -416,7 +421,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onMouseUp(event);
 		}, MouseUpEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addMouseWheelHandler(final MouseWheelHandler handler) {
 		return addDomHandler(event -> {
@@ -424,7 +429,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onMouseWheel(event);
 		}, MouseWheelEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addDoubleClickHandler(final DoubleClickHandler handler) {
 		return addDomHandler(event -> {
@@ -432,7 +437,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onDoubleClick(event);
 		}, DoubleClickEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addDragStartHandler(DragStartEvent.DragStartHandler handler) {
 		return addHandler(event -> {
@@ -440,7 +445,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onDragStart(event);
 		}, DragStartEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addDragMoveHandler(DragMoveEvent.DragMoveHandler handler) {
 		return addHandler(event -> {
@@ -448,7 +453,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onDragMove(event);
 		}, DragMoveEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addDragEndHandler(DragEndEvent.DragEndHandler handler) {
 		return addHandler(event -> {
@@ -456,7 +461,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onDragEnd(event);
 		}, DragEndEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addDropActivateHandler(DropActivateEvent.DropActivateHandler handler) {
 		return addHandler(event -> {
@@ -465,7 +470,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 			}
 		}, DropActivateEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addDragEnterHandler(DragEnterEvent.DragEnterHandler handler) {
 		return addHandler(event -> {
@@ -473,7 +478,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onDragEnter(event);
 		}, DragEnterEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addDragLeaveHandler(DragLeaveEvent.DragLeaveHandler handler) {
 		return addHandler(event -> {
@@ -481,7 +486,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onDragLeave(event);
 		}, DragLeaveEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addDragOverHandler(final DragOverEvent.DragOverHandler handler) {
 		return addHandler(event -> {
@@ -489,7 +494,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onDragOver(event);
 		}, DragOverEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addDropDeactivateHandler(DropDeactivateEvent.DropDeactivateHandler handler) {
 		return addHandler(event -> {
@@ -497,7 +502,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onDropDeactivate(event);
 		}, DropDeactivateEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addDropHandler(DropEvent.DropHandler handler) {
 		return addHandler(event -> {
@@ -505,7 +510,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onDrop(event);
 		}, DropEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addTouchCancelHandler(TouchCancelHandler handler) {
 		return addDomHandler(event -> {
@@ -513,7 +518,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onTouchCancel(event);
 		}, TouchCancelEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addTouchEndHandler(TouchEndHandler handler) {
 		return addDomHandler(event -> {
@@ -521,7 +526,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onTouchEnd(event);
 		}, TouchEndEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addTouchMoveHandler(TouchMoveHandler handler) {
 		return addDomHandler(event -> {
@@ -529,7 +534,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onTouchMove(event);
 		}, TouchMoveEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addTouchStartHandler(TouchStartHandler handler) {
 		return addDomHandler(event -> {
@@ -537,7 +542,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onTouchStart(event);
 		}, TouchStartEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addGestureChangeHandler(GestureChangeHandler handler) {
 		return addDomHandler(event -> {
@@ -545,7 +550,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onGestureChange(event);
 		}, GestureChangeEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addGestureEndHandler(GestureEndHandler handler) {
 		return addDomHandler(event -> {
@@ -553,16 +558,16 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onGestureEnd(event);
 		}, GestureEndEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addGestureStartHandler(GestureStartHandler handler) {
 		return addDomHandler(event -> {
 			if (isEnabled())
 				handler.onGestureStart(event);
 		}, GestureStartEvent.getType());
-		
+
 	}
-	
+
 	@Override
 	public HandlerRegistration addKeyDownHandler(KeyDownHandler handler) {
 		return addDomHandler(event -> {
@@ -570,7 +575,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onKeyDown(event);
 		}, KeyDownEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addKeyPressHandler(KeyPressHandler handler) {
 		return addDomHandler(event -> {
@@ -578,7 +583,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onKeyPress(event);
 		}, KeyPressEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addKeyUpHandler(KeyUpHandler handler) {
 		return addDomHandler(event -> {
@@ -586,7 +591,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onKeyUp(event);
 		}, KeyUpEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addBlurHandler(BlurHandler handler) {
 		return addDomHandler(event -> {
@@ -594,7 +599,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onBlur(event);
 		}, BlurEvent.getType());
 	}
-	
+
 	@Override
 	public HandlerRegistration addFocusHandler(FocusHandler handler) {
 		return addDomHandler(event -> {
@@ -602,43 +607,43 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				handler.onFocus(event);
 		}, FocusEvent.getType());
 	}
-	
+
 	private boolean resizeSensorInitialized = false;
-	
+
 	protected native void initializeResizeSensor() /*-{
-        var _this = this;
-        var initialized = this.@gwt.material.design.components.client.base.widget.MaterialWidget::resizeSensorInitialized;
-        if (!initialized) {
-	        this.@gwt.material.design.components.client.base.widget.MaterialWidget::resizeSensorInitialized = true;
-	        var element = this.@gwt.material.design.components.client.base.widget.MaterialWidget::getElement()();
-	        new $wnd.ResizeSensor(
-	                element,
-	                function() {
-		                _this.@gwt.material.design.components.client.base.widget.MaterialWidget::fireResizeEvent()();
-	                });
-        }
+		var _this = this;
+		var initialized = this.@gwt.material.design.components.client.base.widget.MaterialWidget::resizeSensorInitialized;
+		if (!initialized) {
+			this.@gwt.material.design.components.client.base.widget.MaterialWidget::resizeSensorInitialized = true;
+			var element = this.@gwt.material.design.components.client.base.widget.MaterialWidget::getElement()();
+			new $wnd.ResizeSensor(
+					element,
+					function() {
+						_this.@gwt.material.design.components.client.base.widget.MaterialWidget::fireResizeEvent()();
+					});
+		}
 	}-*/;
-	
+
 	protected final void fireResizeEvent() {
 		ResizeEvent.fire(this);
 	}
-	
+
 	@Override
 	public HandlerRegistration addResizeHandler(final ResizeHandler handler) {
 		initializeResizeSensor();
 		return addHandler(handler, ResizeEvent.getType());
 	}
-	
+
 	@Override
 	public boolean isEnabled() {
 		return enabledMixin.isEnabled();
 	}
-	
+
 	@Override
 	public void setEnabled(boolean enabled) {
 		enabledMixin.setEnabled(enabled);
 	}
-	
+
 	@Override
 	public void setRtl(boolean rtl) {
 		if (rtl) {
@@ -649,181 +654,181 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 			setCssProperty("direction", "ltr");
 		}
 	}
-	
+
 	@Override
 	public boolean isRtl() {
 		return rtlMixin.getValue() != null;
 	}
-	
+
 	@Override
 	public void setAutoInitData(AutoInitData autoInitData) {
 		autoInitMixin.setAutoInitData(autoInitData);
 	}
-	
+
 	@Override
 	public AutoInitData getAutoInitData() {
 		return autoInitMixin.getAutoInitData();
 	}
-	
+
 	@Override
 	public void setRole(Role role) {
 		roleMixin.setValue(role);
 	}
-	
+
 	@Override
 	public Role getRole() {
 		return roleMixin.getValue();
 	}
-	
+
 	@Override
 	public void setRipple(Color color) {
 		ripleMixin.setRipple(color);
 	}
-	
+
 	@Override
 	public Color getRipple() {
 		return ripleMixin.getRipple();
 	}
-	
+
 	@Override
 	public void setElevation(Elevation elevation) {
 		elevationMixin.setType(elevation);
 	}
-	
+
 	@Override
 	public Elevation getElevation() {
 		return elevationMixin.getType();
 	}
-	
+
 	@Override
 	public void setHideOn(HideOn hideOn) {
 		hideOnMixin.setType(hideOn);
 	}
-	
+
 	@Override
 	public HideOn getHideOn() {
 		return hideOnMixin.getType();
 	}
-	
+
 	@Override
 	public void setAriaLabel(String ariaLabel) {
 		ariaLabelMixin.setValue(ariaLabel);
 	}
-	
+
 	@Override
 	public String getAriaLabel() {
 		return ariaLabelMixin.getValue();
 	}
-	
+
 	@Override
 	public void setAriaControls(String target) {
 		ariaControlsMixin.setValue(target);
 	}
-	
+
 	@Override
 	public String getAriaControls() {
 		return ariaControlsMixin.getValue();
 	}
-	
+
 	@Override
 	public void setAriaDescribedBy(String target) {
 		ariaDescribedByMixin.setValue(target);
 	}
-	
+
 	@Override
 	public String getAriaDescribedBy() {
 		return ariaDescribedByMixin.getValue();
 	}
-	
+
 	@Override
 	public void setAlt(String alt) {
 		altMixin.setValue(alt);
 	}
-	
+
 	@Override
 	public String getAlt() {
 		return altMixin.getValue();
 	}
-	
+
 	@Override
 	public void setTabindex(int tabindex) {
 		tabindexMixin.setValue(tabindex);
 	}
-	
+
 	@Override
 	public int getTabindex() {
 		return tabindexMixin.getValue();
 	}
-	
+
 	@Override
 	public void setAriaSelected(boolean selected) {
 		ariaSelectedMixin.setValue(selected);
 	}
-	
+
 	@Override
 	public boolean isAreaSelected() {
 		return ariaSelectedMixin.getValue();
 	}
-	
+
 	@Override
 	public void setAriaModal(boolean modal) {
 		ariaModalMixin.setValue(modal);
 	}
-	
+
 	@Override
 	public boolean isAreaModal() {
 		return ariaModalMixin.getValue();
 	}
-	
+
 	@Override
 	public void setAriaLabelledBy(String labelledby) {
 		ariaLabelledByMixin.setValue(labelledby);
 	}
-	
+
 	@Override
 	public String getAriaLabelledBy() {
 		return ariaLabelledByMixin.getValue();
 	}
-	
+
 	@Override
 	public void setTooltip(String tooltip) {
 		tooltipMixin.setTooltip(tooltip);
 	}
-	
+
 	@Override
 	public String getTooltip() {
 		return tooltipMixin.getTooltip();
 	}
-	
+
 	public TooltipPosition getTooltipPosition() {
 		return tooltipMixin.getTooltipPosition();
 	}
-	
+
 	public void setTooltipPosition(TooltipPosition position) {
 		tooltipMixin.setTooltipPosition(position);
 	}
-	
+
 	@Override
 	public void setTooltipColor(Color color) {
 		tooltipMixin.setTooltipColor(color);
 	}
-	
+
 	@Override
 	public void setTooltipBackgroundColor(Color color) {
 		tooltipMixin.setTooltipBackgroundColor(color);
 	}
-	
+
 	@Override
 	public <O> void setDataObject(O object) {
 		this.object = object;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public <O> O getDataObject() {
 		return object == null ? null : (O) object;
 	}
-	
+
 	public JQueryElement jQuery() {
 		return jQueryElement;
 	}
@@ -831,7 +836,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 	public void focus() {
 		getElement().focus();
 	}
-	
+
 	public void blur() {
 		getElement().blur();
 	}
