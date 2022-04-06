@@ -65,10 +65,10 @@ public class MaterialUIObject extends ComplexPanel implements HasId, HasFlexbox 
 	protected final AttributeMixin<MaterialUIObject, String> idMixin = new AttributeMixin<>(this, HTMLAttributes.ID,
 			FromString.TO_STRING);
 
-	public MaterialUIObject(Element element) {
+	public MaterialUIObject(final Element element) {
 		super();
-		setElement(element);
-		setId(IdHelper.createUniqueUiId());
+		this.setElement(element);
+		this.setId(IdHelper.createUniqueUiId());
 	}
 
 	@Override

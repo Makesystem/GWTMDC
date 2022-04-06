@@ -56,8 +56,8 @@ public class MaterialSelectedField extends MaterialWidget implements HasSelected
 
 	public MaterialSelectedField(final Element element, final String... initialClasses) {
 		super(element, initialClasses);
-		setAttribute(HTMLAttributes.DATA_MDC_DIALOG_ACTION, getId());
-		initializeSelectedMixin();
+		this.setAttribute(HTMLAttributes.DATA_MDC_DIALOG_ACTION, getId());
+		this.initializeSelectedMixin();
 	}
 
 	public MaterialSelectedField(final String... initialClasses) {

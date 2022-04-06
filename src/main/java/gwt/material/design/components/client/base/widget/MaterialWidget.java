@@ -205,7 +205,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 	
 	public MaterialWidget(final Element element) {
 		super(element);
-		setAttribute("autofocus", Boolean.TRUE);
+		this.setAttribute("autofocus", Boolean.TRUE);
 		this.jQueryElement = new JQueryElement(element);
 	}
 	

@@ -41,6 +41,7 @@ import gwt.material.design.components.client.constants.HtmlElements;
 import gwt.material.design.components.client.constants.IconType;
 import gwt.material.design.components.client.ui.html.Label;
 import gwt.material.design.components.client.ui.html.Span;
+import gwt.material.design.components.client.utils.debug.Console;
 import gwt.material.design.components.client.utils.helper.StyleHelper;
 
 /**
@@ -67,7 +68,9 @@ public class MaterialListItem extends MaterialSelectedField implements HasHref, 
 
 	public MaterialListItem() {
 		super(HtmlElements.LI.createElement(), CssName.MDC_LIST_ITEM);
+		Console.log("AQUI");
 		super.initializeSelectedMixin(CssName.MDC_LIST_ITEM__SELECTED);
+		Console.log("ALI");
 	}
 
 	protected native JavaScriptObject jsInit(final Element element)/*-{
