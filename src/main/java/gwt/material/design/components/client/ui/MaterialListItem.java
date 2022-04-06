@@ -68,7 +68,6 @@ public class MaterialListItem extends MaterialSelectedField implements HasHref, 
 	public MaterialListItem() {
 		super(HtmlElements.LI.createElement(), CssName.MDC_LIST_ITEM);
 		super.initializeSelectedMixin(CssName.MDC_LIST_ITEM__SELECTED);
-		add(textContent);
 	}
 
 	protected native JavaScriptObject jsInit(final Element element)/*-{
@@ -78,6 +77,8 @@ public class MaterialListItem extends MaterialSelectedField implements HasHref, 
 	@Override
 	protected void onInitialize() {
 
+		this.add(textContent);
+		
 		ripleMixin.initialize();
 
 		avatar.addStyleName(CssName.MDC_LIST_ITEM__GRAPHIC);
