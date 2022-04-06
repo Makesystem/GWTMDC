@@ -61,12 +61,13 @@ import gwt.material.design.components.client.utils.helper.StyleHelper;
  */
 public class MaterialUIObject extends ComplexPanel implements HasId, HasFlexbox {
 
-	protected final FlexboxMixin<MaterialUIObject> flexboxMixin = new FlexboxMixin<>(this);
-	protected final AttributeMixin<MaterialUIObject, String> idMixin = new AttributeMixin<>(this, HTMLAttributes.ID,
-			FromString.TO_STRING);
+	protected final FlexboxMixin<MaterialUIObject> flexboxMixin;
+	protected final AttributeMixin<MaterialUIObject, String> idMixin;
 
 	public MaterialUIObject(final Element element) {
 		super();
+		this.flexboxMixin = new FlexboxMixin<>(this);
+		this.idMixin = new AttributeMixin<>(this, HTMLAttributes.ID, FromString.TO_STRING);
 		this.setElement(element);
 		this.setId(IdHelper.createUniqueUiId());
 	}

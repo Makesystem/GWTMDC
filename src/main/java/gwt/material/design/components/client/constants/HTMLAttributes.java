@@ -2,6 +2,8 @@ package gwt.material.design.components.client.constants;
 
 public class HTMLAttributes {
 
+	// @formatter:off
+	
 	public static final String	ALT						= "alt";
 	public static final String	ARIA_ATOMIC				= "aria-atomic";
 	public static final String	ARIA_CONTROLS			= "aria-controls";
@@ -59,4 +61,5 @@ public class HTMLAttributes {
 	public static final String	VALUE					= "value";
 	public static final String	WIDTH					= "width";
 
+	// @formatter:on
 }
