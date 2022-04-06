@@ -19,7 +19,6 @@
  */
 package gwt.material.design.components.client.base.mixin.base;
 
-import gwt.material.design.components.client.base.mixin.base.AbstractMixin;
 import gwt.material.design.components.client.base.widget.MaterialUIObject;
 
 /**

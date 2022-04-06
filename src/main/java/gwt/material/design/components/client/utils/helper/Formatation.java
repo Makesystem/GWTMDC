@@ -20,6 +20,7 @@
 package gwt.material.design.components.client.utils.helper;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Date;
 
 /**
@@ -167,7 +168,7 @@ public final class Formatation {
 
 	public final static String currency(final double value) {
 
-		final BigDecimal bigDecimal = new BigDecimal(String.valueOf(value)).setScale(2, BigDecimal.ROUND_FLOOR);
+		final BigDecimal bigDecimal = new BigDecimal(String.valueOf(value)).setScale(2, RoundingMode.FLOOR);
 		final String[] values = bigDecimal.toString().split("\\.");
 
 		final StringBuilder builder = new StringBuilder(values[0]);
@@ -185,7 +186,7 @@ public final class Formatation {
 
 	public final static String integer(final double value) {
 
-		final BigDecimal bigDecimal = new BigDecimal(String.valueOf(value)).setScale(2, BigDecimal.ROUND_FLOOR);
+		final BigDecimal bigDecimal = new BigDecimal(String.valueOf(value)).setScale(2, RoundingMode.FLOOR);
 		final String[] values = bigDecimal.toString().split("\\.");
 
 		final StringBuilder builder = new StringBuilder(values[0]);

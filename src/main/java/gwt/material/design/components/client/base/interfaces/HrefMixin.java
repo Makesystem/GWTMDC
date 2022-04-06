@@ -19,7 +19,6 @@
  */
 package gwt.material.design.components.client.base.interfaces;
 
-import gwt.material.design.components.client.base.interfaces.HasHref;
 import gwt.material.design.components.client.base.mixin.base.AbstractMixin;
 import gwt.material.design.components.client.base.widget.MaterialUIObject;
 import gwt.material.design.components.client.constants.HTMLAttributes;
