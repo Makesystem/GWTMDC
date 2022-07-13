@@ -34,7 +34,7 @@ public final class Console {
 		public void write(final Object value);
 	}
 
-	static ConsoleWriter writer = value -> write(Formatation.dateTime(new Date()) + ": " + String.valueOf(value));
+	static ConsoleWriter writer = value -> write(dateTimeFormat.format(new Date()) + ": " + String.valueOf(value));
 
 	static native void write(String text) /*-{
 		console.log(text);
@@ -43,7 +43,7 @@ public final class Console {
 	public static void setWriter(final ConsoleWriter writer) {
 		Console.writer = writer;
 		if (Console.writer == null)
-			Console.writer = value -> write(Formatation.dateTime(new Date()) + ": " + String.valueOf(value));
+			Console.writer = value -> write(dateTimeFormat.format(new Date()) + ": " + String.valueOf(value));
 	}
 
 	public static void log(Object value) {
