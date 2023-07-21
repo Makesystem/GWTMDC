@@ -41,4 +41,12 @@ public class StringUtils {
 	public static String toString(final double value) {
 		return String.valueOf(value);
 	}
+	
+	public static boolean isBlank(final String sequence) {
+		return sequence == null || sequence.isEmpty();
+	}
+	
+	public static boolean isNotBlank(final String sequence) {
+		return !isBlank(sequence);
+	}
 }

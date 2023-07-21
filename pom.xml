@@ -15,7 +15,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.google.gwt</groupId>
+			<groupId>org.gwtproject</groupId>
 			<artifactId>gwt-user</artifactId>
 			<version>2.10.0</version>
 		</dependency>
@@ -55,6 +55,14 @@
 		</resources>
 
 		<plugins>
+
+			<plugin>
+				<groupId>net.ltgt.gwt.maven</groupId>
+				<artifactId>gwt-maven-plugin</artifactId>
+				<version>1.0.1</version>
+				<extensions>true</extensions>
+			</plugin>
+
 			<!-- any other plugins -->
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
@@ -75,11 +83,11 @@
 		</plugins>
 
 	</build>
-	
+
 	<distributionManagement>
 		<repository>
 			<id>makesystemltda</id>
-			<url>https://pkgs.dev.azure.com/makesystemltda/_packaging/makesystemltda/maven/v1</url>			
+			<url>https://pkgs.dev.azure.com/makesystemltda/_packaging/makesystemltda/maven/v1</url>
 		</repository>
 	</distributionManagement>
 

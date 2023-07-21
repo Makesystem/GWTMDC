@@ -158,13 +158,13 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 	// Initialize java script component
 	// /////////////////////////////////////////////////////////////
 	protected JavaScriptObject jsElement;
-	
+
 	// /////////////////////////////////////////////////////////////
 	// Data object helps the developer to save same entity
 	// or any object who is necessary
 	// /////////////////////////////////////////////////////////////
 	private Object object;
-	
+
 	// /////////////////////////////////////////////////////////////
 	// Mixin list
 	// /////////////////////////////////////////////////////////////
@@ -284,18 +284,30 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 	}
 
 	@Override
+	public void removeFromParent() {
+		if(this.getParent() != null)
+			super.removeFromParent();
+	}
+	
+	@Override
 	public void add(Widget child) {
 		add(child, getElement());
 	}
 
 	@Override
 	protected void add(Widget child, com.google.gwt.user.client.Element container) {
-		if (!isAttached()) {
-			if (onLoadAdd == null)
-				onLoadAdd = new ArrayList<>();
-			onLoadAdd.add(new Appender(child));
-		} else {
+
+		if(child == null || container == null)
+			return;
+		
+		final boolean isAttached = this.isAttached();
+
+		if (isAttached) {
 			super.add(child, container);
+		} else {
+			if (this.onLoadAdd == null)
+				this.onLoadAdd = new ArrayList<>();
+			this.onLoadAdd.add(new Appender(child));
 		}
 	}
 
@@ -312,7 +324,7 @@ public class MaterialWidget extends MaterialUIObject implements HasInitialClasse
 				onLoadAdd = new ArrayList<>();
 			onLoadAdd.add(new Appender(child, beforeIndex));
 		} else {
-// Regular child addition
+			// Regular child addition
 			if (beforeIndex == Appender.START)
 				beforeIndex = 0;
 			else if (beforeIndex == Appender.END)

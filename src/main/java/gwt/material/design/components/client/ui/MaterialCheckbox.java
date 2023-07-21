@@ -79,6 +79,7 @@ public class MaterialCheckbox extends MaterialSelectedField implements HasText, 
 	
 	@Override
 	protected void onInitialize() {
+		
 		label.setFor(input.getId());
 
 		checkbox.setBorderRadius(BorderRadius.CIRCLE);

@@ -43,6 +43,7 @@ import gwt.material.design.components.client.constants.Display;
 import gwt.material.design.components.client.constants.IconType;
 import gwt.material.design.components.client.resources.MaterialResources;
 import gwt.material.design.components.client.ui.html.Div;
+import gwt.material.design.components.client.utils.StringUtils;
 
 /**
  * 
@@ -137,7 +138,7 @@ public class MaterialChip extends MaterialSelectedField implements HasType<ChipT
 		if (iconLeading.getType() != null)
 			add(iconLeading);
 
-		if (imageLeading.getUrl() != null && !imageLeading.getUrl().isEmpty())
+		if (StringUtils.isNotBlank(imageLeading.getUrl()))
 			add(imageLeading);
 
 		add(text);
@@ -246,10 +247,9 @@ public class MaterialChip extends MaterialSelectedField implements HasType<ChipT
 
 		imageLeading.setResource(resource);
 
-		if (resource == null && imageLeading.getParent() != null)
+		if (resource == null)
 			imageLeading.removeFromParent();
-
-		if (resource != null && initialized)
+		else if (initialized)
 			insert(imageLeading, iconLeading.getParent() == null ? 0 : 1);
 	}
 

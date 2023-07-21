@@ -41,7 +41,6 @@ import gwt.material.design.components.client.base.mixin.base.AttributeMixin;
 import gwt.material.design.components.client.constants.BorderCollapse;
 import gwt.material.design.components.client.constants.BorderRadius;
 import gwt.material.design.components.client.constants.Color;
-import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.Display;
 import gwt.material.design.components.client.constants.Flex;
@@ -51,6 +50,7 @@ import gwt.material.design.components.client.constants.FlexAlignSelf;
 import gwt.material.design.components.client.constants.FlexDirection;
 import gwt.material.design.components.client.constants.FlexJustifyContent;
 import gwt.material.design.components.client.constants.FlexWrap;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.utils.helper.IdHelper;
 import gwt.material.design.components.client.utils.helper.StyleHelper;
 
@@ -66,14 +66,14 @@ public class MaterialUIObject extends ComplexPanel implements HasId, HasFlexbox 
 
 	public MaterialUIObject(final Element element) {
 		super();
+		this.setElement(element);
 		this.flexboxMixin = new FlexboxMixin<>(this);
 		this.idMixin = new AttributeMixin<>(this, HTMLAttributes.ID, FromString.TO_STRING);
-		this.setElement(element);
-		this.setId(IdHelper.createUniqueUiId());
+		this.idMixin.setValue(IdHelper.createUniqueUiId());
 	}
 
 	@Override
-	public void setId(String id) {
+	public void setId(final String id) {
 		idMixin.setValue(id);
 	}
 

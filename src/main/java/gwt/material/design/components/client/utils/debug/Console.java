@@ -19,10 +19,6 @@
  */
 package gwt.material.design.components.client.utils.debug;
 
-import java.util.Date;
-
-import gwt.material.design.components.client.utils.helper.Formatation;
-
 /**
  * 
  * @author Richeli Vargas
@@ -34,36 +30,19 @@ public final class Console {
 		public void write(final Object value);
 	}
 
-	static ConsoleWriter writer = value -> write(dateTimeFormat.format(new Date()) + ": " + String.valueOf(value));
+	static ConsoleWriter writer = Console::write;
 
-	static native void write(String text) /*-{
+	static native void write(Object text) /*-{
 		console.log(text);
 	}-*/;
 
 	public static void setWriter(final ConsoleWriter writer) {
 		Console.writer = writer;
 		if (Console.writer == null)
-			Console.writer = value -> write(dateTimeFormat.format(new Date()) + ": " + String.valueOf(value));
+			Console.writer = Console::write;
 	}
 
 	public static void log(Object value) {
 		Console.writer.write(value);
 	}
-
-	public static void log(Long value) {
-		Console.writer.write(value);
-	}
-
-	public static void log(Integer value) {
-		Console.writer.write(value);
-	}
-
-	public static void log(Boolean value) {
-		Console.writer.write(value);
-	}
-
-	public static void log(String value) {
-		Console.writer.write(value);
-	}
-
 }

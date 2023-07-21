@@ -100,7 +100,7 @@ public class MaterialSelectedField extends MaterialWidget implements HasSelected
 
 	@Override
 	protected void onInitialize() {
-		addClickHandler(event -> {
+		this.addClickHandler(event -> {
 			if (isEnabled())
 				fireAutoSelect(event);
 		});

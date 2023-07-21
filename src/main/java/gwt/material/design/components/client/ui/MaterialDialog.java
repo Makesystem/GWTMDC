@@ -30,9 +30,9 @@ import gwt.material.design.components.client.base.interfaces.HasToggler;
 import gwt.material.design.components.client.base.mixin.TogglerMixin;
 import gwt.material.design.components.client.constants.CloseAction;
 import gwt.material.design.components.client.constants.Color;
-import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.CssMixin;
 import gwt.material.design.components.client.constants.CssName;
+import gwt.material.design.components.client.constants.HTMLAttributes;
 import gwt.material.design.components.client.constants.Role;
 import gwt.material.design.components.client.events.AcceptEvent;
 import gwt.material.design.components.client.events.AcceptEvent.AcceptHandler;
@@ -116,7 +116,6 @@ public class MaterialDialog extends Div implements HasAcceptHandlers, HasCancelH
 		
 		add(container);
 		add(scrim);
-		
 		super.onInitialize();
 		
 		setAutoStackButtons(autoStackButtons);

@@ -333,12 +333,16 @@ public final class StyleHelper {
 		return Boolean.valueOf(getProperty(uiObject.getElement(), property));
 	}
 
-	public final static native String getProperty(final Element element, final String property)/*-{
-		var prop = $wnd.jQuery(element).prop(property);
-		if (!prop)
+	public final static String getProperty(final Element element, final String property) {
+		final Object prop = prop(element, property);
+		if(prop == null)
 			return null;
 		else
-			return new String(prop);
+			return prop.toString();
+	}
+	
+	public final static native Object prop(final Element element, final String property)/*-{
+		return $wnd.jQuery(element).prop(property);
 	}-*/;
 
 	// ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -409,12 +413,17 @@ public final class StyleHelper {
 		return Boolean.valueOf(getAttribute(uiObject.getElement(), attribute));
 	}
 
-	public final static native String getAttribute(final Element element, final String attribute)/*-{
-		var attr = $wnd.jQuery(element).attr(attribute);
-		if (!attr)
+	public final static String getAttribute(final Element element, final String attribute) {
+		final Object attr = attr(element, attribute);
+		if(attr == null)
 			return null;
 		else
-			return new String(attr);
+			return attr.toString();
+	}
+	
+	private final static native Object attr(final Element element, final String attribute)/*-{
+		var attr = $wnd.jQuery(element).attr(attribute);
+		return attr;
 	}-*/;
 
 }
