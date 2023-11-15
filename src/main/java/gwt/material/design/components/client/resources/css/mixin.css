@@ -26,15 +26,15 @@
 .mdc-button[dir="rtl"] .mdc-button__icon {
 	margin-left: 8px;
 	margin-right: 0px;}
-.mdc-button {
+.mdc-button:not(:disabled){
     color: var(--mdc-button-ink-color);
     background-color: var(--mdc-button-fill-color);}
 .mdc-button .material-icons {
     color: var(--mdc-button-ink-color);}    
 .mdc-button::before, 
 .mdc-button::after,
-.mdc-button--raised,
-.mdc-button--unelevated {
+.mdc-button--raised:not(:disabled),
+.mdc-button--unelevated:not(:disabled) {
 	color: var(--mdc-button-raised-ink-color);
 	background-color: var(--mdc-button-raised-fill-color);}
 .mdc-button--raised .material-icons,
@@ -42,7 +42,7 @@
 .mdc-button--raised *,
 .mdc-button--unelevated * {
 	color: var(--mdc-button-raised-ink-color);}	
-.mdc-button--outlined {
+.mdc-button--outlined:not(:disabled) {
 	border-color: var(--mdc-button-ink-color);}
 .mdc-button.mdc-ripple-surface--color:not(.mdc-button--raised):not(.mdc-button--unelevated)::before, 
 .mdc-button.mdc-ripple-surface--color:not(.mdc-button--raised):not(.mdc-button--unelevated)::after {

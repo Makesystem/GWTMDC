@@ -36,6 +36,7 @@ public class GwtMDC implements EntryPoint {
 
 	private static StyleElement[] styles = {};
 
+	@Override
 	public void onModuleLoad() {
 		// ///////////////////////////////////////////////////////////////
 		// Load main resources
@@ -109,7 +110,8 @@ public class GwtMDC implements EntryPoint {
 				injectCss(MaterialResources.INSTANCE.componentsAttributesCss()),
 				injectCss(MaterialResources.INSTANCE.themeAttributesCss()),
 				// Data Table
-				injectCss(MaterialResources.INSTANCE.dataTableCss())};
+				injectCss(MaterialResources.INSTANCE.dataTableCss())
+		};
 
 	}
 
